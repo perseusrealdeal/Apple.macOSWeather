@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="aWf-Ue-Llq">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="DZA-gq-dmb">
+            <objects>
+                <windowController id="aWf-Ue-Llq" customClass="PreferencesWindowController" customModule="XcodeTemplateProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="3bI-iy-iR7">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" fullSizeContentView="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="163" y="199" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
+                        <connections>
+                            <outlet property="delegate" destination="aWf-Ue-Llq" id="wca-CV-Ff2"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="NdM-46-oIE" kind="relationship" relationship="window.shadowedContentViewController" id="Kco-19-hJE"/>
+                    </connections>
+                </windowController>
+                <customObject id="uu8-KA-eJO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-122" y="304"/>
+        </scene>
+        <!--Preferences View Controller-->
+        <scene sceneID="3ou-hb-cGC">
+            <objects>
+                <viewController id="NdM-46-oIE" customClass="PreferencesViewController" customModule="XcodeTemplateProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Zo1-hM-qgJ">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qnu-8q-EXi">
+                                <rect key="frame" x="139" y="123" width="202" height="24"/>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="b21-jt-FOw">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="Light" width="65"/>
+                                        <segment label="Dark" width="65" selected="YES" tag="1"/>
+                                        <segment label="System" width="65"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="segmentedControlValueChanged:" target="NdM-46-oIE" id="vXg-si-DBI"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Qnu-8q-EXi" firstAttribute="centerY" secondItem="Zo1-hM-qgJ" secondAttribute="centerY" id="3Xf-M6-koU"/>
+                            <constraint firstItem="Qnu-8q-EXi" firstAttribute="centerX" secondItem="Zo1-hM-qgJ" secondAttribute="centerX" id="ROj-Yg-gIU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="segmentedControl" destination="Qnu-8q-EXi" id="nLG-Ro-Ook"/>
+                    </connections>
+                </viewController>
+                <customObject id="wub-Iw-l7t" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-122" y="766"/>
+        </scene>
+    </scenes>
+</document>

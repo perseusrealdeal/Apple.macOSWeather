@@ -1,0 +1,46 @@
+
+//
+//  Requirements.txt
+//  XcodeTemplateProject
+//
+//  Created by Mikhail Zhigulin in 7531.
+//
+//  Copyright © 7531 Mikhail Zhigulin of Novosibirsk.
+//
+//  Licensed under the special license. See LICENSE file.
+//  All rights reserved.
+//
+
+I   : The App's Name : XcodeTemplateProject
+
+II  : Business Tasks
+
+BT1. Be prepared for strarting work on business matter development tasks.
+
+III : User Stories (shortly, only titles)
+
+US1. The title of the first user story...
+
+IV  : Features (Specials/Special Requirements)
+
+F1. The first required feature...
+
+V   : Operations
+
+OP1. The first operation...
+
+VI  : Data Models and Rules
+
+DM1. Attributes
+
+> Attribute1              : [~Value1, Value2]
+> Attribute2              : [Value1, ~Value2]
+
+DMN. Other Options
+
+> Appearance              : [~auto, light, dark]
+
+* where available
+~ default value
+
+Rule1: The first rule...

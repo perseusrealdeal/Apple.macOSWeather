@@ -1,0 +1,76 @@
+name: Build & Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+#  schedule:
+#    - cron: '30 5 * * 5'
+
+jobs:
+
+  build:
+    runs-on: macos-latest
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2
+    - name: Show xcodebuild version
+      run: xcodebuild -version
+    - name: Show xcode embedded SDKs
+      run: xcodebuild -showsdks
+    - name: Show buildable schemes
+      run: xcodebuild -list -project ./XcodeTemplateProject.xcodeproj
+    - uses: mxcl/xcodebuild@v1.9.2
+      with:
+        platform: macOS
+        scheme: 'XcodeTemplateProject'
+        action: build
+        working-directory: ./
+        verbosity: xcpretty
+        upload-logs: always
+        configuration: Release
+
+  test_EN:
+    runs-on: macos-latest
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2
+    - name: Show xcodebuild version
+      run: xcodebuild -version
+    - name: Show xcode embedded SDKs
+      run: xcodebuild -showsdks
+    - name: Show buildable schemes
+      run: xcodebuild -list -project ./XcodeTemplateProject.xcodeproj
+    - uses: mxcl/xcodebuild@v1.9.2
+      with:
+        platform: macOS
+        scheme: 'XcodeTemplateProject'
+        action: test
+        code-coverage: true
+        working-directory: ./
+        verbosity: xcpretty
+        upload-logs: always
+        configuration: Release
+
+  test_RU:
+    runs-on: macos-latest
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2
+    - name: Show xcodebuild version
+      run: xcodebuild -version
+    - name: Show xcode embedded SDKs
+      run: xcodebuild -showsdks
+    - name: Show buildable schemes
+      run: xcodebuild -list -project ./XcodeTemplateProject.xcodeproj
+    - uses: mxcl/xcodebuild@v1.9.2
+      with:
+        platform: macOS
+        scheme: 'XcodeTemplateProject_RU'
+        action: test
+        code-coverage: true
+        working-directory: ./
+        verbosity: xcpretty
+        upload-logs: always
+        configuration: Release
