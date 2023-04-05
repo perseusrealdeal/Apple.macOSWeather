@@ -1,9 +1,9 @@
-# macOS App — Xcode 10.1
+# Weather — macOS App — Xcode 10.1+
 
 > This is the Xcode 10.1 project configured to make easy start for developing macOS app.
 
-[![Actions Status](https://github.com/perseusrealdeal/XcodeTemplateProject/actions/workflows/main.yml/badge.svg)](https://github.com/perseusrealdeal/XcodeTemplateProject/actions)
-![Version](https://img.shields.io/badge/Version-0.0.1-green.svg)
+[![Actions Status](https://github.com/perseusrealdeal/Apple.macOSWeather/actions/workflows/main.yml/badge.svg)](https://github.com/perseusrealdeal/Apple.macOSWeather/actions)
+![Version](https://img.shields.io/badge/Version-0.1-green.svg)
 [![Platform macOS](https://img.shields.io/badge/platform-macOS%2010.10+-orange.svg)](https://en.wikipedia.org/wiki/MacOS_version_history)
 [![Xcode 10.1](https://img.shields.io/badge/Xcode-10.1+-red.svg)](https://en.wikipedia.org/wiki/Xcode)
 [![Swift 4.2](https://img.shields.io/badge/Swift-4.2-orange.svg)](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html)
@@ -21,11 +21,11 @@
 
 `step 2:` rebase the main branch with `Xcode-10.1-macOS-App` for the first initial preconfigured commit
 
-`step 3:` rename the branch `Xcode-10.1-macOS-App` > `v0.0.1`
+`step 3:` rename the branch `Xcode-10.1-macOS-App` > `v0.1`
 
-`step 4:` update the branch `v0.0.1` for the project specifics
+`step 4:` update the branch `v0.1` for the project specifics
 
-`step 5:` create a pull request for `v0.0.1`
+`step 5:` create a pull request for `v0.1`
 
 `step 6:` merge a pull request for the initial point of development process
 
