@@ -118,7 +118,7 @@ public class PerseusLocationDealer: NSObject {
 
         let permit = locationPermitHidden
 
-        //guard permit == .allowed else { actionIfNotAllowed?(permit); return }
+        // guard permit == .allowed else { actionIfNotAllowed?(permit); return }
 
         locationManager.stopUpdatingLocation()
 
@@ -162,11 +162,14 @@ extension PerseusLocationDealer: CLLocationManagerDelegate {
 
         log.message("\(locationPermitHidden)")
         log.message("\(status)")
+
         notificationCenter.post(name: .locationDealerStatusChangedNotification, object: status)
     }
 
     public func locationManager(
         _ manager: CLLocationManager, didFailWithError error: Error) {
+
+        log.message("[\(type(of: self))].\(#function)")
 
         currentLocationDealOnly = false
         locationManager.stopUpdatingLocation()
@@ -178,6 +181,8 @@ extension PerseusLocationDealer: CLLocationManagerDelegate {
 
     public func locationManager(
         _ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
+        log.message("[\(type(of: self))].\(#function)")
 
         guard !currentLocationDealOnly else {
 

@@ -81,6 +81,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc private func locationDealerErrorHandler(_ notification: Notification) {
         log.message("[\(type(of: self))].\(#function)")
+
+        guard let result = notification.object as? LocationDealerError else { return }
+        log.message("\(result)", .error)
     }
 
     @objc private func locationDealerStatusChangedHandler(_ notification: Notification) {
