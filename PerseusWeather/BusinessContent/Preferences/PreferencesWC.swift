@@ -18,7 +18,7 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
     override func windowDidLoad() {
         super.windowDidLoad()
 
-        window?.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
+        // window?.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
         if #available(macOS 10.14, *) { self.window?.title = "Settings..." }
     }
 
