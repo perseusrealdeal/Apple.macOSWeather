@@ -32,6 +32,7 @@
 		4BBE906B291293F0008F734D /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4BBE906A291293F0008F734D /* LICENSE */; };
 		4BBE906D291293F6008F734D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4BBE906C291293F6008F734D /* README.md */; };
 		4BBE907129137B5E008F734D /* main.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4BBE907029137B5D008F734D /* main.yml */; };
+		4BC2F2C929EE64E200386671 /* PerseusGeoLocationSingle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC2F2C829EE64E200386671 /* PerseusGeoLocationSingle.swift */; };
 		4BFA5FDA2989A12800AC09F5 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BFA5FD92989A12800AC09F5 /* Preferences.storyboard */; };
 		4BFA5FDC2989A16400AC09F5 /* PreferencesWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFA5FDB2989A16400AC09F5 /* PreferencesWC.swift */; };
 		4BFA5FDE2989A1F000AC09F5 /* PreferencesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFA5FDD2989A1F000AC09F5 /* PreferencesVC.swift */; };
@@ -81,6 +82,7 @@
 		4BBE906A291293F0008F734D /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4BBE906C291293F6008F734D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4BBE907029137B5D008F734D /* main.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = main.yml; path = .github/workflows/main.yml; sourceTree = "<group>"; };
+		4BC2F2C829EE64E200386671 /* PerseusGeoLocationSingle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerseusGeoLocationSingle.swift; sourceTree = "<group>"; };
 		4BFA5FD92989A12800AC09F5 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		4BFA5FDB2989A16400AC09F5 /* PreferencesWC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWC.swift; sourceTree = "<group>"; };
 		4BFA5FDD2989A1F000AC09F5 /* PreferencesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesVC.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				4B4B3193293F4B660001262E /* PerseusUISystemKitSingle.swift */,
 				4B52C535292CD05C00C7792A /* DarkModeSwitching.swift */,
 				4B62FA7529DC1A6400DF6B85 /* PerseusLogger.swift */,
+				4BC2F2C829EE64E200386671 /* PerseusGeoLocationSingle.swift */,
 			);
 			path = FirstPartyCode;
 			sourceTree = "<group>";
@@ -292,6 +295,11 @@
 				TargetAttributes = {
 					4B1483E02912892C0013B76E = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					4B1483F22912892F0013B76E = {
 						CreatedOnToolsVersion = 10.1;
@@ -385,6 +393,7 @@
 				4B4B3194293F4B660001262E /* PerseusUISystemKitSingle.swift in Sources */,
 				4B1483E52912892C0013B76E /* AppDelegate.swift in Sources */,
 				4BBE905E29128FB1008F734D /* MainWindowController.swift in Sources */,
+				4BC2F2C929EE64E200386671 /* PerseusGeoLocationSingle.swift in Sources */,
 				4B6F98772927E81000ADB03A /* LocalizationExtentions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
