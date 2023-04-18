@@ -17,8 +17,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
 
-        PerseusLogger.message("Launching with business matter purpose", .info)
-        PerseusLogger.message("[\(type(of: self))].\(#function)")
+        log.message("Launching with business matter purpose", .info)
+        log.message("[\(type(of: self))].\(#function)")
 
         AppearanceService.makeUp()
     }

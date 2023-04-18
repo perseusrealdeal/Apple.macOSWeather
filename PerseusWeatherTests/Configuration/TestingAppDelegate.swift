@@ -19,7 +19,8 @@ import XCTest
 @objc(TestingAppDelegate)
 class TestingAppDelegate: NSResponder, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        PerseusLogger.message("Launching with testing matter purpose", .info)
-        PerseusLogger.message("[\(type(of: self))].\(#function)")
+        log.message("The app's test bundle start point...", .info)
+        log.message("Launching with testing matter purpose", .info)
+        log.message("[\(type(of: self))].\(#function)")
     }
 }
