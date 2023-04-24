@@ -19,6 +19,11 @@ class ViewController: NSViewController {
 
     @IBOutlet private(set) weak var greetingsLabel: NSTextField!
 
+    @IBAction func buttonTapped(_ sender: NSButton) {
+        log.message("[\(type(of: self))].\(#function)")
+        try? AppGlobals.locationDealer.askForCurrentLocation()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

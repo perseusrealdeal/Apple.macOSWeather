@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B0A49F329F631CD00CAE8A0 /* AppGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0A49F229F631CD00CAE8A0 /* AppGlobals.swift */; };
 		4B1483E52912892C0013B76E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1483E42912892C0013B76E /* AppDelegate.swift */; };
 		4B1483E72912892C0013B76E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1483E62912892C0013B76E /* ViewController.swift */; };
 		4B1483E92912892F0013B76E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B1483E82912892F0013B76E /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B0A49F229F631CD00CAE8A0 /* AppGlobals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobals.swift; sourceTree = "<group>"; };
 		4B1483E12912892C0013B76E /* PerseusWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerseusWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B1483E42912892C0013B76E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B1483E62912892C0013B76E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -156,10 +158,11 @@
 			children = (
 				4B6F98632927DDA300ADB03A /* Localization */,
 				4B6F98752927E7C600ADB03A /* FirstPartyCode */,
-				4B1483E42912892C0013B76E /* AppDelegate.swift */,
 				4B1483E82912892F0013B76E /* Assets.xcassets */,
 				4B1483ED2912892F0013B76E /* Info.plist */,
 				4B1483EE2912892F0013B76E /* PerseusWeather.entitlements */,
+				4B0A49F229F631CD00CAE8A0 /* AppGlobals.swift */,
+				4B1483E42912892C0013B76E /* AppDelegate.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B0A49F329F631CD00CAE8A0 /* AppGlobals.swift in Sources */,
 				4BFA5FDE2989A1F000AC09F5 /* PreferencesVC.swift in Sources */,
 				4B52C536292CD05C00C7792A /* DarkModeSwitching.swift in Sources */,
 				4BBE90672912931A008F734D /* main.swift in Sources */,

@@ -9,7 +9,7 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" customClass="MainWindowController" customModule="XcodeTemplateProject" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController id="B8D-0N-5wS" customClass="MainWindowController" customModule="PerseusWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -30,11 +30,21 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="XcodeTemplateProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="PerseusWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fsS-9t-GSf">
+                                <rect key="frame" x="199" y="75" width="81" height="32"/>
+                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FPQ-33-bjV">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="buttonTapped:" target="XfG-lQ-9wD" id="O7W-Qg-BHf"/>
+                                </connections>
+                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xJE-z7-zVW">
                                 <rect key="frame" x="120" y="113" width="241" height="44"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Greetings Label" id="tAp-no-M5C">
@@ -46,6 +56,8 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="xJE-z7-zVW" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="1vW-eB-zha"/>
+                            <constraint firstItem="fsS-9t-GSf" firstAttribute="top" secondItem="xJE-z7-zVW" secondAttribute="bottom" constant="10" id="iPr-eD-jhx"/>
+                            <constraint firstItem="fsS-9t-GSf" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="j0g-u1-ufG"/>
                             <constraint firstItem="xJE-z7-zVW" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="mUt-rf-zU0"/>
                         </constraints>
                     </view>

@@ -58,6 +58,7 @@ extension Notification.Name {
 // MARK: - Errors
 
 public enum LocationDealerError: Error, Equatable {
+    case needsPermission(LocationDealerPermit)
     case receivedEmptyLocationData
     case failedRequest(String)
 }
@@ -91,15 +92,17 @@ public class PerseusLocationDealer: NSObject {
                          status: authorizationStatusHidden)
     }
 
-    // Internal Flags
+    // MARK: - Internal Flags
 
-    internal var currentLocationDealOnly: Bool = false
+    internal var order: LocationDealerOrder = .none
 
     // MARK: - Singleton constructor
 
     public static let shared: PerseusLocationDealer = { return PerseusLocationDealer() }()
 
     private override init() {
+
+        log.message("[\(PerseusLocationDealer.self)].\(#function)", .info)
 
         self.locationManager = CLLocationManager()
         self.notificationCenter = NotificationCenter.default
@@ -113,42 +116,65 @@ public class PerseusLocationDealer: NSObject {
     // MARK: - Contract
 
     public func askForCurrentLocation(
-        accuracy: LocationAccuracy = APPROPRIATE_ACCURACY,
-        _ actionIfNotAllowed: ((_ permit: LocationDealerPermit) -> Void)? = nil) {
+        with accuracy: LocationAccuracy = APPROPRIATE_ACCURACY) throws {
 
         let permit = locationPermitHidden
+        log.message("[\(type(of: self))].\(#function)", .info)
 
-        // guard permit == .allowed else { actionIfNotAllowed?(permit); return }
+        guard permit == .allowed else {
+            log.message("[\(type(of: self))].\(#function) — permit .\(permit)", .error)
+            throw LocationDealerError.needsPermission(permit)
+        }
 
         locationManager.stopUpdatingLocation()
 
-        currentLocationDealOnly = true
+        order = .currentLocation
         locationManager.desiredAccuracy = accuracy.rawValue
 
+#if os(iOS)
+        locationManager.requestLocation()
+#elseif os(macOS)
         locationManager.startUpdatingLocation()
+#endif
     }
 
-    #if os(iOS)
-    public func askForAuthorization(_ authorization: LocationAuthorization) {
+    public func askForAuthorization(
+        _ authorization: LocationAuthorization = .always,
+        _ actionIfdetermined: ((_ permit: LocationDealerPermit) -> Void)? = nil) {
+
+        log.message("[\(type(of: self))].\(#function)", .info)
+
+        let permit = locationPermitHidden
+        guard permit == .notDetermined else {
+            log.message("[\(type(of: self))].\(#function) — permit .\(permit)", .error)
+            locationManager.stopUpdatingLocation(); order = .none
+            actionIfdetermined?(permit)
+            return
+        }
+
+#if os(iOS)
         switch authorization {
         case .whenInUse:
             locationManager.requestWhenInUseAuthorization()
         case .always:
             locationManager.requestAlwaysAuthorization()
         }
+
+        order = .none
+#elseif os(macOS)
+        order = .authorization
+        locationManager.startUpdatingLocation()
+#endif
     }
-    #endif
 
     public func askToStartUpdatingLocation(accuracy: LocationAccuracy = APPROPRIATE_ACCURACY) {
-        currentLocationDealOnly = false
-        locationManager.stopUpdatingLocation()
-
+        order = .locationUpdates
         locationManager.desiredAccuracy = accuracy.rawValue
         locationManager.startUpdatingLocation()
     }
 
     public func askToStopUpdatingLocation() {
-        currentLocationDealOnly = false
+        order = .none
         locationManager.stopUpdatingLocation()
     }
 }
@@ -157,51 +183,60 @@ public class PerseusLocationDealer: NSObject {
 
 extension PerseusLocationDealer: CLLocationManagerDelegate {
 
-    public func locationManager(
-        _ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    public func locationManager(_ manager: CLLocationManager,
+                                didChangeAuthorization status: CLAuthorizationStatus) {
 
-        log.message("\(locationPermitHidden)")
-        log.message("\(status)")
+        log.message("[\(type(of: self))].\(#function) status .\(status)", .info)
 
         notificationCenter.post(name: .locationDealerStatusChangedNotification, object: status)
     }
 
-    public func locationManager(
-        _ manager: CLLocationManager, didFailWithError error: Error) {
+    public func locationManager(_ manager: CLLocationManager,
+                                didFailWithError error: Error) {
 
-        log.message("[\(type(of: self))].\(#function)")
+        log.message("[\(type(of: self))].\(#function)", .info)
 
-        currentLocationDealOnly = false
-        locationManager.stopUpdatingLocation()
+        locationManager.stopUpdatingLocation(); order = .none
 
         let result: LocationDealerError = .failedRequest(error.localizedDescription)
-
         notificationCenter.post(name: .locationDealerErrorNotification, object: result)
     }
 
-    public func locationManager(
-        _ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    public func locationManager(_ manager: CLLocationManager,
+                                didUpdateLocations locations: [CLLocation]) {
 
-        log.message("[\(type(of: self))].\(#function)")
+        log.message("[\(type(of: self))].\(#function)", .info)
 
-        guard !currentLocationDealOnly else {
-
-            currentLocationDealOnly = false
+        if order == .none {
+            log.message("[\(type(of: self))].\(#function) — Locations for no order!", .error)
             locationManager.stopUpdatingLocation()
-
-            let result: Result<CLLocation, LocationDealerError> =
-                locations.first != nil ?
-                    .success(locations.first!) :
-                    .failure(.receivedEmptyLocationData)
-
-            notificationCenter.post(name: .locationDealerCurrentNotification, object: result)
             return
         }
 
-        let result: Result<[CLLocation], LocationDealerError> =
-            !locations.isEmpty ? .success(locations) : .failure(.receivedEmptyLocationData)
+        if order == .authorization {
+            log.message("[\(type(of: self))].\(#function) — Authorization order!")
+            locationManager.stopUpdatingLocation(); order = .none
+            return
+        }
 
-        notificationCenter.post(name: .locationDealerUpdatesNotification, object: result)
+        if order == .currentLocation {
+
+            locationManager.stopUpdatingLocation(); order = .none
+
+            let result: Result<CLLocation, LocationDealerError> = locations.first == nil ?
+                .failure(.receivedEmptyLocationData) : .success(locations.first!)
+
+            notificationCenter.post(name: .locationDealerCurrentNotification, object: result)
+
+        } else if order == .locationUpdates {
+
+            let result: Result<[CLLocation], LocationDealerError> = locations.isEmpty ?
+                .failure(.receivedEmptyLocationData) : .success(locations)
+
+            if locations.isEmpty { order = .none; locationManager.stopUpdatingLocation() }
+
+            notificationCenter.post(name: .locationDealerUpdatesNotification, object: result)
+        }
     }
 }
 
@@ -261,7 +296,6 @@ extension CLAuthorizationStatus: CustomStringConvertible {
     }
 }
 
-#if os(iOS)
 public enum LocationAuthorization: CustomStringConvertible {
 
     case whenInUse
@@ -276,7 +310,6 @@ public enum LocationAuthorization: CustomStringConvertible {
         }
     }
 }
-#endif
 
 public enum LocationDealerPermit: CustomStringConvertible {
     /// Location service is neither restricted nor the app denided
@@ -312,6 +345,26 @@ public enum LocationDealerPermit: CustomStringConvertible {
             return "allowed"
         }
     }
+}
+
+public enum LocationDealerOrder: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .none: // There should be no location notifying activity
+            return "None"
+        case .currentLocation:
+            return "Current Location"
+        case .locationUpdates:
+            return "Location Updates"
+        case .authorization: // Used only to invoke Current Location Diolog on macOS
+            return "Authorization"
+        }
+    }
+
+    case none
+    case currentLocation
+    case locationUpdates
+    case authorization
 }
 
 public func getPermit(serviceEnabled: Bool,

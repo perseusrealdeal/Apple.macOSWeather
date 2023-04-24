@@ -96,19 +96,18 @@ public class PerseusLogger {
                                _ type: Level = .debug,
                                _ file: StaticString = #file,
                                _ line: UInt = #line) {
+
         guard turned == .on, type.rawValue <= level.rawValue else { return }
 
         var message = ""
 
         if short {
-            message = "\(type.description): \(text())"
+            message = "\(type): \(text())"
         } else {
             let fileName = (file.description as NSString).lastPathComponent
-            message = "\(type.description): \(text()), file: \(fileName), line: \(line)"
+            message = "\(type): \(text()), file: \(fileName), line: \(line)"
         }
 
-        // DispatchQueue.main.async { print(message) }
-
-        print(message)
+        print(message) // DispatchQueue.main.async { print(message) }
     }
 }
