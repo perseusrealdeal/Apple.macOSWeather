@@ -19,9 +19,18 @@ class ViewController: NSViewController {
 
     @IBOutlet private(set) weak var greetingsLabel: NSTextField!
 
-    @IBAction func buttonTapped(_ sender: NSButton) {
+    @IBAction func askForCurrentLocationButtonTapped(_ sender: NSButton) {
         log.message("[\(type(of: self))].\(#function)")
         try? AppGlobals.locationDealer.askForCurrentLocation()
+    }
+
+    @IBAction func askForAuthorizationButtonTapped(_ sender: NSButton) {
+        let currentPermit = AppGlobals.locationDealer.locationPermit
+        log.message("[\(type(of: self))].\(#function) — permit: \(currentPermit)")
+        AppGlobals.locationDealer.askForAuthorization { permit in
+            let text = "[\(type(of: self))].\(#function) — It's already determined .\(permit)"
+            log.message(text, .error)
+        }
     }
 
     override func viewDidLoad() {

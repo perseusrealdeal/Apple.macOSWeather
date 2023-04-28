@@ -29,6 +29,8 @@ let storyboard = NSStoryboard(name: String(describing: MainWindowController.self
 let screen = storyboard.instantiateInitialController() as? NSWindowController
 let mainMenu = NSNib(nibNamed: NSNib.Name("MainMenu"), bundle: nil)
 
+let globals = AppGlobals()
+
 // MARK: - Make the app run
 
 app.setActivationPolicy(.regular)

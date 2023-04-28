@@ -35,16 +35,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fsS-9t-GSf">
-                                <rect key="frame" x="199" y="75" width="81" height="32"/>
-                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FPQ-33-bjV">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="buttonTapped:" target="XfG-lQ-9wD" id="O7W-Qg-BHf"/>
-                                </connections>
-                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xJE-z7-zVW">
                                 <rect key="frame" x="120" y="113" width="241" height="44"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Greetings Label" id="tAp-no-M5C">
@@ -53,12 +43,34 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fsS-9t-GSf">
+                                <rect key="frame" x="156" y="75" width="168" height="32"/>
+                                <buttonCell key="cell" type="push" title="Ask Current Location" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FPQ-33-bjV">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="askForCurrentLocationButtonTapped:" target="XfG-lQ-9wD" id="O7W-Qg-BHf"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tBf-q0-mhV">
+                                <rect key="frame" x="167" y="44" width="147" height="32"/>
+                                <buttonCell key="cell" type="push" title="Ask Authorization" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FiW-Yo-Js0">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="askForAuthorizationButtonTapped:" target="XfG-lQ-9wD" id="X5O-pR-drX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="xJE-z7-zVW" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="1vW-eB-zha"/>
+                            <constraint firstItem="tBf-q0-mhV" firstAttribute="top" secondItem="fsS-9t-GSf" secondAttribute="bottom" constant="10" id="L03-Ms-aNH"/>
                             <constraint firstItem="fsS-9t-GSf" firstAttribute="top" secondItem="xJE-z7-zVW" secondAttribute="bottom" constant="10" id="iPr-eD-jhx"/>
                             <constraint firstItem="fsS-9t-GSf" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="j0g-u1-ufG"/>
                             <constraint firstItem="xJE-z7-zVW" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="mUt-rf-zU0"/>
+                            <constraint firstItem="tBf-q0-mhV" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="obB-8U-iZX"/>
                         </constraints>
                     </view>
                     <connections>

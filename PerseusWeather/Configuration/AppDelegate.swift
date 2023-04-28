@@ -27,12 +27,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         addAbservers()
 
         // let dealer = AppGlobals.locationDealer
-
+/*
         dealer.askForAuthorization { permit in
-            let text = "[\(type(of: self))].\(#function) — It's already ditermined .\(permit)"
+            let text = "[\(type(of: self))].\(#function) — It's already determined .\(permit)"
             log.message(text, .error)
         }
-
+*/
         // try? dealer.askForCurrentLocation()
     }
 
@@ -72,7 +72,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc private func locationDealerCurrentHandler(_ notification: Notification) {
         log.message("[\(type(of: self))].\(#function)")
-        guard let result = notification.object as? Result<CLLocation, LocationDealerError>
+        guard
+            let result = notification.object as? Result<PerseusLocation, LocationDealerError>
             else { return }
 
         switch result {
@@ -85,8 +86,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc private func locationDealerUpdatesHandler(_ notification: Notification) {
         log.message("[\(type(of: self))].\(#function)")
-        guard let result = notification.object as? Result<[CLLocation], LocationDealerError>
-            else { return }
+        guard
+            let result = notification.object as? Result<[PerseusLocation], LocationDealerError>
+        else { return }
 
         switch result {
         case .success(let data):
@@ -104,7 +106,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc private func locationDealerStatusChangedHandler(_ notification: Notification) {
         log.message("[\(type(of: self))].\(#function)")
+
         guard let result = notification.object as? CLAuthorizationStatus else { return }
         log.message("[\(type(of: self))] Location Manager Status: \(result)")
+
+        let permit = AppGlobals.locationDealer.locationPermit
+        log.message("[\(type(of: self))] Location Manager Permit: \(permit)")
     }
 }
