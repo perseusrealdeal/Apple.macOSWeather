@@ -21,7 +21,13 @@ class ViewController: NSViewController {
 
     @IBAction func askForCurrentLocationButtonTapped(_ sender: NSButton) {
         log.message("[\(type(of: self))].\(#function)")
-        try? AppGlobals.locationDealer.askForCurrentLocation()
+        do {
+            try AppGlobals.locationDealer.askForCurrentLocation()
+        } catch LocationDealerError.needsPermission(let permit) {
+            log.message("[\(type(of: self))].\(#function) — permit: .\(permit)", .error)
+        } catch {
+            log.message("[\(type(of: self))].\(#function) — unexpected error", .error)
+        }
     }
 
     @IBAction func askForAuthorizationButtonTapped(_ sender: NSButton) {
