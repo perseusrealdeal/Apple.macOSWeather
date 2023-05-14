@@ -63,13 +63,25 @@
                                     <action selector="askForAuthorizationButtonTapped:" target="XfG-lQ-9wD" id="X5O-pR-drX"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VIJ-r2-aIz">
+                                <rect key="frame" x="182" y="13" width="117" height="32"/>
+                                <buttonCell key="cell" type="push" title="Ask Weather" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9xu-v5-oce">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="askWeatherButtonTapped:" target="XfG-lQ-9wD" id="dTt-Vh-Yrh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="xJE-z7-zVW" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="1vW-eB-zha"/>
                             <constraint firstItem="tBf-q0-mhV" firstAttribute="top" secondItem="fsS-9t-GSf" secondAttribute="bottom" constant="10" id="L03-Ms-aNH"/>
+                            <constraint firstItem="VIJ-r2-aIz" firstAttribute="top" secondItem="tBf-q0-mhV" secondAttribute="bottom" constant="10" id="TBT-v5-qpc"/>
                             <constraint firstItem="fsS-9t-GSf" firstAttribute="top" secondItem="xJE-z7-zVW" secondAttribute="bottom" constant="10" id="iPr-eD-jhx"/>
                             <constraint firstItem="fsS-9t-GSf" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="j0g-u1-ufG"/>
                             <constraint firstItem="xJE-z7-zVW" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="mUt-rf-zU0"/>
+                            <constraint firstItem="VIJ-r2-aIz" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="n7v-ZK-Wl0"/>
                             <constraint firstItem="tBf-q0-mhV" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="obB-8U-iZX"/>
                         </constraints>
                     </view>

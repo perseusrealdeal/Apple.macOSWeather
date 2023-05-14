@@ -17,6 +17,19 @@ import CoreLocation
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     let dealer = AppGlobals.locationDealer
+    let client = AppGlobals.weatherClient
+
+    var location: PerseusLocation? {
+        didSet {
+            log.message(String(describing: location))
+        }
+    }
+
+    var weather: Data? {
+        didSet {
+            log.message(String(describing: weather))
+        }
+    }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
 
@@ -34,6 +47,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
 */
         // try? dealer.askForCurrentLocation()
+
+        client.onDataGiven = { result in
+            switch result {
+            case .success(let weatherData):
+                self.weatherDataHandler(weatherData)
+            case .failure(let error):
+                switch error {
+                case .failedRequest(let message):
+                    log.message(message, .error)
+                default:
+                    break
+                }
+            }
+        }
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
@@ -78,7 +105,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         switch result {
         case .success(let data):
-            log.message("\(data)")
+            self.location = data
         case .failure(let error):
             log.message("\(error)", .error)
         }
@@ -112,5 +139,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         let permit = AppGlobals.locationDealer.locationPermit
         log.message("[\(type(of: self))] Location Manager Permit: \(permit)")
+    }
+
+    private func weatherDataHandler(_ data: Data) {
+        log.message("""
+            DATA: BEGIN
+            \(String(decoding: data, as: UTF8.self))
+            DATA: END
+            """)
     }
 }

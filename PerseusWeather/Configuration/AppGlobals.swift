@@ -10,7 +10,7 @@
 //  All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 struct AppGlobals {
 
@@ -19,7 +19,12 @@ struct AppGlobals {
     static let userDefaults = UserDefaults.standard
     static let notificationCenter = NotificationCenter.default
 
+    static var appDelegate: AppDelegate? {
+        return NSApplication.shared.delegate as? AppDelegate
+    }
+
     // MARK: - Custom Services
 
     static let locationDealer = PerseusLocationDealer.shared
+    static let weatherClient = OpenWeatherFreeClient()
 }

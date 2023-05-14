@@ -39,6 +39,23 @@ class ViewController: NSViewController {
         }
     }
 
+    @IBAction func askWeatherButtonTapped(_ sender: NSButton) {
+
+        guard let location = AppGlobals.appDelegate?.location else { return }
+
+        let lat = location.latitude.cut(.two).description
+        let lon = location.longitude.cut(.two).description
+
+        let callDetails = OpenWeatherDetails(appid: apikey,
+                                             format: .currentWeather,
+                                             lat: lat,
+                                             lon: lon)
+
+        log.message(callDetails.urlString)
+
+        try? AppGlobals.weatherClient.call(with: callDetails)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
