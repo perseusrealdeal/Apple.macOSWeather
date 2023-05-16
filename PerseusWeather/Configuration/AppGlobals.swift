@@ -11,8 +11,14 @@
 //
 
 import Cocoa
+import OpenWeatherFreeClient
+import PerseusGeoLocationKit
 
 struct AppGlobals {
+
+    // MARK: - Constants
+
+    static let apikey = "79eefe16f6e4714470502074369fc77b" // OpenWeather app's ID.
 
     // MARK: - System Services
 

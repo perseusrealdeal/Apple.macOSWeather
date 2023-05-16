@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/mikhailzhigulin/Documents/GitHub/apple.macos.weather/PerseusWeather.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>

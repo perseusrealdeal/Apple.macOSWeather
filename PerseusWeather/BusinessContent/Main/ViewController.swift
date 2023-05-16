@@ -12,6 +12,8 @@
 //
 
 import Cocoa
+import OpenWeatherFreeClient
+import PerseusGeoLocationKit
 
 class ViewController: NSViewController {
 
@@ -46,7 +48,7 @@ class ViewController: NSViewController {
         let lat = location.latitude.cut(.two).description
         let lon = location.longitude.cut(.two).description
 
-        let callDetails = OpenWeatherDetails(appid: apikey,
+        let callDetails = OpenWeatherDetails(appid: AppGlobals.apikey,
                                              format: .currentWeather,
                                              lat: lat,
                                              lon: lon)

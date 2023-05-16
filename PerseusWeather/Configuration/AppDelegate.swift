@@ -13,6 +13,7 @@
 
 import Cocoa
 import CoreLocation
+import PerseusGeoLocationKit
 
 class AppDelegate: NSObject, NSApplicationDelegate {
 
