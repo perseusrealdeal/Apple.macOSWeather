@@ -38,8 +38,6 @@
 
 import Foundation
 
-let apikey = "79eefe16f6e4714470502074369fc77b"
-
 public class OpenWeatherFreeClient: FreeNetworkClient {
 
     public func call(with respect: OpenWeatherDetails) throws {

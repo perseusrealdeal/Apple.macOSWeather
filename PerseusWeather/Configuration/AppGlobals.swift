@@ -14,6 +14,10 @@ import Cocoa
 
 struct AppGlobals {
 
+    // MARK: - Constants
+
+    static let appKeyOpenWeather = "79eefe16f6e4714470502074369fc77b"
+
     // MARK: - System Services
 
     static let userDefaults = UserDefaults.standard

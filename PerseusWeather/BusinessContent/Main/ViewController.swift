@@ -46,7 +46,7 @@ class ViewController: NSViewController {
         let lat = location.latitude.cut(.two).description
         let lon = location.longitude.cut(.two).description
 
-        let callDetails = OpenWeatherDetails(appid: apikey,
+        let callDetails = OpenWeatherDetails(appid: AppGlobals.appKeyOpenWeather,
                                              format: .currentWeather,
                                              lat: lat,
                                              lon: lon)
