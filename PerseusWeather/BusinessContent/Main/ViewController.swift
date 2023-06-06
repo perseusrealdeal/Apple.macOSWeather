@@ -14,6 +14,7 @@
 import Cocoa
 import OpenWeatherFreeClient
 import PerseusGeoLocationKit
+import PerseusDarkMode
 
 class ViewController: NSViewController {
 

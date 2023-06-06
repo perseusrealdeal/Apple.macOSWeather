@@ -12,6 +12,8 @@
 //
 
 import Cocoa
+import PerseusDarkMode
+import PerseusUISystemKit
 
 class PreferencesViewController: NSViewController {
 

@@ -13,7 +13,6 @@
 		4B1483E92912892F0013B76E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B1483E82912892F0013B76E /* Assets.xcassets */; };
 		4B1483EC2912892F0013B76E /* MainWindowController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B1483EA2912892F0013B76E /* MainWindowController.storyboard */; };
 		4B1483F82912892F0013B76E /* PerseusWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1483F72912892F0013B76E /* PerseusWeatherTests.swift */; };
-		4B4B3194293F4B660001262E /* PerseusUISystemKitSingle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4B3193293F4B660001262E /* PerseusUISystemKitSingle.swift */; };
 		4B52C536292CD05C00C7792A /* DarkModeSwitching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B52C535292CD05C00C7792A /* DarkModeSwitching.swift */; };
 		4B62FA7629DC1A6400DF6B85 /* PerseusLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62FA7529DC1A6400DF6B85 /* PerseusLogger.swift */; };
 		4B6F98622927D95500ADB03A /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4B6F98612927D95500ADB03A /* .swiftlint.yml */; };
@@ -35,6 +34,7 @@
 		4BBE906B291293F0008F734D /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4BBE906A291293F0008F734D /* LICENSE */; };
 		4BBE906D291293F6008F734D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4BBE906C291293F6008F734D /* README.md */; };
 		4BBE907129137B5E008F734D /* main.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4BBE907029137B5D008F734D /* main.yml */; };
+		4BDD89062A2F3F5B00533BAB /* PerseusUISystemKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4BDD89052A2F3F5B00533BAB /* PerseusUISystemKit */; };
 		4BFA5FDA2989A12800AC09F5 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BFA5FD92989A12800AC09F5 /* Preferences.storyboard */; };
 		4BFA5FDC2989A16400AC09F5 /* PreferencesWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFA5FDB2989A16400AC09F5 /* PreferencesWC.swift */; };
 		4BFA5FDE2989A1F000AC09F5 /* PreferencesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFA5FDD2989A1F000AC09F5 /* PreferencesVC.swift */; };
@@ -63,7 +63,6 @@
 		4B1483F32912892F0013B76E /* PerseusWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PerseusWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B1483F72912892F0013B76E /* PerseusWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerseusWeatherTests.swift; sourceTree = "<group>"; };
 		4B1483F92912892F0013B76E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4B4B3193293F4B660001262E /* PerseusUISystemKitSingle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerseusUISystemKitSingle.swift; sourceTree = "<group>"; };
 		4B52C535292CD05C00C7792A /* DarkModeSwitching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeSwitching.swift; sourceTree = "<group>"; };
 		4B62FA7529DC1A6400DF6B85 /* PerseusLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerseusLogger.swift; sourceTree = "<group>"; };
 		4B6F98612927D95500ADB03A /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -98,6 +97,7 @@
 			files = (
 				4BAA65EE2A133CD5009790D5 /* PerseusGeoLocationKit in Frameworks */,
 				4BAA65EB2A133B74009790D5 /* OpenWeatherFreeClient in Frameworks */,
+				4BDD89062A2F3F5B00533BAB /* PerseusUISystemKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,7 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				4B6F98762927E81000ADB03A /* LocalizationExtentions.swift */,
-				4B4B3193293F4B660001262E /* PerseusUISystemKitSingle.swift */,
 				4B52C535292CD05C00C7792A /* DarkModeSwitching.swift */,
 				4B62FA7529DC1A6400DF6B85 /* PerseusLogger.swift */,
 			);
@@ -268,6 +267,7 @@
 			packageProductDependencies = (
 				4BAA65EA2A133B74009790D5 /* OpenWeatherFreeClient */,
 				4BAA65ED2A133CD5009790D5 /* PerseusGeoLocationKit */,
+				4BDD89052A2F3F5B00533BAB /* PerseusUISystemKit */,
 			);
 			productName = XcodeTemplateProject;
 			productReference = 4B1483E12912892C0013B76E /* PerseusWeather.app */;
@@ -328,6 +328,7 @@
 			packageReferences = (
 				4BAA65E92A133B74009790D5 /* XCRemoteSwiftPackageReference "OpenWeatherFreeClient" */,
 				4BAA65EC2A133CD5009790D5 /* XCRemoteSwiftPackageReference "PerseusGeoLocationKit" */,
+				4BDD89042A2F3F5B00533BAB /* XCRemoteSwiftPackageReference "PerseusUISystemKit" */,
 			);
 			productRefGroup = 4B1483E22912892C0013B76E /* Products */;
 			projectDirPath = "";
@@ -403,7 +404,6 @@
 				4B62FA7629DC1A6400DF6B85 /* PerseusLogger.swift in Sources */,
 				4BFA5FE02989A69E00AC09F5 /* TheMenu.swift in Sources */,
 				4B1483E72912892C0013B76E /* ViewController.swift in Sources */,
-				4B4B3194293F4B660001262E /* PerseusUISystemKitSingle.swift in Sources */,
 				4B1483E52912892C0013B76E /* AppDelegate.swift in Sources */,
 				4BBE905E29128FB1008F734D /* MainWindowController.swift in Sources */,
 				4B6F98772927E81000ADB03A /* LocalizationExtentions.swift in Sources */,
@@ -709,6 +709,14 @@
 				kind = branch;
 			};
 		};
+		4BDD89042A2F3F5B00533BAB /* XCRemoteSwiftPackageReference "PerseusUISystemKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/perseusrealdeal/PerseusUISystemKit";
+			requirement = {
+				kind = exactVersion;
+				version = 1.1.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -721,6 +729,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4BAA65EC2A133CD5009790D5 /* XCRemoteSwiftPackageReference "PerseusGeoLocationKit" */;
 			productName = PerseusGeoLocationKit;
+		};
+		4BDD89052A2F3F5B00533BAB /* PerseusUISystemKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BDD89042A2F3F5B00533BAB /* XCRemoteSwiftPackageReference "PerseusUISystemKit" */;
+			productName = PerseusUISystemKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
