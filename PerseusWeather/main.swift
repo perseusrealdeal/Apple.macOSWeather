@@ -18,6 +18,20 @@ import Cocoa
 log.level = .info
 log.message("The app's start point...", .info)
 
+// OpenWeather logger
+
+import class OpenWeatherFreeClient.PerseusLogger
+typealias OpenWeatherLogger = OpenWeatherFreeClient.PerseusLogger
+
+OpenWeatherLogger.turned = .off
+
+// PerseusLocationDealer logger
+
+import class PerseusGeoLocationKit.PerseusLogger
+typealias LocationDealerLogger = PerseusGeoLocationKit.PerseusLogger
+
+LocationDealerLogger.turned = .off
+
 // MARK: - Construct the app's top elements
 
 let app = NSApplication.shared
