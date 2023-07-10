@@ -18,6 +18,13 @@ import Cocoa
 log.level = .info
 log.message("The app's start point...", .info)
 
+// PerseusDarkMode logger
+
+import class PerseusDarkMode.PerseusLogger
+typealias PerseusDarkModeLogger = PerseusDarkMode.PerseusLogger
+
+PerseusDarkModeLogger.turned = .off
+
 // OpenWeather logger
 
 import class OpenWeatherFreeClient.PerseusLogger
