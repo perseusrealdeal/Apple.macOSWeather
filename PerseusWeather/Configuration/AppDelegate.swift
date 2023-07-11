@@ -38,6 +38,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         log.message("Launching with business matter purpose", .info)
         log.message("[\(type(of: self))].\(#function)")
 
+        // Change default value after switching Perseus Dark Mode lib from standalone to SPM.
+        // changeDarkModeManually(.auto)
+
         AppearanceService.makeUp()
         addAbservers()
 
