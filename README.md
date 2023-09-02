@@ -35,7 +35,7 @@
 
 # Software requirements
 
-- [Functional requirements](/PerseusWeather/Requirements/Requirements)
+- [Functional requirements](/PerseusWeather/Requirements/REQUIREMENTS.md)
 - Localization requirements [[EN](/PerseusWeather/Requirements/Localization_en.plist), [RU](/PerseusWeather/Requirements/Localization_ru.plist)]
 
 # First-party software
