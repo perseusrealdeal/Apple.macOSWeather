@@ -17,34 +17,34 @@ See LICENSE for details. All rights reserved.
 
 # The App's Name
 
-TODO: Give it a name
+> TODO: Give it a name
 
 # Business Tasks
 
-TODO: Describe BT-1
+> TODO: Describe BT-1
 
 # User Stories (shortly, only titles)
 
-TODO: Describe US-1
+> TODO: Describe US-1
 
 # Features (Specials/Special Requirements)
 
-TODO: Describe F-1
+> TODO: Describe F-1
 
 # Operations
 
-TODO: Describe OP-1
+> TODO: Describe OP-1
 
 # Rules
 
-TODO: Describe RULE-1
+> TODO: Describe RULE-1
 
 # Data Models
 
 ## Business matter attributes
 
-TODO: Describe attributes
+> TODO: Describe attributes
 
 ## Other Options
 
-TODO: Describe other options
+> TODO: Describe other options
