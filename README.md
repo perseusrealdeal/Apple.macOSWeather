@@ -56,7 +56,8 @@
 - Preferences\Settings screen with Dark Mode option
 - Localization test schemes for EN and RU as well
 - SwiftLint shell script as a build phase
-- Light-weight Logger 
+- Light-weight Logger
+- Software requirements templates
 
 # The Clear BSD License
 
