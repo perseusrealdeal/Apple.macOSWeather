@@ -55,12 +55,12 @@ public enum NetworkClientError: Error, Equatable {
     case statusCode404
     case failedResponse(String)
 }
-
+/*
 public enum Result<Value, Error: Swift.Error> {
     case success(Value)
     case failure(Error)
 }
-
+*/
 public class FreeNetworkClient {
 
     private(set) var dataTask: URLSessionDataTask?
