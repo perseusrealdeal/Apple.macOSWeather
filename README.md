@@ -14,6 +14,7 @@
 
 [![PerseusDarkMode](http://img.shields.io/:PerseusDarkMode-1.1.5-green.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/tree/1.1.5)
 [![PerseusUISystemKit](http://img.shields.io/:PerseusUISystemKit-1.1.4-green.svg)](https://github.com/perseusrealdeal/PerseusUISystemKit/tree/1.1.4)
+[![OpenWeatherFreeClient](http://img.shields.io/:OpenWeatherFreeClient-0.1.1-green.svg)](https://github.com/perseusrealdeal/OpenWeatherFreeClient/tree/0.1.1)
 
 # In brief > Idea to use
 
@@ -42,7 +43,8 @@
 - [Perseus Dark Mode](https://github.com/perseusrealdeal/PerseusDarkMode.git) / [1.1.5](https://github.com/perseusrealdeal/perseusdarkmode/releases/tag/1.1.5)
 - [Perseus UI System Kit](https://github.com/perseusrealdeal/PerseusUISystemKit.git) / [1.1.4](https://github.com/perseusrealdeal/perseusuisystemkit/releases/tag/1.1.4)
 - [Dark Mode switching functions](https://gist.github.com/perseusrealdeal/11b1bab47f13134832b859f49d9af706)
-- Perseus [logger](https://gist.github.com/perseusrealdeal/df456a9825fcface44eca738056eb6d5)
+- [OpenWeather Free Client](https://github.com/perseusrealdeal/OpenWeatherFreeClient.git) / [0.1.1](https://github.com/perseusrealdeal/OpenWeatherFreeClient/releases/tag/0.1.1)
+- [PerseusLogger](https://gist.github.com/perseusrealdeal/df456a9825fcface44eca738056eb6d5)
 
 # Third-party software
 
