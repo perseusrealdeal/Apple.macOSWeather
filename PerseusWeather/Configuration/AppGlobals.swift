@@ -29,8 +29,8 @@ struct AppGlobals {
 
     // MARK: - Custom Services
 
-    var locationDealer: PerseusLocationDealer
-    var weatherClient: OpenWeatherFreeClient
+    public let locationDealer: PerseusLocationDealer
+    public let weatherClient: OpenWeatherFreeClient
 
     init() {
         log.message("[AppGlobals].\(#function)")
