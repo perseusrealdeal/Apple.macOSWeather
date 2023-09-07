@@ -16,9 +16,6 @@ import CoreLocation
 
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    let dealer = AppGlobals.locationDealer
-    let client = AppGlobals.weatherClient
-
     var location: PerseusLocation? {
         didSet {
             log.message(String(describing: location))
@@ -48,7 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 */
         // try? dealer.askForCurrentLocation()
 
-        client.onDataGiven = { result in
+        globals.weatherClient.onDataGiven = { result in
             switch result {
             case .success(let weatherData):
                 self.weatherDataHandler(weatherData)
@@ -137,7 +134,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard let result = notification.object as? CLAuthorizationStatus else { return }
         log.message("[\(type(of: self))] Location Manager Status: \(result)")
 
-        let permit = AppGlobals.locationDealer.locationPermit
+        let permit = globals.locationDealer.locationPermit
         log.message("[\(type(of: self))] Location Manager Permit: \(permit)")
     }
 

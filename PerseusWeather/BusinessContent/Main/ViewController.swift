@@ -22,7 +22,7 @@ class ViewController: NSViewController {
     @IBAction func askForCurrentLocationButtonTapped(_ sender: NSButton) {
         log.message("[\(type(of: self))].\(#function)")
         do {
-            try AppGlobals.locationDealer.askForCurrentLocation()
+            try globals.locationDealer.askForCurrentLocation()
         } catch LocationDealerError.needsPermission(let permit) {
             log.message("[\(type(of: self))].\(#function) — permit: .\(permit)", .error)
         } catch {
@@ -31,9 +31,9 @@ class ViewController: NSViewController {
     }
 
     @IBAction func askForAuthorizationButtonTapped(_ sender: NSButton) {
-        let currentPermit = AppGlobals.locationDealer.locationPermit
+        let currentPermit = globals.locationDealer.locationPermit
         log.message("[\(type(of: self))].\(#function) — permit: \(currentPermit)")
-        AppGlobals.locationDealer.askForAuthorization { permit in
+        globals.locationDealer.askForAuthorization { permit in
             let text = "[\(type(of: self))].\(#function) — It's already determined .\(permit)"
             log.message(text, .error)
         }
@@ -53,7 +53,7 @@ class ViewController: NSViewController {
 
         log.message(callDetails.urlString)
 
-        try? AppGlobals.weatherClient.call(with: callDetails)
+        try? globals.weatherClient.call(with: callDetails)
     }
 
     override func viewDidLoad() {
