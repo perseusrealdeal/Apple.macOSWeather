@@ -37,12 +37,28 @@ See LICENSE for details. All rights reserved.
 
 > # Sketches (GUI requirements)
 
-- The app should look like it presented in the picture below. 
-
-<img src="Sketches/StatusMenusItemSketch.png" width="400" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;"/>
-
-- The app should have no menu and no icon in Dock, but starts as a Status Menus app only. 
-- A typical window should be employed for preferences.
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td nowrap>GUI-1</td>
+        <td>The app should look like it presented in the picture below.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><img src="Sketches/StatusMenusItemSketch.png" width="400" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;"/></td>
+    </tr>
+    <tr>
+        <td nowrap>GUI-2</td>
+        <td>The app should have no menu and no icon in Dock, but run as a Status Menus app.</td>
+    </tr>
+    <tr>
+        <td nowrap>GUI-3</td>
+        <td>A typical window should be employed for preferences.</td>
+    </tr>
+</table>
 
 > # User Stories
 
@@ -69,11 +85,11 @@ See LICENSE for details. All rights reserved.
     </tr>
 </table>
 
-> # Specials
+> # Features (specials)
 
-| ID   | Description | Data |
-| ---- | ----------- | ---- |
-| SP-1 | Dark Mode   | OO-1 |
+| ID  | Description | Data |
+| --- | ----------- | ---- |
+| F-1 | Dark Mode   | OO-1 |
 
 > # Operations
 
