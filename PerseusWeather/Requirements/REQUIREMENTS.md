@@ -52,11 +52,23 @@ See LICENSE for details. All rights reserved.
     </tr>
     <tr>
         <td nowrap>GUI-2</td>
-        <td>The app should have no menu and no icon in Dock, but run as a Status Menus app.</td>
+        <td>The app should run as a Status Menus app.</td>
     </tr>
     <tr>
         <td nowrap>GUI-3</td>
         <td>A typical window should be employed for preferences.</td>
+    </tr>
+    <tr>
+        <td nowrap>GUI-4</td>
+        <td>A typical window should be employed for preferences.</td>
+    </tr>
+    <tr>
+        <td nowrap>REST-1</td>
+        <td>The app should have no Icon in Dock.</td>
+    </tr>
+    <tr>
+        <td nowrap>REST-2</td>
+        <td>The app should have no Main menu.</td>
     </tr>
 </table>
 
