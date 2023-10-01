@@ -59,10 +59,6 @@ See LICENSE for details. All rights reserved.
         <td>A typical window should be employed for preferences.</td>
     </tr>
     <tr>
-        <td nowrap>GUI-4</td>
-        <td>A typical window should be employed for preferences.</td>
-    </tr>
-    <tr>
         <td nowrap>REST-1</td>
         <td>The app should have no Icon in Dock.</td>
     </tr>
