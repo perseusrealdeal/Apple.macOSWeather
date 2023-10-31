@@ -19,6 +19,7 @@ struct AppGlobals {
     // MARK: - Constants
 
     static let appKeyOpenWeather = "79eefe16f6e4714470502074369fc77b"
+    static let statusMenusButtonTitle = "Text"
 
     // MARK: - System Services
 
@@ -34,10 +35,13 @@ struct AppGlobals {
     public let locationDealer: PerseusLocationDealer
     public let weatherClient: OpenWeatherFreeClient
 
+    public let statusMenusButtonPresenter: StatusMenusButtonPresenter
+
     init() {
         log.message("[AppGlobals].\(#function)")
 
         self.locationDealer = PerseusLocationDealer.shared
         self.weatherClient = OpenWeatherFreeClient()
+        self.statusMenusButtonPresenter = StatusMenusButtonPresenter()
     }
 }
