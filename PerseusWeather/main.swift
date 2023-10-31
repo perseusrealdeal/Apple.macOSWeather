@@ -35,7 +35,16 @@ let globals = AppGlobals()
 
 // MARK: - Make the app run
 
-app.setActivationPolicy(.regular)
+/*
+
+ .accessory
+
+ The application doesn’t appear in the Dock and doesn’t have a menu bar, but it may be
+ activated programmatically or by clicking on one of its windows.
+
+ */
+
+app.setActivationPolicy(.accessory)
 
 mainMenu?.instantiate(withOwner: app, topLevelObjects: nil)
 screen?.window?.makeKeyAndOrderFront(nil)
