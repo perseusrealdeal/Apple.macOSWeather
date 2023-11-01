@@ -29,7 +29,6 @@ let appDelegate = appPurpose?.init() ?? AppDelegate()
 
 let storyboard = NSStoryboard(name: String(describing: MainWindowController.self), bundle: nil)
 let screen = storyboard.instantiateInitialController() as? NSWindowController
-let mainMenu = NSNib(nibNamed: NSNib.Name("MainMenu"), bundle: nil)
 
 let globals = AppGlobals()
 
@@ -46,7 +45,6 @@ let globals = AppGlobals()
 
 app.setActivationPolicy(.accessory)
 
-mainMenu?.instantiate(withOwner: app, topLevelObjects: nil)
 screen?.window?.makeKeyAndOrderFront(nil)
 
 app.delegate = appDelegate as? NSApplicationDelegate

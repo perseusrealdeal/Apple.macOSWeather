@@ -17,6 +17,18 @@ import Cocoa
 
 class StatusMenusButtonPresenter {
 
+    private lazy var theStatusMenu = { () -> NSMenu in
+        let nib = NSNib(nibNamed: NSNib.Name("MainMenu"), bundle: nil)
+
+        var topLevelArray: NSArray?
+        _ = nib?.instantiate(withOwner: self, topLevelObjects: &topLevelArray)
+
+        let objects = [Any](topLevelArray!).filter { $0 is NSMenu }
+        let theMenu = objects.last as? TheMenu
+
+        return theMenu?.theMenu ?? NSMenu()
+    }()
+
     var statusMenusButton: NSStatusItem? {
         didSet {
             if let button = statusMenusButton?.button {
@@ -38,7 +50,9 @@ class StatusMenusButtonPresenter {
     func setup() {
         log.message("[\(type(of: self))].\(#function)")
 
-        statusMenusButton =
-            NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        statusMenusButton = NSStatusBar.system.statusItem(
+            withLength: NSStatusItem.variableLength)
+
+        statusMenusButton?.menu = theStatusMenu
     }
 }
