@@ -17,6 +17,10 @@ import Cocoa
 
 class StatusMenusButtonPresenter {
 
+    private lazy var theWeatherView = { () -> WeatherView in
+        return WeatherView(frame: NSRect(x: 0.0, y: 0.0, width: 270.0, height: 150.0))
+    }()
+
     private lazy var theStatusMenu = { () -> NSMenu in
         let nib = NSNib(nibNamed: NSNib.Name("MainMenu"), bundle: nil)
 
@@ -28,7 +32,7 @@ class StatusMenusButtonPresenter {
 
         let theMenu = objects.last as? TheMenu
 
-        return theMenu?.theMenu ?? NSMenu()
+        return theMenu ?? NSMenu()
     }()
 
     var statusMenusButton: NSStatusItem? {
@@ -55,6 +59,9 @@ class StatusMenusButtonPresenter {
         statusMenusButton = NSStatusBar.system.statusItem(
             withLength: NSStatusItem.variableLength)
 
-        statusMenusButton?.menu = theStatusMenu
+        let theMenu = theStatusMenu as? TheMenu
+        theMenu?.weatherMenuItem.view = theWeatherView
+
+        statusMenusButton?.menu = theMenu?.popoverMenu ?? NSMenu()
     }
 }

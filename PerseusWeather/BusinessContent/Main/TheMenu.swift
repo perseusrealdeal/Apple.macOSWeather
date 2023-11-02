@@ -19,6 +19,7 @@ class TheMenu: NSMenu {
 
     @IBOutlet private weak var menu: NSMenu!
     @IBOutlet private weak var customViewMenuItem: NSMenuItem!
+
     @IBOutlet private weak var settingsMenuItem: NSMenuItem! {
         didSet {
             if #available(macOS 10.14, *) {
@@ -27,8 +28,12 @@ class TheMenu: NSMenu {
         }
     }
 
-    var theMenu: NSMenu {
+    var popoverMenu: NSMenu {
         return menu
+    }
+
+    var weatherMenuItem: NSMenuItem {
+        return customViewMenuItem
     }
 
     override func awakeFromNib() {
