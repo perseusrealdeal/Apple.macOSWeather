@@ -23,7 +23,9 @@ class StatusMenusButtonPresenter {
         var topLevelArray: NSArray?
         _ = nib?.instantiate(withOwner: self, topLevelObjects: &topLevelArray)
 
-        let objects = [Any](topLevelArray!).filter { $0 is NSMenu }
+        let objects = topLevelArray == nil ? [Any].init() :
+            [Any](topLevelArray!).filter { $0 is NSMenu }
+
         let theMenu = objects.last as? TheMenu
 
         return theMenu?.theMenu ?? NSMenu()
