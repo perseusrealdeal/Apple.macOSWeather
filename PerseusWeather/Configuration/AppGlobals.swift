@@ -19,6 +19,8 @@ struct AppGlobals {
     // MARK: - Constants
 
     static let appKeyOpenWeather = "79eefe16f6e4714470502074369fc77b"
+
+    static let statusMenusButtonIconName = "Icon"
     static let statusMenusButtonTitle = "Text"
 
     // MARK: - System Services

@@ -38,6 +38,10 @@ class StatusMenusButtonPresenter {
     var statusMenusButton: NSStatusItem? {
         didSet {
             if let button = statusMenusButton?.button {
+                let image = NSImage(named: AppGlobals.statusMenusButtonIconName)
+                //image?.isTemplate = true
+
+                button.image = image
                 button.title = AppGlobals.statusMenusButtonTitle
 
                 button.target = self
@@ -62,6 +66,6 @@ class StatusMenusButtonPresenter {
         let theMenu = theStatusMenu as? TheMenu
         theMenu?.weatherMenuItem.view = theWeatherView
 
-        statusMenusButton?.menu = theMenu?.popoverMenu ?? NSMenu()
+        statusMenusButton?.menu = theMenu?.pullDownMenu ?? NSMenu()
     }
 }

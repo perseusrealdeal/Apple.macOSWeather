@@ -28,7 +28,7 @@ class TheMenu: NSMenu {
         }
     }
 
-    var popoverMenu: NSMenu {
+    var pullDownMenu: NSMenu {
         return menu
     }
 
