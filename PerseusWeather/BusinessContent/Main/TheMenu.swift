@@ -28,6 +28,10 @@ class TheMenu: NSMenu {
         }
     }
 
+    @IBAction func showPreferences(_ sender: NSMenuItem) {
+        globals.preferencesPresenter.showWindow(sender)
+    }
+
     var pullDownMenu: NSMenu {
         return menu
     }
