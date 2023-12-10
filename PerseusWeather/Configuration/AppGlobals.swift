@@ -38,13 +38,10 @@ struct AppGlobals {
     public let weatherClient: OpenWeatherFreeClient
 
     public let statusMenusButtonPresenter: StatusMenusButtonPresenter
+    public let preferencesPresenter: PreferencesWindowController
 
-    public let preferencesPresenter = { () -> NSWindowController in
-        let storyboard = NSStoryboard(name: NSStoryboard.Name("Preferences"), bundle: nil)
-        let screen = storyboard.instantiateInitialController() as? NSWindowController
-
-        return screen ?? NSWindowController()
-    }()
+    public let languageSwitcher: LanguageSwitcher
+    public let dataDefender: PerseusDataDefender
 
     init() {
         log.message("[AppGlobals].\(#function)")
@@ -52,5 +49,9 @@ struct AppGlobals {
         self.locationDealer = PerseusLocationDealer.shared
         self.weatherClient = OpenWeatherFreeClient()
         self.statusMenusButtonPresenter = StatusMenusButtonPresenter()
+        self.preferencesPresenter = PreferencesWindowController.storyboardInstance()
+
+        self.languageSwitcher = LanguageSwitcher.shared
+        self.dataDefender = PerseusDataDefender.shared
     }
 }

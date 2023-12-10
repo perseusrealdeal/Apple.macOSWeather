@@ -35,13 +35,24 @@ class StatusMenusButtonPresenter {
         return theMenu ?? NSMenu()
     }()
 
+    // MARK: - Actions
+
+    @objc func statusMenusButtonTapped(_ sender: Any?) {
+        let text = "Abstract sentence."
+        let textAuthor = "Nobody"
+
+        print("\(text) — \(textAuthor)")
+    }
+
+    // MARK: - Public variables
+
     var statusMenusButton: NSStatusItem? {
         didSet {
             if let button = statusMenusButton?.button {
                 button.imagePosition = .imageLeft
 
                 let image = NSImage(named: AppGlobals.statusMenusButtonIconName)
-                //image?.isTemplate = true
+                // image?.isTemplate = true
 
                 button.image = image
                 button.title = AppGlobals.statusMenusButtonTitle
@@ -52,12 +63,7 @@ class StatusMenusButtonPresenter {
         }
     }
 
-    @objc func statusMenusButtonTapped(_ sender: Any?) {
-        let text = "Abstract sentence."
-        let textAuthor = "Nobody"
-
-        print("\(text) — \(textAuthor)")
-    }
+    // MARK: - Contract, public methods
 
     func setup() {
         log.message("[\(type(of: self))].\(#function)")

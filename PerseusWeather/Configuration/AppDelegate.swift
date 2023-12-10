@@ -62,6 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
 
         globals.statusMenusButtonPresenter.setup()
+        globals.languageSwitcher.switchLanguageIfNeeded(AppSettings.languageOption)
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {

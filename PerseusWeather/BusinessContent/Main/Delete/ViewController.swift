@@ -15,7 +15,7 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class ViewController: NSViewController, Localizable {
 
     deinit { log.message("\(type(of: self)).deinit") }
 
@@ -64,7 +64,11 @@ class ViewController: NSViewController {
         view.wantsLayer = true
 
         AppearanceService.register(stakeholder: self, selector: #selector(makeUp))
-        localizeContent()
+        // localizeContent()
+        let nc = AppGlobals.notificationCenter
+        nc.addObserver(self, selector: #selector(self.localize),
+                       name: NSNotification.Name.languageSwitchedManuallyNotification,
+                       object: nil)
     }
 
     @objc private func makeUp() {
@@ -77,5 +81,10 @@ class ViewController: NSViewController {
     private func localizeContent() {
         // NSLocale.currentLocaleDidChangeNotification
         greetingsLabel.cell?.title = "greetings".localizedValue
+    }
+
+    @objc public func localize() {
+        log.message("[\(type(of: self))].\(#function)")
+        localizeContent()
     }
 }

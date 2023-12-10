@@ -17,4 +17,9 @@ import Cocoa
 
 class WeatherView: NSView {
 
+    // MARK: - Native methods
+
+    override func awakeFromNib() {
+        log.message("[\(type(of: self))].\(#function)")
+    }
 }

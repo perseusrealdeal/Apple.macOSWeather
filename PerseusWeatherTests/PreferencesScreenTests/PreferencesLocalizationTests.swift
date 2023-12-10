@@ -1,5 +1,5 @@
 //
-//  LocalizationTests.swift
+//  PreferencesLocalizationTests.swift
 //  PerseusWeatherTests
 //
 //  Created by Mikhail Zhigulin in 7531.
@@ -18,7 +18,7 @@
 import XCTest
 @testable import PerseusWeather
 
-class LocalizationTests: XCTestCase {
+class PreferencesLocalizationTests: XCTestCase {
 
     private let defaults = UserDefaults.standard
 

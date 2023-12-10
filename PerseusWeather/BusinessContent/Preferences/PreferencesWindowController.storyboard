@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="aWf-Ue-Llq">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="DZA-gq-dmb">
+            <objects>
+                <windowController id="aWf-Ue-Llq" customClass="PreferencesWindowController" customModule="PerseusWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Title" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="3bI-iy-iR7">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" fullSizeContentView="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="163" y="199" width="510" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
+                        <connections>
+                            <outlet property="delegate" destination="aWf-Ue-Llq" id="wca-CV-Ff2"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="NdM-46-oIE" kind="relationship" relationship="window.shadowedContentViewController" id="Kco-19-hJE"/>
+                    </connections>
+                </windowController>
+                <customObject id="uu8-KA-eJO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-122" y="304"/>
+        </scene>
+        <!--Preferences View Controller-->
+        <scene sceneID="3ou-hb-cGC">
+            <objects>
+                <viewController id="NdM-46-oIE" customClass="PreferencesViewController" customModule="PerseusWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Zo1-hM-qgJ">
+                        <rect key="frame" x="0.0" y="0.0" width="510" height="335"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <box title="The App's options" translatesAutoresizingMaskIntoConstraints="NO" id="vNc-yQ-0fI">
+                                <rect key="frame" x="2" y="151" width="506" height="154"/>
+                                <view key="contentView" id="pop-m7-et5">
+                                    <rect key="frame" x="2" y="2" width="502" height="134"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qnu-8q-EXi">
+                                            <rect key="frame" x="158" y="101" width="247" height="24"/>
+                                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="b21-jt-FOw">
+                                                <font key="font" metaFont="system"/>
+                                                <segments>
+                                                    <segment label="Light" width="80"/>
+                                                    <segment label="Dark" width="80" selected="YES" tag="1"/>
+                                                    <segment label="System" width="80"/>
+                                                </segments>
+                                            </segmentedCell>
+                                            <connections>
+                                                <action selector="controlDarkModeDidChange:" target="NdM-46-oIE" id="vXg-si-DBI"/>
+                                            </connections>
+                                        </segmentedControl>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mTu-dU-NiV">
+                                            <rect key="frame" x="13" y="107" width="71" height="17"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Dark Mode" id="vr7-MT-Pno">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ees-bq-9Lw">
+                                            <rect key="frame" x="158" y="46" width="39" height="18"/>
+                                            <buttonCell key="cell" type="check" title="Ok" bezelStyle="regularSquare" imagePosition="left" inset="2" id="zAD-lu-d7N">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="controlStartsOnLoginDidChange:" target="NdM-46-oIE" id="xfG-Ju-iGZ"/>
+                                            </connections>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zxY-ag-jLf">
+                                            <rect key="frame" x="13" y="77" width="64" height="17"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Language" id="1nT-4B-hah">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yoa-ad-Hs1">
+                                            <rect key="frame" x="158" y="70" width="247" height="24"/>
+                                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="0kw-Xd-aVD">
+                                                <font key="font" metaFont="system"/>
+                                                <segments>
+                                                    <segment label="English" width="80"/>
+                                                    <segment label="Russian" width="80" selected="YES" tag="1"/>
+                                                    <segment label="System" width="80"/>
+                                                </segments>
+                                            </segmentedCell>
+                                            <connections>
+                                                <action selector="controlLanguageDidChange:" target="NdM-46-oIE" id="Pm8-Wa-jRQ"/>
+                                            </connections>
+                                        </segmentedControl>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vQb-9F-2bJ">
+                                            <rect key="frame" x="13" y="17" width="136" height="17"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="OpenWeather API key" id="dKf-IZ-n8X">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="F1A-GE-l8k">
+                                            <rect key="frame" x="160" y="16" width="250" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="250" id="UBI-s2-BSv"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="N5p-L0-7YR">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0SC-Zc-u6t">
+                                            <rect key="frame" x="414" y="10" width="83" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Unlock" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IVv-eO-10d">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="controlUnlockButtonTapped:" target="NdM-46-oIE" id="xVT-cB-9VP"/>
+                                            </connections>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hiY-Tz-07R">
+                                            <rect key="frame" x="13" y="47" width="93" height="17"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Starts on login" id="y0b-a2-eXi">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="mTu-dU-NiV" firstAttribute="leading" secondItem="pop-m7-et5" secondAttribute="leading" constant="15" id="0WI-5e-Bj7"/>
+                                        <constraint firstItem="Qnu-8q-EXi" firstAttribute="leading" secondItem="pop-m7-et5" secondAttribute="leading" constant="160" id="2Le-GG-vVq"/>
+                                        <constraint firstItem="zxY-ag-jLf" firstAttribute="top" secondItem="mTu-dU-NiV" secondAttribute="bottom" constant="13" id="5tw-mG-gZL"/>
+                                        <constraint firstItem="hiY-Tz-07R" firstAttribute="top" secondItem="zxY-ag-jLf" secondAttribute="bottom" constant="13" id="9nu-A8-BZC"/>
+                                        <constraint firstItem="0SC-Zc-u6t" firstAttribute="centerY" secondItem="F1A-GE-l8k" secondAttribute="centerY" id="Kbi-aY-7pi"/>
+                                        <constraint firstItem="mTu-dU-NiV" firstAttribute="top" secondItem="pop-m7-et5" secondAttribute="top" constant="10" id="Kn3-Bp-o80"/>
+                                        <constraint firstItem="F1A-GE-l8k" firstAttribute="leading" secondItem="Ees-bq-9Lw" secondAttribute="leading" id="LIl-FQ-qTp"/>
+                                        <constraint firstItem="Qnu-8q-EXi" firstAttribute="top" secondItem="mTu-dU-NiV" secondAttribute="top" id="NaM-Ml-gwV"/>
+                                        <constraint firstItem="hiY-Tz-07R" firstAttribute="leading" secondItem="zxY-ag-jLf" secondAttribute="leading" id="Obp-Mh-2nE"/>
+                                        <constraint firstItem="zxY-ag-jLf" firstAttribute="leading" secondItem="mTu-dU-NiV" secondAttribute="leading" id="Qll-Pg-vAH"/>
+                                        <constraint firstItem="vQb-9F-2bJ" firstAttribute="leading" secondItem="hiY-Tz-07R" secondAttribute="leading" id="VVn-Wz-2il"/>
+                                        <constraint firstItem="Yoa-ad-Hs1" firstAttribute="leading" secondItem="Qnu-8q-EXi" secondAttribute="leading" id="Y9g-Lu-czU"/>
+                                        <constraint firstItem="Yoa-ad-Hs1" firstAttribute="top" secondItem="Qnu-8q-EXi" secondAttribute="bottom" constant="10" id="dCK-4R-7g7"/>
+                                        <constraint firstItem="Ees-bq-9Lw" firstAttribute="top" secondItem="Yoa-ad-Hs1" secondAttribute="bottom" constant="10" id="mk5-Ko-8iD"/>
+                                        <constraint firstItem="F1A-GE-l8k" firstAttribute="top" secondItem="Ees-bq-9Lw" secondAttribute="bottom" constant="10" id="mx7-BE-o4W"/>
+                                        <constraint firstItem="vQb-9F-2bJ" firstAttribute="top" secondItem="hiY-Tz-07R" secondAttribute="bottom" constant="13" id="rSN-vr-gpH"/>
+                                        <constraint firstItem="Ees-bq-9Lw" firstAttribute="leading" secondItem="Yoa-ad-Hs1" secondAttribute="leading" id="xua-5p-xuk"/>
+                                        <constraint firstItem="0SC-Zc-u6t" firstAttribute="leading" secondItem="F1A-GE-l8k" secondAttribute="trailing" constant="10" id="z7S-Jh-sa5"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="oGS-w3-bgH"/>
+                                </constraints>
+                                <font key="titleFont" metaFont="system"/>
+                            </box>
+                            <box title="Weather forecast options" translatesAutoresizingMaskIntoConstraints="NO" id="xlu-T9-4Dc">
+                                <rect key="frame" x="2" y="1" width="506" height="154"/>
+                                <view key="contentView" id="ZHq-T3-S7u">
+                                    <rect key="frame" x="2" y="2" width="502" height="134"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ge2-r9-bJt">
+                                            <rect key="frame" x="13" y="107" width="81" height="17"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Temperature" id="fR5-zL-vya">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yxu-78-aFI">
+                                            <rect key="frame" x="158" y="101" width="247" height="24"/>
+                                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="DEG-7X-2lh">
+                                                <font key="font" metaFont="system"/>
+                                                <segments>
+                                                    <segment label="Kelvin" width="80"/>
+                                                    <segment label="Celsius" width="80" selected="YES" tag="1"/>
+                                                    <segment label="Fahrenheit" width="80"/>
+                                                </segments>
+                                            </segmentedCell>
+                                            <connections>
+                                                <action selector="controlTemperatureDidChanged:" target="NdM-46-oIE" id="i5R-Kf-9ED"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="yxu-78-aFI" firstAttribute="top" secondItem="ge2-r9-bJt" secondAttribute="top" id="9xV-FF-HAj"/>
+                                        <constraint firstItem="ge2-r9-bJt" firstAttribute="leading" secondItem="ZHq-T3-S7u" secondAttribute="leading" constant="15" id="Lka-Yh-lMA"/>
+                                        <constraint firstItem="ge2-r9-bJt" firstAttribute="top" secondItem="ZHq-T3-S7u" secondAttribute="top" constant="10" id="gXJ-mn-jKm"/>
+                                        <constraint firstItem="yxu-78-aFI" firstAttribute="leading" secondItem="ZHq-T3-S7u" secondAttribute="leading" constant="160" id="ibp-oq-5bc"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="cmc-ne-Sph"/>
+                                </constraints>
+                                <font key="titleFont" metaFont="system"/>
+                            </box>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="vNc-yQ-0fI" firstAttribute="leading" secondItem="Zo1-hM-qgJ" secondAttribute="leading" constant="5" id="HA1-fm-JF2"/>
+                            <constraint firstAttribute="trailing" secondItem="vNc-yQ-0fI" secondAttribute="trailing" constant="5" id="Pnn-go-b3C"/>
+                            <constraint firstItem="vNc-yQ-0fI" firstAttribute="top" secondItem="Zo1-hM-qgJ" secondAttribute="top" constant="30" id="Z2f-Vm-p59"/>
+                            <constraint firstItem="vNc-yQ-0fI" firstAttribute="bottom" secondItem="xlu-T9-4Dc" secondAttribute="top" id="aHH-QH-S18"/>
+                            <constraint firstItem="xlu-T9-4Dc" firstAttribute="leading" secondItem="Zo1-hM-qgJ" secondAttribute="leading" constant="5" id="fTz-v4-7vC"/>
+                            <constraint firstAttribute="bottom" secondItem="xlu-T9-4Dc" secondAttribute="bottom" constant="5" id="irh-V3-Hq3"/>
+                            <constraint firstAttribute="trailing" secondItem="xlu-T9-4Dc" secondAttribute="trailing" constant="5" id="pdg-Q3-u45"/>
+                            <constraint firstItem="xlu-T9-4Dc" firstAttribute="top" secondItem="vNc-yQ-0fI" secondAttribute="bottom" id="yY9-DY-FOX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="controlDarkMode" destination="Qnu-8q-EXi" id="mbN-G1-bYK"/>
+                        <outlet property="controlLanguage" destination="Yoa-ad-Hs1" id="SCJ-PZ-ort"/>
+                        <outlet property="controlOpenWeatherKey" destination="F1A-GE-l8k" id="tYt-2R-zZy"/>
+                        <outlet property="controlStartsOnLogin" destination="Ees-bq-9Lw" id="Xni-HB-7aE"/>
+                        <outlet property="controlTemperature" destination="yxu-78-aFI" id="coz-Yp-qnN"/>
+                        <outlet property="controlUnlockButton" destination="0SC-Zc-u6t" id="2WV-9J-2lh"/>
+                    </connections>
+                </viewController>
+                <customObject id="wub-Iw-l7t" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-122" y="765.5"/>
+        </scene>
+    </scenes>
+</document>

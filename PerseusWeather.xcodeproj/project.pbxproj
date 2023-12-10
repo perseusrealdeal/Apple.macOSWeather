@@ -12,7 +12,8 @@
 		4B1483E72912892C0013B76E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1483E62912892C0013B76E /* ViewController.swift */; };
 		4B1483E92912892F0013B76E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B1483E82912892F0013B76E /* Assets.xcassets */; };
 		4B1483EC2912892F0013B76E /* MainWindowController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B1483EA2912892F0013B76E /* MainWindowController.storyboard */; };
-		4B1483F82912892F0013B76E /* PerseusWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1483F72912892F0013B76E /* PerseusWeatherTests.swift */; };
+		4B1483F82912892F0013B76E /* BundleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1483F72912892F0013B76E /* BundleTests.swift */; };
+		4B26A2EF2B0B584E00FCEA9B /* PreferencesConnectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B26A2EE2B0B584E00FCEA9B /* PreferencesConnectionsTests.swift */; };
 		4B4B3194293F4B660001262E /* PerseusUISystemKitSingle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4B3193293F4B660001262E /* PerseusUISystemKitSingle.swift */; };
 		4B52C536292CD05C00C7792A /* DarkModeSwitching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B52C535292CD05C00C7792A /* DarkModeSwitching.swift */; };
 		4B62FA7629DC1A6400DF6B85 /* PerseusLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62FA7529DC1A6400DF6B85 /* PerseusLogger.swift */; };
@@ -21,10 +22,16 @@
 		4B6F986C2927E0F000ADB03A /* Localization_en.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B6F986B2927E0F000ADB03A /* Localization_en.plist */; };
 		4B6F986E2927E11700ADB03A /* Localization_ru.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B6F986D2927E11700ADB03A /* Localization_ru.plist */; };
 		4B6F98712927E4FC00ADB03A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4B6F98732927E4FC00ADB03A /* Localizable.strings */; };
-		4B6F98772927E81000ADB03A /* LocalizationExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6F98762927E81000ADB03A /* LocalizationExtentions.swift */; };
 		4B6F987A2927EF0E00ADB03A /* LocalizationTestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6F98792927EF0E00ADB03A /* LocalizationTestHelper.swift */; };
-		4B6F987C2927F08D00ADB03A /* LocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6F987B2927F08D00ADB03A /* LocalizationTests.swift */; };
+		4B6F987C2927F08D00ADB03A /* PreferencesLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6F987B2927F08D00ADB03A /* PreferencesLocalizationTests.swift */; };
 		4B6F987E2928259E00ADB03A /* REQUIREMENTS.md in Resources */ = {isa = PBXBuildFile; fileRef = 4B6F987D2928259E00ADB03A /* REQUIREMENTS.md */; };
+		4B8426332B0F8E0D00C86E8A /* LanguageSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8426322B0F8E0D00C86E8A /* LanguageSwitcher.swift */; };
+		4B8426362B13523600C86E8A /* PerseusDataDefender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8426352B13523600C86E8A /* PerseusDataDefender.swift */; };
+		4B8426392B18810900C86E8A /* PerseusDefenderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8426382B18810900C86E8A /* PerseusDefenderModels.swift */; };
+		4B84263C2B19CE2600C86E8A /* OpenWeatherStarModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B84263B2B19CE2600C86E8A /* OpenWeatherStarModels.swift */; };
+		4B8426402B19D11B00C86E8A /* LanguageSwitcherModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B84263F2B19D11B00C86E8A /* LanguageSwitcherModels.swift */; };
+		4B8A87202B1E356200081CDC /* PerseusStartsOnLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A871F2B1E356200081CDC /* PerseusStartsOnLogin.swift */; };
+		4BA3D9A92AFD2B9300CAF339 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA3D9A82AFD2B9300CAF339 /* AppSettings.swift */; };
 		4BA719872AF0D5E10074F7CD /* StatusMenusButtonPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA719862AF0D5E10074F7CD /* StatusMenusButtonPresenter.swift */; };
 		4BA719892AF329EE0074F7CD /* WeatherView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA719882AF329EE0074F7CD /* WeatherView.xib */; };
 		4BA7198B2AF32A2C0074F7CD /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA7198A2AF32A2C0074F7CD /* WeatherView.swift */; };
@@ -38,9 +45,9 @@
 		4BBE907129137B5E008F734D /* main.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4BBE907029137B5D008F734D /* main.yml */; };
 		4BC2F2C929EE64E200386671 /* PerseusGeoLocationSingle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC2F2C829EE64E200386671 /* PerseusGeoLocationSingle.swift */; };
 		4BDEF1CB2A10D521001FFE9B /* OpenWeatherStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDEF1CA2A10D521001FFE9B /* OpenWeatherStar.swift */; };
-		4BFA5FDA2989A12800AC09F5 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BFA5FD92989A12800AC09F5 /* Preferences.storyboard */; };
-		4BFA5FDC2989A16400AC09F5 /* PreferencesWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFA5FDB2989A16400AC09F5 /* PreferencesWC.swift */; };
-		4BFA5FDE2989A1F000AC09F5 /* PreferencesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFA5FDD2989A1F000AC09F5 /* PreferencesVC.swift */; };
+		4BFA5FDA2989A12800AC09F5 /* PreferencesWindowController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BFA5FD92989A12800AC09F5 /* PreferencesWindowController.storyboard */; };
+		4BFA5FDC2989A16400AC09F5 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFA5FDB2989A16400AC09F5 /* PreferencesWindowController.swift */; };
+		4BFA5FDE2989A1F000AC09F5 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFA5FDD2989A1F000AC09F5 /* PreferencesViewController.swift */; };
 		4BFA5FE02989A69E00AC09F5 /* TheMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFA5FDF2989A69E00AC09F5 /* TheMenu.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,8 +71,9 @@
 		4B1483ED2912892F0013B76E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B1483EE2912892F0013B76E /* PerseusWeather.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PerseusWeather.entitlements; sourceTree = "<group>"; };
 		4B1483F32912892F0013B76E /* PerseusWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PerseusWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4B1483F72912892F0013B76E /* PerseusWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerseusWeatherTests.swift; sourceTree = "<group>"; };
+		4B1483F72912892F0013B76E /* BundleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleTests.swift; sourceTree = "<group>"; };
 		4B1483F92912892F0013B76E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B26A2EE2B0B584E00FCEA9B /* PreferencesConnectionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesConnectionsTests.swift; sourceTree = "<group>"; };
 		4B4B3193293F4B660001262E /* PerseusUISystemKitSingle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerseusUISystemKitSingle.swift; sourceTree = "<group>"; };
 		4B52C535292CD05C00C7792A /* DarkModeSwitching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeSwitching.swift; sourceTree = "<group>"; };
 		4B62FA7529DC1A6400DF6B85 /* PerseusLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerseusLogger.swift; sourceTree = "<group>"; };
@@ -76,10 +84,16 @@
 		4B6F986D2927E11700ADB03A /* Localization_ru.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Localization_ru.plist; sourceTree = "<group>"; };
 		4B6F98722927E4FC00ADB03A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4B6F98742927E4FE00ADB03A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		4B6F98762927E81000ADB03A /* LocalizationExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationExtentions.swift; sourceTree = "<group>"; };
 		4B6F98792927EF0E00ADB03A /* LocalizationTestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTestHelper.swift; sourceTree = "<group>"; };
-		4B6F987B2927F08D00ADB03A /* LocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTests.swift; sourceTree = "<group>"; };
+		4B6F987B2927F08D00ADB03A /* PreferencesLocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesLocalizationTests.swift; sourceTree = "<group>"; };
 		4B6F987D2928259E00ADB03A /* REQUIREMENTS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = REQUIREMENTS.md; sourceTree = "<group>"; };
+		4B8426322B0F8E0D00C86E8A /* LanguageSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSwitcher.swift; sourceTree = "<group>"; };
+		4B8426352B13523600C86E8A /* PerseusDataDefender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerseusDataDefender.swift; sourceTree = "<group>"; };
+		4B8426382B18810900C86E8A /* PerseusDefenderModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerseusDefenderModels.swift; sourceTree = "<group>"; };
+		4B84263B2B19CE2600C86E8A /* OpenWeatherStarModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherStarModels.swift; sourceTree = "<group>"; };
+		4B84263F2B19D11B00C86E8A /* LanguageSwitcherModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSwitcherModels.swift; sourceTree = "<group>"; };
+		4B8A871F2B1E356200081CDC /* PerseusStartsOnLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerseusStartsOnLogin.swift; sourceTree = "<group>"; };
+		4BA3D9A82AFD2B9300CAF339 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		4BA719862AF0D5E10074F7CD /* StatusMenusButtonPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenusButtonPresenter.swift; sourceTree = "<group>"; };
 		4BA719882AF329EE0074F7CD /* WeatherView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherView.xib; sourceTree = "<group>"; };
 		4BA7198A2AF32A2C0074F7CD /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
@@ -93,9 +107,9 @@
 		4BBE907029137B5D008F734D /* main.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = main.yml; path = .github/workflows/main.yml; sourceTree = "<group>"; };
 		4BC2F2C829EE64E200386671 /* PerseusGeoLocationSingle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerseusGeoLocationSingle.swift; sourceTree = "<group>"; };
 		4BDEF1CA2A10D521001FFE9B /* OpenWeatherStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherStar.swift; sourceTree = "<group>"; };
-		4BFA5FD92989A12800AC09F5 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
-		4BFA5FDB2989A16400AC09F5 /* PreferencesWC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWC.swift; sourceTree = "<group>"; };
-		4BFA5FDD2989A1F000AC09F5 /* PreferencesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesVC.swift; sourceTree = "<group>"; };
+		4BFA5FD92989A12800AC09F5 /* PreferencesWindowController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PreferencesWindowController.storyboard; sourceTree = "<group>"; };
+		4BFA5FDB2989A16400AC09F5 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
+		4BFA5FDD2989A1F000AC09F5 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		4BFA5FDF2989A69E00AC09F5 /* TheMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,6 +159,7 @@
 			children = (
 				4BBE90662912931A008F734D /* main.swift */,
 				4B6F986A2927E0C000ADB03A /* Requirements */,
+				4B6F98752927E7C600ADB03A /* FirstPartyCode */,
 				4B14840229128A930013B76E /* Configuration */,
 				4B14840429128E460013B76E /* BusinessContent */,
 			);
@@ -154,9 +169,9 @@
 		4B1483F62912892F0013B76E /* PerseusWeatherTests */ = {
 			isa = PBXGroup;
 			children = (
+				4B1483F72912892F0013B76E /* BundleTests.swift */,
+				4B26A2ED2B0B580F00FCEA9B /* PreferencesScreenTests */,
 				4B14840329128AA90013B76E /* Configuration */,
-				4B1483F72912892F0013B76E /* PerseusWeatherTests.swift */,
-				4B6F987B2927F08D00ADB03A /* LocalizationTests.swift */,
 			);
 			path = PerseusWeatherTests;
 			sourceTree = "<group>";
@@ -165,12 +180,12 @@
 			isa = PBXGroup;
 			children = (
 				4B6F98632927DDA300ADB03A /* Localization */,
-				4B6F98752927E7C600ADB03A /* FirstPartyCode */,
 				4B1483E82912892F0013B76E /* Assets.xcassets */,
 				4B1483ED2912892F0013B76E /* Info.plist */,
 				4B1483EE2912892F0013B76E /* PerseusWeather.entitlements */,
 				4B0A49F229F631CD00CAE8A0 /* AppGlobals.swift */,
 				4B1483E42912892C0013B76E /* AppDelegate.swift */,
+				4BA3D9A82AFD2B9300CAF339 /* AppSettings.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -192,6 +207,15 @@
 				4BFA5FD8298974FA00AC09F5 /* Preferences */,
 			);
 			path = BusinessContent;
+			sourceTree = "<group>";
+		};
+		4B26A2ED2B0B580F00FCEA9B /* PreferencesScreenTests */ = {
+			isa = PBXGroup;
+			children = (
+				4B26A2EE2B0B584E00FCEA9B /* PreferencesConnectionsTests.swift */,
+				4B6F987B2927F08D00ADB03A /* PreferencesLocalizationTests.swift */,
+			);
+			path = PreferencesScreenTests;
 			sourceTree = "<group>";
 		};
 		4B6F98632927DDA300ADB03A /* Localization */ = {
@@ -216,12 +240,13 @@
 		4B6F98752927E7C600ADB03A /* FirstPartyCode */ = {
 			isa = PBXGroup;
 			children = (
-				4B6F98762927E81000ADB03A /* LocalizationExtentions.swift */,
-				4B4B3193293F4B660001262E /* PerseusUISystemKitSingle.swift */,
-				4B52C535292CD05C00C7792A /* DarkModeSwitching.swift */,
+				4B84263D2B19D0C800C86E8A /* Dark Mode */,
+				4B84263A2B19CE0700C86E8A /* OpenWeatherStar */,
+				4B8426372B1880A800C86E8A /* PerseusDataDefender */,
+				4B84263E2B19D0DC00C86E8A /* LanguageSwitcher */,
 				4B62FA7529DC1A6400DF6B85 /* PerseusLogger.swift */,
 				4BC2F2C829EE64E200386671 /* PerseusGeoLocationSingle.swift */,
-				4BDEF1CA2A10D521001FFE9B /* OpenWeatherStar.swift */,
+				4B8A871F2B1E356200081CDC /* PerseusStartsOnLogin.swift */,
 			);
 			path = FirstPartyCode;
 			sourceTree = "<group>";
@@ -234,17 +259,61 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		4BBE9063291290C5008F734D /* Main */ = {
+		4B8426342B11D1D100C86E8A /* Delete */ = {
 			isa = PBXGroup;
 			children = (
 				4B1483E62912892C0013B76E /* ViewController.swift */,
-				4BBE905D29128FB1008F734D /* MainWindowController.swift */,
-				4BBE9061291290BD008F734D /* MainMenu.xib */,
 				4B1483EA2912892F0013B76E /* MainWindowController.storyboard */,
+				4BBE905D29128FB1008F734D /* MainWindowController.swift */,
+			);
+			path = Delete;
+			sourceTree = "<group>";
+		};
+		4B8426372B1880A800C86E8A /* PerseusDataDefender */ = {
+			isa = PBXGroup;
+			children = (
+				4B8426352B13523600C86E8A /* PerseusDataDefender.swift */,
+				4B8426382B18810900C86E8A /* PerseusDefenderModels.swift */,
+			);
+			path = PerseusDataDefender;
+			sourceTree = "<group>";
+		};
+		4B84263A2B19CE0700C86E8A /* OpenWeatherStar */ = {
+			isa = PBXGroup;
+			children = (
+				4BDEF1CA2A10D521001FFE9B /* OpenWeatherStar.swift */,
+				4B84263B2B19CE2600C86E8A /* OpenWeatherStarModels.swift */,
+			);
+			path = OpenWeatherStar;
+			sourceTree = "<group>";
+		};
+		4B84263D2B19D0C800C86E8A /* Dark Mode */ = {
+			isa = PBXGroup;
+			children = (
+				4B4B3193293F4B660001262E /* PerseusUISystemKitSingle.swift */,
+				4B52C535292CD05C00C7792A /* DarkModeSwitching.swift */,
+			);
+			path = "Dark Mode";
+			sourceTree = "<group>";
+		};
+		4B84263E2B19D0DC00C86E8A /* LanguageSwitcher */ = {
+			isa = PBXGroup;
+			children = (
+				4B8426322B0F8E0D00C86E8A /* LanguageSwitcher.swift */,
+				4B84263F2B19D11B00C86E8A /* LanguageSwitcherModels.swift */,
+			);
+			path = LanguageSwitcher;
+			sourceTree = "<group>";
+		};
+		4BBE9063291290C5008F734D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				4B8426342B11D1D100C86E8A /* Delete */,
+				4BBE9061291290BD008F734D /* MainMenu.xib */,
 				4BFA5FDF2989A69E00AC09F5 /* TheMenu.swift */,
-				4BA719862AF0D5E10074F7CD /* StatusMenusButtonPresenter.swift */,
 				4BA719882AF329EE0074F7CD /* WeatherView.xib */,
 				4BA7198A2AF32A2C0074F7CD /* WeatherView.swift */,
+				4BA719862AF0D5E10074F7CD /* StatusMenusButtonPresenter.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -252,9 +321,9 @@
 		4BFA5FD8298974FA00AC09F5 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				4BFA5FD92989A12800AC09F5 /* Preferences.storyboard */,
-				4BFA5FDB2989A16400AC09F5 /* PreferencesWC.swift */,
-				4BFA5FDD2989A1F000AC09F5 /* PreferencesVC.swift */,
+				4BFA5FD92989A12800AC09F5 /* PreferencesWindowController.storyboard */,
+				4BFA5FDB2989A16400AC09F5 /* PreferencesWindowController.swift */,
+				4BFA5FDD2989A1F000AC09F5 /* PreferencesViewController.swift */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -312,7 +381,7 @@
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -357,7 +426,7 @@
 				4B1483E92912892F0013B76E /* Assets.xcassets in Resources */,
 				4B1483EC2912892F0013B76E /* MainWindowController.storyboard in Resources */,
 				4BBE9062291290BD008F734D /* MainMenu.xib in Resources */,
-				4BFA5FDA2989A12800AC09F5 /* Preferences.storyboard in Resources */,
+				4BFA5FDA2989A12800AC09F5 /* PreferencesWindowController.storyboard in Resources */,
 				4BBE906B291293F0008F734D /* LICENSE in Resources */,
 				4B6F986E2927E11700ADB03A /* Localization_ru.plist in Resources */,
 				4B6F98662927DF1400ADB03A /* InfoPlist.strings in Resources */,
@@ -400,21 +469,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B0A49F329F631CD00CAE8A0 /* AppGlobals.swift in Sources */,
-				4BFA5FDE2989A1F000AC09F5 /* PreferencesVC.swift in Sources */,
+				4BFA5FDE2989A1F000AC09F5 /* PreferencesViewController.swift in Sources */,
 				4B52C536292CD05C00C7792A /* DarkModeSwitching.swift in Sources */,
+				4BA3D9A92AFD2B9300CAF339 /* AppSettings.swift in Sources */,
 				4BA719872AF0D5E10074F7CD /* StatusMenusButtonPresenter.swift in Sources */,
+				4B8A87202B1E356200081CDC /* PerseusStartsOnLogin.swift in Sources */,
 				4BBE90672912931A008F734D /* main.swift in Sources */,
-				4BFA5FDC2989A16400AC09F5 /* PreferencesWC.swift in Sources */,
+				4BFA5FDC2989A16400AC09F5 /* PreferencesWindowController.swift in Sources */,
 				4B62FA7629DC1A6400DF6B85 /* PerseusLogger.swift in Sources */,
+				4B8426332B0F8E0D00C86E8A /* LanguageSwitcher.swift in Sources */,
 				4BA7198B2AF32A2C0074F7CD /* WeatherView.swift in Sources */,
+				4B8426392B18810900C86E8A /* PerseusDefenderModels.swift in Sources */,
 				4BFA5FE02989A69E00AC09F5 /* TheMenu.swift in Sources */,
 				4B1483E72912892C0013B76E /* ViewController.swift in Sources */,
+				4B8426362B13523600C86E8A /* PerseusDataDefender.swift in Sources */,
 				4B4B3194293F4B660001262E /* PerseusUISystemKitSingle.swift in Sources */,
 				4BDEF1CB2A10D521001FFE9B /* OpenWeatherStar.swift in Sources */,
+				4B8426402B19D11B00C86E8A /* LanguageSwitcherModels.swift in Sources */,
 				4B1483E52912892C0013B76E /* AppDelegate.swift in Sources */,
 				4BBE905E29128FB1008F734D /* MainWindowController.swift in Sources */,
 				4BC2F2C929EE64E200386671 /* PerseusGeoLocationSingle.swift in Sources */,
-				4B6F98772927E81000ADB03A /* LocalizationExtentions.swift in Sources */,
+				4B84263C2B19CE2600C86E8A /* OpenWeatherStarModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,9 +497,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B1483F82912892F0013B76E /* PerseusWeatherTests.swift in Sources */,
+				4B1483F82912892F0013B76E /* BundleTests.swift in Sources */,
+				4B26A2EF2B0B584E00FCEA9B /* PreferencesConnectionsTests.swift in Sources */,
 				4B6F987A2927EF0E00ADB03A /* LocalizationTestHelper.swift in Sources */,
-				4B6F987C2927F08D00ADB03A /* LocalizationTests.swift in Sources */,
+				4B6F987C2927F08D00ADB03A /* PreferencesLocalizationTests.swift in Sources */,
 				4BBE90652912911D008F734D /* TestingAppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

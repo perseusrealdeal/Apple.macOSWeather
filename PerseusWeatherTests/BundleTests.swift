@@ -1,5 +1,5 @@
 //
-//  PerseusWeatherTests.swift
+//  BundleTests.swift
 //  PerseusWeatherTests
 //
 //  Created by Mikhail Zhigulin in 7531.

@@ -17,6 +17,8 @@ import Cocoa
 
 class TheMenu: NSMenu {
 
+    // MARK: - Outlets
+
     @IBOutlet private weak var menu: NSMenu!
     @IBOutlet private weak var customViewMenuItem: NSMenuItem!
 
@@ -28,9 +30,19 @@ class TheMenu: NSMenu {
         }
     }
 
+    // MARK: - Actions
+
     @IBAction func showPreferences(_ sender: NSMenuItem) {
         globals.preferencesPresenter.showWindow(sender)
     }
+
+    // MARK: - Native methods
+
+    override func awakeFromNib() {
+        log.message("[\(type(of: self))].\(#function)")
+    }
+
+    // MARK: - Public variables
 
     var pullDownMenu: NSMenu {
         return menu
@@ -40,7 +52,6 @@ class TheMenu: NSMenu {
         return customViewMenuItem
     }
 
-    override func awakeFromNib() {
-        log.message("[\(type(of: self))].\(#function)")
-    }
+    // MARK: - Contract, public methods
+
 }
