@@ -23,12 +23,38 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate, Localiza
 
     private let darkModeObserver = DarkModeObserver()
 
+    private var gotoSettingsTitle: String {
+
+        var calculatedTitle: String?
+
+        if #available(macOS 10.14, *) {
+            calculatedTitle = "Go to Settings..."
+        } else {
+            calculatedTitle = "Go to Preferences..."
+        }
+
+        return calculatedTitle ?? "Open System Options..."
+    }
+
+    private var systemAppName: String? {
+
+        var calculatedTitle: String?
+
+        if #available(macOS 10.14, *) {
+            calculatedTitle = "System Settings.app"
+        } else {
+            calculatedTitle = "System Preferences.app"
+        }
+
+        return calculatedTitle
+    }
     // MARK: - Outlets
 
     @IBOutlet private(set) weak var controlDarkMode: NSSegmentedControl!
     @IBOutlet private(set) weak var controlLanguage: NSSegmentedControl!
 
     @IBOutlet private(set) weak var controlStartsOnLogin: NSButton!
+    @IBOutlet private(set) weak var controlGotoSettings: NSButton!
 
     @IBOutlet private(set) weak var controlOpenWeatherKey: NSTextField!
     @IBOutlet private(set) weak var controlUnlockButton: NSButton!
@@ -102,6 +128,24 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate, Localiza
         log.message("[\(type(of: self))].\(#function) - \(AppSettings.startsOnLoginOption)")
     }
 
+    @IBAction func controlGotoSettingsTapped(_ sender: NSButton) {
+        log.message("[\(type(of: self))].\(#function)")
+
+        // One way to open System options app
+        guard
+            let systemAppName = systemAppName,
+            let pathURL = FileManager.default.urls(for: .applicationDirectory,
+                                                   in: .systemDomainMask
+                ).first?.appendingPathComponent(systemAppName)
+        else { return }
+
+        // Another way to open System options app
+
+        // guard let pathURL = URL(string: AppGlobals.openSystemApp) else { return }
+
+        NSWorkspace.shared.open(pathURL)
+    }
+
     @IBAction func controlUnlockButtonTapped(_ sender: NSButton) {
         log.message("[\(type(of: self))].\(#function) - \(controlUnlockButton.stringValue)")
 
@@ -168,6 +212,8 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate, Localiza
                        object: nil)
 
         lockOpenWeatherKeyHole()
+
+        controlGotoSettings.title = self.gotoSettingsTitle
     }
 
     override func viewDidAppear() {
@@ -250,11 +296,13 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate, Localiza
         case .on:
             controlStartsOnLogin.state = .on
             controlStartsOnLogin.isEnabled = false
-            controlStartsOnLogin.title = "To disable use System Settings App"
+            controlStartsOnLogin.title = "To disable"
+            controlGotoSettings.isHidden = false
         case .off:
             controlStartsOnLogin.state = .off
             controlStartsOnLogin.isEnabled = true
             controlStartsOnLogin.title = "Add to login items"
+            controlGotoSettings.isHidden = true
         }
     }
 

@@ -32,6 +32,8 @@ struct AppGlobals {
         return NSApplication.shared.delegate as? AppDelegate
     }
 
+    static let openSystemApp = "x-apple.systempreferences:"
+
     // MARK: - Custom Services
 
     public let locationDealer: PerseusLocationDealer
