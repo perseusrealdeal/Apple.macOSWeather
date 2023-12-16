@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Functional specification for release 0.2.
 - The project is reorganized for running as a Status Menus app (#3).
 
 ## [0.1] - 2023-04-05
