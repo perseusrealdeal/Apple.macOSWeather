@@ -32,6 +32,10 @@ struct AppGlobals {
         return NSApplication.shared.delegate as? AppDelegate
     }
 
+    static var workspace: NSWorkspace {
+        return NSWorkspace.shared
+    }
+
     static let openSystemApp = "x-apple.systempreferences:"
 
     // MARK: - Custom Services
@@ -41,6 +45,7 @@ struct AppGlobals {
 
     public let statusMenusButtonPresenter: StatusMenusButtonPresenter
     public let preferencesPresenter: PreferencesWindowController
+    public let aboutPresenter: AboutWindowController
 
     public let languageSwitcher: LanguageSwitcher
     public let dataDefender: PerseusDataDefender
@@ -50,10 +55,26 @@ struct AppGlobals {
 
         self.locationDealer = PerseusLocationDealer.shared
         self.weatherClient = OpenWeatherFreeClient()
+
         self.statusMenusButtonPresenter = StatusMenusButtonPresenter()
         self.preferencesPresenter = PreferencesWindowController.storyboardInstance()
+        self.aboutPresenter = AboutWindowController.storyboardInstance()
 
         self.languageSwitcher = LanguageSwitcher.shared
         self.dataDefender = PerseusDataDefender.shared
+    }
+
+    static func openDefaultBrowser(string link: String) {
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        guard let url = NSURL(string: link) as URL? else {
+            log.message("[\(type(of: self))].\(#function)", .error)
+            return
+        }
+
+        workspace.open(url) ?
+            log.message("[\(type(of: self))].\(#function) - Default browser was opened.") :
+            log.message("[\(type(of: self))].\(#function) - Default browser wasn't opened.")
     }
 }

@@ -55,22 +55,16 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
     // MARK: Private variables
 
     private var screenTitle: String {
-        let localizedBundleDisplayName =
-            Bundle.main.localizedInfoDictionary?["CFBundleDisplayName"] as? String
-
-        var calculatedTitle: String?
+        let left = "BundleName".localizedValue
+        var right = ""
 
         if #available(macOS 10.14, *) {
-            calculatedTitle = "settings"
+            right = "settings"
         } else {
-            calculatedTitle = "preferences"
+            right = "preferences"
         }
 
-        if let left = localizedBundleDisplayName, let right = calculatedTitle {
-            return "\(left) - \(right)"
-        } else {
-            return "Settings"
-        }
+        return "\(left) - \(right)"
     }
 
     // MARK: Realization, private methods

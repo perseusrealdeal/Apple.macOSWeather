@@ -36,6 +36,9 @@ class TheMenu: NSMenu {
         globals.preferencesPresenter.showWindow(sender)
     }
 
+    @IBAction func showAbout(_ sender: NSMenuItem) {
+        globals.aboutPresenter.showWindow(sender)
+    }
     // MARK: - Native methods
 
     override func awakeFromNib() {

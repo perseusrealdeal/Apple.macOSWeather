@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B030E752B27738800ED9018 /* AboutWindowController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B030E742B27738800ED9018 /* AboutWindowController.storyboard */; };
+		4B030E772B277DD600ED9018 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B030E762B277DD600ED9018 /* AboutWindowController.swift */; };
+		4B030E792B277E6500ED9018 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B030E782B277E6500ED9018 /* AboutViewController.swift */; };
+		4B030E7B2B2D003A00ED9018 /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B030E7A2B2D003A00ED9018 /* Links.swift */; };
 		4B0A49F329F631CD00CAE8A0 /* AppGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0A49F229F631CD00CAE8A0 /* AppGlobals.swift */; };
 		4B1483E52912892C0013B76E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1483E42912892C0013B76E /* AppDelegate.swift */; };
 		4B1483E72912892C0013B76E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1483E62912892C0013B76E /* ViewController.swift */; };
@@ -62,6 +66,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B030E742B27738800ED9018 /* AboutWindowController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AboutWindowController.storyboard; sourceTree = "<group>"; };
+		4B030E762B277DD600ED9018 /* AboutWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
+		4B030E782B277E6500ED9018 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		4B030E7A2B2D003A00ED9018 /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		4B0A49F229F631CD00CAE8A0 /* AppGlobals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobals.swift; sourceTree = "<group>"; };
 		4B1483E12912892C0013B76E /* PerseusWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerseusWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B1483E42912892C0013B76E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +139,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B030E712B27729C00ED9018 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				4B030E742B27738800ED9018 /* AboutWindowController.storyboard */,
+				4B030E762B277DD600ED9018 /* AboutWindowController.swift */,
+				4B030E782B277E6500ED9018 /* AboutViewController.swift */,
+				4B030E7A2B2D003A00ED9018 /* Links.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
 		4B1483D82912892C0013B76E = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +224,7 @@
 			children = (
 				4BBE9063291290C5008F734D /* Main */,
 				4BFA5FD8298974FA00AC09F5 /* Preferences */,
+				4B030E712B27729C00ED9018 /* About */,
 			);
 			path = BusinessContent;
 			sourceTree = "<group>";
@@ -428,6 +448,7 @@
 				4BBE9062291290BD008F734D /* MainMenu.xib in Resources */,
 				4BFA5FDA2989A12800AC09F5 /* PreferencesWindowController.storyboard in Resources */,
 				4BBE906B291293F0008F734D /* LICENSE in Resources */,
+				4B030E752B27738800ED9018 /* AboutWindowController.storyboard in Resources */,
 				4B6F986E2927E11700ADB03A /* Localization_ru.plist in Resources */,
 				4B6F98662927DF1400ADB03A /* InfoPlist.strings in Resources */,
 				4BBE907129137B5E008F734D /* main.yml in Resources */,
@@ -471,8 +492,10 @@
 				4B0A49F329F631CD00CAE8A0 /* AppGlobals.swift in Sources */,
 				4BFA5FDE2989A1F000AC09F5 /* PreferencesViewController.swift in Sources */,
 				4B52C536292CD05C00C7792A /* DarkModeSwitching.swift in Sources */,
+				4B030E772B277DD600ED9018 /* AboutWindowController.swift in Sources */,
 				4BA3D9A92AFD2B9300CAF339 /* AppSettings.swift in Sources */,
 				4BA719872AF0D5E10074F7CD /* StatusMenusButtonPresenter.swift in Sources */,
+				4B030E792B277E6500ED9018 /* AboutViewController.swift in Sources */,
 				4B8A87202B1E356200081CDC /* PerseusStartsOnLogin.swift in Sources */,
 				4BBE90672912931A008F734D /* main.swift in Sources */,
 				4BFA5FDC2989A16400AC09F5 /* PreferencesWindowController.swift in Sources */,
@@ -481,6 +504,7 @@
 				4BA7198B2AF32A2C0074F7CD /* WeatherView.swift in Sources */,
 				4B8426392B18810900C86E8A /* PerseusDefenderModels.swift in Sources */,
 				4BFA5FE02989A69E00AC09F5 /* TheMenu.swift in Sources */,
+				4B030E7B2B2D003A00ED9018 /* Links.swift in Sources */,
 				4B1483E72912892C0013B76E /* ViewController.swift in Sources */,
 				4B8426362B13523600C86E8A /* PerseusDataDefender.swift in Sources */,
 				4B4B3194293F4B660001262E /* PerseusUISystemKitSingle.swift in Sources */,

@@ -14,3 +14,20 @@
 */
 
 "greetings" = "Hello world!";
+
+"BundleDisplayName" = "Weather Forecast";
+"BundleName" = "Weather";
+
+"Version" = "Version";
+
+"HumanReadableCopyrightShort" = "Copyright © 7531 - 7532 Mikhail Zhigulin of Novosibirsk";
+"CopyrightShortDetails" = "The year starts from the creation of the world according to a Slavic calendar. September, the 1st of Slavic year.";
+
+"Credits" = "Credits:\n   Written by Mikhail Zhigulin,\n   Documented by Mikhail Zhigulin,\n   Artwork by Mikhail Zhigulin.";
+
+"TheAppleTechnologialTree" = "The Apple Technological Tree";
+"SourceCodeGitHub" = "Source Code GitHub";
+
+"License" = "License";
+"Terms" = "Terms";
+"Close" = "Close";

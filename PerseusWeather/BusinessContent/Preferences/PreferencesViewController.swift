@@ -159,6 +159,10 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate, Localiza
         }
     }
 
+    @IBAction func closePreferencesWindow(_ sender: NSButton) {
+        globals.preferencesPresenter.close()
+    }
+
     func controlTextDidChange(_ obj: Notification) {
         log.message("[\(type(of: self))].\(#function)")
 
