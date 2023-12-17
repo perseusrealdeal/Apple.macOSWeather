@@ -8,12 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Version in format MAJOR.MINOR where MINOR includes PATCH that means any patch increments MINOR.
 - Dates in this file meets Gregorian calendar. Date in format YYYY-MM-DD.
 
-## [Unreleased]
+## [0.2] - [Unreleased]
 
 ### Added
 
 - This changelog file (#17).
-- About Weather App window (#12).
+- About Weather App (#12).
 - App icon set (#11).
 - Go to Settings... button (#20).
 - OpenWeather API key option (#6).
@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dark Mode option (#5).
 - Starts on login option (#7).
 - Quit option (#4).
+- Functional specification for release 0.2.
 
 ### Security
 
@@ -28,8 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Functional specification for release 0.2.
-- The project is reorganized for running as a Status Menus app (#3).
+- The project for running as a Status Menus app (#3).
 
 ## [0.1] - 2023-04-05
 
