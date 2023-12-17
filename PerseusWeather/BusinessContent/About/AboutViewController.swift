@@ -29,10 +29,10 @@ class AboutViewController: NSViewController, Localizable {
     @IBOutlet weak var theAppVersionLabel: NSTextField!
     @IBOutlet weak var theAppVertionText: NSTextField!
 
-    @IBOutlet weak var theCopyrightText: NSTextView!
-    @IBOutlet weak var theCopyrightDetailsText: NSTextView!
+    @IBOutlet var theCopyrightText: NSTextView!
+    @IBOutlet var theCopyrightDetailsText: NSTextView!
 
-    @IBOutlet weak var theCreditsText: NSTextView!
+    @IBOutlet var theCreditsText: NSTextView!
 
     override func viewDidLoad() {
 

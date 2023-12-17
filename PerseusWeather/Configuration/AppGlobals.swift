@@ -73,8 +73,8 @@ struct AppGlobals {
             return
         }
 
-        workspace.open(url) ?
-            log.message("[\(type(of: self))].\(#function) - Default browser was opened.") :
-            log.message("[\(type(of: self))].\(#function) - Default browser wasn't opened.")
+        _ = workspace.open(url) ?
+        log.message("[\(type(of: self))].\(#function) - Default browser was opened.") :
+        log.message("[\(type(of: self))].\(#function) - Default browser wasn't opened.")
     }
 }
