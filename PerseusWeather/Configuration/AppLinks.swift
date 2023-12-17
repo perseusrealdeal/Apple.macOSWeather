@@ -1,5 +1,5 @@
 //
-//  Links.swift
+//  AppLinks.swift
 //  PerseusWeather
 //
 //  Created by Mikhail Zhigulin in 7532.
