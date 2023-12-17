@@ -48,6 +48,10 @@ class AppSettings {
                 return "" // There's no value
             }
 
+            // TODO: check secret before returning value
+
+            // The value should meet OPEN_WEATHER_API_KEY_TEXT_LIMIT
+
             // Saved value
             return secret
         }
