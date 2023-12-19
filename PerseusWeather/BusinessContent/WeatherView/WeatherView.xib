@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe" customClass="WeatherView" customModule="PerseusWeather" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="270" height="150"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eGC-VY-v3F">
+                    <rect key="frame" x="91" y="67" width="88" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Weather View" id="clS-HJ-0dB">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="eGC-VY-v3F" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="YmM-UI-jE2"/>
+                <constraint firstItem="eGC-VY-v3F" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="xBo-q8-Cf7"/>
+            </constraints>
+            <point key="canvasLocation" x="-45" y="135"/>
+        </customView>
+    </objects>
+</document>

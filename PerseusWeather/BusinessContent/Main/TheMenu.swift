@@ -20,6 +20,7 @@ class TheMenu: NSMenu {
     // MARK: - Outlets
 
     @IBOutlet private weak var menu: NSMenu!
+    @IBOutlet private weak var locationViewMenuItem: NSMenuItem!
     @IBOutlet private weak var customViewMenuItem: NSMenuItem!
 
     @IBOutlet private weak var settingsMenuItem: NSMenuItem! {
@@ -49,6 +50,10 @@ class TheMenu: NSMenu {
 
     var pullDownMenu: NSMenu {
         return menu
+    }
+
+    var locationMenuItem: NSMenuItem {
+        return locationViewMenuItem
     }
 
     var weatherMenuItem: NSMenuItem {

@@ -15,6 +15,10 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Weather App" systemMenu="apple" id="uQy-DD-JDr">
                         <items>
+                            <menuItem title="Item" id="cNO-5f-qWe">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="2jT-Q2-dab"/>
                             <menuItem title="Item" id="nqL-FQ-WXO">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
@@ -42,6 +46,7 @@
             </items>
             <connections>
                 <outlet property="customViewMenuItem" destination="nqL-FQ-WXO" id="Bxg-ES-kPm"/>
+                <outlet property="locationViewMenuItem" destination="cNO-5f-qWe" id="5WL-Ha-IBC"/>
                 <outlet property="menu" destination="uQy-DD-JDr" id="5kQ-qf-gvq"/>
                 <outlet property="settingsMenuItem" destination="BOF-NM-1cW" id="zwO-41-iBG"/>
             </connections>

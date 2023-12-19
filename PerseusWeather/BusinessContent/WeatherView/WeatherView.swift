@@ -1,5 +1,5 @@
 //
-//  WeatherView.swift
+//  WeatherView.swift, WeatherView.xib
 //  PerseusWeather
 //
 //  Created by Mikhail Zhigulin in 7532.

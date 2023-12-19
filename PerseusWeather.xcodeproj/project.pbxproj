@@ -12,6 +12,8 @@
 		4B030E792B277E6500ED9018 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B030E782B277E6500ED9018 /* AboutViewController.swift */; };
 		4B030E7B2B2D003A00ED9018 /* AppLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B030E7A2B2D003A00ED9018 /* AppLinks.swift */; };
 		4B030E7D2B2DB42200ED9018 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 4B030E7C2B2DB42200ED9018 /* CHANGELOG.md */; };
+		4B03D6802B322219001139B2 /* LocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B03D67F2B322219001139B2 /* LocationView.xib */; };
+		4B03D6822B322251001139B2 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B03D6812B322251001139B2 /* LocationView.swift */; };
 		4B0A49F329F631CD00CAE8A0 /* AppGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0A49F229F631CD00CAE8A0 /* AppGlobals.swift */; };
 		4B1483E52912892C0013B76E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1483E42912892C0013B76E /* AppDelegate.swift */; };
 		4B1483E72912892C0013B76E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1483E62912892C0013B76E /* ViewController.swift */; };
@@ -72,6 +74,8 @@
 		4B030E782B277E6500ED9018 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		4B030E7A2B2D003A00ED9018 /* AppLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLinks.swift; sourceTree = "<group>"; };
 		4B030E7C2B2DB42200ED9018 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		4B03D67F2B322219001139B2 /* LocationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationView.xib; sourceTree = "<group>"; };
+		4B03D6812B322251001139B2 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		4B0A49F229F631CD00CAE8A0 /* AppGlobals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobals.swift; sourceTree = "<group>"; };
 		4B1483E12912892C0013B76E /* PerseusWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerseusWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B1483E42912892C0013B76E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +155,24 @@
 			path = About;
 			sourceTree = "<group>";
 		};
+		4B03D67D2B3204CD001139B2 /* WeatherView */ = {
+			isa = PBXGroup;
+			children = (
+				4BA719882AF329EE0074F7CD /* WeatherView.xib */,
+				4BA7198A2AF32A2C0074F7CD /* WeatherView.swift */,
+			);
+			path = WeatherView;
+			sourceTree = "<group>";
+		};
+		4B03D67E2B3204D9001139B2 /* LocationView */ = {
+			isa = PBXGroup;
+			children = (
+				4B03D67F2B322219001139B2 /* LocationView.xib */,
+				4B03D6812B322251001139B2 /* LocationView.swift */,
+			);
+			path = LocationView;
+			sourceTree = "<group>";
+		};
 		4B1483D82912892C0013B76E = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +248,8 @@
 			isa = PBXGroup;
 			children = (
 				4BBE9063291290C5008F734D /* Main */,
+				4B03D67E2B3204D9001139B2 /* LocationView */,
+				4B03D67D2B3204CD001139B2 /* WeatherView */,
 				4BFA5FD8298974FA00AC09F5 /* Preferences */,
 				4B030E712B27729C00ED9018 /* About */,
 			);
@@ -334,8 +358,6 @@
 				4B8426342B11D1D100C86E8A /* Delete */,
 				4BBE9061291290BD008F734D /* MainMenu.xib */,
 				4BFA5FDF2989A69E00AC09F5 /* TheMenu.swift */,
-				4BA719882AF329EE0074F7CD /* WeatherView.xib */,
-				4BA7198A2AF32A2C0074F7CD /* WeatherView.swift */,
 				4BA719862AF0D5E10074F7CD /* StatusMenusButtonPresenter.swift */,
 			);
 			path = Main;
@@ -446,6 +468,7 @@
 				4B6F987E2928259E00ADB03A /* REQUIREMENTS.md in Resources */,
 				4BBE906D291293F6008F734D /* README.md in Resources */,
 				4BBE9069291293E8008F734D /* .gitignore in Resources */,
+				4B03D6802B322219001139B2 /* LocationView.xib in Resources */,
 				4B1483E92912892F0013B76E /* Assets.xcassets in Resources */,
 				4B1483EC2912892F0013B76E /* MainWindowController.storyboard in Resources */,
 				4BBE9062291290BD008F734D /* MainMenu.xib in Resources */,
@@ -506,6 +529,7 @@
 				4B62FA7629DC1A6400DF6B85 /* PerseusLogger.swift in Sources */,
 				4B8426332B0F8E0D00C86E8A /* LanguageSwitcher.swift in Sources */,
 				4BA7198B2AF32A2C0074F7CD /* WeatherView.swift in Sources */,
+				4B03D6822B322251001139B2 /* LocationView.swift in Sources */,
 				4B8426392B18810900C86E8A /* PerseusDefenderModels.swift in Sources */,
 				4BFA5FE02989A69E00AC09F5 /* TheMenu.swift in Sources */,
 				4B030E7B2B2D003A00ED9018 /* AppLinks.swift in Sources */,

@@ -17,8 +17,34 @@ import Cocoa
 
 class StatusMenusButtonPresenter {
 
+    private lazy var theLocationView = { () -> LocationView in
+        let nib = NSNib(nibNamed: NSNib.Name("LocationView"), bundle: nil)
+
+        var topLevelArray: NSArray?
+        _ = nib?.instantiate(withOwner: self, topLevelObjects: &topLevelArray)
+
+        let objects = topLevelArray == nil ? [Any].init() :
+            [Any](topLevelArray!).filter { $0 is NSView }
+
+        let theView = objects.last as? LocationView
+
+        let rect = NSRect(x: 0.0, y: 0.0, width: 270.0, height: 150.0) // Default.
+        return theView ?? LocationView(frame: rect)
+    }()
+
     private lazy var theWeatherView = { () -> WeatherView in
-        return WeatherView(frame: NSRect(x: 0.0, y: 0.0, width: 270.0, height: 150.0))
+        let nib = NSNib(nibNamed: NSNib.Name("WeatherView"), bundle: nil)
+
+        var topLevelArray: NSArray?
+        _ = nib?.instantiate(withOwner: self, topLevelObjects: &topLevelArray)
+
+        let objects = topLevelArray == nil ? [Any].init() :
+            [Any](topLevelArray!).filter { $0 is NSView }
+
+        let theView = objects.last as? WeatherView
+
+        let rect = NSRect(x: 0.0, y: 0.0, width: 270.0, height: 150.0) // Default.
+        return theView ?? WeatherView(frame: rect)
     }()
 
     private lazy var theStatusMenu = { () -> NSMenu in
@@ -72,7 +98,9 @@ class StatusMenusButtonPresenter {
             withLength: NSStatusItem.variableLength)
 
         let theMenu = theStatusMenu as? TheMenu
+
         theMenu?.weatherMenuItem.view = theWeatherView
+        theMenu?.locationMenuItem.view = theLocationView
 
         statusMenusButton?.menu = theMenu?.pullDownMenu ?? NSMenu()
     }
