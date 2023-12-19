@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication"/>
@@ -25,7 +25,6 @@
                                     <action selector="showAbout:" target="AYu-sK-qS6" id="KT9-Pa-wlN"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
                             <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW" userLabel="Preferences...">
                                 <connections>
                                     <action selector="showPreferences:" target="AYu-sK-qS6" id="qG1-gd-RtS"/>
@@ -46,6 +45,7 @@
                 <outlet property="menu" destination="uQy-DD-JDr" id="5kQ-qf-gvq"/>
                 <outlet property="settingsMenuItem" destination="BOF-NM-1cW" id="zwO-41-iBG"/>
             </connections>
+            <point key="canvasLocation" x="19" y="135"/>
         </menu>
     </objects>
 </document>
