@@ -33,3 +33,12 @@
 "Close" = "Close";
 
 "TargetAudience" = "Only for individual anywhere; but not for worker who are employed for company or does a work to be employed in the Russian Federation.";
+
+"About Menu Item" = "Show About...";
+"Settings Menu Item" = "Open Options...";
+"Quit Menu Item" = "Quit the App";
+
+"Location Name Label" = "Location Name";
+"Latitude, Longitude Label" = "Latitude, Longitude";
+
+"RefreshButton" = "Refresh";

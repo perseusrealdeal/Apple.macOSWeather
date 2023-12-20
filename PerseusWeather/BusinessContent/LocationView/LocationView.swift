@@ -38,8 +38,8 @@ class LocationView: NSView, Localizable {
     }
 
     @objc func localize() {
-        locationNameLabel.stringValue = "Location Name".localizedValue
-        geoCoordinatesLabel.stringValue = "Latitude, Longitude".localizedValue
-        refreshButton.title = "Refresh".localizedValue
+        locationNameLabel.stringValue = "Location Name Label".localizedValue
+        geoCoordinatesLabel.stringValue = "Latitude, Longitude Label".localizedValue
+        refreshButton.title = "RefreshButton".localizedValue
     }
 }

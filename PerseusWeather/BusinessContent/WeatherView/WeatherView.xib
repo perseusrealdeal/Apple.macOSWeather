@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,19 +13,24 @@
             <rect key="frame" x="0.0" y="0.0" width="270" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eGC-VY-v3F">
-                    <rect key="frame" x="91" y="67" width="88" height="16"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Weather View" id="clS-HJ-0dB">
-                        <font key="font" usesAppearanceFont="YES"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SWK-Xg-sHI">
+                    <rect key="frame" x="207" y="-1" width="58" height="19"/>
+                    <buttonCell key="cell" type="roundRect" title="Refresh" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HIK-Im-04u">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="refreshButtonTapped:" target="c22-O7-iKe" id="i12-gh-Tan"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
-                <constraint firstItem="eGC-VY-v3F" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="YmM-UI-jE2"/>
-                <constraint firstItem="eGC-VY-v3F" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="xBo-q8-Cf7"/>
+                <constraint firstAttribute="bottom" secondItem="SWK-Xg-sHI" secondAttribute="bottom" id="77N-4L-veL"/>
+                <constraint firstAttribute="trailing" secondItem="SWK-Xg-sHI" secondAttribute="trailing" constant="5" id="oO0-de-glw"/>
             </constraints>
+            <connections>
+                <outlet property="refreshButton" destination="SWK-Xg-sHI" id="zw5-Jp-Pg9"/>
+            </connections>
             <point key="canvasLocation" x="-45" y="135"/>
         </customView>
     </objects>

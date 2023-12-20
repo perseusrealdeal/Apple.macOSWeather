@@ -15,11 +15,26 @@
 
 import Cocoa
 
-class WeatherView: NSView {
+class WeatherView: NSView, Localizable {
+
+    @IBOutlet weak var refreshButton: NSButton!
+
+    @IBAction func refreshButtonTapped(_ sender: NSButton) {
+        log.message("[\(type(of: self))].\(#function)")
+    }
 
     // MARK: - Native methods
 
     override func awakeFromNib() {
         log.message("[\(type(of: self))].\(#function)")
+
+        let nc = AppGlobals.notificationCenter
+        nc.addObserver(self, selector: #selector(self.localize),
+                       name: NSNotification.Name.languageSwitchedManuallyNotification,
+                       object: nil)
+    }
+
+    @objc func localize() {
+        refreshButton.title = "RefreshButton".localizedValue
     }
 }

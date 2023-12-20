@@ -15,21 +15,18 @@
 
 import Cocoa
 
-class TheMenu: NSMenu {
+class TheMenu: NSMenu, Localizable {
 
     // MARK: - Outlets
 
     @IBOutlet private weak var menu: NSMenu!
+
     @IBOutlet private weak var locationViewMenuItem: NSMenuItem!
     @IBOutlet private weak var customViewMenuItem: NSMenuItem!
 
-    @IBOutlet private weak var settingsMenuItem: NSMenuItem! {
-        didSet {
-            if #available(macOS 10.14, *) {
-                settingsMenuItem.title = "Settings..."
-            }
-        }
-    }
+    @IBOutlet private weak var aboutMenuItem: NSMenuItem!
+    @IBOutlet private weak var settingsMenuItem: NSMenuItem!
+    @IBOutlet private weak var quitMenuItem: NSMenuItem!
 
     // MARK: - Actions
 
@@ -44,6 +41,11 @@ class TheMenu: NSMenu {
 
     override func awakeFromNib() {
         log.message("[\(type(of: self))].\(#function)")
+
+        let nc = AppGlobals.notificationCenter
+        nc.addObserver(self, selector: #selector(self.localize),
+                       name: NSNotification.Name.languageSwitchedManuallyNotification,
+                       object: nil)
     }
 
     // MARK: - Public variables
@@ -62,4 +64,17 @@ class TheMenu: NSMenu {
 
     // MARK: - Contract, public methods
 
+    @objc func localize() {
+        aboutMenuItem.title = "About Menu Item".localizedValue
+        settingsMenuItem.title = "Settings Menu Item".localizedValue
+        quitMenuItem.title = "Quit Menu Item".localizedValue
+    }
 }
+
+/*
+
+ if #available(macOS 10.14, *) {
+ settingsMenuItem.title = "Settings..."
+ }
+
+ */
