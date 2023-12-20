@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,19 +13,46 @@
             <rect key="frame" x="0.0" y="0.0" width="270" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MN8-8D-uwN">
-                    <rect key="frame" x="91" y="17" width="89" height="16"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Location View" id="gof-yU-i6U">
-                        <font key="font" usesAppearanceFont="YES"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gjb-xj-GBZ">
+                    <rect key="frame" x="3" y="28" width="48" height="22"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" allowsUndo="NO" alignment="left" title="Label" id="Fst-Ot-pPD">
+                        <font key="font" metaFont="system" size="18"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JoV-Kc-wi0">
+                    <rect key="frame" x="3" y="0.0" width="37" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" allowsUndo="NO" title="Label" id="aTj-WG-did">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6Ri-CH-dsc">
+                    <rect key="frame" x="207" y="-1" width="58" height="19"/>
+                    <buttonCell key="cell" type="roundRect" title="Refresh" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FCB-xz-ici">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="refreshButtonTapped:" target="c22-O7-iKe" id="zJq-6m-b62"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
-                <constraint firstItem="MN8-8D-uwN" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="2wa-Hk-5wK"/>
-                <constraint firstItem="MN8-8D-uwN" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="Cxt-kD-0i1"/>
+                <constraint firstItem="Gjb-xj-GBZ" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="5" id="4DB-A5-l9R"/>
+                <constraint firstAttribute="bottom" secondItem="JoV-Kc-wi0" secondAttribute="bottom" id="Jlv-HS-bBi"/>
+                <constraint firstAttribute="bottom" secondItem="6Ri-CH-dsc" secondAttribute="bottom" id="T25-0y-fwN"/>
+                <constraint firstItem="JoV-Kc-wi0" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="5" id="d4P-X1-RYK"/>
+                <constraint firstItem="Gjb-xj-GBZ" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="eY6-wG-RSP"/>
+                <constraint firstAttribute="trailing" secondItem="6Ri-CH-dsc" secondAttribute="trailing" constant="5" id="vFV-47-zp3"/>
             </constraints>
+            <connections>
+                <outlet property="geoCoordinatesLabel" destination="JoV-Kc-wi0" id="gIo-g8-Lo3"/>
+                <outlet property="locationNameLabel" destination="Gjb-xj-GBZ" id="fNj-c9-QWE"/>
+                <outlet property="refreshButton" destination="6Ri-CH-dsc" id="pVA-EQ-yeJ"/>
+            </connections>
             <point key="canvasLocation" x="-45" y="136"/>
         </customView>
     </objects>

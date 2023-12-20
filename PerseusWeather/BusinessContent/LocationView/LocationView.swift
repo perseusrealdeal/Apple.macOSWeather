@@ -15,11 +15,31 @@
 
 import Cocoa
 
-class LocationView: NSView {
+class LocationView: NSView, Localizable {
+
+    @IBOutlet weak var locationNameLabel: NSTextField!
+    @IBOutlet weak var geoCoordinatesLabel: NSTextField!
+
+    @IBOutlet weak var refreshButton: NSButton!
+
+    @IBAction func refreshButtonTapped(_ sender: NSButton) {
+        log.message("[\(type(of: self))].\(#function)")
+    }
 
     // MARK: - Native methods
 
     override func awakeFromNib() {
         log.message("[\(type(of: self))].\(#function)")
+
+        let nc = AppGlobals.notificationCenter
+        nc.addObserver(self, selector: #selector(self.localize),
+                       name: NSNotification.Name.languageSwitchedManuallyNotification,
+                       object: nil)
+    }
+
+    @objc func localize() {
+        locationNameLabel.stringValue = "Location Name".localizedValue
+        geoCoordinatesLabel.stringValue = "Latitude, Longitude".localizedValue
+        refreshButton.title = "Refresh".localizedValue
     }
 }
