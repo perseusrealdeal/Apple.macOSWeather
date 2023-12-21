@@ -18,6 +18,7 @@ import Cocoa
 class WeatherView: NSView, Localizable {
 
     @IBOutlet weak var refreshButton: NSButton!
+    @IBOutlet var weatherAlerts: NSTextView!
 
     @IBAction func refreshButtonTapped(_ sender: NSButton) {
         log.message("[\(type(of: self))].\(#function)")
@@ -32,9 +33,17 @@ class WeatherView: NSView, Localizable {
         nc.addObserver(self, selector: #selector(self.localize),
                        name: NSNotification.Name.languageSwitchedManuallyNotification,
                        object: nil)
+
+        configure()
     }
 
     @objc func localize() {
         refreshButton.title = "RefreshButton".localizedValue
+    }
+
+    private func configure() {
+        weatherAlerts.backgroundColor = .clear
+        weatherAlerts.string =
+        "Weather alerts...\nWeather alerts...\nWeather alerts...\nWeather alerts..."
     }
 }
