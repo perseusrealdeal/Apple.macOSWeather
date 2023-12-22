@@ -39,6 +39,18 @@ class LocationView: NSView, Localizable {
         return statusLocalized
     }
 
+    private var geoCoordinatesCouple: String {
+        guard let location = AppGlobals.appDelegate?.location else {
+            log.message("[\(type(of: self))].\(#function)", .error)
+            return "Latitude, Longitude Label".localizedValue
+        }
+
+        let couple = "\(location.latitude.cut(.four)), \(location.longitude.cut(.four))"
+        log.message("[\(type(of: self))].\(#function) \(couple)")
+
+        return couple
+    }
+
     @IBOutlet weak var locationNameValueLabel: NSTextField!
 
     @IBOutlet weak var permissionLabel: NSTextField!
@@ -78,8 +90,7 @@ class LocationView: NSView, Localizable {
 
     override func viewWillDraw() {
         log.message("[\(type(of: self))].\(#function)")
-
-        permissionValueLabel.stringValue = self.permissionStatusLocalized
+        updateViewValues()
     }
 
     @objc func localize() {
@@ -90,7 +101,7 @@ class LocationView: NSView, Localizable {
         permissionLabel.stringValue = "Permission".localizedValue + ":"
         permissionValueLabel.stringValue = self.permissionStatusLocalized
 
-        geoCoordinatesValueLabel.stringValue = "Latitude, Longitude Label".localizedValue
+        geoCoordinatesValueLabel.stringValue = self.geoCoordinatesCouple
 
         refreshButton.title = "RefreshButton".localizedValue
     }
@@ -108,5 +119,12 @@ class LocationView: NSView, Localizable {
         case .failure(let error):
             log.message("\(error)", .error)
         }
+
+        updateViewValues()
+    }
+
+    private func updateViewValues() {
+        permissionValueLabel.stringValue = self.permissionStatusLocalized
+        geoCoordinatesValueLabel.stringValue = self.geoCoordinatesCouple
     }
 }
