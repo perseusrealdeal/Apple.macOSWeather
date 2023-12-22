@@ -17,8 +17,12 @@ import Cocoa
 
 class LocationView: NSView, Localizable {
 
-    @IBOutlet weak var locationNameLabel: NSTextField!
-    @IBOutlet weak var geoCoordinatesLabel: NSTextField!
+    @IBOutlet weak var locationNameValueLabel: NSTextField!
+
+    @IBOutlet weak var permissionLabel: NSTextField!
+    @IBOutlet weak var permissionValueLabel: NSTextField!
+
+    @IBOutlet weak var geoCoordinatesValueLabel: NSTextField!
 
     @IBOutlet weak var refreshButton: NSButton!
 
@@ -48,15 +52,24 @@ class LocationView: NSView, Localizable {
                        name: .locationDealerCurrentNotification,
                        object: nil
         )
+
+        updateLocationView()
     }
 
     public func updateLocationView() {
+        let permit = globals.locationDealer.locationPermit
 
+        log.message("[\(type(of: self))].\(#function) - \(permit)")
     }
 
     @objc func localize() {
-        locationNameLabel.stringValue = "Location Name Label".localizedValue
-        geoCoordinatesLabel.stringValue = "Latitude, Longitude Label".localizedValue
+        locationNameValueLabel.stringValue = "Location Name Label".localizedValue
+
+        permissionLabel.stringValue = "Permission".localizedValue + ":"
+        permissionValueLabel.stringValue = "status".localizedValue
+
+        geoCoordinatesValueLabel.stringValue = "Latitude, Longitude Label".localizedValue
+
         refreshButton.title = "RefreshButton".localizedValue
     }
 

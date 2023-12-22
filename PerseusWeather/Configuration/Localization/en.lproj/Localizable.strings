@@ -39,6 +39,8 @@
 "Quit Menu Item" = "Quit the App";
 
 "Location Name Label" = "Location Name";
+"Permission" = "Permission";
+"status" = "status";
 "Latitude, Longitude Label" = "Latitude, Longitude";
 
 "Text Weather Condition..." = "Text Weather Condition...";

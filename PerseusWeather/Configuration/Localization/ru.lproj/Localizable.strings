@@ -39,6 +39,8 @@
 "Quit Menu Item" = "Исчезни";
 
 "Location Name Label" = "Название места";
+"Permission" = "Доступ к геоданным";
+"status" = "статус";
 "Latitude, Longitude Label" = "Широта, Долгота";
 
 "" = "";

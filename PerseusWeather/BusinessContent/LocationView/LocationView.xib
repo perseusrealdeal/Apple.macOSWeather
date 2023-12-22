@@ -14,16 +14,16 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gjb-xj-GBZ">
-                    <rect key="frame" x="3" y="28" width="48" height="22"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" allowsUndo="NO" alignment="left" title="Label" id="Fst-Ot-pPD">
+                    <rect key="frame" x="3" y="28" width="264" height="22"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" allowsUndo="NO" alignment="center" title="Location Name" id="Fst-Ot-pPD">
                         <font key="font" metaFont="system" size="18"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JoV-Kc-wi0">
-                    <rect key="frame" x="3" y="0.0" width="37" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" allowsUndo="NO" title="Label" id="aTj-WG-did">
+                    <rect key="frame" x="3" y="0.0" width="113" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" allowsUndo="NO" title="55.0361, 82.8963" id="aTj-WG-did">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -39,18 +39,41 @@
                         <action selector="refreshButtonTapped:" target="c22-O7-iKe" id="zJq-6m-b62"/>
                     </connections>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jxk-H3-wIs">
+                    <rect key="frame" x="3" y="15" width="75" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Permission:" id="PYh-d4-Cxj">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ybs-rk-Adx">
+                    <rect key="frame" x="76" y="15" width="42" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="status" id="gPU-c3-qQw">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="Gjb-xj-GBZ" secondAttribute="trailing" constant="5" id="01c-Rg-wPP"/>
                 <constraint firstItem="Gjb-xj-GBZ" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="5" id="4DB-A5-l9R"/>
+                <constraint firstItem="ybs-rk-Adx" firstAttribute="leading" secondItem="Jxk-H3-wIs" secondAttribute="trailing" constant="2" id="9BO-54-GpC"/>
+                <constraint firstItem="ybs-rk-Adx" firstAttribute="centerY" secondItem="Jxk-H3-wIs" secondAttribute="centerY" id="FfX-p6-5px"/>
                 <constraint firstAttribute="bottom" secondItem="JoV-Kc-wi0" secondAttribute="bottom" id="Jlv-HS-bBi"/>
+                <constraint firstItem="Jxk-H3-wIs" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="5" id="NBU-3M-piA"/>
                 <constraint firstAttribute="bottom" secondItem="6Ri-CH-dsc" secondAttribute="bottom" id="T25-0y-fwN"/>
                 <constraint firstItem="JoV-Kc-wi0" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="5" id="d4P-X1-RYK"/>
                 <constraint firstItem="Gjb-xj-GBZ" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="eY6-wG-RSP"/>
+                <constraint firstAttribute="bottom" secondItem="Jxk-H3-wIs" secondAttribute="bottom" constant="15" id="ojK-ck-Tgb"/>
                 <constraint firstAttribute="trailing" secondItem="6Ri-CH-dsc" secondAttribute="trailing" constant="5" id="vFV-47-zp3"/>
             </constraints>
             <connections>
-                <outlet property="geoCoordinatesLabel" destination="JoV-Kc-wi0" id="gIo-g8-Lo3"/>
-                <outlet property="locationNameLabel" destination="Gjb-xj-GBZ" id="fNj-c9-QWE"/>
+                <outlet property="geoCoordinatesValueLabel" destination="JoV-Kc-wi0" id="gIo-g8-Lo3"/>
+                <outlet property="locationNameValueLabel" destination="Gjb-xj-GBZ" id="fNj-c9-QWE"/>
+                <outlet property="permissionLabel" destination="Jxk-H3-wIs" id="kxO-BP-l3g"/>
+                <outlet property="permissionValueLabel" destination="ybs-rk-Adx" id="rf7-YO-82M"/>
                 <outlet property="refreshButton" destination="6Ri-CH-dsc" id="pVA-EQ-yeJ"/>
             </connections>
             <point key="canvasLocation" x="-45" y="136"/>
