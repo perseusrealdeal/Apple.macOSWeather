@@ -83,8 +83,6 @@ class WeatherView: NSView, Localizable {
 
     private func configure() {
         weatherAlerts.backgroundColor = .clear
-        weatherAlerts.string =
-        "Weather alerts...\nWeather alerts...\nWeather alerts...\nWeather alerts..."
 
         // Default values setup
 
@@ -97,5 +95,9 @@ class WeatherView: NSView, Localizable {
 
         windSpeedValueLabel.stringValue = "6.0"
         windGustValueLabel.stringValue = "1.16"
+
+        for _ in 1...4 {
+            weatherAlerts.string += ("Weather alerts, dangers...".localizedValue + "\n\n")
+        }
     }
 }

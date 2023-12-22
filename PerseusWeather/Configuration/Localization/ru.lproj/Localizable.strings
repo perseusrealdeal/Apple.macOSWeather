@@ -43,7 +43,7 @@
 
 "" = "";
 
-"Text Weather Condition..." = "Описание условий погоды...";
+"Text Weather Condition..." = "Кратко условия погоды...";
 
 "km" = "км";
 "m/s" = "м/с";
@@ -56,5 +56,7 @@
 
 "SUNRIZE" = "ВОСХОД";
 "SUNSET" = "ЗАХОД";
+
+"Weather alerts, dangers..." = "Погодные аномалиии, предупреждения...";
 
 "RefreshButton" = "Заново";
