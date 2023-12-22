@@ -130,20 +130,7 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate, Localiza
 
     @IBAction func controlGotoSettingsTapped(_ sender: NSButton) {
         log.message("[\(type(of: self))].\(#function)")
-
-        // One way to open System options app
-        guard
-            let systemAppName = systemAppName,
-            let pathURL = FileManager.default.urls(for: .applicationDirectory,
-                                                   in: .systemDomainMask
-                ).first?.appendingPathComponent(systemAppName)
-        else { return }
-
-        // Another way to open System options app
-
-        // guard let pathURL = URL(string: AppGlobals.openSystemApp) else { return }
-
-        NSWorkspace.shared.open(pathURL)
+        AppGlobals.openTheApp(name: AppGlobals.systemAppName)
     }
 
     @IBAction func controlUnlockButtonTapped(_ sender: NSButton) {

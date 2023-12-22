@@ -17,40 +17,6 @@ import Cocoa
 
 class LocationView: NSView, Localizable {
 
-    private var permissionStatusLocalized: String {
-        let permit = globals.locationDealer.locationPermit
-        var statusLocalized: String = ""
-
-        switch permit {
-        case .notDetermined:
-            statusLocalized = "notDetermined Location Status".localizedValue
-        case .deniedForAllAndRestricted:
-            statusLocalized = "deniedForAllAndRestricted Location Status".localizedValue
-        case .restricted:
-            statusLocalized = "restricted Location Status".localizedValue
-        case .deniedForAllApps:
-            statusLocalized = "deniedForAllApps Location Status".localizedValue
-        case .deniedForTheApp:
-            statusLocalized = "deniedForTheApp Location Status".localizedValue
-        case .allowed:
-            statusLocalized = "allowed Location Status".localizedValue
-        }
-
-        return statusLocalized
-    }
-
-    private var geoCoordinatesCouple: String {
-        guard let location = AppGlobals.appDelegate?.location else {
-            log.message("[\(type(of: self))].\(#function)", .error)
-            return "Latitude, Longitude Label".localizedValue
-        }
-
-        let couple = "\(location.latitude.cut(.four)), \(location.longitude.cut(.four))"
-        log.message("[\(type(of: self))].\(#function) \(couple)")
-
-        return couple
-    }
-
     @IBOutlet weak var locationNameValueLabel: NSTextField!
 
     @IBOutlet weak var permissionLabel: NSTextField!
@@ -63,12 +29,21 @@ class LocationView: NSView, Localizable {
     @IBAction func refreshButtonTapped(_ sender: NSButton) {
         log.message("[\(type(of: self))].\(#function)")
 
-        globals.locationDealer.askForAuthorization { permit in
-            let text = "[\(type(of: self))].\(#function) — It's already determined .\(permit)"
-            log.message(text, .error)
-        }
+        let permit = globals.locationDealer.locationPermit
 
-        try? globals.locationDealer.askForCurrentLocation()
+        if permit == .notDetermined {
+            // Allow geo service
+            globals.locationDealer.askForAuthorization { permit in
+                let text = "[\(type(of: self))].\(#function) — .\(permit)"
+                log.message(text, .error)
+            }
+        } else if permit == .allowed {
+            // Refresh geo data
+            try? globals.locationDealer.askForCurrentLocation()
+        } else {
+            // Open system options
+            AppGlobals.openTheApp(name: AppGlobals.systemAppName)
+        }
     }
 
     // MARK: - Native methods
@@ -103,7 +78,7 @@ class LocationView: NSView, Localizable {
 
         geoCoordinatesValueLabel.stringValue = self.geoCoordinatesCouple
 
-        refreshButton.title = "RefreshButton".localizedValue
+        refreshButton.title = self.refreshButtonTitle
     }
 
     @objc private func locationDealerCurrentHandler(_ notification: Notification) {
@@ -126,5 +101,68 @@ class LocationView: NSView, Localizable {
     private func updateViewValues() {
         permissionValueLabel.stringValue = self.permissionStatusLocalized
         geoCoordinatesValueLabel.stringValue = self.geoCoordinatesCouple
+        refreshButton.title = self.refreshButtonTitle
+    }
+}
+
+extension LocationView {
+
+    private var permissionStatusLocalized: String {
+
+        let permit = globals.locationDealer.locationPermit
+        var statusLocalized: String = ""
+
+        switch permit {
+        case .notDetermined:
+            statusLocalized = "notDetermined Location Status".localizedValue
+        case .deniedForAllAndRestricted:
+            statusLocalized = "deniedForAllAndRestricted Location Status".localizedValue
+        case .restricted:
+            statusLocalized = "restricted Location Status".localizedValue
+        case .deniedForAllApps:
+            statusLocalized = "deniedForAllApps Location Status".localizedValue
+        case .deniedForTheApp:
+            statusLocalized = "deniedForTheApp Location Status".localizedValue
+        case .allowed:
+            statusLocalized = "allowed Location Status".localizedValue
+        }
+
+        return statusLocalized
+    }
+
+    private var geoCoordinatesCouple: String {
+
+        guard let location = AppGlobals.appDelegate?.location else {
+            log.message("[\(type(of: self))].\(#function)", .error)
+            return "Latitude, Longitude Label".localizedValue
+        }
+
+        let couple = "\(location.latitude.cut(.four)), \(location.longitude.cut(.four))"
+        log.message("[\(type(of: self))].\(#function) \(couple)")
+
+        return couple
+    }
+
+    private var refreshButtonTitle: String {
+
+        let permit = globals.locationDealer.locationPermit
+        var titleLocalized: String = ""
+
+        switch permit {
+        case .notDetermined:
+            titleLocalized = "Allow Geo Service LocationButton".localizedValue
+        case .deniedForAllAndRestricted:
+            titleLocalized = "Go to Settings... LocationButton".localizedValue
+        case .restricted:
+            titleLocalized = "Go to Settings... LocationButton".localizedValue
+        case .deniedForAllApps:
+            titleLocalized = "Go to Settings... LocationButton".localizedValue
+        case .deniedForTheApp:
+            titleLocalized = "Go to Settings... LocationButton".localizedValue
+        case .allowed:
+            titleLocalized = "Refresh LocationButton".localizedValue
+        }
+
+        return titleLocalized
     }
 }

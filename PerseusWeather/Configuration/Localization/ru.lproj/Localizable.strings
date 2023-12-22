@@ -39,7 +39,7 @@
 "Quit Menu Item" = "Исчезни";
 
 "Location Name Label" = "Название места";
-"Permission" = "Доступ к геоданным";
+"Permission" = "Доступ";
 "status" = "статус";
 "notDetermined Location Status" = "не определен";
 "deniedForAllAndRestricted Location Status" = "заблокирован для всех и ограничен";
@@ -48,6 +48,9 @@
 "deniedForTheApp Location Status" = "заблокирован";
 "allowed Location Status" = "предоставлен";
 "Latitude, Longitude Label" = "Широта, Долгота";
+"Allow Geo Service LocationButton" = "Разреши";
+"Go to Settings... LocationButton" = "Настройки";
+"Refresh LocationButton" = "Заново";
 
 "" = "";
 

@@ -48,6 +48,9 @@
 "deniedForTheApp Location Status" = "denied for the app";
 "allowed Location Status" = "allowed";
 "Latitude, Longitude Label" = "Latitude, Longitude";
+"Allow Geo Service LocationButton" = "Allow Geo Service";
+"Go to Settings... LocationButton" = "Go to Settings...";
+"Refresh LocationButton" = "Refresh";
 
 "Text Weather Condition..." = "Text Weather Condition...";
 

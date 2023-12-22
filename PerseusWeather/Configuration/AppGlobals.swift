@@ -23,6 +23,19 @@ struct AppGlobals {
     static let statusMenusButtonIconName = "Icon"
     static let statusMenusButtonTitle = "Text"
 
+    static var systemAppName: String? {
+
+        var calculatedTitle: String?
+
+        if #available(macOS 10.14, *) {
+            calculatedTitle = "System Settings.app"
+        } else {
+            calculatedTitle = "System Preferences.app"
+        }
+
+        return calculatedTitle
+    }
+
     // MARK: - System Services
 
     static let userDefaults = UserDefaults.standard
@@ -76,5 +89,21 @@ struct AppGlobals {
         _ = workspace.open(url) ?
         log.message("[\(type(of: self))].\(#function) - Default browser was opened.") :
         log.message("[\(type(of: self))].\(#function) - Default browser wasn't opened.")
+    }
+
+    static func openTheApp(name: String?) {
+        // One way to open System options app
+        guard
+            let theAppName = name,
+            let pathURL = FileManager.default.urls(for: .applicationDirectory,
+                                                   in: .systemDomainMask
+                ).first?.appendingPathComponent(theAppName)
+            else { return }
+
+        // Another way to open System options app
+
+        // guard let pathURL = URL(string: AppGlobals.openSystemApp) else { return }
+
+        NSWorkspace.shared.open(pathURL)
     }
 }
