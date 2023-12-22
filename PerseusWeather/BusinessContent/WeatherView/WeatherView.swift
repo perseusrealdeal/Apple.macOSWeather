@@ -79,12 +79,17 @@ class WeatherView: NSView, Localizable {
         sunsetLabel.stringValue = "SUNSET".localizedValue
 
         refreshButton.title = "RefreshButton".localizedValue
+
+        weatherAlerts.string = ""
+        for _ in 1...4 {
+            weatherAlerts.string += ("> " + "Weather alerts, dangers...".localizedValue + "\n")
+        }
     }
 
     private func configure() {
         weatherAlerts.backgroundColor = .clear
 
-        // Default values setup
+        // Default values sketch setup
 
         temperatureValueLabel.stringValue = "-77"
         temperatureUnitLabel.stringValue = "°C"
@@ -95,9 +100,5 @@ class WeatherView: NSView, Localizable {
 
         windSpeedValueLabel.stringValue = "6.0"
         windGustValueLabel.stringValue = "1.16"
-
-        for _ in 1...4 {
-            weatherAlerts.string += ("Weather alerts, dangers...".localizedValue + "\n\n")
-        }
     }
 }
