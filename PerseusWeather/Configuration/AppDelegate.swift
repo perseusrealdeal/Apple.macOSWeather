@@ -32,20 +32,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
 
-        log.message("Launching with business matter purpose", .info)
+        log.message("Launching with business matter purpose...", .info)
         log.message("[\(type(of: self))].\(#function)")
 
         AppearanceService.makeUp()
-        addAbservers()
-
-        // let dealer = AppGlobals.locationDealer
-/*
-        dealer.askForAuthorization { permit in
-            let text = "[\(type(of: self))].\(#function) — It's already determined .\(permit)"
-            log.message(text, .error)
-        }
-*/
-        // try? dealer.askForCurrentLocation()
 
         globals.weatherClient.onDataGiven = { result in
             switch result {
@@ -66,16 +56,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
-        return true
+        return false
     }
 
+    private func weatherDataHandler(_ data: Data) {
+        log.message("""
+            DATA: BEGIN
+            \(String(decoding: data, as: UTF8.self))
+            DATA: END
+            """)
+    }
+}
+
+/*
     private func addAbservers() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(locationDealerCurrentHandler(_:)),
-            name: .locationDealerCurrentNotification,
-            object: nil
-        )
 
         NotificationCenter.default.addObserver(
             self,
@@ -97,20 +91,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             name: .locationDealerStatusChangedNotification,
             object: nil
         )
-    }
-
-    @objc private func locationDealerCurrentHandler(_ notification: Notification) {
-        log.message("[\(type(of: self))].\(#function)")
-        guard
-            let result = notification.object as? Result<PerseusLocation, LocationDealerError>
-            else { return }
-
-        switch result {
-        case .success(let data):
-            self.location = data
-        case .failure(let error):
-            log.message("\(error)", .error)
-        }
     }
 
     @objc private func locationDealerUpdatesHandler(_ notification: Notification) {
@@ -143,11 +123,4 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         log.message("[\(type(of: self))] Location Manager Permit: \(permit)")
     }
 
-    private func weatherDataHandler(_ data: Data) {
-        log.message("""
-            DATA: BEGIN
-            \(String(decoding: data, as: UTF8.self))
-            DATA: END
-            """)
-    }
-}
+*/

@@ -47,6 +47,20 @@ class WeatherView: NSView, Localizable {
 
     @IBAction func refreshButtonTapped(_ sender: NSButton) {
         log.message("[\(type(of: self))].\(#function)")
+
+        guard let location = AppGlobals.appDelegate?.location else { return }
+
+        let lat = location.latitude.cut(.two).description
+        let lon = location.longitude.cut(.two).description
+
+        let callDetails = OpenWeatherDetails(appid: AppGlobals.appKeyOpenWeather,
+                                             format: .currentWeather,
+                                             lat: lat,
+                                             lon: lon)
+
+        log.message(callDetails.urlString)
+
+        try? globals.weatherClient.call(with: callDetails)
     }
 
     // MARK: - Native methods
@@ -82,7 +96,8 @@ class WeatherView: NSView, Localizable {
 
         weatherAlerts.string = ""
         for _ in 1...4 {
-            weatherAlerts.string += ("> " + "Weather alerts, dangers...".localizedValue + "\n")
+            weatherAlerts.string += ("> " +
+                "Weather alerts, dangers...".localizedValue + "\n\n")
         }
     }
 
