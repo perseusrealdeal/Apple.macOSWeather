@@ -16,9 +16,7 @@
 		4B03D6822B322251001139B2 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B03D6812B322251001139B2 /* LocationView.swift */; };
 		4B0A49F329F631CD00CAE8A0 /* AppGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0A49F229F631CD00CAE8A0 /* AppGlobals.swift */; };
 		4B1483E52912892C0013B76E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1483E42912892C0013B76E /* AppDelegate.swift */; };
-		4B1483E72912892C0013B76E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1483E62912892C0013B76E /* ViewController.swift */; };
 		4B1483E92912892F0013B76E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B1483E82912892F0013B76E /* Assets.xcassets */; };
-		4B1483EC2912892F0013B76E /* MainWindowController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B1483EA2912892F0013B76E /* MainWindowController.storyboard */; };
 		4B1483F82912892F0013B76E /* BundleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1483F72912892F0013B76E /* BundleTests.swift */; };
 		4B26A2EF2B0B584E00FCEA9B /* PreferencesConnectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B26A2EE2B0B584E00FCEA9B /* PreferencesConnectionsTests.swift */; };
 		4B4B3194293F4B660001262E /* PerseusUISystemKitSingle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4B3193293F4B660001262E /* PerseusUISystemKitSingle.swift */; };
@@ -42,7 +40,6 @@
 		4BA719872AF0D5E10074F7CD /* StatusMenusButtonPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA719862AF0D5E10074F7CD /* StatusMenusButtonPresenter.swift */; };
 		4BA719892AF329EE0074F7CD /* WeatherView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA719882AF329EE0074F7CD /* WeatherView.xib */; };
 		4BA7198B2AF32A2C0074F7CD /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA7198A2AF32A2C0074F7CD /* WeatherView.swift */; };
-		4BBE905E29128FB1008F734D /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBE905D29128FB1008F734D /* MainWindowController.swift */; };
 		4BBE9062291290BD008F734D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BBE9061291290BD008F734D /* MainMenu.xib */; };
 		4BBE90652912911D008F734D /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBE90642912911D008F734D /* TestingAppDelegate.swift */; };
 		4BBE90672912931A008F734D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBE90662912931A008F734D /* main.swift */; };
@@ -79,9 +76,7 @@
 		4B0A49F229F631CD00CAE8A0 /* AppGlobals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobals.swift; sourceTree = "<group>"; };
 		4B1483E12912892C0013B76E /* PerseusWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerseusWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B1483E42912892C0013B76E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4B1483E62912892C0013B76E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4B1483E82912892F0013B76E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4B1483EB2912892F0013B76E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainWindowController.storyboard; sourceTree = "<group>"; };
 		4B1483ED2912892F0013B76E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B1483EE2912892F0013B76E /* PerseusWeather.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PerseusWeather.entitlements; sourceTree = "<group>"; };
 		4B1483F32912892F0013B76E /* PerseusWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PerseusWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,7 +106,6 @@
 		4BA719862AF0D5E10074F7CD /* StatusMenusButtonPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenusButtonPresenter.swift; sourceTree = "<group>"; };
 		4BA719882AF329EE0074F7CD /* WeatherView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherView.xib; sourceTree = "<group>"; };
 		4BA7198A2AF32A2C0074F7CD /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
-		4BBE905D29128FB1008F734D /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		4BBE9061291290BD008F734D /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		4BBE90642912911D008F734D /* TestingAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
 		4BBE90662912931A008F734D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -306,16 +300,6 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		4B8426342B11D1D100C86E8A /* Delete */ = {
-			isa = PBXGroup;
-			children = (
-				4B1483E62912892C0013B76E /* ViewController.swift */,
-				4B1483EA2912892F0013B76E /* MainWindowController.storyboard */,
-				4BBE905D29128FB1008F734D /* MainWindowController.swift */,
-			);
-			path = Delete;
-			sourceTree = "<group>";
-		};
 		4B8426372B1880A800C86E8A /* PerseusDataDefender */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,7 +339,6 @@
 		4BBE9063291290C5008F734D /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				4B8426342B11D1D100C86E8A /* Delete */,
 				4BBE9061291290BD008F734D /* MainMenu.xib */,
 				4BFA5FDF2989A69E00AC09F5 /* TheMenu.swift */,
 				4BA719862AF0D5E10074F7CD /* StatusMenusButtonPresenter.swift */,
@@ -470,7 +453,6 @@
 				4BBE9069291293E8008F734D /* .gitignore in Resources */,
 				4B03D6802B322219001139B2 /* LocationView.xib in Resources */,
 				4B1483E92912892F0013B76E /* Assets.xcassets in Resources */,
-				4B1483EC2912892F0013B76E /* MainWindowController.storyboard in Resources */,
 				4BBE9062291290BD008F734D /* MainMenu.xib in Resources */,
 				4BFA5FDA2989A12800AC09F5 /* PreferencesWindowController.storyboard in Resources */,
 				4BBE906B291293F0008F734D /* LICENSE in Resources */,
@@ -533,13 +515,11 @@
 				4B8426392B18810900C86E8A /* PerseusDefenderModels.swift in Sources */,
 				4BFA5FE02989A69E00AC09F5 /* TheMenu.swift in Sources */,
 				4B030E7B2B2D003A00ED9018 /* AppLinks.swift in Sources */,
-				4B1483E72912892C0013B76E /* ViewController.swift in Sources */,
 				4B8426362B13523600C86E8A /* PerseusDataDefender.swift in Sources */,
 				4B4B3194293F4B660001262E /* PerseusUISystemKitSingle.swift in Sources */,
 				4BDEF1CB2A10D521001FFE9B /* OpenWeatherStar.swift in Sources */,
 				4B8426402B19D11B00C86E8A /* LanguageSwitcherModels.swift in Sources */,
 				4B1483E52912892C0013B76E /* AppDelegate.swift in Sources */,
-				4BBE905E29128FB1008F734D /* MainWindowController.swift in Sources */,
 				4BC2F2C929EE64E200386671 /* PerseusGeoLocationSingle.swift in Sources */,
 				4B84263C2B19CE2600C86E8A /* OpenWeatherStarModels.swift in Sources */,
 			);
@@ -568,14 +548,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4B1483EA2912892F0013B76E /* MainWindowController.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4B1483EB2912892F0013B76E /* Base */,
-			);
-			name = MainWindowController.storyboard;
-			sourceTree = "<group>";
-		};
 		4B6F98682927DF1400ADB03A /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

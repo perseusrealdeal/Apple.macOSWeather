@@ -27,9 +27,6 @@ let app = NSApplication.shared
 let appPurpose = NSClassFromString("TestingAppDelegate") as? NSObject.Type
 let appDelegate = appPurpose?.init() ?? AppDelegate()
 
-// let storyboard = NSStoryboard(name: String(describing: MainWindowController.self), bundle: nil)
-// let screen = storyboard.instantiateInitialController() as? NSWindowController
-
 let globals = AppGlobals()
 
 // MARK: - Make the app run
@@ -44,8 +41,6 @@ let globals = AppGlobals()
  */
 
 app.setActivationPolicy(.accessory)
-
-// screen?.window?.makeKeyAndOrderFront(nil)
 
 app.delegate = appDelegate as? NSApplicationDelegate
 
