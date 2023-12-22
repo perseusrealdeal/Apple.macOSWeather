@@ -17,6 +17,28 @@ import Cocoa
 
 class LocationView: NSView, Localizable {
 
+    private var permissionStatusLocalized: String {
+        let permit = globals.locationDealer.locationPermit
+        var statusLocalized: String = ""
+
+        switch permit {
+        case .notDetermined:
+            statusLocalized = "notDetermined Location Status".localizedValue
+        case .deniedForAllAndRestricted:
+            statusLocalized = "deniedForAllAndRestricted Location Status".localizedValue
+        case .restricted:
+            statusLocalized = "restricted Location Status".localizedValue
+        case .deniedForAllApps:
+            statusLocalized = "deniedForAllApps Location Status".localizedValue
+        case .deniedForTheApp:
+            statusLocalized = "deniedForTheApp Location Status".localizedValue
+        case .allowed:
+            statusLocalized = "allowed Location Status".localizedValue
+        }
+
+        return statusLocalized
+    }
+
     @IBOutlet weak var locationNameValueLabel: NSTextField!
 
     @IBOutlet weak var permissionLabel: NSTextField!
@@ -52,21 +74,21 @@ class LocationView: NSView, Localizable {
                        name: .locationDealerCurrentNotification,
                        object: nil
         )
-
-        updateLocationView()
     }
 
-    public func updateLocationView() {
-        let permit = globals.locationDealer.locationPermit
+    override func viewWillDraw() {
+        log.message("[\(type(of: self))].\(#function)")
 
-        log.message("[\(type(of: self))].\(#function) - \(permit)")
+        permissionValueLabel.stringValue = self.permissionStatusLocalized
     }
 
     @objc func localize() {
+        log.message("[\(type(of: self))].\(#function)")
+
         locationNameValueLabel.stringValue = "Location Name Label".localizedValue
 
         permissionLabel.stringValue = "Permission".localizedValue + ":"
-        permissionValueLabel.stringValue = "status".localizedValue
+        permissionValueLabel.stringValue = self.permissionStatusLocalized
 
         geoCoordinatesValueLabel.stringValue = "Latitude, Longitude Label".localizedValue
 

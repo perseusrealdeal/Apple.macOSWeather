@@ -41,6 +41,12 @@
 "Location Name Label" = "Location Name";
 "Permission" = "Permission";
 "status" = "status";
+"notDetermined Location Status" = "not determined";
+"deniedForAllAndRestricted Location Status" = "denied for all and restricted";
+"restricted Location Status" = "restricted";
+"deniedForAllApps Location Status" = "denied for all apps";
+"deniedForTheApp Location Status" = "denied for the app";
+"allowed Location Status" = "allowed";
 "Latitude, Longitude Label" = "Latitude, Longitude";
 
 "Text Weather Condition..." = "Text Weather Condition...";

@@ -41,6 +41,12 @@
 "Location Name Label" = "Название места";
 "Permission" = "Доступ к геоданным";
 "status" = "статус";
+"notDetermined Location Status" = "не определен";
+"deniedForAllAndRestricted Location Status" = "заблокирован для всех и ограничен";
+"restricted Location Status" = "ограничен";
+"deniedForAllApps Location Status" = "заблокирован для всех";
+"deniedForTheApp Location Status" = "заблокирован";
+"allowed Location Status" = "предоставлен";
 "Latitude, Longitude Label" = "Широта, Долгота";
 
 "" = "";
