@@ -41,4 +41,18 @@
 "Location Name Label" = "Location Name";
 "Latitude, Longitude Label" = "Latitude, Longitude";
 
+"Text Weather Condition..." = "Text Weather Condition...";
+
+"km" = "km";
+"m/s" = "m/s";
+
+"Visibility" = "Visibility";
+"Feels like" = "Feels like";
+
+"Wind Speed" = "Wind Speed";
+"Wind Gust" = "Wind Gust";
+
+"SUNRIZE" = "SUNRIZE";
+"SUNSET" = "SUNSET";
+
 "RefreshButton" = "Refresh";

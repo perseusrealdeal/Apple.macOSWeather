@@ -17,6 +17,31 @@ import Cocoa
 
 class WeatherView: NSView, Localizable {
 
+    @IBOutlet weak var temperatureValueLabel: NSTextField!
+    @IBOutlet weak var temperatureUnitLabel: NSTextField!
+
+    @IBOutlet weak var weatherConditionIcon: NSImageView!
+    @IBOutlet weak var weatherConditionText: NSTextField!
+
+    @IBOutlet weak var visibilityLabel: NSTextField!
+    @IBOutlet weak var visibilityValueLabel: NSTextField!
+    @IBOutlet weak var visibilityUnitLabel: NSTextField!
+
+    @IBOutlet weak var feelsLikeLabel: NSTextField!
+    @IBOutlet weak var feelsLikeValueLabel: NSTextField!
+    @IBOutlet weak var feelsLikeUnitLabel: NSTextField!
+
+    @IBOutlet weak var windSpeedLabel: NSTextField!
+    @IBOutlet weak var windSpeedValueLabel: NSTextField!
+    @IBOutlet weak var windSpeedUnitLabel: NSTextField!
+
+    @IBOutlet weak var windGustLabel: NSTextField!
+    @IBOutlet weak var windGustValueLabel: NSTextField!
+    @IBOutlet weak var windGustUnitLabel: NSTextField!
+
+    @IBOutlet weak var sunrizeLabel: NSTextField!
+    @IBOutlet weak var sunsetLabel: NSTextField!
+
     @IBOutlet weak var refreshButton: NSButton!
     @IBOutlet var weatherAlerts: NSTextView!
 
@@ -38,6 +63,21 @@ class WeatherView: NSView, Localizable {
     }
 
     @objc func localize() {
+        visibilityLabel.stringValue = "Visibility".localizedValue + ":"
+        visibilityUnitLabel.stringValue = "km".localizedValue
+
+        weatherConditionText.stringValue = "Text Weather Condition...".localizedValue
+        feelsLikeLabel.stringValue = "Feels like".localizedValue + ":"
+
+        windSpeedLabel.stringValue = "Wind Speed".localizedValue + ":"
+        windSpeedUnitLabel.stringValue = "m/s".localizedValue
+
+        windGustLabel.stringValue = "Wind Gust".localizedValue + ":"
+        windGustUnitLabel.stringValue = "m/s".localizedValue
+
+        sunrizeLabel.stringValue = "SUNRIZE".localizedValue
+        sunsetLabel.stringValue = "SUNSET".localizedValue
+
         refreshButton.title = "RefreshButton".localizedValue
     }
 
@@ -45,5 +85,17 @@ class WeatherView: NSView, Localizable {
         weatherAlerts.backgroundColor = .clear
         weatherAlerts.string =
         "Weather alerts...\nWeather alerts...\nWeather alerts...\nWeather alerts..."
+
+        // Default values setup
+
+        temperatureValueLabel.stringValue = "-77"
+        temperatureUnitLabel.stringValue = "°C"
+
+        visibilityValueLabel.stringValue = "5"
+        feelsLikeValueLabel.stringValue = "-55"
+        feelsLikeUnitLabel.stringValue = "°C"
+
+        windSpeedValueLabel.stringValue = "6.0"
+        windGustValueLabel.stringValue = "1.16"
     }
 }

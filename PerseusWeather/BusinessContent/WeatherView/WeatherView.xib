@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="145" height="45"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="UvM-gg-q2j">
+                            <textView editable="NO" selectable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="UvM-gg-q2j">
                                 <rect key="frame" x="0.0" y="0.0" width="145" height="45"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -63,8 +63,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SIS-BX-02E">
-                    <rect key="frame" x="187" y="128" width="40" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="10 km" id="mX6-kW-d9b">
+                    <rect key="frame" x="187" y="128" width="19" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="10" id="mX6-kW-d9b">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -137,7 +137,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LvQ-97-TZ0">
-                    <rect key="frame" x="169" y="66" width="27" height="17"/>
+                    <rect key="frame" x="164" y="66" width="27" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="m/s" id="3QF-q1-yut">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -161,7 +161,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pk0-g4-0Rp">
-                    <rect key="frame" x="164" y="46" width="27" height="17"/>
+                    <rect key="frame" x="159" y="46" width="27" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="m/s" id="pCU-nU-lZ1">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -169,7 +169,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IqS-2q-zXn">
-                    <rect key="frame" x="197" y="66" width="33" height="17"/>
+                    <rect key="frame" x="192" y="66" width="33" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="SSW" id="kDf-q5-WU7">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -208,6 +208,14 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UjW-Zp-xNW">
+                    <rect key="frame" x="202" y="128" width="23" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="km" id="BFL-h5-EuF">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
                 <constraint firstItem="Lm4-FO-mKg" firstAttribute="leading" secondItem="jn5-X3-QIa" secondAttribute="trailing" constant="10" id="3eV-a4-aOT"/>
@@ -222,7 +230,8 @@
                 <constraint firstItem="jn5-X3-QIa" firstAttribute="leading" secondItem="WBZ-Ex-Lcv" secondAttribute="trailing" constant="5" id="9yr-y7-jGL"/>
                 <constraint firstItem="uuy-bI-Jzv" firstAttribute="centerX" secondItem="WHm-pX-hrF" secondAttribute="centerX" id="D63-aA-nP8"/>
                 <constraint firstItem="Pk0-g4-0Rp" firstAttribute="centerY" secondItem="CIS-Fg-9VU" secondAttribute="centerY" id="D6H-QX-T3P"/>
-                <constraint firstItem="LvQ-97-TZ0" firstAttribute="leading" secondItem="ToB-ky-liu" secondAttribute="trailing" constant="5" id="FLu-tG-iEQ"/>
+                <constraint firstItem="LvQ-97-TZ0" firstAttribute="leading" secondItem="ToB-ky-liu" secondAttribute="trailing" id="FLu-tG-iEQ"/>
+                <constraint firstItem="UjW-Zp-xNW" firstAttribute="leading" secondItem="SIS-BX-02E" secondAttribute="trailing" id="JUr-sG-N0l"/>
                 <constraint firstAttribute="trailing" secondItem="Fce-IM-6hd" secondAttribute="trailing" constant="5" id="K02-BC-Sua"/>
                 <constraint firstItem="Wrd-Al-uyw" firstAttribute="centerY" secondItem="lOG-oM-52f" secondAttribute="centerY" id="Khz-g9-bYR"/>
                 <constraint firstItem="455-Ve-aMb" firstAttribute="centerX" secondItem="sIg-6B-PGf" secondAttribute="centerX" id="Nyx-gT-dLL"/>
@@ -235,6 +244,7 @@
                 <constraint firstItem="E6z-eJ-SEx" firstAttribute="top" secondItem="WBZ-Ex-Lcv" secondAttribute="bottom" constant="5" id="Y61-CH-KvN"/>
                 <constraint firstItem="lOG-oM-52f" firstAttribute="leading" secondItem="jn5-X3-QIa" secondAttribute="trailing" constant="10" id="Zp9-3D-joV"/>
                 <constraint firstItem="CIS-Fg-9VU" firstAttribute="leading" secondItem="uBU-ZK-GEw" secondAttribute="trailing" constant="5" id="aiU-pZ-At0"/>
+                <constraint firstItem="UjW-Zp-xNW" firstAttribute="centerY" secondItem="SIS-BX-02E" secondAttribute="centerY" id="aqo-fm-HbX"/>
                 <constraint firstItem="ToB-ky-liu" firstAttribute="leading" secondItem="RyO-q6-wug" secondAttribute="trailing" constant="5" id="bba-2X-aND"/>
                 <constraint firstItem="sIg-6B-PGf" firstAttribute="leading" secondItem="WHm-pX-hrF" secondAttribute="trailing" constant="10" id="bbu-Fb-Czh"/>
                 <constraint firstItem="E6z-eJ-SEx" firstAttribute="trailing" secondItem="Fce-IM-6hd" secondAttribute="leading" constant="-10" id="cLI-m7-d1F"/>
@@ -247,7 +257,7 @@
                 <constraint firstItem="84Y-80-sH9" firstAttribute="leading" secondItem="Wrd-Al-uyw" secondAttribute="trailing" id="kRt-B8-WT5"/>
                 <constraint firstItem="IqS-2q-zXn" firstAttribute="centerY" secondItem="LvQ-97-TZ0" secondAttribute="centerY" id="lTy-Fk-ulu"/>
                 <constraint firstItem="RyO-q6-wug" firstAttribute="leading" secondItem="E6z-eJ-SEx" secondAttribute="trailing" constant="10" id="lys-lw-4Q6"/>
-                <constraint firstItem="Pk0-g4-0Rp" firstAttribute="leading" secondItem="CIS-Fg-9VU" secondAttribute="trailing" constant="5" id="nyd-Q2-xzt"/>
+                <constraint firstItem="Pk0-g4-0Rp" firstAttribute="leading" secondItem="CIS-Fg-9VU" secondAttribute="trailing" id="nyd-Q2-xzt"/>
                 <constraint firstAttribute="trailing" secondItem="SWK-Xg-sHI" secondAttribute="trailing" constant="5" id="oO0-de-glw"/>
                 <constraint firstItem="Wrd-Al-uyw" firstAttribute="leading" secondItem="lOG-oM-52f" secondAttribute="trailing" constant="5" id="oPf-mC-Yb9"/>
                 <constraint firstAttribute="bottom" secondItem="WHm-pX-hrF" secondAttribute="bottom" constant="23" id="sO3-M9-peA"/>
@@ -257,8 +267,26 @@
                 <constraint firstItem="CIS-Fg-9VU" firstAttribute="centerY" secondItem="uBU-ZK-GEw" secondAttribute="centerY" id="zXf-MC-6p1"/>
             </constraints>
             <connections>
+                <outlet property="feelsLikeLabel" destination="lOG-oM-52f" id="EkL-ZI-fmn"/>
+                <outlet property="feelsLikeUnitLabel" destination="84Y-80-sH9" id="s5U-fO-Gea"/>
+                <outlet property="feelsLikeValueLabel" destination="Wrd-Al-uyw" id="lpl-1E-4Yk"/>
                 <outlet property="refreshButton" destination="SWK-Xg-sHI" id="zw5-Jp-Pg9"/>
+                <outlet property="sunrizeLabel" destination="WHm-pX-hrF" id="HVv-U1-JCv"/>
+                <outlet property="sunsetLabel" destination="sIg-6B-PGf" id="0dj-rq-ntg"/>
+                <outlet property="temperatureUnitLabel" destination="jn5-X3-QIa" id="5Rk-kC-3b3"/>
+                <outlet property="temperatureValueLabel" destination="WBZ-Ex-Lcv" id="ErB-wr-n76"/>
+                <outlet property="visibilityLabel" destination="Lm4-FO-mKg" id="9y0-Tb-xrj"/>
+                <outlet property="visibilityUnitLabel" destination="UjW-Zp-xNW" id="tsv-41-9XJ"/>
+                <outlet property="visibilityValueLabel" destination="SIS-BX-02E" id="IHD-cS-gWT"/>
                 <outlet property="weatherAlerts" destination="UvM-gg-q2j" id="JoP-Zb-AV5"/>
+                <outlet property="weatherConditionIcon" destination="E6z-eJ-SEx" id="lDX-HJ-wey"/>
+                <outlet property="weatherConditionText" destination="Fce-IM-6hd" id="SW2-QO-ooZ"/>
+                <outlet property="windGustLabel" destination="uBU-ZK-GEw" id="aI3-IW-AgP"/>
+                <outlet property="windGustUnitLabel" destination="Pk0-g4-0Rp" id="t6y-J8-HB8"/>
+                <outlet property="windGustValueLabel" destination="CIS-Fg-9VU" id="Aa3-xW-ahe"/>
+                <outlet property="windSpeedLabel" destination="RyO-q6-wug" id="epT-7o-H7l"/>
+                <outlet property="windSpeedUnitLabel" destination="LvQ-97-TZ0" id="6kI-g5-p44"/>
+                <outlet property="windSpeedValueLabel" destination="ToB-ky-liu" id="Yqz-LR-GPj"/>
             </connections>
             <point key="canvasLocation" x="-45" y="135"/>
         </customView>

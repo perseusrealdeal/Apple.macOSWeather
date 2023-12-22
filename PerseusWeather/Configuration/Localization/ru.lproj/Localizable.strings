@@ -41,4 +41,20 @@
 "Location Name Label" = "Название места";
 "Latitude, Longitude Label" = "Широта, Долгота";
 
+"" = "";
+
+"Text Weather Condition..." = "Описание условий погоды...";
+
+"km" = "км";
+"m/s" = "м/с";
+
+"Visibility" = "Видимость";
+"Feels like" = "Ощущается";
+
+"Wind Speed" = "Скорость ветра";
+"Wind Gust" = "Порывы ветра";
+
+"SUNRIZE" = "ВОСХОД";
+"SUNSET" = "ЗАХОД";
+
 "RefreshButton" = "Заново";
