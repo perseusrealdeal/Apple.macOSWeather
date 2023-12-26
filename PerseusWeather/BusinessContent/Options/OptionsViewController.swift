@@ -1,5 +1,5 @@
 //
-//  PreferencesViewController.swift
+//  OptionsViewController.swift, OptionsWindowController.storyboard
 //  PerseusWeather
 //
 //  Created by Mikhail Zhigulin in 7531.
@@ -17,37 +17,12 @@
 
 import Cocoa
 
-class PreferencesViewController: NSViewController, NSTextFieldDelegate, Localizable {
+class OptionsViewController: NSViewController, NSTextFieldDelegate {
 
     // MARK: - Internals
 
     private let darkModeObserver = DarkModeObserver()
 
-    private var gotoSettingsTitle: String {
-
-        var calculatedTitle: String?
-
-        if #available(macOS 10.14, *) {
-            calculatedTitle = "Go to Settings..."
-        } else {
-            calculatedTitle = "Go to Preferences..."
-        }
-
-        return calculatedTitle ?? "Open System Options..."
-    }
-
-    private var systemAppName: String? {
-
-        var calculatedTitle: String?
-
-        if #available(macOS 10.14, *) {
-            calculatedTitle = "System Settings.app"
-        } else {
-            calculatedTitle = "System Preferences.app"
-        }
-
-        return calculatedTitle
-    }
     // MARK: - Outlets
 
     @IBOutlet private(set) weak var controlDarkMode: NSSegmentedControl!
@@ -59,11 +34,12 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate, Localiza
     @IBOutlet private(set) weak var controlOpenWeatherKey: NSTextField!
     @IBOutlet private(set) weak var controlUnlockButton: NSButton!
 
-    @IBOutlet weak var controlTemperature: NSSegmentedControl!
+    @IBOutlet private(set) weak var controlTemperature: NSSegmentedControl!
 
-    // MARK: - Actions & Events
+    // MARK: - Actions
 
     @IBAction func controlDarkModeDidChange(_ sender: NSSegmentedControl) {
+
         log.message("[\(type(of: self))].\(#function) - \(controlDarkMode.selectedSegment)")
 
         switch sender.selectedSegment {
@@ -79,6 +55,7 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate, Localiza
     }
 
     @IBAction func controlLanguageDidChange(_ sender: NSSegmentedControl) {
+
         log.message("[\(type(of: self))].\(#function) - \(controlLanguage.selectedSegment)")
 
         switch sender.selectedSegment {
@@ -96,6 +73,7 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate, Localiza
     }
 
     @IBAction func controlTemperatureDidChanged(_ sender: NSSegmentedControl) {
+
         log.message("[\(type(of: self))].\(#function) - \(controlTemperature.selectedSegment)")
 
         switch sender.selectedSegment {
@@ -114,11 +92,13 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate, Localiza
     }
 
     @IBAction func controlStartsOnLoginDidChange(_ sender: NSButton) {
+
         log.message("[\(type(of: self))].\(#function) - \(controlStartsOnLogin.state)")
 
         if controlStartsOnLogin.state == .on {
             AppSettings.startsOnLoginOption = .on
 
+            // TODO: - Resolve deprecated realization, works unexpectedly on newly macOS.
             try? PerseusStartsOnLogin.registration(option: .on)
 
             recalculateStartsOnLoginValues()
@@ -129,11 +109,14 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate, Localiza
     }
 
     @IBAction func controlGotoSettingsTapped(_ sender: NSButton) {
+
         log.message("[\(type(of: self))].\(#function)")
+
         AppGlobals.openTheApp(name: AppGlobals.systemAppName)
     }
 
     @IBAction func controlUnlockButtonTapped(_ sender: NSButton) {
+
         log.message("[\(type(of: self))].\(#function) - \(controlUnlockButton.stringValue)")
 
         if self.controlOpenWeatherKey.isEditable {
@@ -147,10 +130,88 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate, Localiza
     }
 
     @IBAction func closePreferencesWindow(_ sender: NSButton) {
+
         globals.preferencesPresenter.close()
     }
 
+    // MARK: - Initialization
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        log.message("[\(type(of: self))].\(#function)")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        // Setup content options.
+
+        self.view.wantsLayer = true
+        self.preferredContentSize = NSSize(width: self.view.frame.size.width,
+                                           height: self.view.frame.size.height)
+
+        configure()
+        lockOpenWeatherKeyHole()
+
+        // Setup DARK MODE.
+
+        darkModeObserver.action = { _ in self.callDarkModeSensitiveColours() }
+        callDarkModeSensitiveColours()
+
+        // Setup localization.
+
+        let nc = AppGlobals.notificationCenter
+
+        nc.addObserver(self, selector: #selector(self.localize),
+                       name: NSNotification.Name.languageSwitchedManuallyNotification,
+                       object: nil)
+
+        localize()
+
+        // Other start up adjustments.
+
+        /* TODO: - Works not expectedly... needs another solution.
+        nc.addObserver(self, selector: #selector(self.didBecomeKeyWindow),
+                       name: NSWindow.didBecomeKeyNotification,
+                       object: nil)
+        */
+    }
+
+    override func viewDidAppear() {
+        super.viewDidAppear()
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        updateControlDarkMode()
+        updateControlLanguage()
+        updateControlTemperature()
+        updateControlStartsOnLogin()
+    }
+
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        lockOpenWeatherKeyHole()
+    }
+
+    // MARK: - Start up Configuration
+
+    private func configure() {
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        controlOpenWeatherKey.delegate = self
+    }
+
+    // MARK: - Events
+
     func controlTextDidChange(_ obj: Notification) {
+
         log.message("[\(type(of: self))].\(#function)")
 
         guard let tf = obj.object as? NSTextField else { return }
@@ -175,62 +236,8 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate, Localiza
         }
     }
 
-    // MARK: - Native methods
-
-    override func awakeFromNib() {
-        log.message("[\(type(of: self))].\(#function)")
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.view.wantsLayer = true
-        self.preferredContentSize = NSSize(width: self.view.frame.size.width,
-                                           height: self.view.frame.size.height)
-
-        darkModeObserver.action = { _ in self.callDarkModeSensitiveColours() }
-        callDarkModeSensitiveColours()
-
-        controlOpenWeatherKey.delegate = self
-
-        let nc = AppGlobals.notificationCenter
-        nc.addObserver(self, selector: #selector(self.localize),
-                       name: NSNotification.Name.languageSwitchedManuallyNotification,
-                       object: nil)
-
-        nc.addObserver(self, selector: #selector(self.didBecomeKeyWindow),
-                       name: NSWindow.didBecomeKeyNotification,
-                       object: nil)
-
-        lockOpenWeatherKeyHole()
-
-        controlGotoSettings.title = self.gotoSettingsTitle
-    }
-
-    override func viewDidAppear() {
-        super.viewDidAppear()
-
-        updateControlDarkMode()
-        updateControlLanguage()
-        updateControlTemperature()
-        updateControlStartsOnLogin()
-    }
-
-    override func viewWillDisappear() {
-        super.viewWillDisappear()
-        log.message("[\(type(of: self))].\(#function)")
-
-        lockOpenWeatherKeyHole()
-    }
-    // MARK: - Public variables
-
-    // MARK: - Contract, public methods
-
-    @objc public func localize() {
-        log.message("[\(type(of: self))].\(#function)")
-    }
-
     @objc public func didBecomeKeyWindow(_ sender: NSNotification) {
+
         guard (sender.object as? NSWindow) != nil else { return }
 
         recalculateStartsOnLoginValues()
@@ -242,6 +249,7 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate, Localiza
     // MARK: - Realization, private methods
 
     private func updateControlDarkMode() {
+
         switch AppearanceService.DarkModeUserChoice {
         case .auto:
             controlDarkMode.selectedSegment = 2
@@ -253,12 +261,14 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate, Localiza
     }
 
     private func recalculateStartsOnLoginValues() {
+
         if let status = try? PerseusStartsOnLogin.isTurnedOn() {
             AppSettings.startsOnLoginOption = status ? .on : .off
         }
     }
 
     private func updateControlLanguage() {
+
         switch AppSettings.languageOption {
         case .system:
             controlLanguage.selectedSegment = 2
@@ -270,6 +280,7 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate, Localiza
     }
 
     private func updateControlTemperature() {
+
         switch AppSettings.temperatureOption {
         case .imperial:
             controlTemperature.selectedSegment = 2
@@ -281,8 +292,9 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate, Localiza
     }
 
     private func updateControlStartsOnLogin() {
-        log.message("[\(type(of: self))].\(#function)")
+
         let status = AppSettings.startsOnLoginOption
+
         switch status {
         case .on:
             controlStartsOnLogin.state = .on
@@ -295,11 +307,6 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate, Localiza
             controlStartsOnLogin.title = "Add to login items"
             controlGotoSettings.isHidden = true
         }
-    }
-
-    private func callDarkModeSensitiveColours() {
-        log.message("[\(type(of: self))].\(#function), DarkMode: \(DarkMode.style)")
-        view.layer?.backgroundColor = NSColor.perseusBlue.cgColor
     }
 
     private func lockOpenWeatherKeyHole() {
@@ -322,5 +329,29 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate, Localiza
         }
 
         self.controlUnlockButton.title = "Lock"
+    }
+}
+
+// MARK: - DARK MODE
+
+extension OptionsViewController {
+
+    private func callDarkModeSensitiveColours() {
+
+        log.message("[\(type(of: self))].\(#function), DarkMode: \(DarkMode.style)")
+
+        view.layer?.backgroundColor = NSColor.perseusBlue.cgColor
+    }
+}
+
+// MARK: - LOCALIZAION
+
+extension OptionsViewController: Localizable {
+
+    @objc func localize() {
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        controlGotoSettings.title = "Go to System Options".localizedValue
     }
 }

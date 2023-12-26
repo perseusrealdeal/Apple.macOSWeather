@@ -18,39 +18,38 @@
 "BundleDisplayName" = "Weather Forecast";
 "BundleName" = "Weather";
 
-"Version" = "Version";
+/* Popover Screen – PopoverViewController */
 
-"HumanReadableCopyrightShort" = "Copyright © 7531 - 7532 Mikhail Zhigulin of Novosibirsk";
-"CopyrightShortDetails" = "The year starts from the creation of the world according to a Slavic calendar. September, the 1st of Slavic year.";
+"Call Weather Button" = "Call Weather";
+"Made with Love" = "Made with Love from Novosibirsk.";
 
-"Credits" = "Credits:\n   Written by Mikhail Zhigulin,\n   Documented by Mikhail Zhigulin,\n   Artwork by Mikhail Zhigulin.";
+"Weather Tab Label" = "Weather";
+"Forecast Tab Label" = "Forecast";
 
-"TheAppleTechnologialTree" = "The Apple Technological Tree";
-"SourceCodeGitHub" = "Source Code GitHub";
+"Hide Button" = "Hide";
+"Options Button" = "Options";
+"Quit Button" = "Quit";
 
-"License" = "License";
-"Terms" = "Terms";
-"Close" = "Close";
-
-"TargetAudience" = "Only for individual anywhere; but not for worker who are employed for company or does a work to be employed in the Russian Federation.";
-
-"About Menu Item" = "Show About...";
-"Settings Menu Item" = "Open Options...";
-"Quit Menu Item" = "Quit the App";
+/* Location View */
 
 "Location Name Label" = "Location Name";
-"Permission" = "Permission";
-"status" = "status";
-"notDetermined Location Status" = "not determined";
-"deniedForAllAndRestricted Location Status" = "denied for all and restricted";
-"restricted Location Status" = "restricted";
-"deniedForAllApps Location Status" = "denied for all apps";
-"deniedForTheApp Location Status" = "denied for the app";
-"allowed Location Status" = "allowed";
 "Latitude, Longitude Label" = "Latitude, Longitude";
-"Allow Geo Service LocationButton" = "Allow Geo Service";
-"Go to Settings... LocationButton" = "Go to Settings...";
-"Refresh LocationButton" = "Refresh";
+
+"Allow Geo... Location Button" = "Allow Geo Service";
+"Go to Settings... Location Button" = "Go to Settings...";
+"Refresh Location Button" = "Refresh Location";
+
+"Permission" = "Location Access";
+"Status" = "Status";
+
+".notDetermined" = "Not determined.";
+".deniedForAllAndRestricted" = "Denied for all and restricted.";
+".restricted" = "Restricted.";
+".deniedForAllApps" = "Denied for all apps.";
+".deniedForTheApp" = "Denied for the app.";
+".allowed" = "Allowed.";
+
+/* Weather View */
 
 "Text Weather Condition..." = "Text Weather Condition...";
 
@@ -68,4 +67,29 @@
 
 "Weather alerts, dangers..." = "Weather alerts, dangers...";
 
-"RefreshButton" = "Refresh";
+/* Forecast View */
+
+"Forecast in Development" = "This tab in release 0.3 developing.";
+
+/* About Screen – AboutWindowController, AboutViewController */
+
+"App Version" = "Version";
+
+"Human Readable Copyright Short Text" = "Copyright © 7531 - 7532 Mikhail Zhigulin of Novosibirsk";
+"CopyrightShortDetails" = "The year starts from the creation of the world according to a Slavic calendar. September, the 1st of Slavic year.";
+
+"Credits" = "Credits:\n   Written by Mikhail Zhigulin,\n   Documented by Mikhail Zhigulin,\n   Artwork by Mikhail Zhigulin.";
+
+"TheAppleTechnologialTree" = "The Apple Technological Tree";
+"SourceCodeGitHub" = "Source Code GitHub";
+
+"License" = "License";
+"Terms" = "Terms & conditions";
+"Close" = "Close";
+
+"TargetAudience" = "Only for individual anywhere; but not for worker who are employed for company or does a work to be employed in the Russian Federation.";
+
+/* Options Screen – OptionsWindowController, OptionsViewController */
+
+"Options Screen Window Title" = "Weather App, Options";
+"Go to System Options" = "Go to System Options";

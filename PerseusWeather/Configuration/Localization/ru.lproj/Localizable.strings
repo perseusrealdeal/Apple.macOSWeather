@@ -18,43 +18,40 @@
 "BundleDisplayName" = "Прогноз Погоды";
 "BundleName" = "Погода";
 
-"Version" = "Выпуск";
+/* Popover Screen – PopoverViewController */
 
-"HumanReadableCopyrightShort" = "Охраняется авторским правом © 7531 - 7532 Михаил A. Жигулин из Новосибирска.";
-"CopyrightShortDetails" = "Летоисчесление ведется от Сотворения Мира в Звездном Храме в соответствии со славянским календарем в котором первый месяц сентябрь.";
+"Call Weather Button" = "Запроси Погоду";
+"Made with Love" = "C любовью из Новосибирска.";
 
-"Credits" = "Работы выполнены:\n   Кодирование Михаил А. Жигулин,\n   Документирование Михаил А. Жигулин,\n   Изобразительное искусство Михаил А. Жигулин.";
+"Weather Tab Label" = "Погода Сейчас";
+"Forecast Tab Label" = "Прогноз";
 
-"TheAppleTechnologialTree" = "Технологическая яблонька";
-"SourceCodeGitHub" = "Исходники на GitHub";
+"Hide Button" = "Скройся";
+"Options Button" = "Настройки";
+"Quit Button" = "Выйди";
 
-"License" = "Текст лицензии";
-"Terms" = "Соглашение";
-"Close" = "Исчезни";
+/* Location View */
 
-"TargetAudience" = "Только для безработных, самозанятых и/или индивидуальных предпринимателей — ограничение на использоование для лиц находящихся в найме на территории Российской Федерации, которые работают по контракту или без него (тестовые задания) с намерением вступить в трудовые отношения по контракту срочному и/или бессрочному.";
-
-"About Menu Item" = "Расскажи о себе...";
-"Settings Menu Item" = "Дай пожмакать...";
-"Quit Menu Item" = "Исчезни";
-
-"Location Name Label" = "Название места";
-"Permission" = "Доступ";
-"status" = "статус";
-"notDetermined Location Status" = "не определен";
-"deniedForAllAndRestricted Location Status" = "заблокирован для всех и ограничен";
-"restricted Location Status" = "ограничен";
-"deniedForAllApps Location Status" = "заблокирован для всех";
-"deniedForTheApp Location Status" = "заблокирован";
-"allowed Location Status" = "предоставлен";
+"Location Name Label" = "Название Места...";
 "Latitude, Longitude Label" = "Широта, Долгота";
-"Allow Geo Service LocationButton" = "Разреши";
-"Go to Settings... LocationButton" = "Настройки";
-"Refresh LocationButton" = "Заново";
 
-"" = "";
+"Allow Geo... Location Button" = "Спроси Разрешение";
+"Go to Settings... Location Button" = "Системные Настройки";
+"Refresh Location Button" = "Обнови Геоданные";
 
-"Text Weather Condition..." = "Кратко условия погоды...";
+"Permission" = "Гео Доступ";
+"Status" = "Cтатус";
+
+".notDetermined" = "Не определен.";
+".deniedForAllAndRestricted" = "Заблокирован для всех и ограничен.";
+".restricted" = "Ограничен.";
+".deniedForAllApps" = "Заблокирован для всех.";
+".deniedForTheApp" = "Заблокирован.";
+".allowed" = "Предоставлен.";
+
+/* Weather View */
+
+"Text Weather Condition..." = "Кратко об условиях погоды...";
 
 "km" = "км";
 "m/s" = "м/с";
@@ -70,4 +67,29 @@
 
 "Weather alerts, dangers..." = "Погодные аномалиии, предупреждения...";
 
-"RefreshButton" = "Заново";
+/* Forecast View */
+
+"Forecast in Development" = "Секция в разработке релиза 0.3.";
+
+/* About Screen – AboutWindowController, AboutViewController */
+
+"App Version" = "Выпуск";
+
+"Human Readable Copyright Short Text" = "Охраняется авторским правом © 7531 - 7532 Михаил A. Жигулин из Новосибирска.";
+"CopyrightShortDetails" = "Летоисчесление ведется от Сотворения Мира в Звездном Храме в соответствии со славянским календарем в котором первый месяц сентябрь.";
+
+"Credits" = "Работы выполнены:\n   Кодирование Михаил А. Жигулин,\n   Документирование Михаил А. Жигулин,\n   Изобразительное искусство Михаил А. Жигулин.";
+
+"TheAppleTechnologialTree" = "Технологическая яблонька";
+"SourceCodeGitHub" = "Исходники на GitHub";
+
+"License" = "Текст лицензии";
+"Terms" = "Соглашение";
+"Close" = "Исчезни";
+
+"TargetAudience" = "Только для безработных, самозанятых и/или индивидуальных предпринимателей — ограничение на использоование для лиц находящихся в найме на территории Российской Федерации, которые работают по контракту или без него (тестовые задания) с намерением вступить в трудовые отношения по контракту срочному и/или бессрочному.";
+
+/* Options Screen – OptionsWindowController, OptionsViewController */
+
+"Options Screen Window Title" = "Опции приложения";
+"Go to System Options" = "Открыть системные опции";

@@ -12,7 +12,8 @@
                 <windowController id="qVI-uV-xDV" customClass="AboutWindowController" customModule="PerseusWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="Az4-Bv-Rv1">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" fullSizeContentView="YES"/>
-                        <rect key="contentRect" x="163" y="199" width="350" height="400"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES"/>
+                        <rect key="contentRect" x="150" y="0.0" width="350" height="400"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
                         <connections>
                             <outlet property="delegate" destination="qVI-uV-xDV" id="HDD-Dy-nt4"/>

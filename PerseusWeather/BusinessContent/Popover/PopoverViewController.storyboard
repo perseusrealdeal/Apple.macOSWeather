@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="bU7-R8-ocO">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Popover View Controller-->
+        <scene sceneID="PEd-7d-5j0">
+            <objects>
+                <viewController id="bU7-R8-ocO" customClass="PopoverViewController" customModule="PerseusWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="tOy-S4-hL0">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="500"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yf8-y3-HSv">
+                                <rect key="frame" x="0.0" y="30" width="400" height="470"/>
+                                <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="KvG-58-2dT" customClass="LocationView" customModule="PerseusWeather" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="380" width="400" height="90"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="90" id="lwb-ZM-Ei1"/>
+                                        </constraints>
+                                    </customView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="zay-Cg-HHE">
+                                        <rect key="frame" x="0.0" y="350" width="400" height="30"/>
+                                        <subviews>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1oS-xB-Iag">
+                                                <rect key="frame" x="3" y="-2" width="112" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Call Weather" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fAD-io-zUq">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="callWeatherButtonTapped:" target="bU7-R8-ocO" id="RjU-kQ-8BC"/>
+                                                </connections>
+                                            </button>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="II3-Ni-sjv">
+                                                <rect key="frame" x="239" y="10" width="153" height="11"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Made with Love from Novosibirsk." id="oSM-RN-xuB">
+                                                    <font key="font" metaFont="miniSystem"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="1oS-xB-Iag" firstAttribute="leading" secondItem="zay-Cg-HHE" secondAttribute="leading" constant="10" id="KZh-AQ-gtW"/>
+                                            <constraint firstItem="II3-Ni-sjv" firstAttribute="centerY" secondItem="zay-Cg-HHE" secondAttribute="centerY" id="Nbj-O7-brO"/>
+                                            <constraint firstAttribute="trailing" secondItem="II3-Ni-sjv" secondAttribute="trailing" constant="10" id="XaX-av-925"/>
+                                            <constraint firstAttribute="height" constant="30" id="p45-Yc-lD0"/>
+                                            <constraint firstItem="1oS-xB-Iag" firstAttribute="centerY" secondItem="zay-Cg-HHE" secondAttribute="centerY" id="xt1-SL-Ss4"/>
+                                        </constraints>
+                                    </customView>
+                                    <tabView initialItem="g1D-Zn-Myw" id="CfE-8B-27I">
+                                        <rect key="frame" x="-2" y="-10" width="404" height="366"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                        <tabViewItems>
+                                            <tabViewItem label="Weather" identifier="" id="g1D-Zn-Myw">
+                                                <view key="view" id="4E9-lB-SpT" customClass="WeatherView" customModule="PerseusWeather" customModuleProvider="target">
+                                                    <rect key="frame" x="10" y="33" width="384" height="320"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </view>
+                                            </tabViewItem>
+                                            <tabViewItem label="Forecast" identifier="" id="XwN-hq-rQ0">
+                                                <view key="view" id="SkI-S3-94P" customClass="ForecastView" customModule="PerseusWeather" customModuleProvider="target">
+                                                    <rect key="frame" x="10" y="33" width="384" height="320"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </view>
+                                            </tabViewItem>
+                                        </tabViewItems>
+                                    </tabView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="zay-Cg-HHE" secondAttribute="trailing" id="BPT-RN-ByP"/>
+                                    <constraint firstItem="KvG-58-2dT" firstAttribute="width" secondItem="yf8-y3-HSv" secondAttribute="width" id="M9G-rf-IO8"/>
+                                    <constraint firstAttribute="trailing" secondItem="CfE-8B-27I" secondAttribute="trailing" constant="5" id="Rgi-uf-Xaz"/>
+                                    <constraint firstItem="KvG-58-2dT" firstAttribute="top" secondItem="yf8-y3-HSv" secondAttribute="top" id="VuZ-fY-QF4"/>
+                                    <constraint firstItem="CfE-8B-27I" firstAttribute="top" secondItem="zay-Cg-HHE" secondAttribute="bottom" id="Y5t-iy-yGv"/>
+                                    <constraint firstItem="CfE-8B-27I" firstAttribute="leading" secondItem="yf8-y3-HSv" secondAttribute="leading" constant="5" id="cZ2-vx-4Cr"/>
+                                    <constraint firstItem="zay-Cg-HHE" firstAttribute="leading" secondItem="yf8-y3-HSv" secondAttribute="leading" id="iCj-XX-We7"/>
+                                    <constraint firstAttribute="bottom" secondItem="CfE-8B-27I" secondAttribute="bottom" id="ubr-Tu-x7i"/>
+                                    <constraint firstItem="zay-Cg-HHE" firstAttribute="top" secondItem="KvG-58-2dT" secondAttribute="bottom" id="wRD-Hb-dIA"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tUp-sA-zYf">
+                                <rect key="frame" x="315" y="-2" width="62" height="32"/>
+                                <buttonCell key="cell" type="push" title="Hide" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="at3-N6-mvc">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="hidePopoverButtonTapped:" target="bU7-R8-ocO" id="8un-NE-nYH"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sge-Gy-4fJ">
+                                <rect key="frame" x="242" y="-2" width="82" height="32"/>
+                                <buttonCell key="cell" type="push" title="Options" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RfE-ti-Nh0">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="optionsButtonTapped:" target="bU7-R8-ocO" id="uqG-3m-Iy2"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hYB-Yv-b5e">
+                                <rect key="frame" x="-2" y="-2" width="60" height="32"/>
+                                <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SvM-8b-rGj">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="quitButtonTapped:" target="bU7-R8-ocO" id="uig-8F-krT"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LDb-S7-5Yd">
+                                <rect key="frame" x="372" y="1" width="25" height="25"/>
+                                <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3eR-HU-Wlg">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="aboutButtonTapped:" target="bU7-R8-ocO" id="EIe-gW-Pgt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="yf8-y3-HSv" firstAttribute="leading" secondItem="tOy-S4-hL0" secondAttribute="leading" id="AlQ-cK-iMP"/>
+                            <constraint firstAttribute="bottom" secondItem="yf8-y3-HSv" secondAttribute="bottom" constant="30" id="ExQ-Mm-DJr"/>
+                            <constraint firstItem="LDb-S7-5Yd" firstAttribute="bottom" secondItem="tOy-S4-hL0" secondAttribute="bottom" constant="-5" id="HwC-iL-MZP"/>
+                            <constraint firstAttribute="bottom" secondItem="hYB-Yv-b5e" secondAttribute="bottom" constant="5" id="Iae-l9-ziU"/>
+                            <constraint firstItem="yf8-y3-HSv" firstAttribute="top" secondItem="tOy-S4-hL0" secondAttribute="top" id="SS2-dc-IEk"/>
+                            <constraint firstItem="hYB-Yv-b5e" firstAttribute="leading" secondItem="tOy-S4-hL0" secondAttribute="leading" constant="5" id="SsD-JB-coG"/>
+                            <constraint firstAttribute="bottom" secondItem="tUp-sA-zYf" secondAttribute="bottom" constant="5" id="UAR-7T-FyD"/>
+                            <constraint firstItem="LDb-S7-5Yd" firstAttribute="leading" secondItem="tUp-sA-zYf" secondAttribute="trailing" constant="5" id="Z1l-J2-EKi"/>
+                            <constraint firstItem="sge-Gy-4fJ" firstAttribute="centerY" secondItem="tUp-sA-zYf" secondAttribute="centerY" id="exW-jB-rvD"/>
+                            <constraint firstAttribute="trailing" secondItem="LDb-S7-5Yd" secondAttribute="trailing" constant="5" id="lkS-lq-0ad"/>
+                            <constraint firstAttribute="trailing" secondItem="yf8-y3-HSv" secondAttribute="trailing" id="moj-YV-n8h"/>
+                            <constraint firstItem="sge-Gy-4fJ" firstAttribute="trailing" secondItem="tUp-sA-zYf" secondAttribute="leading" constant="-5" id="ueE-Lt-bKZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="aboutButton" destination="LDb-S7-5Yd" id="1T3-mr-vdc"/>
+                        <outlet property="callWeatherButton" destination="1oS-xB-Iag" id="f1j-sg-RGY"/>
+                        <outlet property="forecastTabViewItem" destination="XwN-hq-rQ0" id="rKh-up-612"/>
+                        <outlet property="hidePopoverButton" destination="tUp-sA-zYf" id="wva-jf-wiD"/>
+                        <outlet property="locationView" destination="KvG-58-2dT" id="7Zz-c3-eNb"/>
+                        <outlet property="madeWithLoveLabel" destination="II3-Ni-sjv" id="ohb-Gv-dHz"/>
+                        <outlet property="optionsButton" destination="sge-Gy-4fJ" id="vP5-XX-AQF"/>
+                        <outlet property="quitButton" destination="hYB-Yv-b5e" id="vag-gP-bQo"/>
+                        <outlet property="weatherTabViewItem" destination="g1D-Zn-Myw" id="7uf-lK-bWC"/>
+                        <outlet property="weatherView" destination="4E9-lB-SpT" id="aA7-4n-QTL"/>
+                    </connections>
+                </viewController>
+                <customObject id="9uD-mB-xHs" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-43" y="116"/>
+        </scene>
+    </scenes>
+</document>

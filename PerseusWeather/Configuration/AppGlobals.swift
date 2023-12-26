@@ -21,7 +21,7 @@ struct AppGlobals {
     static let appKeyOpenWeather = "79eefe16f6e4714470502074369fc77b"
 
     static let statusMenusButtonIconName = "Icon"
-    static let statusMenusButtonTitle = "Text"
+    static let statusMenusButtonTitle = "Perseus"
 
     static var systemAppName: String? {
 
@@ -57,8 +57,8 @@ struct AppGlobals {
     public let weatherClient: OpenWeatherFreeClient
 
     public let statusMenusButtonPresenter: StatusMenusButtonPresenter
-    public let preferencesPresenter: PreferencesWindowController
-    public let aboutPresenter: AboutWindowController
+    public let preferencesPresenter: OptionsWindowController!
+    public let aboutPresenter: AboutWindowController!
 
     public let languageSwitcher: LanguageSwitcher
     public let dataDefender: PerseusDataDefender
@@ -70,8 +70,12 @@ struct AppGlobals {
         self.weatherClient = OpenWeatherFreeClient()
 
         self.statusMenusButtonPresenter = StatusMenusButtonPresenter()
-        self.preferencesPresenter = PreferencesWindowController.storyboardInstance()
-        self.aboutPresenter = AboutWindowController.storyboardInstance()
+
+        self.preferencesPresenter =
+        OptionsWindowController.storyboardInstance() as? OptionsWindowController
+
+        self.aboutPresenter =
+        AboutWindowController.storyboardInstance()  as? AboutWindowController
 
         self.languageSwitcher = LanguageSwitcher.shared
         self.dataDefender = PerseusDataDefender.shared
@@ -101,9 +105,12 @@ struct AppGlobals {
             else { return }
 
         // Another way to open System options app
-
         // guard let pathURL = URL(string: AppGlobals.openSystemApp) else { return }
 
         NSWorkspace.shared.open(pathURL)
+    }
+
+    static func quitTheApp() {
+        app.terminate(appDelegate)
     }
 }

@@ -1,11 +1,11 @@
 //
-//  AboutWindowController.swift, AboutWindowController.storyboard
+//  OptionsWindowController.swift, OptionsWindowController.storyboard
 //  PerseusWeather
 //
-//  Created by Mikhail Zhigulin in 7532.
+//  Created by Mikhail Zhigulin in 7531.
 //
-//  Copyright © 7532 Mikhail Zhigulin of Novosibirsk
-//  Copyright © 7532 PerseusRealDeal
+//  Copyright © 7531 - 7532 Mikhail Zhigulin of Novosibirsk
+//  Copyright © 7531 - 7532 PerseusRealDeal
 //
 //  The year starts from the creation of the world according to a Slavic calendar.
 //  September, the 1st of Slavic year.
@@ -15,7 +15,7 @@
 
 import Cocoa
 
-class AboutWindowController: NSWindowController {
+class OptionsWindowController: NSWindowController, NSWindowDelegate {
 
     // MARK: - Storyboard instance
 
@@ -47,8 +47,7 @@ class AboutWindowController: NSWindowController {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        // No title for the about the app screen.
-        self.window?.title = ""
+        self.window?.title = "Options Screen Window Title".localizedValue
     }
 
     // MARK: - Other methods

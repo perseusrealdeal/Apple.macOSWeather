@@ -1,5 +1,5 @@
 //
-//  AboutViewController.swift
+//  AboutViewController.swift, AboutWindowController.storyboard
 //  PerseusWeather
 //
 //  Created by Mikhail Zhigulin in 7532.
@@ -15,7 +15,13 @@
 
 import Cocoa
 
-class AboutViewController: NSViewController, Localizable {
+class AboutViewController: NSViewController {
+
+    // MARK: - Internals
+
+    private let darkModeObserver = DarkModeObserver()
+
+    // MARK: - Outlets
 
     @IBOutlet weak var theSourceCodeGitHubButton: NSButton!
     @IBOutlet weak var theAppleTechnologicalTreeButton: NSButton!
@@ -34,39 +40,103 @@ class AboutViewController: NSViewController, Localizable {
 
     @IBOutlet var theCreditsText: NSTextView!
 
+    // MARK: - Actions
+
+    @IBAction func closeButtonTapped(_ sender: NSButton) {
+
+        globals.aboutPresenter.close()
+    }
+
+    @IBAction func licenseButtonTapped(_ sender: NSButton) {
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        // TODO: - Show licencse text for reading
+    }
+
+    @IBAction func termsButtonTapped(_ sender: NSButton) {
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        // TODO: - Show terms and conditions text for reading
+    }
+
+    // MARK: - Other Actions
+
+    @IBAction func theSourceCodeTagTapped(_ sender: NSButton) {
+
+        AppGlobals.openDefaultBrowser(string: theSourceCodeLink)
+    }
+
+    @IBAction func theAppleTechnologicalTreeTagTapped(_ sender: NSButton) {
+
+        AppGlobals.openDefaultBrowser(string: theAppleTechnologicalTreeLink)
+    }
+
+    @IBAction func thePerseusDarkModeTagTapped(_ sender: Any) {
+
+        AppGlobals.openDefaultBrowser(string: thePerseusDarkModeLink)
+    }
+
+    @IBAction func theOpenWeatherClientTagTapped(_ sender: Any) {
+
+        AppGlobals.openDefaultBrowser(string: theOpenWeatherClientLink)
+    }
+
+    @IBAction func thePerseusGeoLocationKitTagTapped(_ sender: Any) {
+
+        AppGlobals.openDefaultBrowser(string: thePerseusGeoLocationKitLink)
+    }
+
+    @IBAction func thePerseusUISystemKitTagTapped(_ sender: Any) {
+
+        AppGlobals.openDefaultBrowser(string: thePerseusUISystemKitLink)
+    }
+
+    @IBAction func thePerseusLoggerTagTapped(_ sender: Any) {
+
+        AppGlobals.openDefaultBrowser(string: thePerseusLoggerLink)
+    }
+
+    // MARK: - Initialization
+
+    override func awakeFromNib() {
+
+        log.message("[\(type(of: self))].\(#function)")
+    }
+
     override func viewDidLoad() {
 
+        log.message("[\(type(of: self))].\(#function)")
+
+        // Setup content options.
+
+        self.view.wantsLayer = true
+        self.preferredContentSize = NSSize(width: self.view.frame.size.width,
+                                           height: self.view.frame.size.height)
+
+        configure()
+
+        // Setup DARK MODE.
+
+        darkModeObserver.action = { _ in self.callDarkModeSensitiveColours() }
+        callDarkModeSensitiveColours()
+
+        // Setup localization.
+
         let nc = AppGlobals.notificationCenter
+
         nc.addObserver(self, selector: #selector(self.localize),
                        name: NSNotification.Name.languageSwitchedManuallyNotification,
                        object: nil)
 
-        self.theAppVertionText.stringValue =
-            Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
-
-        configure()
+        localize()
     }
 
-    @objc func localize() {
-        log.message("[\(type(of: self))].\(#function)")
-
-        self.theSourceCodeGitHubButton.title = "SourceCodeGitHub".localizedValue
-        self.theAppleTechnologicalTreeButton.title = "TheAppleTechnologialTree".localizedValue
-
-        self.theAppVersionLabel.stringValue = "Version".localizedValue + ":"
-        self.theAppNameText.stringValue = "BundleDisplayName".localizedValue
-
-        self.theCopyrightText.string = "HumanReadableCopyrightShort".localizedValue
-        self.theCopyrightDetailsText.string = "CopyrightShortDetails".localizedValue
-
-        self.theCreditsText.string = "Credits".localizedValue
-
-        self.theLicenseButton.title = "License".localizedValue
-        self.theTermsButton.title = "Terms".localizedValue
-        self.theCloseButton.title = "Close".localizedValue
-    }
+    // MARK: - Start up Configuration
 
     private func configure() {
+
         self.theCopyrightText.backgroundColor = .clear
         self.theCopyrightText.isEditable = false
         self.theCopyrightText.alignment = .center
@@ -78,47 +148,44 @@ class AboutViewController: NSViewController, Localizable {
         self.theCreditsText.backgroundColor = .clear
         self.theCreditsText.isEditable = false
         self.theCreditsText.alignment = .left
+
+        self.theAppVertionText.stringValue =
+            Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
     }
+}
 
-    // MARK: - Tags and Buttons
+// MARK: - DARK MODE
 
-    @IBAction func theSourceCodeTagTapped(_ sender: NSButton) {
-        AppGlobals.openDefaultBrowser(string: theSourceCodeLink)
+extension AboutViewController {
+
+    private func callDarkModeSensitiveColours() {
+
+        log.message("[\(type(of: self))].\(#function), DarkMode: \(DarkMode.style)")
+        view.layer?.backgroundColor = NSColor.perseusBlue.cgColor
     }
+}
 
-    @IBAction func theAppleTechnologicalTreeTagTapped(_ sender: NSButton) {
-        AppGlobals.openDefaultBrowser(string: theAppleTechnologicalTreeLink)
-    }
+// MARK: - LOCALIZAION
 
-    @IBAction func thePerseusDarkModeTagTapped(_ sender: Any) {
-        AppGlobals.openDefaultBrowser(string: thePerseusDarkModeLink)
-    }
+extension AboutViewController: Localizable {
 
-    @IBAction func theOpenWeatherClientTagTapped(_ sender: Any) {
-        AppGlobals.openDefaultBrowser(string: theOpenWeatherClientLink)
-    }
+    @objc func localize() {
 
-    @IBAction func thePerseusGeoLocationKitTagTapped(_ sender: Any) {
-        AppGlobals.openDefaultBrowser(string: thePerseusGeoLocationKitLink)
-    }
-
-    @IBAction func thePerseusUISystemKitTagTapped(_ sender: Any) {
-        AppGlobals.openDefaultBrowser(string: thePerseusUISystemKitLink)
-    }
-
-    @IBAction func thePerseusLoggerTagTapped(_ sender: Any) {
-        AppGlobals.openDefaultBrowser(string: thePerseusLoggerLink)
-    }
-
-    @IBAction func licenseButtonTapped(_ sender: NSButton) {
         log.message("[\(type(of: self))].\(#function)")
-    }
 
-    @IBAction func termsButtonTapped(_ sender: NSButton) {
-        log.message("[\(type(of: self))].\(#function)")
-    }
+        self.theSourceCodeGitHubButton.title = "SourceCodeGitHub".localizedValue
+        self.theAppleTechnologicalTreeButton.title = "TheAppleTechnologialTree".localizedValue
 
-    @IBAction func closeButtonTapped(_ sender: NSButton) {
-        globals.aboutPresenter.close()
+        self.theAppVersionLabel.stringValue = "App Version".localizedValue + ":"
+        self.theAppNameText.stringValue = "BundleDisplayName".localizedValue
+
+        self.theCopyrightText.string = "Human Readable Copyright Short Text".localizedValue
+        self.theCopyrightDetailsText.string = "CopyrightShortDetails".localizedValue
+
+        self.theCreditsText.string = "Credits".localizedValue
+
+        self.theLicenseButton.title = "License".localizedValue
+        self.theTermsButton.title = "Terms".localizedValue
+        self.theCloseButton.title = "Close".localizedValue
     }
 }
