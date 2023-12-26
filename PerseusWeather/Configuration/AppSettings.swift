@@ -18,7 +18,7 @@ import Foundation
 // MARK: - Keys
 
 // public let OPEN_WEATHER_API_KEY_OPTION_KEY = "OPEN_WEATHER_API_OPTION_KEY"
-public let OPEN_WEATHER_API_KEY_TEXT_LIMIT = 77
+public let OPEN_WEATHER_API_KEY_TEXT_LIMIT = 32
 
 public let LANGUAGE_OPTION_KEY = "LANGUAGE_OPTION_KEY"
 public let LANGUAGE_OPTION_DEFAULT = LanguageOption.system
@@ -48,11 +48,15 @@ class AppSettings {
                 return "" // There's no value
             }
 
-            // TODO: check secret before returning value
-
             // The value should meet OPEN_WEATHER_API_KEY_TEXT_LIMIT
+            guard let text = secret, !text.isEmpty else { return secret }
 
-            // Saved value
+            let limit = OPEN_WEATHER_API_KEY_TEXT_LIMIT
+
+            if text.count > limit {
+                secret = "The key text doesn't meet length limit.".localizedValue
+            }
+
             return secret
         }
         set {

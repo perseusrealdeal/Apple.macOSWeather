@@ -18,6 +18,10 @@
 "BundleDisplayName" = "Прогноз Погоды";
 "BundleName" = "Погода";
 
+/* OpenWeather API key option */
+
+"The key text doesn't meet length limit." = "Ключ подозрительный.";
+
 /* Popover Screen – PopoverViewController */
 
 "Call Weather Button" = "Запроси Погоду";
