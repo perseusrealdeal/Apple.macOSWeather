@@ -156,6 +156,7 @@
 		4B1483D82912892C0013B76E = {
 			isa = PBXGroup;
 			children = (
+				4B6F987D2928259E00ADB03A /* REQUIREMENTS.md */,
 				4B030E7C2B2DB42200ED9018 /* CHANGELOG.md */,
 				4BBE907029137B5D008F734D /* main.yml */,
 				4BBE906A291293F0008F734D /* LICENSE */,
@@ -181,7 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				4BBE90662912931A008F734D /* main.swift */,
-				4B6F986A2927E0C000ADB03A /* Requirements */,
+				4B6F98632927DDA300ADB03A /* Localization */,
 				4B6F98752927E7C600ADB03A /* FirstPartyCode */,
 				4B14840229128A930013B76E /* Configuration */,
 				4B14840429128E460013B76E /* BusinessContent */,
@@ -202,7 +203,6 @@
 		4B14840229128A930013B76E /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				4B6F98632927DDA300ADB03A /* Localization */,
 				4B1483E82912892F0013B76E /* Assets.xcassets */,
 				4B1483ED2912892F0013B76E /* Info.plist */,
 				4B1483EE2912892F0013B76E /* PerseusWeather.entitlements */,
@@ -247,20 +247,12 @@
 		4B6F98632927DDA300ADB03A /* Localization */ = {
 			isa = PBXGroup;
 			children = (
+				4B6F986B2927E0F000ADB03A /* Localization_en.plist */,
+				4B6F986D2927E11700ADB03A /* Localization_ru.plist */,
 				4B6F98682927DF1400ADB03A /* InfoPlist.strings */,
 				4B6F98732927E4FC00ADB03A /* Localizable.strings */,
 			);
 			path = Localization;
-			sourceTree = "<group>";
-		};
-		4B6F986A2927E0C000ADB03A /* Requirements */ = {
-			isa = PBXGroup;
-			children = (
-				4B6F987D2928259E00ADB03A /* REQUIREMENTS.md */,
-				4B6F986B2927E0F000ADB03A /* Localization_en.plist */,
-				4B6F986D2927E11700ADB03A /* Localization_ru.plist */,
-			);
-			path = Requirements;
 			sourceTree = "<group>";
 		};
 		4B6F98752927E7C600ADB03A /* FirstPartyCode */ = {
