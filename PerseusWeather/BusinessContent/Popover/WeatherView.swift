@@ -128,6 +128,6 @@ extension WeatherView {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        weatherConditionTextValueLabel.stringValue = "Text Weather Condition...".localizedValue
+// weatherConditionTextValueLabel.stringValue = "Text Weather Condition...".localizedValue
     }
 }
