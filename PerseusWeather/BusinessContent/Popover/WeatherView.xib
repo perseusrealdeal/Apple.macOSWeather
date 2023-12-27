@@ -85,31 +85,31 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PB9-Qj-d2M">
-                    <rect key="frame" x="56" y="118" width="35" height="26"/>
+                    <rect key="frame" x="58" y="120" width="32" height="24"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="6.2" id="S8m-Vk-ggL">
-                        <font key="font" metaFont="system" size="22"/>
+                        <font key="font" metaFont="system" size="20"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DfB-CI-gff">
-                    <rect key="frame" x="147" y="118" width="90" height="26"/>
+                    <rect key="frame" x="151" y="120" width="83" height="24"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="164: SSE" id="qJu-Qw-XmC">
-                        <font key="font" metaFont="system" size="22"/>
+                        <font key="font" metaFont="system" size="20"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cvz-V8-5WT">
-                    <rect key="frame" x="277" y="118" width="55" height="26"/>
+                    <rect key="frame" x="279" y="120" width="50" height="24"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="13.31" id="3L5-oP-Rik">
-                        <font key="font" metaFont="system" size="22"/>
+                        <font key="font" metaFont="system" size="20"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YzE-tW-RHB">
-                    <rect key="frame" x="8" y="97" width="150" height="16"/>
+                    <rect key="frame" x="8" y="99" width="150" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Wind: Moderate breeze." id="Kg5-UV-w7N">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -117,7 +117,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rQx-Yu-eFw">
-                    <rect key="frame" x="8" y="76" width="156" height="16"/>
+                    <rect key="frame" x="8" y="78" width="156" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Clouds: Overcast clouds." id="g9c-1V-okW">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -125,7 +125,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ykS-pm-3ue">
-                    <rect key="frame" x="230" y="97" width="106" height="16"/>
+                    <rect key="frame" x="230" y="99" width="106" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Visibility: 10.0km" id="q6L-eH-9b8">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -133,7 +133,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g41-ja-q68">
-                    <rect key="frame" x="230" y="76" width="93" height="16"/>
+                    <rect key="frame" x="230" y="78" width="93" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Humidity: 87%" id="9Bc-0X-3XV">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -160,17 +160,17 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vWh-dP-4Gl">
-                    <rect key="frame" x="167" y="7" width="50" height="26"/>
+                    <rect key="frame" x="170" y="9" width="45" height="24"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="1021" id="ghv-g6-XmG">
-                        <font key="font" metaFont="system" size="22"/>
+                        <font key="font" metaFont="system" size="20"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qBw-SP-YLr">
-                    <rect key="frame" x="249" y="7" width="93" height="26"/>
+                    <rect key="frame" x="253" y="9" width="85" height="24"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="05:03pm" id="DjO-Im-nAI">
-                        <font key="font" metaFont="system" size="22"/>
+                        <font key="font" metaFont="system" size="20"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -184,9 +184,9 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ufe-ll-cpP">
-                    <rect key="frame" x="41" y="7" width="92" height="26"/>
+                    <rect key="frame" x="45" y="9" width="85" height="24"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="09:53am" id="8Uk-rl-JVf">
-                        <font key="font" metaFont="system" size="22"/>
+                        <font key="font" metaFont="system" size="20"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
