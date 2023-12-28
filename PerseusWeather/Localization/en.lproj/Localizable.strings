@@ -30,8 +30,10 @@
 "Weather Tab Label" = "Weather";
 "Forecast Tab Label" = "Forecast";
 
+"About Button" = "About";
 "Hide Button" = "Hide";
 "Options Button" = "Options";
+
 "Quit Button" = "Quit";
 
 /* Location View */
@@ -41,7 +43,7 @@
 
 "Allow Geo... Location Button" = "Allow Geo Service";
 "Go to Settings... Location Button" = "Go to Settings...";
-"Refresh Location Button" = "Refresh Location";
+"Refresh Location Button" = "Get Current Location";
 
 "Permission" = "Location Access";
 "Status" = "Status";

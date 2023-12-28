@@ -30,8 +30,10 @@
 "Weather Tab Label" = "Погода Сейчас";
 "Forecast Tab Label" = "Прогноз";
 
+"About Button" = "Cебяшка";
 "Hide Button" = "Скройся";
 "Options Button" = "Настройки";
+
 "Quit Button" = "Выйди";
 
 /* Location View */
@@ -41,7 +43,7 @@
 
 "Allow Geo... Location Button" = "Спроси Разрешение";
 "Go to Settings... Location Button" = "Системные Настройки";
-"Refresh Location Button" = "Обнови Геоданные";
+"Refresh Location Button" = "Обнови Геолокацию";
 
 "Permission" = "Гео Доступ";
 "Status" = "Cтатус";

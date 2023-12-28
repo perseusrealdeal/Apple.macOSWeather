@@ -163,8 +163,10 @@ extension PopoverViewController: Localizable {
         weatherTabViewItem.label = "Weather Tab Label".localizedValue
         forecastTabViewItem.label = "Forecast Tab Label".localizedValue
 
+        aboutButton.title = "About Button".localizedValue
         hidePopoverButton.title = "Hide Button".localizedValue
         optionsButton.title = "Options Button".localizedValue
+
         quitButton.title = "Quit Button".localizedValue
     }
 }

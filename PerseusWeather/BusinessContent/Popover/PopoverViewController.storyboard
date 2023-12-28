@@ -11,20 +11,20 @@
             <objects>
                 <viewController id="bU7-R8-ocO" customClass="PopoverViewController" customModule="PerseusWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="tOy-S4-hL0">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="384"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yf8-y3-HSv">
-                                <rect key="frame" x="0.0" y="30" width="400" height="470"/>
+                                <rect key="frame" x="0.0" y="30" width="400" height="354"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="KvG-58-2dT" customClass="LocationView" customModule="PerseusWeather" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="380" width="400" height="90"/>
+                                        <rect key="frame" x="0.0" y="264" width="400" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="lwb-ZM-Ei1"/>
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="zay-Cg-HHE">
-                                        <rect key="frame" x="0.0" y="350" width="400" height="30"/>
+                                        <rect key="frame" x="0.0" y="234" width="400" height="30"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1oS-xB-Iag">
                                                 <rect key="frame" x="3" y="-2" width="112" height="32"/>
@@ -54,13 +54,13 @@
                                         </constraints>
                                     </customView>
                                     <tabView initialItem="g1D-Zn-Myw" id="CfE-8B-27I">
-                                        <rect key="frame" x="-2" y="-10" width="404" height="366"/>
+                                        <rect key="frame" x="-2" y="-10" width="404" height="250"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <font key="font" metaFont="system"/>
                                         <tabViewItems>
                                             <tabViewItem label="Weather" identifier="" id="g1D-Zn-Myw">
                                                 <view key="view" id="4E9-lB-SpT" customClass="WeatherView" customModule="PerseusWeather" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="33" width="384" height="320"/>
+                                                    <rect key="frame" x="10" y="33" width="384" height="204"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </view>
                                             </tabViewItem>
@@ -95,18 +95,8 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tUp-sA-zYf">
-                                <rect key="frame" x="315" y="-2" width="62" height="32"/>
-                                <buttonCell key="cell" type="push" title="Hide" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="at3-N6-mvc">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="hidePopoverButtonTapped:" target="bU7-R8-ocO" id="8un-NE-nYH"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sge-Gy-4fJ">
-                                <rect key="frame" x="242" y="-2" width="82" height="32"/>
+                                <rect key="frame" x="267" y="-2" width="82" height="32"/>
                                 <buttonCell key="cell" type="push" title="Options" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RfE-ti-Nh0">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -126,8 +116,8 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LDb-S7-5Yd">
-                                <rect key="frame" x="372" y="1" width="25" height="25"/>
-                                <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3eR-HU-Wlg">
+                                <rect key="frame" x="205" y="-2" width="71" height="32"/>
+                                <buttonCell key="cell" type="push" title="About" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3eR-HU-Wlg">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -135,20 +125,30 @@
                                     <action selector="aboutButtonTapped:" target="bU7-R8-ocO" id="EIe-gW-Pgt"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tUp-sA-zYf">
+                                <rect key="frame" x="340" y="-2" width="62" height="32"/>
+                                <buttonCell key="cell" type="push" title="Hide" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="at3-N6-mvc">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="hidePopoverButtonTapped:" target="bU7-R8-ocO" id="8un-NE-nYH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="LDb-S7-5Yd" firstAttribute="trailing" secondItem="sge-Gy-4fJ" secondAttribute="leading" constant="-5" id="7oZ-QI-IuB"/>
                             <constraint firstItem="yf8-y3-HSv" firstAttribute="leading" secondItem="tOy-S4-hL0" secondAttribute="leading" id="AlQ-cK-iMP"/>
                             <constraint firstAttribute="bottom" secondItem="yf8-y3-HSv" secondAttribute="bottom" constant="30" id="ExQ-Mm-DJr"/>
-                            <constraint firstItem="LDb-S7-5Yd" firstAttribute="bottom" secondItem="tOy-S4-hL0" secondAttribute="bottom" constant="-5" id="HwC-iL-MZP"/>
+                            <constraint firstItem="tUp-sA-zYf" firstAttribute="centerY" secondItem="hYB-Yv-b5e" secondAttribute="centerY" id="I73-XY-Rsy"/>
                             <constraint firstAttribute="bottom" secondItem="hYB-Yv-b5e" secondAttribute="bottom" constant="5" id="Iae-l9-ziU"/>
+                            <constraint firstItem="LDb-S7-5Yd" firstAttribute="centerY" secondItem="hYB-Yv-b5e" secondAttribute="centerY" id="J82-so-Hlb"/>
+                            <constraint firstItem="sge-Gy-4fJ" firstAttribute="centerY" secondItem="hYB-Yv-b5e" secondAttribute="centerY" id="Ka0-44-Xbi"/>
                             <constraint firstItem="yf8-y3-HSv" firstAttribute="top" secondItem="tOy-S4-hL0" secondAttribute="top" id="SS2-dc-IEk"/>
                             <constraint firstItem="hYB-Yv-b5e" firstAttribute="leading" secondItem="tOy-S4-hL0" secondAttribute="leading" constant="5" id="SsD-JB-coG"/>
-                            <constraint firstAttribute="bottom" secondItem="tUp-sA-zYf" secondAttribute="bottom" constant="5" id="UAR-7T-FyD"/>
-                            <constraint firstItem="LDb-S7-5Yd" firstAttribute="leading" secondItem="tUp-sA-zYf" secondAttribute="trailing" constant="5" id="Z1l-J2-EKi"/>
-                            <constraint firstItem="sge-Gy-4fJ" firstAttribute="centerY" secondItem="tUp-sA-zYf" secondAttribute="centerY" id="exW-jB-rvD"/>
-                            <constraint firstAttribute="trailing" secondItem="LDb-S7-5Yd" secondAttribute="trailing" constant="5" id="lkS-lq-0ad"/>
+                            <constraint firstItem="sge-Gy-4fJ" firstAttribute="trailing" secondItem="tUp-sA-zYf" secondAttribute="leading" constant="-5" id="VCH-f0-HMc"/>
                             <constraint firstAttribute="trailing" secondItem="yf8-y3-HSv" secondAttribute="trailing" id="moj-YV-n8h"/>
-                            <constraint firstItem="sge-Gy-4fJ" firstAttribute="trailing" secondItem="tUp-sA-zYf" secondAttribute="leading" constant="-5" id="ueE-Lt-bKZ"/>
+                            <constraint firstAttribute="trailing" secondItem="tUp-sA-zYf" secondAttribute="trailing" constant="5" id="qkY-Ma-rRT"/>
                         </constraints>
                     </view>
                     <connections>
