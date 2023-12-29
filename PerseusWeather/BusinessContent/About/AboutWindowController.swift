@@ -17,6 +17,8 @@ import Cocoa
 
 class AboutWindowController: NSWindowController {
 
+    private var alwaysOnTop: Any?
+
     // MARK: - Storyboard instance
 
     class func storyboardInstance() -> NSWindowController {
@@ -38,8 +40,18 @@ class AboutWindowController: NSWindowController {
     // MARK: - Initialization
 
     override func awakeFromNib() {
+        super.awakeFromNib()
 
         log.message("[\(type(of: self))].\(#function)")
+
+        let nc = AppGlobals.notificationCenter
+
+        alwaysOnTop = nc.addObserver(forName: NSApplication.didResignActiveNotification,
+                                     object: nil,
+                                     queue: OperationQueue.main ) { _ in
+
+            self.window?.level = .floating
+        }
     }
 
     override func windowDidLoad() {
@@ -54,6 +66,9 @@ class AboutWindowController: NSWindowController {
     // MARK: - Other methods
 
     func windowShouldClose(_ sender: NSWindow) -> Bool {
+
+        log.message("[\(type(of: self))].\(#function)")
+
         self.window?.orderOut(sender)
         return false
     }

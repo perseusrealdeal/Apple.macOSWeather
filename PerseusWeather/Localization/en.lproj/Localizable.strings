@@ -39,7 +39,7 @@
 /* Location View */
 
 "Location Name Label" = "Location Name";
-"Latitude, Longitude Label" = "Latitude, Longitude";
+"Latitude, Longitude" = "Latitude, Longitude";
 
 "Allow Geo... Location Button" = "Allow Geo Service";
 "Go to Settings... Location Button" = "Go to Settings...";
@@ -97,5 +97,42 @@
 
 /* Options Screen – OptionsWindowController, OptionsViewController */
 
-"Options Screen Window Title" = "Weather App, Options";
-"Go to System Options" = "Go to System Options";
+"Options Window Title" = "Options";
+"App Options Section" = "App Options";
+"Weather Options Section" = "Weather Units Options";
+
+"Dark Mode" = "Dark Mode";
+"Language" = "Language";
+"OpenWeather Key" = "OpenWeather Key";
+
+"Temperature" = "Temperature";
+"Wind Speed" = "Wind Speed";
+"Pressure" = "Pressure";
+"Time Format" = "Time Format";
+
+"Lock" = "Lock";
+"Unlock" = "Unlock";
+"Hidden key hole..." = "Hidden key hole...";
+"Past the key..." = "Past the key...";
+
+"Light" = "Light";
+"Dark" = "Dark";
+"System" = "System";
+
+"English" = "English";
+"Russian" = "Russian";
+
+"Kelvin" = "Kelvin";
+"Celsius" = "Celsius";
+"Fahrenheit" = "Fahrenheit";
+
+"meter/sec" = "meter/sec";
+"km/hour" = "km/hour";
+"miles/hour" = "miles/hour";
+
+"hPa" = "hPa";
+"mmHg" = "mmHg";
+"mb" = "mb";
+
+"24-hour" = "24-hour";
+"12-hour" = "12-hour";

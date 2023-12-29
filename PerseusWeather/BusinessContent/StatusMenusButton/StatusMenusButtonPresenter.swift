@@ -63,7 +63,7 @@ class StatusMenusButtonPresenter {
         if popover.isShown {
             popover.performClose(button)
             globals.aboutPresenter.close()
-            globals.preferencesPresenter.close()
+            globals.optionsPresenter.close()
         } else {
             popover.contentViewController = popoverScreen
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)

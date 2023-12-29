@@ -25,16 +25,29 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
 
     // MARK: - Outlets
 
+    @IBOutlet private(set) weak var controlAppOptionsSection: NSBox!
+    @IBOutlet private(set) weak var controlWeatherOptionsSection: NSBox!
+    @IBOutlet private(set) weak var controlCloseButton: NSButton!
+
+    @IBOutlet private(set) weak var labelDarkMode: NSTextField!
+    @IBOutlet private(set) weak var labelLanguage: NSTextField!
+    @IBOutlet private(set) weak var labelOpenWeatherKey: NSTextField!
+
+    @IBOutlet private(set) weak var labelTemperature: NSTextField!
+    @IBOutlet private(set) weak var labelWindSpeed: NSTextField!
+    @IBOutlet private(set) weak var labelPressure: NSTextField!
+    @IBOutlet private(set) weak var labelTimeFormat: NSTextField!
+
     @IBOutlet private(set) weak var controlDarkMode: NSSegmentedControl!
     @IBOutlet private(set) weak var controlLanguage: NSSegmentedControl!
-
-    @IBOutlet private(set) weak var controlStartsOnLogin: NSButton!
-    @IBOutlet private(set) weak var controlGotoSettings: NSButton!
 
     @IBOutlet private(set) weak var controlOpenWeatherKey: NSTextField!
     @IBOutlet private(set) weak var controlUnlockButton: NSButton!
 
     @IBOutlet private(set) weak var controlTemperature: NSSegmentedControl!
+    @IBOutlet private(set) weak var controlWindSpeed: NSSegmentedControl!
+    @IBOutlet private(set) weak var controlPressure: NSSegmentedControl!
+    @IBOutlet private(set) weak var controlTimeFormat: NSSegmentedControl!
 
     // MARK: - Actions
 
@@ -72,6 +85,20 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
         globals.languageSwitcher.switchLanguageIfNeeded(AppSettings.languageOption)
     }
 
+    @IBAction func controlUnlockButtonTapped(_ sender: NSButton) {
+
+        log.message("[\(type(of: self))].\(#function) - \(controlUnlockButton.stringValue)")
+
+        if self.controlOpenWeatherKey.isEditable {
+            lockOpenWeatherKeyHole()
+        } else {
+            let secret = AppSettings.OpenWeatherAPIOption
+            if let secret = secret {
+                unlockOpenWeatherKeyHole(stringValue: secret)
+            }
+        }
+    }
+
     @IBAction func controlTemperatureDidChanged(_ sender: NSSegmentedControl) {
 
         log.message("[\(type(of: self))].\(#function) - \(controlTemperature.selectedSegment)")
@@ -88,50 +115,66 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
         }
 
         let nc = AppGlobals.notificationCenter
-        nc.post(Notification.init(name: .optionTemperatureDidChanged))
+        nc.post(Notification.init(name: .weatherUnitsOptionsDidChanged))
     }
 
-    @IBAction func controlStartsOnLoginDidChange(_ sender: NSButton) {
+    @IBAction func controlWindSpeedDidChanged(_ sender: NSSegmentedControl) {
 
-        log.message("[\(type(of: self))].\(#function) - \(controlStartsOnLogin.state)")
+        log.message("[\(type(of: self))].\(#function) - \(controlWindSpeed.selectedSegment)")
 
-        if controlStartsOnLogin.state == .on {
-            AppSettings.startsOnLoginOption = .on
-
-            // TODO: - Resolve deprecated realization, works unexpectedly on newly macOS.
-            try? PerseusStartsOnLogin.registration(option: .on)
-
-            recalculateStartsOnLoginValues()
-            updateControlStartsOnLogin()
+        switch sender.selectedSegment {
+        case 0:
+            AppSettings.windSpeedOption = .ms
+        case 1:
+            AppSettings.windSpeedOption = .kmh
+        case 2:
+            AppSettings.windSpeedOption = .mph
+        default:
+            break
         }
 
-        log.message("[\(type(of: self))].\(#function) - \(AppSettings.startsOnLoginOption)")
+        let nc = AppGlobals.notificationCenter
+        nc.post(Notification.init(name: .weatherUnitsOptionsDidChanged))
     }
 
-    @IBAction func controlGotoSettingsTapped(_ sender: NSButton) {
+    @IBAction func controlPressureDidChanged(_ sender: NSSegmentedControl) {
 
-        log.message("[\(type(of: self))].\(#function)")
+        log.message("[\(type(of: self))].\(#function) - \(controlPressure.selectedSegment)")
 
-        AppGlobals.openTheApp(name: AppGlobals.systemAppName)
-    }
-
-    @IBAction func controlUnlockButtonTapped(_ sender: NSButton) {
-
-        log.message("[\(type(of: self))].\(#function) - \(controlUnlockButton.stringValue)")
-
-        if self.controlOpenWeatherKey.isEditable {
-            lockOpenWeatherKeyHole()
-        } else {
-            let secret = AppSettings.OpenWeatherAPIOption
-            if let secret = secret {
-                unlockOpenWeatherKeyHole(stringValue: secret)
-            }
+        switch sender.selectedSegment {
+        case 0:
+            AppSettings.pressureOption = .hPa
+        case 1:
+            AppSettings.pressureOption = .mmHg
+        case 2:
+            AppSettings.pressureOption = .mb
+        default:
+            break
         }
+
+        let nc = AppGlobals.notificationCenter
+        nc.post(Notification.init(name: .weatherUnitsOptionsDidChanged))
     }
 
-    @IBAction func closePreferencesWindow(_ sender: NSButton) {
+    @IBAction func controlTimeFormatDidChanged(_ sender: NSSegmentedControl) {
 
-        globals.preferencesPresenter.close()
+        log.message("[\(type(of: self))].\(#function) - \(controlTimeFormat.selectedSegment)")
+
+        switch sender.selectedSegment {
+        case 0:
+            AppSettings.timeFormatOption = .long
+        case 1:
+            AppSettings.timeFormatOption = .short
+        default:
+            break
+        }
+
+        let nc = AppGlobals.notificationCenter
+        nc.post(Notification.init(name: .weatherUnitsOptionsDidChanged))
+    }
+    @IBAction func closeOptionsWindow(_ sender: NSButton) {
+
+        globals.optionsPresenter.close()
     }
 
     // MARK: - Initialization
@@ -170,14 +213,6 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
                        object: nil)
 
         localize()
-
-        // Other start up adjustments.
-
-        /* TODO: - Works not expectedly... needs another solution.
-        nc.addObserver(self, selector: #selector(self.didBecomeKeyWindow),
-                       name: NSWindow.didBecomeKeyNotification,
-                       object: nil)
-        */
     }
 
     override func viewDidAppear() {
@@ -188,7 +223,9 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
         updateControlDarkMode()
         updateControlLanguage()
         updateControlTemperature()
-        updateControlStartsOnLogin()
+        updateControlWindSpeed()
+        updateControlPressure()
+        updateControlTimeFormat()
     }
 
     override func viewWillDisappear() {
@@ -236,16 +273,6 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
         }
     }
 
-    @objc public func didBecomeKeyWindow(_ sender: NSNotification) {
-
-        guard (sender.object as? NSWindow) != nil else { return }
-
-        recalculateStartsOnLoginValues()
-        updateControlStartsOnLogin()
-
-        log.message("[\(type(of: self))].\(#function)")
-    }
-
     // MARK: - Realization, private methods
 
     private func updateControlDarkMode() {
@@ -257,13 +284,6 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
             controlDarkMode.selectedSegment = 1
         case .off:
             controlDarkMode.selectedSegment = 0
-        }
-    }
-
-    private func recalculateStartsOnLoginValues() {
-
-        if let status = try? PerseusStartsOnLogin.isTurnedOn() {
-            AppSettings.startsOnLoginOption = status ? .on : .off
         }
     }
 
@@ -279,6 +299,28 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
         }
     }
 
+    private func lockOpenWeatherKeyHole() {
+        self.controlOpenWeatherKey.isEditable = false
+
+        self.controlOpenWeatherKey.stringValue = ""
+        self.controlOpenWeatherKey.placeholderString = "Hidden key hole...".localizedValue
+
+        self.controlUnlockButton.title = "Unlock".localizedValue
+    }
+
+    private func unlockOpenWeatherKeyHole(stringValue: String = "") {
+        self.controlOpenWeatherKey.isEditable = true
+
+        if stringValue.isEmpty {
+            self.controlOpenWeatherKey.stringValue = ""
+            self.controlOpenWeatherKey.placeholderString = "Past the key...".localizedValue
+        } else {
+            self.controlOpenWeatherKey.stringValue = stringValue
+        }
+
+        self.controlUnlockButton.title = "Lock".localizedValue
+    }
+
     private func updateControlTemperature() {
 
         switch AppSettings.temperatureOption {
@@ -291,44 +333,38 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
         }
     }
 
-    private func updateControlStartsOnLogin() {
+    private func updateControlWindSpeed() {
 
-        let status = AppSettings.startsOnLoginOption
-
-        switch status {
-        case .on:
-            controlStartsOnLogin.state = .on
-            controlStartsOnLogin.isEnabled = false
-            controlStartsOnLogin.title = "To disable"
-            controlGotoSettings.isHidden = false
-        case .off:
-            controlStartsOnLogin.state = .off
-            controlStartsOnLogin.isEnabled = true
-            controlStartsOnLogin.title = "Add to login items"
-            controlGotoSettings.isHidden = true
+        switch AppSettings.windSpeedOption {
+        case .mph:
+            controlWindSpeed.selectedSegment = 2
+        case .kmh:
+            controlWindSpeed.selectedSegment = 1
+        case .ms:
+            controlWindSpeed.selectedSegment = 0
         }
     }
 
-    private func lockOpenWeatherKeyHole() {
-        self.controlOpenWeatherKey.isEditable = false
+    private func updateControlPressure() {
 
-        self.controlOpenWeatherKey.stringValue = ""
-        self.controlOpenWeatherKey.placeholderString = "Hidden key hole..."
-
-        self.controlUnlockButton.title = "Unlock"
+        switch AppSettings.pressureOption {
+        case .mb:
+            controlPressure.selectedSegment = 2
+        case .mmHg:
+            controlPressure.selectedSegment = 1
+        case .hPa:
+            controlPressure.selectedSegment = 0
+        }
     }
 
-    private func unlockOpenWeatherKeyHole(stringValue: String = "") {
-        self.controlOpenWeatherKey.isEditable = true
+    private func updateControlTimeFormat() {
 
-        if stringValue.isEmpty {
-            self.controlOpenWeatherKey.stringValue = ""
-            self.controlOpenWeatherKey.placeholderString = "Past the key..."
-        } else {
-            self.controlOpenWeatherKey.stringValue = stringValue
+        switch AppSettings.timeFormatOption {
+        case .short:
+            controlTimeFormat.selectedSegment = 1
+        case .long:
+            controlTimeFormat.selectedSegment = 0
         }
-
-        self.controlUnlockButton.title = "Lock"
     }
 }
 
@@ -352,6 +388,52 @@ extension OptionsViewController: Localizable {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        controlGotoSettings.title = "Go to System Options".localizedValue
+        self.view.window?.title = self.windowTitleLocalized
+
+        controlCloseButton.title = "Close".localizedValue
+        controlAppOptionsSection.title = "App Options Section".localizedValue
+        controlWeatherOptionsSection.title = "Weather Options Section".localizedValue
+
+        labelDarkMode.stringValue = "Dark Mode".localizedValue
+        labelLanguage.stringValue = "Language".localizedValue
+        labelOpenWeatherKey.stringValue = "OpenWeather Key".localizedValue
+
+        labelTemperature.stringValue = "Temperature".localizedValue
+        labelWindSpeed.stringValue = "Wind Speed".localizedValue
+        labelPressure.stringValue = "Pressure".localizedValue
+        labelTimeFormat.stringValue = "Time Format".localizedValue
+
+        controlOpenWeatherKey.placeholderString = controlOpenWeatherKey.isEditable ?
+        "Past the key...".localizedValue : "Hidden key hole...".localizedValue
+
+        controlUnlockButton.title = controlOpenWeatherKey.isEditable ?
+        "Lock".localizedValue : "Unlock".localizedValue
+
+        controlDarkMode.setLabel("Light".localizedValue, forSegment: 0)
+        controlDarkMode.setLabel("Dark".localizedValue, forSegment: 1)
+        controlDarkMode.setLabel("System".localizedValue, forSegment: 2)
+
+        controlLanguage.setLabel("English".localizedValue, forSegment: 0)
+        controlLanguage.setLabel("Russian".localizedValue, forSegment: 1)
+        controlLanguage.setLabel("System".localizedValue, forSegment: 2)
+
+        controlTemperature.setLabel("Kelvin".localizedValue + " K", forSegment: 0)
+        controlTemperature.setLabel("Celsius".localizedValue + " °C", forSegment: 1)
+        controlTemperature.setLabel("Fahrenheit".localizedValue + " °F", forSegment: 2)
+
+        controlWindSpeed.setLabel("meter/sec".localizedValue, forSegment: 0)
+        controlWindSpeed.setLabel("km/hour".localizedValue, forSegment: 1)
+        controlWindSpeed.setLabel("miles/hour".localizedValue, forSegment: 2)
+
+        controlPressure.setLabel("hPa".localizedValue, forSegment: 0)
+        controlPressure.setLabel("mmHg".localizedValue, forSegment: 1)
+        controlPressure.setLabel("mb".localizedValue, forSegment: 2)
+
+        controlTimeFormat.setLabel("24-hour".localizedValue, forSegment: 0)
+        controlTimeFormat.setLabel("12-hour".localizedValue, forSegment: 1)
+    }
+
+    private var windowTitleLocalized: String {
+        "Options Window Title".localizedValue + ": " + "BundleName".localizedValue
     }
 }

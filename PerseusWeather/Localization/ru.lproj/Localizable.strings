@@ -39,7 +39,7 @@
 /* Location View */
 
 "Location Name Label" = "Название Места...";
-"Latitude, Longitude Label" = "Широта, Долгота";
+"Latitude, Longitude" = "Широта, Долгота";
 
 "Allow Geo... Location Button" = "Спроси Разрешение";
 "Go to Settings... Location Button" = "Системные Настройки";
@@ -97,5 +97,42 @@
 
 /* Options Screen – OptionsWindowController, OptionsViewController */
 
-"Options Screen Window Title" = "Опции приложения";
-"Go to System Options" = "Открыть системные опции";
+"Options Window Title" = "Возможности";
+"App Options Section" = "Опции Приложения";
+"Weather Options Section" = "Опции Погоды";
+
+"Dark Mode" = "Сторона Силы";
+"Language" = "Язык";
+"OpenWeather Key" = "Ключ OpenWeather";
+
+"Temperature" = "Шкала Температуры";
+"Wind Speed" = "Скорость Ветра";
+"Pressure" = "Давление";
+"Time Format" = "Формат Времени";
+
+"Lock" = "Скрыть";
+"Unlock" = "Открыть";
+"Hidden key hole..." = "Скрытая замочная скважина...";
+"Past the key..." = "Замочная скважина";
+
+"Light" = "Свет";
+"Dark" = "Тьма";
+"System" = "Система";
+
+"English" = "Английский";
+"Russian" = "Русский";
+
+"Kelvin" = "Кельвин";
+"Celsius" = "Цельсий";
+"Fahrenheit" = "Фаренгейт";
+
+"meter/sec" = "метр/сек";
+"km/hour" = "км/час";
+"miles/hour" = "мили/час";
+
+"hPa" = "гПа";
+"mmHg" = "мм рт. ст.";
+"mb" = "мбар";
+
+"24-hour" = "24-часовой";
+"12-hour" = "12-часовой";

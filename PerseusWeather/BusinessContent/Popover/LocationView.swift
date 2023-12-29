@@ -258,7 +258,7 @@ extension LocationView {
 
         guard let location = AppGlobals.appDelegate?.location else {
             log.message("[\(type(of: self))].\(#function)", .error)
-            return "Latitude, Longitude Label".localizedValue
+            return "Latitude, Longitude".localizedValue
         }
 
         let couple = "\(location.latitude.cut(.four)), \(location.longitude.cut(.four))"

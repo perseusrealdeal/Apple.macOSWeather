@@ -12,6 +12,8 @@
 //
 //  See LICENSE for details. All rights reserved.
 //
+// swiftlint:disable file_length
+//
 
 import Foundation
 
@@ -24,14 +26,22 @@ public let LANGUAGE_OPTION_KEY = "LANGUAGE_OPTION_KEY"
 public let LANGUAGE_OPTION_DEFAULT = LanguageOption.system
 
 public let TEMPERATURE_OPTION_KEY = "TEMPERATURE_OPTION_KEY"
-public let TEMPERATURE_OPTION_DEFAULT = TemperatureOption.metric
+public let TEMPERATURE_OPTION_DEFAULT = TemperatureOption.imperial
 
-public let STARTSONLOGIN_OPTION_KEY = "STARTSONLOGIN_OPTION_KEY"
-public let STARTSONLOGIN_OPTION_DEFAULT = StartsOnLoginOption.off
+public let WINDSPEED_OPTION_KEY = "WINDSPEED_OPTION_KEY"
+public let WINDSPEED_OPTION_DEFAULT = WindSpeedOption.mph
+
+public let PRESSURE_OPTION_KEY = "PRESSURE_OPTION_KEY"
+public let PRESSURE_OPTION_DEFAULT = PressureOption.mb
+
+public let TIME_OPTION_KEY = "TIME_OPTION_KEY"
+public let TIME_OPTION_DEFAULT = TimeFormatOption.short
 
 // MARK: - Service for keeping options saved
 
 class AppSettings {
+
+    // MARK: OpenWeather API Key Option
 
     public static var OpenWeatherAPIOption: String? {
         get {
@@ -53,8 +63,9 @@ class AppSettings {
 
             let limit = OPEN_WEATHER_API_KEY_TEXT_LIMIT
 
+            // TODO: - secret is out of limit
             if text.count > limit {
-                secret = "The key text doesn't meet length limit.".localizedValue
+                // secret = "The key text doesn't meet length limit.".localizedValue
             }
 
             return secret
@@ -75,6 +86,8 @@ class AppSettings {
             }
         }
     }
+
+    // MARK: - Language Option
 
     public static var languageOption: LanguageOption {
         get {
@@ -99,6 +112,8 @@ class AppSettings {
             ud.setValue(newValue.rawValue, forKey: LANGUAGE_OPTION_KEY)
         }
     }
+
+    // MARK: - Temperature Option
 
     public static var temperatureOption: TemperatureOption {
         get {
@@ -125,29 +140,84 @@ class AppSettings {
         }
     }
 
-    public static var startsOnLoginOption: StartsOnLoginOption {
+    // MARK: - Wind Speed Option
+
+    public static var windSpeedOption: WindSpeedOption {
         get {
             // Load enum Int value
 
             let ud = AppGlobals.userDefaults
 
-            let rawValue = ud.valueExists(forKey: STARTSONLOGIN_OPTION_KEY) ?
-                ud.integer(forKey: STARTSONLOGIN_OPTION_KEY) :
-                STARTSONLOGIN_OPTION_DEFAULT.rawValue
+            let rawValue = ud.valueExists(forKey: WINDSPEED_OPTION_KEY) ?
+                ud.integer(forKey: WINDSPEED_OPTION_KEY) :
+                    WINDSPEED_OPTION_DEFAULT.rawValue
 
             // Try to cast Int value to enum
 
-            if let result = StartsOnLoginOption.init(rawValue: rawValue) { return result }
+            if let result = WindSpeedOption.init(rawValue: rawValue) { return result }
 
             // Return default saved value in any other case
 
-            ud.setValue(STARTSONLOGIN_OPTION_DEFAULT.rawValue,
-                        forKey: STARTSONLOGIN_OPTION_KEY)
-            return STARTSONLOGIN_OPTION_DEFAULT
+            ud.setValue(WINDSPEED_OPTION_DEFAULT.rawValue, forKey: WINDSPEED_OPTION_KEY)
+            return WINDSPEED_OPTION_DEFAULT
         }
         set {
             let ud = AppGlobals.userDefaults
-            ud.setValue(newValue.rawValue, forKey: STARTSONLOGIN_OPTION_KEY)
+            ud.setValue(newValue.rawValue, forKey: WINDSPEED_OPTION_KEY)
+        }
+    }
+
+    // MARK: - Pressure
+
+    public static var pressureOption: PressureOption {
+        get {
+            // Load enum Int value
+
+            let ud = AppGlobals.userDefaults
+
+            let rawValue = ud.valueExists(forKey: PRESSURE_OPTION_KEY) ?
+                ud.integer(forKey: PRESSURE_OPTION_KEY) :
+                    PRESSURE_OPTION_DEFAULT.rawValue
+
+            // Try to cast Int value to enum
+
+            if let result = PressureOption.init(rawValue: rawValue) { return result }
+
+            // Return default saved value in any other case
+
+            ud.setValue(PRESSURE_OPTION_DEFAULT.rawValue, forKey: PRESSURE_OPTION_KEY)
+            return PRESSURE_OPTION_DEFAULT
+        }
+        set {
+            let ud = AppGlobals.userDefaults
+            ud.setValue(newValue.rawValue, forKey: PRESSURE_OPTION_KEY)
+        }
+    }
+
+    // MARK: - Time Format
+
+    public static var timeFormatOption: TimeFormatOption {
+        get {
+            // Load enum Int value
+
+            let ud = AppGlobals.userDefaults
+
+            let rawValue = ud.valueExists(forKey: TIME_OPTION_KEY) ?
+                ud.integer(forKey: TIME_OPTION_KEY) :
+                    TIME_OPTION_DEFAULT.rawValue
+
+            // Try to cast Int value to enum
+
+            if let result = TimeFormatOption.init(rawValue: rawValue) { return result }
+
+            // Return default saved value in any other case
+
+            ud.setValue(TIME_OPTION_DEFAULT.rawValue, forKey: TIME_OPTION_KEY)
+            return TIME_OPTION_DEFAULT
+        }
+        set {
+            let ud = AppGlobals.userDefaults
+            ud.setValue(newValue.rawValue, forKey: TIME_OPTION_KEY)
         }
     }
 }

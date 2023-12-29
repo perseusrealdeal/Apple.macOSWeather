@@ -57,7 +57,7 @@ struct AppGlobals {
     public let weatherClient: OpenWeatherFreeClient
 
     public let statusMenusButtonPresenter: StatusMenusButtonPresenter
-    public let preferencesPresenter: OptionsWindowController!
+    public let optionsPresenter: OptionsWindowController!
     public let aboutPresenter: AboutWindowController!
 
     public let languageSwitcher: LanguageSwitcher
@@ -71,7 +71,7 @@ struct AppGlobals {
 
         self.statusMenusButtonPresenter = StatusMenusButtonPresenter()
 
-        self.preferencesPresenter =
+        self.optionsPresenter =
         OptionsWindowController.storyboardInstance() as? OptionsWindowController
 
         self.aboutPresenter =

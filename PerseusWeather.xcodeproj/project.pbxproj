@@ -33,7 +33,6 @@
 		4B8426392B18810900C86E8A /* PerseusDefenderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8426382B18810900C86E8A /* PerseusDefenderModels.swift */; };
 		4B84263C2B19CE2600C86E8A /* OpenWeatherStarModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B84263B2B19CE2600C86E8A /* OpenWeatherStarModels.swift */; };
 		4B8426402B19D11B00C86E8A /* LanguageSwitcherModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B84263F2B19D11B00C86E8A /* LanguageSwitcherModels.swift */; };
-		4B8A87202B1E356200081CDC /* PerseusStartsOnLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A871F2B1E356200081CDC /* PerseusStartsOnLogin.swift */; };
 		4B993DB82B3738A7008C1FE7 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B993DB72B3738A7008C1FE7 /* PopoverViewController.swift */; };
 		4B993DBA2B3738CF008C1FE7 /* PopoverViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B993DB92B3738CF008C1FE7 /* PopoverViewController.storyboard */; };
 		4B993DC52B380EF9008C1FE7 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B993DC42B380EF9008C1FE7 /* LocationView.swift */; };
@@ -101,7 +100,6 @@
 		4B8426382B18810900C86E8A /* PerseusDefenderModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerseusDefenderModels.swift; sourceTree = "<group>"; };
 		4B84263B2B19CE2600C86E8A /* OpenWeatherStarModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherStarModels.swift; sourceTree = "<group>"; };
 		4B84263F2B19D11B00C86E8A /* LanguageSwitcherModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSwitcherModels.swift; sourceTree = "<group>"; };
-		4B8A871F2B1E356200081CDC /* PerseusStartsOnLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerseusStartsOnLogin.swift; sourceTree = "<group>"; };
 		4B993DB72B3738A7008C1FE7 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		4B993DB92B3738CF008C1FE7 /* PopoverViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopoverViewController.storyboard; sourceTree = "<group>"; };
 		4B993DC42B380EF9008C1FE7 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
@@ -264,7 +262,6 @@
 				4B84263E2B19D0DC00C86E8A /* LanguageSwitcher */,
 				4B62FA7529DC1A6400DF6B85 /* PerseusLogger.swift */,
 				4BC2F2C829EE64E200386671 /* PerseusGeoLocationSingle.swift */,
-				4B8A871F2B1E356200081CDC /* PerseusStartsOnLogin.swift */,
 			);
 			path = FirstPartyCode;
 			sourceTree = "<group>";
@@ -498,7 +495,6 @@
 				4BE29E922B3A23340027515A /* ForecastView.swift in Sources */,
 				4B030E792B277E6500ED9018 /* AboutViewController.swift in Sources */,
 				4B993DB82B3738A7008C1FE7 /* PopoverViewController.swift in Sources */,
-				4B8A87202B1E356200081CDC /* PerseusStartsOnLogin.swift in Sources */,
 				4BBE90672912931A008F734D /* main.swift in Sources */,
 				4BFA5FDC2989A16400AC09F5 /* OptionsWindowController.swift in Sources */,
 				4B62FA7629DC1A6400DF6B85 /* PerseusLogger.swift in Sources */,

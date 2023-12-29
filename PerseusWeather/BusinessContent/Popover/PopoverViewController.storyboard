@@ -11,20 +11,20 @@
             <objects>
                 <viewController id="bU7-R8-ocO" customClass="PopoverViewController" customModule="PerseusWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="tOy-S4-hL0">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="384"/>
+                        <rect key="frame" x="0.0" y="0.0" width="340" height="384"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yf8-y3-HSv">
-                                <rect key="frame" x="0.0" y="30" width="400" height="354"/>
+                                <rect key="frame" x="0.0" y="30" width="340" height="354"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="KvG-58-2dT" customClass="LocationView" customModule="PerseusWeather" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="264" width="400" height="90"/>
+                                        <rect key="frame" x="0.0" y="264" width="340" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="lwb-ZM-Ei1"/>
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="zay-Cg-HHE">
-                                        <rect key="frame" x="0.0" y="234" width="400" height="30"/>
+                                        <rect key="frame" x="0.0" y="234" width="340" height="30"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1oS-xB-Iag">
                                                 <rect key="frame" x="3" y="-2" width="112" height="32"/>
@@ -37,7 +37,7 @@
                                                 </connections>
                                             </button>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="II3-Ni-sjv">
-                                                <rect key="frame" x="239" y="10" width="153" height="11"/>
+                                                <rect key="frame" x="179" y="10" width="153" height="11"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Made with Love from Novosibirsk." id="oSM-RN-xuB">
                                                     <font key="font" metaFont="miniSystem"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -54,13 +54,13 @@
                                         </constraints>
                                     </customView>
                                     <tabView initialItem="g1D-Zn-Myw" id="CfE-8B-27I">
-                                        <rect key="frame" x="-2" y="-10" width="404" height="250"/>
+                                        <rect key="frame" x="-2" y="-10" width="344" height="250"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <font key="font" metaFont="system"/>
                                         <tabViewItems>
                                             <tabViewItem label="Weather" identifier="" id="g1D-Zn-Myw">
                                                 <view key="view" id="4E9-lB-SpT" customClass="WeatherView" customModule="PerseusWeather" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="33" width="384" height="204"/>
+                                                    <rect key="frame" x="10" y="33" width="324" height="204"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </view>
                                             </tabViewItem>
@@ -96,7 +96,7 @@
                                 </customSpacing>
                             </stackView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sge-Gy-4fJ">
-                                <rect key="frame" x="267" y="-2" width="82" height="32"/>
+                                <rect key="frame" x="207" y="-2" width="82" height="32"/>
                                 <buttonCell key="cell" type="push" title="Options" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RfE-ti-Nh0">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -116,7 +116,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LDb-S7-5Yd">
-                                <rect key="frame" x="205" y="-2" width="71" height="32"/>
+                                <rect key="frame" x="145" y="-2" width="71" height="32"/>
                                 <buttonCell key="cell" type="push" title="About" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3eR-HU-Wlg">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -126,7 +126,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tUp-sA-zYf">
-                                <rect key="frame" x="340" y="-2" width="62" height="32"/>
+                                <rect key="frame" x="280" y="-2" width="62" height="32"/>
                                 <buttonCell key="cell" type="push" title="Hide" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="at3-N6-mvc">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>

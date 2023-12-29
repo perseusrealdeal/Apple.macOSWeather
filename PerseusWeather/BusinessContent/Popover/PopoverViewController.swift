@@ -91,7 +91,7 @@ class PopoverViewController: NSViewController {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        globals.preferencesPresenter.showWindow(sender)
+        globals.optionsPresenter.showWindow(sender)
     }
 
     @IBAction func quitButtonTapped(_ sender: NSButton) {
