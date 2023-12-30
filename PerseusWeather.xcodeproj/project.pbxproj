@@ -73,7 +73,7 @@
 		4B030E7A2B2D003A00ED9018 /* AppLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLinks.swift; sourceTree = "<group>"; };
 		4B030E7C2B2DB42200ED9018 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		4B0A49F229F631CD00CAE8A0 /* AppGlobals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobals.swift; sourceTree = "<group>"; };
-		4B1483E12912892C0013B76E /* PerseusWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerseusWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B1483E12912892C0013B76E /* Snowman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snowman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B1483E42912892C0013B76E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B1483E82912892F0013B76E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B1483ED2912892F0013B76E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -170,7 +170,7 @@
 		4B1483E22912892C0013B76E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4B1483E12912892C0013B76E /* PerseusWeather.app */,
+				4B1483E12912892C0013B76E /* Snowman.app */,
 				4B1483F32912892F0013B76E /* PerseusWeatherTests.xctest */,
 			);
 			name = Products;
@@ -180,9 +180,9 @@
 			isa = PBXGroup;
 			children = (
 				4BBE90662912931A008F734D /* main.swift */,
+				4B14840229128A930013B76E /* Configuration */,
 				4B6F98632927DDA300ADB03A /* Localization */,
 				4B6F98752927E7C600ADB03A /* FirstPartyCode */,
-				4B14840229128A930013B76E /* Configuration */,
 				4B14840429128E460013B76E /* BusinessContent */,
 			);
 			path = PerseusWeather;
@@ -361,7 +361,7 @@
 			);
 			name = PerseusWeather;
 			productName = XcodeTemplateProject;
-			productReference = 4B1483E12912892C0013B76E /* PerseusWeather.app */;
+			productReference = 4B1483E12912892C0013B76E /* Snowman.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4B1483F22912892F0013B76E /* PerseusWeatherTests */ = {
@@ -687,8 +687,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.perseus.macos.weather;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.perseus.macos.thesnowman;
+				PRODUCT_NAME = Snowman;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -707,8 +707,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.perseus.macos.weather;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.perseus.macos.thesnowman;
+				PRODUCT_NAME = Snowman;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;

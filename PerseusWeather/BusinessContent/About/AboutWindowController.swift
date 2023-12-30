@@ -17,6 +17,8 @@ import Cocoa
 
 class AboutWindowController: NSWindowController {
 
+    // MARK: - Internals
+
     private var alwaysOnTop: Any?
 
     // MARK: - Storyboard instance

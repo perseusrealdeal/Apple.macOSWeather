@@ -21,7 +21,7 @@ struct AppGlobals {
     static let appKeyOpenWeather = "79eefe16f6e4714470502074369fc77b"
 
     static let statusMenusButtonIconName = "Icon"
-    static let statusMenusButtonTitle = "Perseus"
+    static let statusMenusButtonTitle = "The Snowman"
 
     static var systemAppName: String? {
 
@@ -79,6 +79,10 @@ struct AppGlobals {
 
         self.languageSwitcher = LanguageSwitcher.shared
         self.dataDefender = PerseusDataDefender.shared
+
+        // Setup weather calling logic
+
+        self.statusMenusButtonPresenter.setupCallerLogic(for: self.weatherClient)
     }
 
     static func openDefaultBrowser(string link: String) {

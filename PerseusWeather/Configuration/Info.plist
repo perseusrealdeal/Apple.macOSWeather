@@ -7,7 +7,7 @@
 	<key>NSLocationUsageDescription</key>
 	<string>Location Usage Description</string>
 	<key>CFBundleDisplayName</key>
-	<string>Weather</string>
+	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

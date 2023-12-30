@@ -15,8 +15,8 @@
 
 "greetings" = "Hello world!";
 
-"BundleDisplayName" = "Weather Forecast";
-"BundleName" = "Weather";
+"BundleDisplayName" = "Snowman";
+"BundleName" = "Snowman";
 
 /* OpenWeather API key option */
 
@@ -93,15 +93,13 @@
 "Terms" = "Terms & conditions";
 "Close" = "Close";
 
-"TargetAudience" = "Only for individual anywhere; but not for worker who are employed for company or does a work to be employed in the Russian Federation.";
-
 /* Options Screen – OptionsWindowController, OptionsViewController */
 
 "Options Window Title" = "Options";
 "App Options Section" = "App Options";
 "Weather Options Section" = "Weather Units Options";
 
-"Dark Mode" = "Dark Mode";
+"Dark Mode" = "Moon Side";
 "Language" = "Language";
 "OpenWeather Key" = "OpenWeather Key";
 

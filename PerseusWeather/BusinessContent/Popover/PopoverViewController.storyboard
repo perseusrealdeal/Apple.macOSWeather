@@ -9,7 +9,7 @@
         <!--Popover View Controller-->
         <scene sceneID="PEd-7d-5j0">
             <objects>
-                <viewController id="bU7-R8-ocO" customClass="PopoverViewController" customModule="PerseusWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bU7-R8-ocO" customClass="PopoverViewController" customModule="Snowman" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="tOy-S4-hL0">
                         <rect key="frame" x="0.0" y="0.0" width="340" height="384"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -17,7 +17,7 @@
                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yf8-y3-HSv">
                                 <rect key="frame" x="0.0" y="30" width="340" height="354"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="KvG-58-2dT" customClass="LocationView" customModule="PerseusWeather" customModuleProvider="target">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="KvG-58-2dT" customClass="LocationView" customModule="Snowman" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="264" width="340" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="lwb-ZM-Ei1"/>
@@ -59,13 +59,13 @@
                                         <font key="font" metaFont="system"/>
                                         <tabViewItems>
                                             <tabViewItem label="Weather" identifier="" id="g1D-Zn-Myw">
-                                                <view key="view" id="4E9-lB-SpT" customClass="WeatherView" customModule="PerseusWeather" customModuleProvider="target">
+                                                <view key="view" id="4E9-lB-SpT" customClass="WeatherView" customModule="Snowman" customModuleProvider="target">
                                                     <rect key="frame" x="10" y="33" width="324" height="204"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </view>
                                             </tabViewItem>
                                             <tabViewItem label="Forecast" identifier="" id="XwN-hq-rQ0">
-                                                <view key="view" id="SkI-S3-94P" customClass="ForecastView" customModule="PerseusWeather" customModuleProvider="target">
+                                                <view key="view" id="SkI-S3-94P" customClass="ForecastView" customModule="Snowman" customModuleProvider="target">
                                                     <rect key="frame" x="10" y="33" width="384" height="320"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </view>

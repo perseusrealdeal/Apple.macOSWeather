@@ -152,7 +152,7 @@ class LocationView: NSView {
 
     // MARK: - Contract
 
-    private func updateViewData() {
+    public func reloadData() {
 
         if AppGlobals.appDelegate?.location != nil {
             locationNameValueLabel.stringValue = "Location Name Label".localizedValue
@@ -186,7 +186,7 @@ extension LocationView {
 
         permissionLabel.stringValue = "Permission".localizedValue + ":"
 
-        updateViewData()
+        reloadData()
     }
 }
 
@@ -209,14 +209,14 @@ extension LocationView {
             log.message("\(error)", .error)
         }
 
-        updateViewData()
+        reloadData()
     }
 
     @objc private func locationDealerStatusChangedHandler() {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        updateViewData()
+        reloadData()
     }
 }
 

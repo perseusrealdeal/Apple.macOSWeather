@@ -80,7 +80,7 @@ public class FreeNetworkClient {
             case .failedRequest(let message):
                 log.message(message, .error)
             default:
-                break
+                log.message("[FreeNetworkClient].\(#function) \(error)", .error)
             }
         }
     }

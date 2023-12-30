@@ -108,6 +108,13 @@ class WeatherView: NSView {
                        name: NSNotification.Name.languageSwitchedManuallyNotification,
                        object: nil)
     }
+
+    // MARK: - Contract
+
+    public func reloadData() {
+
+        log.message("[\(type(of: self))].\(#function)")
+    }
 }
 
 // MARK: - DARK MODE

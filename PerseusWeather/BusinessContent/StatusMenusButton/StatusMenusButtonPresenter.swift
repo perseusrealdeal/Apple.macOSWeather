@@ -29,6 +29,8 @@ class StatusMenusButtonPresenter {
 
     var popoverScreen: NSViewController?
 
+    var isReadyToCall = false
+
     // MARK: - Initialization
 
     init() {
@@ -52,6 +54,31 @@ class StatusMenusButtonPresenter {
         popoverScreen = PopoverViewController.storyboardInstance()
     }
 
+    public func setupCallerLogic(for caller: OpenWeatherFreeClient) {
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        caller.onDataGiven = { result in
+
+            switch result {
+            case .success(let weatherData):
+                self.weatherOnDataGivenHandler(weatherData)
+
+            case .failure(let error):
+                switch error {
+                case .failedRequest(let message):
+                    log.message(message, .error)
+                    self.isReadyToCall = true
+
+                default:
+                    log.message("[FreeNetworkClient].\(#function) \(error)", .error)
+                }
+            }
+        }
+
+        isReadyToCall = true
+    }
+
     // MARK: - Event handlers
 
     @objc private func statusMenusButtonTapped() {
@@ -67,6 +94,22 @@ class StatusMenusButtonPresenter {
         } else {
             popover.contentViewController = popoverScreen
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
+        }
+    }
+
+    private func weatherOnDataGivenHandler(_ data: Data) {
+
+        log.message("[\(type(of: self))].\(#function)\n" + """
+            DATA: BEGIN
+            \(String(decoding: data, as: UTF8.self))
+            DATA: END
+            """)
+
+        guard let controller = self.popoverScreen as? PopoverViewController else { return }
+
+        DispatchQueue.main.async {
+            controller.reloadData()
+            self.isReadyToCall = true
         }
     }
 }

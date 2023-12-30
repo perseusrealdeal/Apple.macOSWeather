@@ -22,6 +22,8 @@
 //
 // TODO: - Add the mention of Bill Waggoner to README.
 //
+// swiftlint:disable file_length
+//
 
 import Cocoa
 
@@ -70,6 +72,31 @@ class PopoverViewController: NSViewController {
     @IBAction func callWeatherButtonTapped(_ sender: NSButton) {
 
         log.message("[\(type(of: self))].\(#function)")
+
+        guard globals.statusMenusButtonPresenter.isReadyToCall,
+              let location = AppGlobals.appDelegate?.location
+        else {
+            log.message("[\(type(of: self))].\(#function)", .error)
+            return
+        }
+
+        globals.statusMenusButtonPresenter.isReadyToCall = false
+
+        let lat = location.latitude.cut(.two).description
+        let lon = location.longitude.cut(.two).description
+
+        let callDetails = OpenWeatherDetails(appid: AppGlobals.appKeyOpenWeather,
+                                                     format: .currentWeather,
+                                                     lat: lat,
+                                                     lon: lon)
+        log.message(callDetails.urlString)
+
+        do {
+            try globals.weatherClient.call(with: callDetails)
+        } catch {
+            log.message("[\(type(of: self))].\(#function)", .error)
+            globals.statusMenusButtonPresenter.isReadyToCall = true
+        }
     }
 
     @IBAction func aboutButtonTapped(_ sender: NSButton) {
@@ -133,6 +160,15 @@ class PopoverViewController: NSViewController {
                        name: NSNotification.Name.languageSwitchedManuallyNotification,
                        object: nil)
         localize()
+    }
+
+    // MARK: - Contract
+
+    public func reloadData() {
+
+        guard let weather = self.weatherView else { return }
+
+        weather.reloadData()
     }
 }
 
