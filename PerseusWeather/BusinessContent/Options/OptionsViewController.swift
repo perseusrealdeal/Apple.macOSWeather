@@ -434,6 +434,6 @@ extension OptionsViewController: Localizable {
     }
 
     private var windowTitleLocalized: String {
-        "Options Window Title".localizedValue + ": " + "BundleName".localizedValue
+        return "Options Window Title".localizedValue + ": " + "BundleName".localizedValue
     }
 }

@@ -29,7 +29,7 @@ public enum TemperatureOption: Int, CustomStringConvertible {
     case imperial = 2
 
     public var description: String {
-        "\(systemType): \(systemValue)"
+        return "\(systemType): \(systemValue)"
     }
 
     public var systemValue: String {
@@ -64,7 +64,7 @@ public enum WindSpeedOption: Int, CustomStringConvertible {
     case mph = 2
 
     public var description: String {
-        "\(systemType): \(systemValue)"
+        return "\(systemType): \(systemValue)"
     }
 
     public var systemValue: String {
@@ -99,7 +99,7 @@ public enum PressureOption: Int, CustomStringConvertible {
     case mb   = 2
 
     public var description: String {
-        "\(systemValue)"
+        return "\(systemValue)"
     }
 
     public var systemValue: String {
@@ -122,7 +122,7 @@ public enum TimeFormatOption: Int, CustomStringConvertible {
     case short = 1
 
     public var description: String {
-        "\(systemValue)"
+        return "\(systemValue)"
     }
 
     public var systemValue: String {

@@ -63,9 +63,9 @@ class PopoverViewController: NSViewController {
     @IBOutlet weak var forecastTabViewItem: NSTabViewItem!
 
     @IBOutlet weak var quitButton: NSButton!
-    @IBOutlet weak var hidePopoverButton: NSButton!
     @IBOutlet weak var aboutButton: NSButton!
     @IBOutlet weak var optionsButton: NSButton!
+    @IBOutlet weak var hidePopoverButton: NSButton!
 
     // MARK: - Actions
 
@@ -99,19 +99,18 @@ class PopoverViewController: NSViewController {
         }
     }
 
+    @IBAction func quitButtonTapped(_ sender: NSButton) {
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        AppGlobals.quitTheApp()
+    }
+
     @IBAction func aboutButtonTapped(_ sender: NSButton) {
 
         log.message("[\(type(of: self))].\(#function)")
 
         globals.aboutPresenter.showWindow(sender)
-    }
-
-    @IBAction func hidePopoverButtonTapped(_ sender: NSButton) {
-
-        log.message("[\(type(of: self))].\(#function)")
-
-        guard let popover = globals.statusMenusButtonPresenter.popover else { return }
-        popover.performClose(sender)
     }
 
     @IBAction func optionsButtonTapped(_ sender: NSButton) {
@@ -121,11 +120,12 @@ class PopoverViewController: NSViewController {
         globals.optionsPresenter.showWindow(sender)
     }
 
-    @IBAction func quitButtonTapped(_ sender: NSButton) {
+    @IBAction func hidePopoverButtonTapped(_ sender: NSButton) {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        AppGlobals.quitTheApp()
+        guard let popover = globals.statusMenusButtonPresenter.popover else { return }
+        popover.performClose(sender)
     }
 
     // MARK: - Initialization
