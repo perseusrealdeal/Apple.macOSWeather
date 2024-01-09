@@ -25,9 +25,11 @@
 /* Popover Screen – PopoverViewController */
 
 "Call Weather Button" = "Запроси Погоду";
+
+"Last One" = "Расчет от";
 "Made with Love" = "C любовью из Новосибирска.";
 
-"Weather Tab Label" = "Погода Сейчас";
+"Weather Tab Label" = "Наблюдение";
 "Forecast Tab Label" = "Прогноз";
 
 "About Button" = "Cебяшка";
@@ -57,18 +59,40 @@
 
 /* Weather View */
 
-"Text Weather Condition..." = "Кратко об условиях погоды...";
+"Meteo Data by" = "Метео сведения: ";
 
-"km" = "км";
+"About weather..." = "О погоде сейчас...";
+"In brief" = "В кратце";
+
+"Feels like: " = "По ощущениям: ";
+
+"Min: " = "Мин: ";
+"Max: " = "Макс: ";
+
+"Humidity: " = "Влага: ";
+
+"Visibility: " = "Обзор: ";
+
+"meter" = "м";
+"kilometre" = "км";
+"mile" = "мили";
+
+"Direction" = "Направление";
+
+"Speed" = "Скорость";
+"Gusts" = "Порывы";
+
 "m/s" = "м/с";
+"km/h" = "км/ч";
+"mph" = "мили/ч";
 
-"Visibility" = "Видимость";
-"Feels like" = "Ощущается";
+"Pressure" = "Давление";
 
-"Wind Speed" = "Скорость ветра";
-"Wind Gust" = "Порывы ветра";
+"hPa" = "гПа";
+"mmHg" = "мм.рт.ст.";
+"mb" = "мбар";
 
-"SUNRIZE" = "ВОСХОД";
+"SUNRISE" = "ВОСХОД";
 "SUNSET" = "ЗАХОД";
 
 "Weather alerts, dangers..." = "Погодные аномалиии, предупреждения...";
@@ -96,17 +120,18 @@
 /* Options Screen – OptionsWindowController, OptionsViewController */
 
 "Options Window Title" = "Возможности";
-"App Options Section" = "Опции Приложения";
-"Weather Options Section" = "Опции Погоды";
+"App Options Section" = "Настройки изделия:";
+"Weather Options Section" = "Метео данные:";
 
 "Dark Mode" = "Сторона Луны";
 "Language" = "Язык";
 "OpenWeather Key" = "Ключ OpenWeather";
-
-"Temperature" = "Шкала Температуры";
-"Wind Speed" = "Скорость Ветра";
-"Pressure" = "Давление";
 "Time Format" = "Формат Времени";
+
+"Temperature Options Screen" = "Шкала Температуры";
+"Wind Speed Options Screen" = "Скорость Ветра";
+"Pressure Options Screen" = "Барометр";
+"Distance Options Screen" = "Расстояние";
 
 "Lock" = "Скрыть";
 "Unlock" = "Открыть";
@@ -115,10 +140,13 @@
 
 "Light" = "Cветлая";
 "Dark" = "Темная";
-"System" = "Система";
+"System" = "Среда";
 
 "English" = "Английский";
 "Russian" = "Русский";
+
+"24-hour" = "24-часовой";
+"12-hour" = "12-часовой";
 
 "Kelvin" = "Кельвин";
 "Celsius" = "Цельсий";
@@ -126,11 +154,49 @@
 
 "meter/sec" = "метр/сек";
 "km/hour" = "км/час";
-"miles/hour" = "мили/час";
+"miles per hour" = "мили в час";
 
-"hPa" = "гПа";
-"mmHg" = "мм рт. ст.";
-"mb" = "мбар";
+"Length kilometre" = "Километры";
+"Length mile" = "Мили";
 
-"24-hour" = "24-часовой";
-"12-hour" = "12-часовой";
+/* Compass directions */
+
+"N" = "С";
+"N/NE" = "С/СВ";
+"NE" = "СВ";
+"E/NE" = "В/СВ";
+"E" = "В";
+"E/SE" = "В/ЮВ";
+"SE" = "ЮВ";
+"S/SE" = "Ю/ЮВ";
+"S" = "Ю";
+"S/SW" = "Ю/ЮЗ";
+"SW" = "ЮЗ";
+"W/SW" = "З/ЮЗ";
+"W" = "З";
+"W/NW" = "З/СЗ";
+"NW" = "СЗ";
+"N/NW" = "С/СЗ";
+"N" = "С";
+
+/* Month names */
+
+"December" = "дек.";
+"January" = "янв.";
+"February" = "фев.";
+"March" = "мар.";
+"April" = "апр.";
+"May" = "май";
+"June" = "июн.";
+"Jule" = "июл.";
+"August" = "авг.";
+"September" = "сен.";
+"October" = "окт.";
+"November" = "нояб.";
+
+/* 12-hour time periods */
+
+"AM" = "ДП";
+"PM" = "ПП";
+
+"Year mark" = " г.";

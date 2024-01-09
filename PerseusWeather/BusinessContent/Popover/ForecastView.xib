@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="ForecastView" customModule="PerseusWeather" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="ForecastView" customModule="Snowman" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="c22-O7-iKe" id="Sgz-HJ-2z6"/>
                 <outlet property="inDevelopLabel" destination="RqP-Rv-nzd" id="IwG-y9-spl"/>
@@ -19,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RqP-Rv-nzd">
-                    <rect key="frame" x="8" y="297" width="109" height="16"/>
+                    <rect key="frame" x="8" y="303" width="109" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="In development..." id="WyF-eG-QYY">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -29,7 +29,7 @@
             </subviews>
             <constraints>
                 <constraint firstItem="RqP-Rv-nzd" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="NVq-lK-6jY"/>
-                <constraint firstItem="RqP-Rv-nzd" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="7" id="tkx-S1-iKn"/>
+                <constraint firstItem="RqP-Rv-nzd" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="tkx-S1-iKn"/>
             </constraints>
             <point key="canvasLocation" x="57" y="-36"/>
         </customView>

@@ -29,7 +29,7 @@ class StatusMenusButtonPresenter {
 
     var popoverScreen: NSViewController?
 
-    var isReadyToCall = false
+    private var isReadyToCall = false
 
     // MARK: - Initialization
 
@@ -52,6 +52,14 @@ class StatusMenusButtonPresenter {
 
         popover = NSPopover()
         popoverScreen = PopoverViewController.storyboardInstance()
+
+        // Setup weather data source.
+
+        let nc = AppGlobals.notificationCenter
+
+        nc.addObserver(self, selector: #selector(meteoDataOptionsDidChanged),
+                       name: NSNotification.Name.weatherUnitsOptionsDidChanged,
+                       object: nil)
     }
 
     public func setupCallerLogic(for caller: OpenWeatherFreeClient) {
@@ -59,6 +67,12 @@ class StatusMenusButtonPresenter {
         log.message("[\(type(of: self))].\(#function)")
 
         caller.onDataGiven = { result in
+
+            if let controller = self.popoverScreen as? PopoverViewController {
+                DispatchQueue.main.async {
+                    controller.stopAnimationProgressIndicator(nil)
+                }
+            }
 
             switch result {
             case .success(let weatherData):
@@ -71,12 +85,50 @@ class StatusMenusButtonPresenter {
                     self.isReadyToCall = true
 
                 default:
-                    log.message("[FreeNetworkClient].\(#function) \(error)", .error)
+                    log.message("[\(type(of: self))].\(#function) \(error)", .error)
+                    self.isReadyToCall = true
                 }
             }
         }
 
         isReadyToCall = true
+    }
+
+    public func callWeather(_ sender: Any?) {
+
+        guard isReadyToCall, let location = AppGlobals.appDelegate?.location,
+              let controller = self.popoverScreen as? PopoverViewController
+        else {
+            log.message("[\(type(of: self))].\(#function)", .error)
+            return
+        }
+
+        isReadyToCall = false
+
+        let lat = location.latitude.cut(.two).description
+        let lon = location.longitude.cut(.two).description
+        let lang = globals.languageSwitcher.languageCalculated
+
+        let callDetails = OpenWeatherDetails(appid: AppGlobals.appKeyOpenWeather,
+                                             format: .currentWeather,
+                                             lat: lat,
+                                             lon: lon,
+                                             units: .imperial,
+                                             lang: .init(rawValue: lang),
+                                             mode: .json)
+
+        log.message(callDetails.urlString)
+
+        do {
+            controller.startAnimationProgressIndicator(sender)
+            try globals.weatherClient.call(with: callDetails)
+        } catch {
+
+            log.message("[\(type(of: self))].\(#function)", .error)
+
+            controller.stopAnimationProgressIndicator(sender)
+            isReadyToCall = true
+        }
     }
 
     // MARK: - Event handlers
@@ -98,18 +150,21 @@ class StatusMenusButtonPresenter {
     }
 
     private func weatherOnDataGivenHandler(_ data: Data) {
-
-        log.message("[\(type(of: self))].\(#function)\n" + """
-            DATA: BEGIN
-            \(String(decoding: data, as: UTF8.self))
-            DATA: END
-            """)
-
         guard let controller = self.popoverScreen as? PopoverViewController else { return }
 
         DispatchQueue.main.async {
-            controller.reloadData()
+
+            AppGlobals.appDelegate?.weather = data
+
             self.isReadyToCall = true
+
+            controller.reloadData()
         }
+    }
+
+    @objc func meteoDataOptionsDidChanged() {
+        guard let controller = self.popoverScreen as? PopoverViewController else { return }
+
+        controller.reloadData()
     }
 }

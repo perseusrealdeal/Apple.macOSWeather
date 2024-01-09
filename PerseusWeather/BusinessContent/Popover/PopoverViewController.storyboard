@@ -37,21 +37,26 @@
                                                 </connections>
                                             </button>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="II3-Ni-sjv">
-                                                <rect key="frame" x="194" y="10" width="153" height="11"/>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Made with Love from Novosibirsk." id="oSM-RN-xuB">
-                                                    <font key="font" metaFont="miniSystem"/>
+                                                <rect key="frame" x="166" y="9" width="189" height="14"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" alignment="right" title="Last One: 28 Dec 2023 3:51:45 pm" id="oSM-RN-xuB">
+                                                    <font key="font" metaFont="system" size="11"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
+                                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="xUP-85-vqz">
+                                                <rect key="frame" x="108" y="8" width="16" height="16"/>
+                                            </progressIndicator>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="xUP-85-vqz" firstAttribute="centerY" secondItem="1oS-xB-Iag" secondAttribute="centerY" id="0EW-aq-MRa"/>
+                                            <constraint firstItem="xUP-85-vqz" firstAttribute="leading" secondItem="1oS-xB-Iag" secondAttribute="trailing" constant="2" id="CGY-sQ-iu3"/>
                                             <constraint firstItem="1oS-xB-Iag" firstAttribute="centerY" secondItem="zay-Cg-HHE" secondAttribute="centerY" id="JcW-ps-KmT"/>
                                             <constraint firstItem="1oS-xB-Iag" firstAttribute="leading" secondItem="zay-Cg-HHE" secondAttribute="leading" id="M6g-Hi-CXR"/>
                                             <constraint firstItem="1oS-xB-Iag" firstAttribute="top" secondItem="zay-Cg-HHE" secondAttribute="top" constant="4" id="g7e-4A-DGa"/>
                                             <constraint firstAttribute="height" constant="30" id="heM-LO-oHu"/>
                                             <constraint firstItem="1oS-xB-Iag" firstAttribute="centerY" secondItem="II3-Ni-sjv" secondAttribute="centerY" id="pKz-2S-pgc"/>
-                                            <constraint firstAttribute="trailing" secondItem="II3-Ni-sjv" secondAttribute="trailing" constant="10" id="r0m-Ka-1Ua"/>
+                                            <constraint firstAttribute="trailing" secondItem="II3-Ni-sjv" secondAttribute="trailing" constant="2" id="r0m-Ka-1Ua"/>
                                         </constraints>
                                     </customView>
                                     <tabView canDrawConcurrently="YES" appearanceType="aqua" type="rightTabsBezelBorder" initialItem="g1D-Zn-Myw" translatesAutoresizingMaskIntoConstraints="NO" id="CfE-8B-27I">
@@ -69,7 +74,7 @@
                                             </tabViewItem>
                                             <tabViewItem label="Forecast" identifier="" id="XwN-hq-rQ0">
                                                 <view key="view" id="SkI-S3-94P" customClass="ForecastView" customModule="Snowman" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="7" width="608" height="214"/>
+                                                    <rect key="frame" x="10" y="7" width="327" height="214"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </view>
                                             </tabViewItem>
@@ -188,6 +193,7 @@
                         <outlet property="locationView" destination="KvG-58-2dT" id="7Zz-c3-eNb"/>
                         <outlet property="madeWithLoveLabel" destination="II3-Ni-sjv" id="ohb-Gv-dHz"/>
                         <outlet property="optionsButton" destination="lEc-RC-GkU" id="9WS-WU-GoL"/>
+                        <outlet property="progressIndicator" destination="xUP-85-vqz" id="6qz-VG-wtd"/>
                         <outlet property="quitButton" destination="aTa-ms-UFz" id="uIQ-8m-vbQ"/>
                         <outlet property="weatherTabViewItem" destination="g1D-Zn-Myw" id="7uf-lK-bWC"/>
                         <outlet property="weatherView" destination="4E9-lB-SpT" id="aA7-4n-QTL"/>

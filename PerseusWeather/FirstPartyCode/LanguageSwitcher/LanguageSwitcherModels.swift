@@ -49,7 +49,7 @@ public enum LanguageOption: Int, CustomStringConvertible {
         case .ru:
             return "Russian"
         case .system:
-            return "Default"
+            return "System"
         }
     }
 

@@ -57,6 +57,7 @@ class PopoverViewController: NSViewController {
     @IBOutlet weak var weatherView: WeatherView!
 
     @IBOutlet weak var callWeatherButton: NSButton!
+    @IBOutlet weak var progressIndicator: NSProgressIndicator!
     @IBOutlet weak var madeWithLoveLabel: NSTextField!
 
     @IBOutlet weak var weatherTabViewItem: NSTabViewItem!
@@ -73,36 +74,14 @@ class PopoverViewController: NSViewController {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        guard globals.statusMenusButtonPresenter.isReadyToCall,
-              let location = AppGlobals.appDelegate?.location
-        else {
-            log.message("[\(type(of: self))].\(#function)", .error)
-            return
-        }
-
-        globals.statusMenusButtonPresenter.isReadyToCall = false
-
-        let lat = location.latitude.cut(.two).description
-        let lon = location.longitude.cut(.two).description
-
-        let callDetails = OpenWeatherDetails(appid: AppGlobals.appKeyOpenWeather,
-                                                     format: .currentWeather,
-                                                     lat: lat,
-                                                     lon: lon)
-        log.message(callDetails.urlString)
-
-        do {
-            try globals.weatherClient.call(with: callDetails)
-        } catch {
-            log.message("[\(type(of: self))].\(#function)", .error)
-            globals.statusMenusButtonPresenter.isReadyToCall = true
-        }
+        globals.statusMenusButtonPresenter.callWeather(sender)
     }
 
     @IBAction func quitButtonTapped(_ sender: NSButton) {
 
         log.message("[\(type(of: self))].\(#function)")
 
+        // AppOptions.removeAll()
         AppGlobals.quitTheApp()
     }
 
@@ -160,6 +139,10 @@ class PopoverViewController: NSViewController {
                        name: NSNotification.Name.languageSwitchedManuallyNotification,
                        object: nil)
         localize()
+
+        // Setup progress indicator.
+
+        stopAnimationProgressIndicator(nil)
     }
 
     // MARK: - Contract
@@ -169,7 +152,19 @@ class PopoverViewController: NSViewController {
         guard let weather = self.weatherView else { return }
 
         weather.reloadData()
+        madeWithLoveLabel.stringValue = weatherView.dataSource.lastOne
     }
+
+    public func startAnimationProgressIndicator(_ sender: Any?) {
+        self.progressIndicator.isHidden = false
+        self.progressIndicator.startAnimation(sender)
+    }
+
+    public func stopAnimationProgressIndicator(_ sender: Any?) {
+        self.progressIndicator.isHidden = true
+        self.progressIndicator.stopAnimation(sender)
+    }
+    
 }
 
 // MARK: - DARK MODE
@@ -194,7 +189,8 @@ extension PopoverViewController: Localizable {
         // Buttons
 
         callWeatherButton.title = "Call Weather Button".localizedValue
-        madeWithLoveLabel.stringValue = "Made with Love".localizedValue
+        madeWithLoveLabel.stringValue = weatherView?.dataSource.lastOne ??
+            "Made with Love".localizedValue
 
         weatherTabViewItem.label = "Weather Tab Label".localizedValue
         forecastTabViewItem.label = "Forecast Tab Label".localizedValue

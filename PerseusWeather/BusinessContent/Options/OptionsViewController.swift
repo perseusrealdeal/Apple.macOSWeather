@@ -31,23 +31,24 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
 
     @IBOutlet private(set) weak var labelDarkMode: NSTextField!
     @IBOutlet private(set) weak var labelLanguage: NSTextField!
+    @IBOutlet private(set) weak var labelTimeFormat: NSTextField!
     @IBOutlet private(set) weak var labelOpenWeatherKey: NSTextField!
+
+    @IBOutlet private(set) weak var controlDarkMode: NSSegmentedControl!
+    @IBOutlet private(set) weak var controlLanguage: NSSegmentedControl!
+    @IBOutlet private(set) weak var controlTimeFormat: NSSegmentedControl!
+    @IBOutlet private(set) weak var controlOpenWeatherKey: NSTextField!
+    @IBOutlet private(set) weak var controlUnlockButton: NSButton!
 
     @IBOutlet private(set) weak var labelTemperature: NSTextField!
     @IBOutlet private(set) weak var labelWindSpeed: NSTextField!
     @IBOutlet private(set) weak var labelPressure: NSTextField!
-    @IBOutlet private(set) weak var labelTimeFormat: NSTextField!
-
-    @IBOutlet private(set) weak var controlDarkMode: NSSegmentedControl!
-    @IBOutlet private(set) weak var controlLanguage: NSSegmentedControl!
-
-    @IBOutlet private(set) weak var controlOpenWeatherKey: NSTextField!
-    @IBOutlet private(set) weak var controlUnlockButton: NSButton!
+    @IBOutlet private(set) weak var labelDistance: NSTextField!
 
     @IBOutlet private(set) weak var controlTemperature: NSSegmentedControl!
     @IBOutlet private(set) weak var controlWindSpeed: NSSegmentedControl!
     @IBOutlet private(set) weak var controlPressure: NSSegmentedControl!
-    @IBOutlet private(set) weak var controlTimeFormat: NSSegmentedControl!
+    @IBOutlet private(set) weak var controlDistance: NSSegmentedControl!
 
     // MARK: - Actions
 
@@ -73,16 +74,35 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
 
         switch sender.selectedSegment {
         case 0:
-            AppSettings.languageOption = .en
+            AppOptions.languageOption = .en
         case 1:
-            AppSettings.languageOption = .ru
+            AppOptions.languageOption = .ru
         case 2:
-            AppSettings.languageOption = .system
+            AppOptions.languageOption = .system
         default:
             break
         }
 
-        globals.languageSwitcher.switchLanguageIfNeeded(AppSettings.languageOption)
+        globals.languageSwitcher.switchLanguageIfNeeded(AppOptions.languageOption)
+    }
+
+    @IBAction func controlTimeFormatDidChanged(_ sender: NSSegmentedControl) {
+
+        log.message("[\(type(of: self))].\(#function) - \(controlTimeFormat.selectedSegment)")
+
+        switch sender.selectedSegment {
+        case 0:
+            AppOptions.timeFormatOption = .hour24
+        case 1:
+            AppOptions.timeFormatOption = .hour12
+        case 2:
+            AppOptions.timeFormatOption = .system
+        default:
+            break
+        }
+
+        let nc = AppGlobals.notificationCenter
+        nc.post(Notification.init(name: .weatherUnitsOptionsDidChanged))
     }
 
     @IBAction func controlUnlockButtonTapped(_ sender: NSButton) {
@@ -92,7 +112,7 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
         if self.controlOpenWeatherKey.isEditable {
             lockOpenWeatherKeyHole()
         } else {
-            let secret = AppSettings.OpenWeatherAPIOption
+            let secret = AppOptions.OpenWeatherAPIOption
             if let secret = secret {
                 unlockOpenWeatherKeyHole(stringValue: secret)
             }
@@ -105,11 +125,11 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
 
         switch sender.selectedSegment {
         case 0:
-            AppSettings.temperatureOption = .standard
+            AppOptions.temperatureOption = .standard
         case 1:
-            AppSettings.temperatureOption = .metric
+            AppOptions.temperatureOption = .metric
         case 2:
-            AppSettings.temperatureOption = .imperial
+            AppOptions.temperatureOption = .imperial
         default:
             break
         }
@@ -124,11 +144,11 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
 
         switch sender.selectedSegment {
         case 0:
-            AppSettings.windSpeedOption = .ms
+            AppOptions.windSpeedOption = .ms
         case 1:
-            AppSettings.windSpeedOption = .kmh
+            AppOptions.windSpeedOption = .kmh
         case 2:
-            AppSettings.windSpeedOption = .mph
+            AppOptions.windSpeedOption = .mph
         default:
             break
         }
@@ -143,11 +163,11 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
 
         switch sender.selectedSegment {
         case 0:
-            AppSettings.pressureOption = .hPa
+            AppOptions.pressureOption = .hPa
         case 1:
-            AppSettings.pressureOption = .mmHg
+            AppOptions.pressureOption = .mmHg
         case 2:
-            AppSettings.pressureOption = .mb
+            AppOptions.pressureOption = .mb
         default:
             break
         }
@@ -156,15 +176,15 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
         nc.post(Notification.init(name: .weatherUnitsOptionsDidChanged))
     }
 
-    @IBAction func controlTimeFormatDidChanged(_ sender: NSSegmentedControl) {
+    @IBAction func controlDistanceDidChanged(_ sender: NSSegmentedControl) {
 
-        log.message("[\(type(of: self))].\(#function) - \(controlTimeFormat.selectedSegment)")
+        log.message("[\(type(of: self))].\(#function) - \(controlDistance.selectedSegment)")
 
         switch sender.selectedSegment {
         case 0:
-            AppSettings.timeFormatOption = .long
+            AppOptions.distanceOption = .kilometre
         case 1:
-            AppSettings.timeFormatOption = .short
+            AppOptions.distanceOption = .mile
         default:
             break
         }
@@ -172,6 +192,7 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
         let nc = AppGlobals.notificationCenter
         nc.post(Notification.init(name: .weatherUnitsOptionsDidChanged))
     }
+
     @IBAction func closeOptionsWindow(_ sender: NSButton) {
 
         globals.optionsPresenter.close()
@@ -222,10 +243,12 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
 
         updateControlDarkMode()
         updateControlLanguage()
+        updateControlTimeFormat()
+
         updateControlTemperature()
         updateControlWindSpeed()
         updateControlPressure()
-        updateControlTimeFormat()
+        updateControlDistance()
     }
 
     override func viewWillDisappear() {
@@ -265,8 +288,8 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
             tf.stringValue = text
         }
 
-        AppSettings.OpenWeatherAPIOption = tf.stringValue
-        if let secret = AppSettings.OpenWeatherAPIOption {
+        AppOptions.OpenWeatherAPIOption = tf.stringValue
+        if let secret = AppOptions.OpenWeatherAPIOption {
             controlOpenWeatherKey.stringValue = secret
         } else {
             lockOpenWeatherKeyHole()
@@ -276,6 +299,8 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
     // MARK: - Realization, private methods
 
     private func updateControlDarkMode() {
+
+        log.message("[\(type(of: self))].\(#function) \(AppearanceService.DarkModeUserChoice)")
 
         switch AppearanceService.DarkModeUserChoice {
         case .auto:
@@ -289,7 +314,9 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
 
     private func updateControlLanguage() {
 
-        switch AppSettings.languageOption {
+        log.message("[\(type(of: self))].\(#function) \(AppOptions.languageOption)")
+
+        switch AppOptions.languageOption {
         case .system:
             controlLanguage.selectedSegment = 2
         case .ru:
@@ -323,7 +350,9 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
 
     private func updateControlTemperature() {
 
-        switch AppSettings.temperatureOption {
+        log.message("[\(type(of: self))].\(#function) \(AppOptions.temperatureOption)")
+
+        switch AppOptions.temperatureOption {
         case .imperial:
             controlTemperature.selectedSegment = 2
         case .metric:
@@ -335,7 +364,9 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
 
     private func updateControlWindSpeed() {
 
-        switch AppSettings.windSpeedOption {
+        log.message("[\(type(of: self))].\(#function) \(AppOptions.windSpeedOption)")
+
+        switch AppOptions.windSpeedOption {
         case .mph:
             controlWindSpeed.selectedSegment = 2
         case .kmh:
@@ -347,7 +378,9 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
 
     private func updateControlPressure() {
 
-        switch AppSettings.pressureOption {
+        log.message("[\(type(of: self))].\(#function) \(AppOptions.pressureOption)")
+
+        switch AppOptions.pressureOption {
         case .mb:
             controlPressure.selectedSegment = 2
         case .mmHg:
@@ -359,11 +392,29 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
 
     private func updateControlTimeFormat() {
 
-        switch AppSettings.timeFormatOption {
-        case .short:
+        log.message("[\(type(of: self))].\(#function) \(AppOptions.timeFormatOption)")
+
+        switch AppOptions.timeFormatOption {
+        case .system:
+            controlTimeFormat.selectedSegment = 2
+        case .hour12:
             controlTimeFormat.selectedSegment = 1
-        case .long:
+        case .hour24:
             controlTimeFormat.selectedSegment = 0
+        }
+    }
+
+    private func updateControlDistance() {
+
+        log.message("[\(type(of: self))].\(#function) \(AppOptions.distanceOption)")
+
+        switch AppOptions.distanceOption {
+        case .mile:
+            controlDistance.selectedSegment = 1
+        case .kilometre:
+            controlDistance.selectedSegment = 0
+        default:
+            controlDistance.isEnabled = false
         }
     }
 }
@@ -397,11 +448,12 @@ extension OptionsViewController: Localizable {
         labelDarkMode.stringValue = "Dark Mode".localizedValue
         labelLanguage.stringValue = "Language".localizedValue
         labelOpenWeatherKey.stringValue = "OpenWeather Key".localizedValue
-
-        labelTemperature.stringValue = "Temperature".localizedValue
-        labelWindSpeed.stringValue = "Wind Speed".localizedValue
-        labelPressure.stringValue = "Pressure".localizedValue
         labelTimeFormat.stringValue = "Time Format".localizedValue
+
+        labelTemperature.stringValue = "Temperature Options Screen".localizedValue
+        labelWindSpeed.stringValue = "Wind Speed Options Screen".localizedValue
+        labelPressure.stringValue = "Pressure Options Screen".localizedValue
+        labelDistance.stringValue = "Distance Options Screen".localizedValue
 
         controlOpenWeatherKey.placeholderString = controlOpenWeatherKey.isEditable ?
         "Past the key...".localizedValue : "Hidden key hole...".localizedValue
@@ -417,20 +469,24 @@ extension OptionsViewController: Localizable {
         controlLanguage.setLabel("Russian".localizedValue, forSegment: 1)
         controlLanguage.setLabel("System".localizedValue, forSegment: 2)
 
+        controlTimeFormat.setLabel("24-hour".localizedValue, forSegment: 0)
+        controlTimeFormat.setLabel("12-hour".localizedValue, forSegment: 1)
+        controlTimeFormat.setLabel("System".localizedValue, forSegment: 2)
+
         controlTemperature.setLabel("Kelvin".localizedValue + " K", forSegment: 0)
         controlTemperature.setLabel("Celsius".localizedValue + " °C", forSegment: 1)
         controlTemperature.setLabel("Fahrenheit".localizedValue + " °F", forSegment: 2)
 
         controlWindSpeed.setLabel("meter/sec".localizedValue, forSegment: 0)
         controlWindSpeed.setLabel("km/hour".localizedValue, forSegment: 1)
-        controlWindSpeed.setLabel("miles/hour".localizedValue, forSegment: 2)
+        controlWindSpeed.setLabel("miles per hour".localizedValue, forSegment: 2)
 
         controlPressure.setLabel("hPa".localizedValue, forSegment: 0)
         controlPressure.setLabel("mmHg".localizedValue, forSegment: 1)
         controlPressure.setLabel("mb".localizedValue, forSegment: 2)
 
-        controlTimeFormat.setLabel("24-hour".localizedValue, forSegment: 0)
-        controlTimeFormat.setLabel("12-hour".localizedValue, forSegment: 1)
+        controlDistance.setLabel("Length kilometre".localizedValue, forSegment: 0)
+        controlDistance.setLabel("Length mile".localizedValue, forSegment: 1)
     }
 
     private var windowTitleLocalized: String {

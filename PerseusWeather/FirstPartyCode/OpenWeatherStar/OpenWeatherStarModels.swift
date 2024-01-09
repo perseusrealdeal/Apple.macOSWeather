@@ -114,12 +114,39 @@ public enum PressureOption: Int, CustomStringConvertible {
     }
 }
 
+// MARK: - LENGTH
+
+public enum LengthOption: Int, CustomStringConvertible {
+
+    case meter     = 0
+    case kilometre = 1
+    case mile      = 2
+
+    public var description: String {
+
+        var unit = ""
+
+        switch self {
+        case .meter:
+            unit = "meter"
+        case .kilometre:
+            unit = "kilometre"
+        case .mile:
+            unit = "mile"
+        }
+
+        return unit
+    }
+}
+
 // MARK: - TIME FORMATS
 
+// Used to represent and store end-user choice
 public enum TimeFormatOption: Int, CustomStringConvertible {
 
-    case long  = 0
-    case short = 1
+    case hour24 = 0
+    case hour12 = 1
+    case system = 2
 
     public var description: String {
         return "\(systemValue)"
@@ -127,10 +154,31 @@ public enum TimeFormatOption: Int, CustomStringConvertible {
 
     public var systemValue: String {
         switch self {
-        case .long:
+        case .hour24:
             return "24-hour"
-        case .short:
+        case .hour12:
             return "12-hour"
+        case .system:
+            return "system-hour"
         }
     }
 }
+
+public let compassDirections = // 17 elements
+    ["N",
+     "N/NE",
+     "NE",
+     "E/NE",
+     "E",
+     "E/SE",
+     "SE",
+     "S/SE",
+     "S",
+     "S/SW",
+     "SW",
+     "W/SW",
+     "W",
+     "W/NW",
+     "NW",
+     "N/NW",
+     "N"]

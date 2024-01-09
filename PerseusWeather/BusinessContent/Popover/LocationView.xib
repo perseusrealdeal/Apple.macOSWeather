@@ -31,7 +31,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6Bi-kF-QOm">
-                    <rect key="frame" x="8" y="68" width="75" height="17"/>
+                    <rect key="frame" x="0.0" y="68" width="75" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Permission:" id="nlB-9i-IAi">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -39,7 +39,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3WQ-1R-kmJ">
-                    <rect key="frame" x="84" y="68" width="43" height="17"/>
+                    <rect key="frame" x="76" y="68" width="43" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Status" id="oBr-sx-wHs">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -47,7 +47,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kTd-g8-roX">
-                    <rect key="frame" x="8" y="7" width="122" height="17"/>
+                    <rect key="frame" x="0.0" y="7" width="122" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Latitude, Longitude" id="qc4-GJ-hVX">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -66,13 +66,13 @@
                 </button>
             </subviews>
             <constraints>
-                <constraint firstItem="6Bi-kF-QOm" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="2mz-nc-jb9"/>
+                <constraint firstItem="6Bi-kF-QOm" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="2" id="2mz-nc-jb9"/>
                 <constraint firstItem="XdO-8w-GAc" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="390-18-IL3"/>
                 <constraint firstAttribute="bottom" secondItem="dzE-ai-CbN" secondAttribute="bottom" constant="5" id="BHf-sC-VcN"/>
                 <constraint firstItem="3WQ-1R-kmJ" firstAttribute="leading" secondItem="6Bi-kF-QOm" secondAttribute="trailing" constant="5" id="L6i-Qn-NGp"/>
                 <constraint firstItem="6Bi-kF-QOm" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="5" id="bTL-VL-U4f"/>
                 <constraint firstItem="kTd-g8-roX" firstAttribute="centerY" secondItem="dzE-ai-CbN" secondAttribute="centerY" id="eBF-5F-Teo"/>
-                <constraint firstItem="kTd-g8-roX" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="fKf-IW-hHl"/>
+                <constraint firstItem="kTd-g8-roX" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="2" id="fKf-IW-hHl"/>
                 <constraint firstItem="3WQ-1R-kmJ" firstAttribute="centerY" secondItem="6Bi-kF-QOm" secondAttribute="centerY" id="gcT-OW-8GM"/>
                 <constraint firstItem="XdO-8w-GAc" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="gjg-aw-MWt"/>
                 <constraint firstAttribute="trailing" secondItem="dzE-ai-CbN" secondAttribute="trailing" id="yio-Ya-lDQ"/>

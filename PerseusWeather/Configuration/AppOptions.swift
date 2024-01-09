@@ -1,5 +1,5 @@
 //
-//  AppSettings.swift
+//  AppOptions.swift
 //  PerseusWeather
 //
 //  Created by Mikhail Zhigulin in 7532.
@@ -35,11 +35,14 @@ public let PRESSURE_OPTION_KEY = "PRESSURE_OPTION_KEY"
 public let PRESSURE_OPTION_DEFAULT = PressureOption.mb
 
 public let TIME_OPTION_KEY = "TIME_OPTION_KEY"
-public let TIME_OPTION_DEFAULT = TimeFormatOption.short
+public let TIME_OPTION_DEFAULT = TimeFormatOption.system
+
+public let DISTANCE_OPTION_KEY = "DISTANCE_OPTION_KEY"
+public let DISTANCE_OPTION_DEFAULT = LengthOption.mile
 
 // MARK: - Service for keeping options saved
 
-class AppSettings {
+class AppOptions {
 
     // MARK: OpenWeather API Key Option
 
@@ -219,5 +222,54 @@ class AppSettings {
             let ud = AppGlobals.userDefaults
             ud.setValue(newValue.rawValue, forKey: TIME_OPTION_KEY)
         }
+    }
+
+    // MARK: - Length of Distance
+
+    public static var distanceOption: LengthOption {
+        get {
+            // Load enum Int value
+
+            let ud = AppGlobals.userDefaults
+
+            let rawValue = ud.valueExists(forKey: DISTANCE_OPTION_KEY) ?
+                ud.integer(forKey: DISTANCE_OPTION_KEY) :
+                DISTANCE_OPTION_DEFAULT.rawValue
+
+            // Try to cast Int value to enum
+
+            if let result = LengthOption.init(rawValue: rawValue) { return result }
+
+            // Return default saved value in any other case
+
+            ud.setValue(DISTANCE_OPTION_DEFAULT.rawValue, forKey: DISTANCE_OPTION_KEY)
+            return DISTANCE_OPTION_DEFAULT
+        }
+        set {
+            let ud = AppGlobals.userDefaults
+            ud.setValue(newValue.rawValue, forKey: DISTANCE_OPTION_KEY)
+        }
+    }
+}
+
+// MARK: - RESET OPTIONS
+
+extension AppOptions {
+
+    public static func removeAll() {
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        let ud = AppGlobals.userDefaults
+
+        ud.removeObject(forKey: DARK_MODE_USER_CHOICE_KEY)
+        ud.removeObject(forKey: DARK_MODE_SETTINGS_KEY)
+        ud.removeObject(forKey: LANGUAGE_OPTION_KEY)
+        ud.removeObject(forKey: TEMPERATURE_OPTION_KEY)
+        ud.removeObject(forKey: WINDSPEED_OPTION_KEY)
+        ud.removeObject(forKey: PRESSURE_OPTION_KEY)
+        ud.removeObject(forKey: TIME_OPTION_KEY)
+
+        self.OpenWeatherAPIOption = nil
     }
 }

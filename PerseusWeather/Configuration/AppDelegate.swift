@@ -28,7 +28,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var weather: Data? {
         didSet {
-            log.message(String(describing: weather))
+            log.message("[\(type(of: self))].\(#function)\n" + """
+                DATA: BEGIN
+                \(String(decoding: weather ?? Data(), as: UTF8.self))
+                DATA: END
+                """)
         }
     }
 
@@ -41,6 +45,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         AppearanceService.makeUp()
 
-        globals.languageSwitcher.switchLanguageIfNeeded(AppSettings.languageOption)
+        globals.languageSwitcher.switchLanguageIfNeeded(AppOptions.languageOption)
     }
 }
