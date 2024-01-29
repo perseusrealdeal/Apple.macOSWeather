@@ -67,7 +67,7 @@ jobs:
     - uses: mxcl/xcodebuild@v1.9.2
       with:
         platform: macOS
-        scheme: 'PerseusMeteo_RU'
+        scheme: 'PerseusMeteoRU'
         action: test
         code-coverage: true
         working-directory: ./
