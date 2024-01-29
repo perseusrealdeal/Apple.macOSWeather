@@ -70,20 +70,22 @@ class PopoverScreenLocalizationTests: XCTestCase {
 
         // assert
 
-        XCTAssertEqual(sut.viewLocation.labelPermissionTitle.stringValue,
-                       "Label: Permission".localizedValue + ":")
-
-        XCTAssertEqual(sut.viewLocation.labelPermissionValue.stringValue,
-                       "GeoAccess: .notDetermined".localizedValue)
-
         XCTAssertEqual(sut.viewLocation.labelLocationNameValue.stringValue,
                        "Greetings".localizedValue)
 
         XCTAssertEqual(sut.viewLocation.labelGeoCoupleDataValue.stringValue,
                        "Geo Couple".localizedValue)
 
+        XCTAssertEqual(sut.viewLocation.labelPermissionTitle.stringValue,
+                       "Label: Permission".localizedValue + ":")
+
+        let permit = sut.viewLocation.refreshedForPermit
+
+        XCTAssertEqual(sut.viewLocation.labelPermissionValue.stringValue,
+                       permit?.permissionLocalKey.localizedValue)
+
         XCTAssertEqual(sut.viewLocation.buttonRefresh.title,
-                       "Button: Allow Geo...".localizedValue)
+                       permit?.refreshLocalKey.localizedValue)
     }
 
     func test_Localization_of_WeatherView() {

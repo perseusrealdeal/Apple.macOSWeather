@@ -20,6 +20,10 @@ import Cocoa
 @IBDesignable
 class LocationView: NSView {
 
+    // MARK: - Internals
+
+    private(set) var refreshedForPermit: LocationDealerPermit?
+
     // MARK: - Outlets
 
     @IBOutlet private(set) var viewContent: NSView!
@@ -139,23 +143,23 @@ class LocationView: NSView {
 
     public func reloadData() {
 
-        // TODO: - Add location title if exists
-
-        /*
-        if AppGlobals.appDelegate?.location != nil {
-            locationNameValueLabel.stringValue = "Location Name Label".localizedValue
-        } else {
-            locationNameValueLabel.stringValue = "Greetings".localizedValue
-        }
-        */
-
-        labelPermissionTitle.stringValue = "Label: Permission".localizedValue + ":"
-        labelPermissionValue.stringValue = permissionStatusLocalized
+#if !TARGET_INTERFACE_BUILDER
+        // Run this code only in the app.
+        refreshedForPermit = globals.locationDealer.locationPermit
+#else
+        // Run this code only in Interface Builder.
+        refreshedForPermit = .deniedForAllAndRestricted
+#endif
 
         labelLocationNameValue.stringValue = "Greetings".localizedValue
-
         labelGeoCoupleDataValue.stringValue = geoCoupleDataLocalized
-        buttonRefresh.title = locationRefreshButtonTitleLocalized
+
+        labelPermissionTitle.stringValue = "Label: Permission".localizedValue + ":"
+
+        let permissionLocalized = refreshedForPermit?.permissionLocalKey.localizedValue ?? ""
+        labelPermissionValue.stringValue = permissionLocalized
+
+        buttonRefresh.title = refreshedForPermit?.refreshLocalKey.localizedValue ?? ""
     }
 }
 
@@ -215,36 +219,6 @@ extension LocationView {
 
 extension LocationView {
 
-    private var locationRefreshButtonTitleLocalized: String {
-
-#if !TARGET_INTERFACE_BUILDER
-   // Run this code only in the app.
-        let permit = globals.locationDealer.locationPermit
-#else
-   // Run this code only in Interface Builder.
-        let permit: LocationDealerPermit = .notDetermined
-#endif
-
-        var titleLocalized: String = ""
-
-        switch permit {
-        case .notDetermined:
-            titleLocalized = "Button: Allow Geo...".localizedValue
-        case .deniedForAllAndRestricted:
-            titleLocalized = "Button: Go to Settings...".localizedValue
-        case .restricted:
-            titleLocalized = "Button: Go to Settings...".localizedValue
-        case .deniedForAllApps:
-            titleLocalized = "Button: Go to Settings...".localizedValue
-        case .deniedForTheApp:
-            titleLocalized = "Button: Go to Settings...".localizedValue
-        case .allowed:
-            titleLocalized = "Button: Refresh Current Location".localizedValue
-        }
-
-        return titleLocalized
-    }
-
     private var geoCoupleDataLocalized: String {
 
         guard
@@ -255,34 +229,43 @@ extension LocationView {
 
         return "\(location.latitude.cut(.four)), \(location.longitude.cut(.four))"
     }
+}
 
-    private var permissionStatusLocalized: String {
+// MARK: - LOCALIZATION EXTENSIONS
 
-#if !TARGET_INTERFACE_BUILDER
-        // Run this code only in the app.
-        let permit = globals.locationDealer.locationPermit
-#else
-        // Run this code only in Interface Builder.
-        let permit: LocationDealerPermit = .deniedForAllAndRestricted
-#endif
+extension LocationDealerPermit {
 
-        var statusLocalized: String = ""
-
-        switch permit {
+    var refreshLocalKey: String {
+        switch self {
         case .notDetermined:
-            statusLocalized = "GeoAccess: .notDetermined".localizedValue
+            return "Button: Allow Geo..."
         case .deniedForAllAndRestricted:
-            statusLocalized = "GeoAccess: .deniedForAllAndRestricted".localizedValue
+            return "Button: Go to Settings..."
         case .restricted:
-            statusLocalized = "GeoAccess: .restricted".localizedValue
+            return "Button: Go to Settings..."
         case .deniedForAllApps:
-            statusLocalized = "GeoAccess: .deniedForAllApps".localizedValue
+            return "Button: Go to Settings..."
         case .deniedForTheApp:
-            statusLocalized = "GeoAccess: .deniedForTheApp".localizedValue
+            return "Button: Go to Settings..."
         case .allowed:
-            statusLocalized = "GeoAccess: .allowed".localizedValue
+            return "Button: Refresh Current Location"
         }
+    }
 
-        return statusLocalized
+    var permissionLocalKey: String {
+        switch self {
+        case .notDetermined:
+            return "GeoAccess: .notDetermined"
+        case .deniedForAllAndRestricted:
+            return "GeoAccess: .deniedForAllAndRestricted"
+        case .restricted:
+            return "GeoAccess: .restricted"
+        case .deniedForAllApps:
+            return "GeoAccess: .deniedForAllApps"
+        case .deniedForTheApp:
+            return "GeoAccess: .deniedForTheApp"
+        case .allowed:
+            return "GeoAccess: .allowed"
+        }
     }
 }
