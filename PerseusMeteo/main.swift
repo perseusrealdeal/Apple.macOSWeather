@@ -18,9 +18,11 @@ import Cocoa
 // MARK: - Logger
 
 log.level = .info
-log.message("The app's start point...", .info)
 
 // MARK: - Construct the app's top elements
+
+log.message("The app's start point...", .info)
+log.message("", .info)
 
 let app = NSApplication.shared
 

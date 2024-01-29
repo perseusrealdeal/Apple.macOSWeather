@@ -20,41 +20,44 @@ import Cocoa
 @IBDesignable
 class WeatherView: NSView {
 
-    // MARK: - Internals
+    // MARK: - View Data Source
 
-    private let darkModeObserver = DarkModeObserver()
-    public let dataSource = MeteoDataParser()
+    public var data: MeteoDataParser?
+
+    private var dataSource: MeteoDataParser {
+        return data ?? MeteoDataParser()
+    }
 
     // MARK: - Outlets
 
-    @IBOutlet private(set) var contentView: NSView!
+    @IBOutlet private(set) var viewContent: NSView!
 
-    @IBOutlet private(set) weak var meteoDataByLabel: NSTextField!
-    @IBOutlet private(set) weak var meteoProviderNameLabel: NSTextField!
+    @IBOutlet private(set) weak var labelMeteoProviderTitle: NSTextField!
+    @IBOutlet private(set) weak var labelMeteoProviderValue: NSTextField!
 
-    @IBOutlet private(set) weak var feelsLikeLabel: NSTextField!
-    @IBOutlet private(set) weak var miniMaxTemperatureLabel: NSTextField!
+    @IBOutlet private(set) weak var labelFeelsLike: NSTextField!
+    @IBOutlet private(set) weak var labelMiniMaxTemperature: NSTextField!
 
-    @IBOutlet private(set) weak var humidityLabel: NSTextField!
-    @IBOutlet private(set) weak var visibilityLabel: NSTextField!
+    @IBOutlet private(set) weak var labelHumidity: NSTextField!
+    @IBOutlet private(set) weak var labelVisibility: NSTextField!
 
-    @IBOutlet private(set) weak var weatherConditionIcon: NSImageView!
-    @IBOutlet private(set) weak var temperatureValue: NSTextField!
-    @IBOutlet private(set) weak var weatherConditionLabel: NSTextField!
+    @IBOutlet private(set) weak var viewWeatherConditionIcon: NSImageView!
+    @IBOutlet private(set) weak var labelTemperatureValue: NSTextField!
+    @IBOutlet private(set) weak var labelWeatherConditionValue: NSTextField!
 
-    @IBOutlet private(set) weak var windSpeedLabel: NSTextField!
-    @IBOutlet private(set) weak var windSpeedValue: NSTextField!
-    @IBOutlet private(set) weak var windDirectionLabel: NSTextField!
-    @IBOutlet private(set) weak var windDirectionValue: NSTextField!
-    @IBOutlet private(set) weak var windGustsLabel: NSTextField!
-    @IBOutlet private(set) weak var windGustsValue: NSTextField!
+    @IBOutlet private(set) weak var labelWindSpeedTitle: NSTextField!
+    @IBOutlet private(set) weak var labelWindSpeedValue: NSTextField!
+    @IBOutlet private(set) weak var labelWindDirectionTitle: NSTextField!
+    @IBOutlet private(set) weak var labelWindDirectionValue: NSTextField!
+    @IBOutlet private(set) weak var labelWindGustsTitle: NSTextField!
+    @IBOutlet private(set) weak var labelWindGustsValue: NSTextField!
 
-    @IBOutlet private(set) weak var pressureLabel: NSTextField!
-    @IBOutlet private(set) weak var pressureValue: NSTextField!
-    @IBOutlet private(set) weak var sunriseLabel: NSTextField!
-    @IBOutlet private(set) weak var sunriseValue: NSTextField!
-    @IBOutlet private(set) weak var sunsetLabel: NSTextField!
-    @IBOutlet private(set) weak var sunsetValue: NSTextField!
+    @IBOutlet private(set) weak var labelPressureTitle: NSTextField!
+    @IBOutlet private(set) weak var labelPressureValue: NSTextField!
+    @IBOutlet private(set) weak var labelSunriseTitle: NSTextField!
+    @IBOutlet private(set) weak var labelSunriseValue: NSTextField!
+    @IBOutlet private(set) weak var labelSunsetTitle: NSTextField!
+    @IBOutlet private(set) weak var labelSunsetValue: NSTextField!
 
     // MARK: - Initialization
 
@@ -98,12 +101,12 @@ class WeatherView: NSView {
 
         var newConstraints: [NSLayoutConstraint] = []
 
-        for oldConstraint in contentView.constraints {
+        for oldConstraint in viewContent.constraints {
 
-            let firstItem = oldConstraint.firstItem === contentView ?
+            let firstItem = oldConstraint.firstItem === viewContent ?
             self : oldConstraint.firstItem
 
-            let secondItem = oldConstraint.secondItem === contentView ?
+            let secondItem = oldConstraint.secondItem === viewContent ?
             self : oldConstraint.secondItem
 
             newConstraints.append(
@@ -117,27 +120,11 @@ class WeatherView: NSView {
             )
         }
 
-        for newView in contentView.subviews {
+        for newView in viewContent.subviews {
             self.addSubview(newView)
         }
 
         self.addConstraints(newConstraints)
-
-        // Setup DARK MODE.
-
-        darkModeObserver.action = { _ in self.callDarkModeSensitiveColours() }
-        callDarkModeSensitiveColours()
-
-        // Setup localization.
-
-        let nc = AppGlobals.notificationCenter
-
-        nc.addObserver(self, selector: #selector(localize),
-                       name: NSNotification.Name.languageSwitchedManuallyNotification,
-                       object: nil)
-
-        dataSource.data = { AppGlobals.appDelegate?.weather ?? Data() }
-        reloadData()
     }
 
     // MARK: - Contract
@@ -146,54 +133,59 @@ class WeatherView: NSView {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        dataSource.refreshValuesIfNeeded()
+        dataSource.refresh()
 
         // Meteo Data Provider.
 
-        meteoDataByLabel.stringValue = "Meteo Data by".localizedValue
-        meteoProviderNameLabel.stringValue = dataSource.meteoDataProviderName
+        labelMeteoProviderTitle.stringValue = "Label: Meteo Data Provider".localizedValue
+        labelMeteoProviderValue.stringValue = dataSource.meteoDataProviderName
 
         // Weather Icon and Short desc.
 
-        weatherConditionIcon.image = NSImage(named: dataSource.weatherIconName)
-        weatherConditionLabel.stringValue = dataSource.weatherDescription
+        viewWeatherConditionIcon.image = NSImage(named: dataSource.weatherIconName)
+        labelWeatherConditionValue.stringValue = dataSource.weatherDescription
 
         // Temperature.
 
-        temperatureValue.stringValue = dataSource.temperature
-        feelsLikeLabel.stringValue =
-            "Feels like: ".localizedValue + dataSource.temperatureFeelsLike
-        miniMaxTemperatureLabel.stringValue =
-            "Min: ".localizedValue + dataSource.temperatureMinimum + " / " +
-            "Max: ".localizedValue + dataSource.temperatureMaximum
+        labelTemperatureValue.stringValue = dataSource.temperature
+
+        let fl = "Prefix: Feels Like".localizedValue + ": \(dataSource.temperatureFeelsLike)"
+        labelFeelsLike.stringValue = fl
+
+        let min = "Prefix: Min".localizedValue + ": \(dataSource.temperatureMinimum)"
+        let max = "Prefix: Max".localizedValue + ": \(dataSource.temperatureMaximum)"
+        labelMiniMaxTemperature.stringValue = min + " / " + max
 
         // Humidity and visibility.
 
-        humidityLabel.stringValue = "Humidity: ".localizedValue + dataSource.humidity
-        visibilityLabel.stringValue = "Visibility: ".localizedValue + dataSource.visibility
+        let humidity = "Prefix: Humidity".localizedValue + ": \(dataSource.humidity)"
+        labelHumidity.stringValue = humidity
+
+        let visibility = "Prefix: Visibility".localizedValue + ": \(dataSource.visibility)"
+        labelVisibility.stringValue = visibility
 
         // Wind.
 
-        windDirectionLabel.stringValue = "Direction".localizedValue
-        windSpeedLabel.stringValue = "Speed".localizedValue
-        windGustsLabel.stringValue = "Gusts".localizedValue
+        labelWindSpeedTitle.stringValue = "Label: Speed".localizedValue
+        labelWindDirectionTitle.stringValue = "Label: Direction".localizedValue
+        labelWindGustsTitle.stringValue = "Label: Gust".localizedValue
 
-        windDirectionValue.stringValue = dataSource.windDirection
-        windSpeedValue.stringValue = dataSource.windSpeed
-        windGustsValue.stringValue = dataSource.windGusts
+        labelWindDirectionValue.stringValue = dataSource.windDirection
+        labelWindSpeedValue.stringValue = dataSource.windSpeed
+        labelWindGustsValue.stringValue = dataSource.windGusts
 
         // Pressure.
 
-        pressureLabel.stringValue = "Pressure".localizedValue
-        pressureValue.stringValue = dataSource.pressure
+        labelPressureTitle.stringValue = "Label: Pressure".localizedValue
+        labelPressureValue.stringValue = dataSource.pressure
 
         // Sunrise and sunset.
 
-        sunriseLabel.stringValue = "SUNRISE".localizedValue
-        sunsetLabel.stringValue = "SUNSET".localizedValue
+        labelSunriseTitle.stringValue = "Label: Sunrise".localizedValue
+        labelSunsetTitle.stringValue = "Label: Sunset".localizedValue
 
-        sunriseValue.stringValue = dataSource.sunrise
-        sunsetValue.stringValue = dataSource.sunset
+        labelSunriseValue.stringValue = dataSource.sunrise
+        labelSunsetValue.stringValue = dataSource.sunset
     }
 }
 
@@ -201,17 +193,17 @@ class WeatherView: NSView {
 
 extension WeatherView {
 
-    private func callDarkModeSensitiveColours() {
+    public func makeup() {
 
         log.message("[\(type(of: self))].\(#function), DarkMode: \(DarkMode.style)")
     }
 }
 
-// MARK: - LOCALIZAION
+// MARK: - LOCALIZATION
 
 extension WeatherView {
 
-    @objc func localize() {
+    public func localize() {
 
         log.message("[\(type(of: self))].\(#function)")
 

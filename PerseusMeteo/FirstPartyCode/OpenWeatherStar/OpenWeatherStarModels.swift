@@ -16,8 +16,8 @@
 import Foundation
 
 extension Notification.Name {
-    public static let weatherUnitsOptionsDidChanged =
-        Notification.Name("weatherUnitsOptionsDidChanged")
+    public static let meteoDataOptionsDidChanged =
+        Notification.Name("meteoDataOptionsDidChanged")
 }
 
 // MARK: - TEMPERATURE

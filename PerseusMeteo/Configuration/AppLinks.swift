@@ -13,23 +13,23 @@
 //  See LICENSE for details. All rights reserved.
 //
 
-let theSourceCodeLink =
+let linkTheAppSourceCode =
 "https://github.com/perseusrealdeal/macOS.Weather"
 
-let theAppleTechnologicalTreeLink =
-"https://github.com/perseusrealdeal/XcodeTemplateProject/tree/Xcode-10.1-macOS-App"
+let linkTheTechnologicalTree =
+"https://github.com/perseusrealdeal/TheTechnologicalTree"
 
-let thePerseusDarkModeLink =
+let linkPerseusDarkMode =
 "https://github.com/perseusrealdeal/PerseusDarkMode"
 
-let theOpenWeatherClientLink =
+let linkTheOpenWeatherClient =
 "https://github.com/perseusrealdeal/OpenWeatherFreeClient"
 
-let thePerseusGeoLocationKitLink =
+let linkPerseusGeoLocationKit =
 "https://github.com/perseusrealdeal/PerseusGeoLocationKit"
 
-let thePerseusUISystemKitLink =
+let linkPerseusUISystemKit =
 "https://github.com/perseusrealdeal/PerseusUISystemKit"
 
-let thePerseusLoggerLink =
+let linkPerseusLogger =
 "https://gist.github.com/perseusrealdeal/df456a9825fcface44eca738056eb6d5"

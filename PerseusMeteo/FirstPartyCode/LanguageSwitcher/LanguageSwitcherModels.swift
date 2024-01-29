@@ -29,9 +29,13 @@ extension String {
     static var bundle: Bundle?
 
     var localizedValue: String {
-        guard let bundle = String.bundle else {
+
+        guard
+            let bundle = String.bundle
+        else {
             return NSLocalizedString(self, comment: "")
         }
+
         return NSLocalizedString(self, tableName: nil, bundle: bundle, value: "", comment: "")
     }
 }
@@ -53,7 +57,7 @@ public enum LanguageOption: Int, CustomStringConvertible {
         }
     }
 
-    public var string: String {
+    public var code: String {
         switch self {
         case .en:
             return "en"

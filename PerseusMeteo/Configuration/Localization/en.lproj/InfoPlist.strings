@@ -13,5 +13,13 @@
   See LICENSE for details. All rights reserved.
 */
 
+/* Actual on the app start.
+   Then if language changed, values from Localizable.strings in use. */
+
+/* The name of executable file is > target > build settings > product name */
+
 "CFBundleDisplayName" = "Snowman";
 "CFBundleName" = "Snowman";
+
+"NSLocationUsageDescription" = "Geo information—latitude and longitude—is required to fetch meteo facts.";
+"NSHumanReadableCopyright" = "Copyright © 2023 - 2024 Mikhail Zhigulin of Novosibirsk. All rights reserved.";

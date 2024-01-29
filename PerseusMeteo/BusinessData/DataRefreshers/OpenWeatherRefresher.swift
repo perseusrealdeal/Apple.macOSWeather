@@ -1,5 +1,5 @@
 //
-//  OpenWeatherMapRefresher.swift
+//  OpenWeatherRefresher.swift
 //  PerseusMeteo
 //
 //  Created by Mikhail Zhigulin in 7532.
@@ -17,44 +17,50 @@
 
 import Foundation
 
-extension MeteoDataParser {
+public class OpenWeatherRefresher: MeteoDataRefresherProtocol {
 
-    // MARK: - Realization, start method for OpenWeatherMap
+    private var meteoFacts: MeteoFacts!
 
-    internal func updateFromOpenWeatherMap(_ source: [String: Any]) {
-        guard !source.isEmpty else { return }
+    public func refresh(object: MeteoFacts, _ source: [String: Any]) {
+
+        guard
+            source.isEmpty == false
+        else {
+            object.removeAll()
+            return
+        }
+
+        meteoFacts = object
 
         // Make a notice what data source used...
-        meteoDataProviderNameCalculated = dataSourceProvider.description
-
-        let dictionary = source
+        meteoFacts.meteoDataProviderName = MeteoDataProvider.serviceOpenWeatherMap.description
 
         // Update weather conditions, Icon and short description.
-        updateWeatherConditions(from: dictionary)
+        updateWeatherConditions(from: source)
 
         // Update temperatures.
-        updateTemperatures(from: dictionary)
+        updateTemperatures(from: source)
 
         // Update pressure.
-        updatePressure(from: dictionary)
+        updatePressure(from: source)
 
         // Update humidity.
-        updateHumidity(from: dictionary)
+        updateHumidity(from: source)
 
         // Update visibility.
-        updateVisibility(from: dictionary)
+        updateVisibility(from: source)
 
         // Update wind.
-        updateWind(from: dictionary)
+        updateWind(from: source)
 
         // Update timezone.
-        updateTimezone(from: dictionary)
+        updateTimezone(from: source)
 
         // Update sunrize, and sunset.
-        updateSunriseSunset(from: dictionary)
+        updateSunriseSunset(from: source)
 
         // Update last time calculated.
-        updateLastOne(from: dictionary)
+        updateLastOne(from: source)
     }
 
     // MARK: - Updating weather values
@@ -71,8 +77,8 @@ extension MeteoDataParser {
 
                     let iconName = representOpenWeatherMapIcon(id, icon)
 
-                    weatherIconNameCalculated = iconName
-                    weatherDescriptionCalculated = description
+                    meteoFacts.weatherIconName = iconName
+                    meteoFacts.weatherDescription = description
                 } else {
                     log.message("[\(type(of: self))].\(#function) Attribute wrong.", .error)
                 }
@@ -94,10 +100,10 @@ extension MeteoDataParser {
                 let temp_min = main["temp_min"] as? Double,
                 let temp_max = main["temp_max"] as? Double {
 
-                temperatureCalculated = temp.description
-                temperatureFeelsLikeCalculated = feels_like.description
-                temperatureMinimumCalculated = temp_min.description
-                temperatureMaximumCalculated = temp_max.description
+                meteoFacts.temperature = temp.description
+                meteoFacts.temperatureFeelsLike = feels_like.description
+                meteoFacts.temperatureMinimum = temp_min.description
+                meteoFacts.temperatureMaximum = temp_max.description
             } else {
                 log.message("[\(type(of: self))].\(#function) Attribute wrong.", .error)
             }
@@ -113,7 +119,7 @@ extension MeteoDataParser {
         if let main = dictionary["main"] as? [String: Any] {
             if let value = main["pressure"] as? Int {
 
-                pressureCalculated = value.description
+                meteoFacts.pressure = value.description
 
             } else {
                 log.message("[\(type(of: self))].\(#function) Attribute wrong.", .error)
@@ -130,7 +136,7 @@ extension MeteoDataParser {
         if let main = dictionary["main"] as? [String: Any] {
             if let value = main["humidity"] as? Int {
 
-                humidityCalculated = value
+                meteoFacts.humidity = value
 
             } else {
                 log.message("[\(type(of: self))].\(#function) Humidity wrong.", .error)
@@ -146,7 +152,7 @@ extension MeteoDataParser {
 
         if let visibility = dictionary["visibility"] as? Int {
 
-            visibilityCalculated = visibility
+            meteoFacts.visibility = visibility
         } else {
             log.message("[\(type(of: self))].\(#function) Visibility wrong.", .error)
         }
@@ -161,9 +167,9 @@ extension MeteoDataParser {
                 let gust = wind["gust"] as? Double,
                 let deg = wind["deg"] as? Int {
 
-                windSpeedCalculated = speed.description
-                windGustsCalculated = gust.description
-                windDirectionCalculated = deg.description
+                meteoFacts.windSpeed = speed.description
+                meteoFacts.windGusts = gust.description
+                meteoFacts.windDirection = deg.description
             } else {
                 log.message("[\(type(of: self))].\(#function) Attribute wrong.", .error)
             }
@@ -180,7 +186,7 @@ extension MeteoDataParser {
 
         if let timezone = dictionary["timezone"] as? Int {
 
-            timezoneCalculated = timezone
+            meteoFacts.timezone = timezone
         } else {
             log.message("[\(type(of: self))].\(#function) Timezone wrong.", .error)
         }
@@ -196,8 +202,8 @@ extension MeteoDataParser {
             if let rise = sys["sunrise"] as? Int,
                 let set = sys["sunset"] as? Int {
 
-                sunriseCalculated = rise
-                sunsetCalculated = set
+                meteoFacts.sunrise = rise
+                meteoFacts.sunset = set
             } else {
                 log.message("[\(type(of: self))].\(#function) Attribute wrong.", .error)
             }
@@ -214,10 +220,9 @@ extension MeteoDataParser {
 
         if let dt = dictionary["dt"] as? Int {
 
-            lastOneCalculated = dt
+            meteoFacts.lastOne = dt
         } else {
             log.message("[\(type(of: self))].\(#function) dt wrong.", .error)
         }
     }
-
 }

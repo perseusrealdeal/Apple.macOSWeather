@@ -14,7 +14,6 @@
 //
 
 import Cocoa
-import CoreLocation
 
 class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -28,11 +27,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var weather: Data? {
         didSet {
-            log.message("[\(type(of: self))].\(#function)\n" + """
-                DATA: BEGIN
-                \(String(decoding: weather ?? Data(), as: UTF8.self))
-                DATA: END
-                """)
+            let text = "JSON:\n\(weather?.prettyPrinted ?? "")"
+            log.message("[\(type(of: self))].\(#function)\n\(text)")
         }
     }
 
@@ -40,7 +36,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
 
+        log.message("", .info)
         log.message("Launching with business matter purpose...", .info)
+        log.message("", .info)
+
         log.message("[\(type(of: self))].\(#function)")
 
         AppearanceService.makeUp()

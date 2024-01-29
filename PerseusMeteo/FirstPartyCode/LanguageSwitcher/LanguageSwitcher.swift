@@ -43,41 +43,36 @@ class LanguageSwitcher: NSObject {
         app.terminate(self)
     }
 
-    public var languageCalculated: String {
-
-        var language = ""
+    public var currentAppLanguage: String {
 
         if AppOptions.languageOption == .system {
-            if let preferedLang = NSLocale.preferredLanguages.first?.prefix(2),
+            if let preferedLang = Locale.currentSystemLanguage?.language,
                ["en", "ru"].contains(String(preferedLang)) {
-                language = String(preferedLang)
+                return String(preferedLang)
             } else {
-                language = "en"
+                return "en"
             }
         } else {
-            language = AppOptions.languageOption.string
+            return AppOptions.languageOption.code
         }
-
-        return language
     }
 
     public func switchLanguageIfNeeded(_ currentUserChoice: LanguageOption) {
 
         var switchToLanguage = ""
 
-        // Get the current language chosen by user
         if currentUserChoice == .system {
-            if let preferedLang = NSLocale.preferredLanguages.first?.prefix(2),
+            if let preferedLang = Locale.currentSystemLanguage?.language,
                 ["en", "ru"].contains(String(preferedLang)) {
                 switchToLanguage = String(preferedLang)
             } else {
                 switchToLanguage = "en"
             }
         } else {
-            switchToLanguage = currentUserChoice == .en ? "en" : "ru"
+            switchToLanguage = currentUserChoice.code
         }
 
-        let switching = "\(currentUserChoice.string) > \(switchToLanguage)"
+        let switching = "\(currentUserChoice.code) > \(switchToLanguage)"
         log.message("[\(type(of: self))].\(#function) - \(switching)")
 
         // Update bundle for selected language

@@ -1,0 +1,202 @@
+/*
+  Localizable.strings (English)
+  PerseusMeteo
+
+  Created by Mikhail Zhigulin in 7531.
+
+  Copyright © 7531 - 7532 Mikhail Zhigulin of Novosibirsk
+  Copyright © 7531 - 7532 PerseusRealDeal
+
+  The year starts from the creation of the world according to a Slavic calendar.
+  September, the 1st of Slavic year.
+
+  See LICENSE for details. All rights reserved.
+*/
+
+"Product Name" = "Snowman";
+"Greetings" = "Hello world!";
+
+/* Popover Screen – PopoverViewController */
+
+"Button: Call Weather" = "Call Weather";
+"Label: Made with Love" = "Made with Love from Novosibirsk.";
+
+"Tab: Current Weather" = "Current Weather";
+"Tab: Forecast" = "Forecast";
+
+"Button: Quit" = "Quit";
+
+"Button: About" = "About";
+"Button: Options" = "Options";
+
+"Button: Hide" = "Hide";
+
+/* Location View */
+
+"Label: Permission" = "Location Access";
+
+"GeoAccess: .notDetermined" = "Not determined";
+"GeoAccess: .deniedForAllAndRestricted" = "Denied for all and restricted";
+"GeoAccess: .restricted" = "Restricted";
+"GeoAccess: .deniedForAllApps" = "Denied for all apps";
+"GeoAccess: .deniedForTheApp" = "Denied for the app";
+"GeoAccess: .allowed" = "Allowed";
+
+"Geo Couple" = "Latitude, Longitude";
+
+"Button: Allow Geo..." = "Allow Geo Service";
+"Button: Go to Settings..." = "Go to Settings...";
+"Button: Refresh Current Location" = "Get Current Location";
+
+/* Current Weather View */
+
+"Label: Meteo Data Provider" = "Meteo Data by";
+"Label: About Current Weather" = "About current weather...";
+
+"Prefix: Curren Weather in Brief" = "In brief";
+"Prefix: Feels Like" = "Kinda";
+"Prefix: Min" = "L";
+"Prefix: Max" = "H";
+
+"Prefix: Humidity" = "Humidity";
+"Prefix: Visibility" = "Visibility";
+
+"Unit: Meter" = "m";
+"Unit: Kilometre" = "km";
+"Unit: Mile" = "mi";
+"Unit: Foot" = "ft";
+
+"Label: Speed" = "Wind";
+"Label: Direction" = "Direction";
+"Label: Gust" = "Gust";
+
+"Unit: m/s" = "m/s";
+"Unit: km/h" = "km/h";
+"Unit: mph" = "mph";
+
+"Label: Pressure" = "Pressure";
+
+"Unit: hPa" = "hPa";
+"Unit: mmHg" = "mmHg";
+"Unit: mb" = "mb";
+
+"Label: Sunrise" = "SUNRISE";
+"Label: Sunset" = "SUNSET";
+
+/* Time */
+
+"AM" = "AM";
+"PM" = "PM";
+
+"Postfix: Year" = "";
+
+"Prefix: Last One" = "Last One";
+
+/* Forecast View */
+
+"Label: Info" = "This tab in release 0.3 developing.";
+
+/* Options Screen – OptionsWindowController, OptionsViewController */
+
+"Title: Options Screen" = "Product";
+
+"Section: App Options" = "The App Setup";
+
+"Option: Dark Mode" = "Moon Side";
+"Option: Language" = "Language";
+"Option: OpenWeather Key" = "OpenWeather Key";
+"Option: Time Format" = "Time";
+
+"Section: Meteo Options" = "Meteo Viewing";
+
+"Option: Temperature" = "Temperature";
+"Option: Wind Speed" = "Wind Speed";
+"Option: Pressure" = "Barometer";
+"Option: Distance" = "Visibility";
+
+"OpenWeather: Lock" = "Lock";
+"OpenWeather: Unlock" = "Unlock";
+"OpenWeather: Hidden" = "Hidden key-hole...";
+"OpenWeather: Editable" = "Past the key (token)...";
+
+"Unit: Light" = "Light";
+"Unit: Dark" = "Dark";
+"Unit: System" = "System";
+
+"Unit: English" = "English";
+"Unit: Russian" = "Russian";
+
+"Unit: 24-hour" = "24-hour";
+"Unit: 12-hour" = "12-hour";
+
+"Unit: Kelvin" = "Kelvin";
+"Unit: Celsius" = "Celsius";
+"Unit: Fahrenheit" = "Fahrenheit";
+
+"Unit: m/s long" = "meter/sec";
+"Unit: km/h long" = "km/hour";
+"Unit: mph long" = "miles per hour";
+
+"Unit: Kilometre long" = "Kilometre";
+"Unit: Mile long" = "Mile";
+
+"Button: Close" = "Close";
+
+/* Compass Directions */
+
+"Compass: N" = "N";
+"Compass: NNE" = "N/NE";
+"Compass: NE" = "NE";
+"Compass: ENE" = "E/NE";
+"Compass: E" = "E";
+"Compass: ESE" = "E/SE";
+"Compass: SE" = "SE";
+"Compass: SSE" = "S/SE";
+"Compass: S" = "S";
+"Compass: SSW" = "S/SW";
+"Compass: SW" = "SW";
+"Compass: WSW" = "W/SW";
+"Compass: W" = "W";
+"Compass: WNW" = "W/NW";
+"Compass: NW" = "NW";
+"Compass: NNW" = "N/NW";
+
+/* Months' Names */
+
+"Month: December" = "Dec";
+"Month: January" = "Jan";
+"Month: February" = "Feb";
+"Month: March" = "Mar";
+"Month: April" = "Apr";
+"Month: May" = "May";
+"Month: June" = "Jun";
+"Month: Jule" = "Jul";
+"Month: August" = "Aug";
+"Month: September" = "Sep";
+"Month: October" = "Oct";
+"Month: November" = "Nov";
+
+/* About Screen – AboutWindowController, AboutViewController */
+
+"Button: The App Source Code" = "The Product Source Code";
+"Button: The Technological Tree" = "The Oak Tree Greening by the Ocean";
+
+"Label: The App Version" = "Version";
+
+"Label: Star Copyright Notice" = "Copyright © 7531 - 7532 Mikhail Zhigulin of Novosibirsk";
+
+"Label: Copyright Details" = "The year starts from the creation of the world according to a Slavic calendar. September, the 1st of Slavic year";
+
+"Label: Credits" = "Credits";
+
+"Label: Balancing and Control" = "Balance and Control by";
+"Label: Writing" = "Written by";
+"Label: Documenting" = "Documented by";
+"Label: Artworking" = "Artwork by";
+"Label: EN Expectation" = "English by";
+"Label: RU Expectation" = "Russian by";
+
+"Label: Author" = "Mikhail Zhigulin";
+
+"Button: License" = "License";
+"Button: Terms & Conditions" = "Terms & Conditions";

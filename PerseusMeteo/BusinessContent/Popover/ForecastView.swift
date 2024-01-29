@@ -18,15 +18,11 @@ import Cocoa
 @IBDesignable
 class ForecastView: NSView {
 
-    // MARK: - Internals
-
-    private let darkModeObserver = DarkModeObserver()
-
     // MARK: - Outlets
 
-    @IBOutlet var contentView: NSView!
+    @IBOutlet private(set) var contentView: NSView!
 
-    @IBOutlet weak var inDevelopLabel: NSTextField!
+    @IBOutlet private(set) weak var labelInDevelop: NSTextField!
 
     // MARK: - Initialization
 
@@ -57,8 +53,9 @@ class ForecastView: NSView {
 
         // Create a new instance from *xib and reference it to contentView outlet.
 
-        guard let className = type(of: self).className().components(separatedBy: ".").last,
-              let nib = NSNib(nibNamed: className, bundle: Bundle(for: type(of: self)))
+        guard
+            let className = type(of: self).className().components(separatedBy: ".").last,
+            let nib = NSNib(nibNamed: className, bundle: Bundle(for: type(of: self)))
         else {
             let text = "[\(type(of: self))].\(#function) No nib loaded."
             log.message(text, .error); fatalError(text)
@@ -94,19 +91,6 @@ class ForecastView: NSView {
         }
 
         self.addConstraints(newConstraints)
-
-        // Setup DARK MODE.
-
-        darkModeObserver.action = { _ in self.callDarkModeSensitiveColours() }
-        callDarkModeSensitiveColours()
-
-        // Setup localization.
-
-        let nc = AppGlobals.notificationCenter
-
-        nc.addObserver(self, selector: #selector(localize),
-                       name: NSNotification.Name.languageSwitchedManuallyNotification,
-                       object: nil)
     }
 }
 
@@ -114,20 +98,20 @@ class ForecastView: NSView {
 
 extension ForecastView {
 
-    private func callDarkModeSensitiveColours() {
+    public func makeup() {
 
         log.message("[\(type(of: self))].\(#function), DarkMode: \(DarkMode.style)")
     }
 }
 
-// MARK: - LOCALIZAION
+// MARK: - LOCALIZATION
 
 extension ForecastView {
 
-    @objc func localize() {
+    public func localize() {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        inDevelopLabel.stringValue = "Forecast in Development".localizedValue
+        labelInDevelop.stringValue = "Label: Info".localizedValue
     }
 }

@@ -14,16 +14,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="355" height="370"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView canDrawConcurrently="YES" distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yf8-y3-HSv" userLabel="Business Stack">
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yf8-y3-HSv" userLabel="Business Stack">
                                 <rect key="frame" x="0.0" y="30" width="355" height="340"/>
                                 <subviews>
-                                    <customView canDrawConcurrently="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KvG-58-2dT" customClass="LocationView" customModule="Snowman" customModuleProvider="target">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="KvG-58-2dT" customClass="LocationView" customModule="Snowman" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="250" width="355" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="Uvu-eJ-eoU"/>
                                         </constraints>
                                     </customView>
-                                    <customView canDrawConcurrently="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zay-Cg-HHE">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="zay-Cg-HHE">
                                         <rect key="frame" x="0.0" y="220" width="355" height="30"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1oS-xB-Iag">
@@ -33,19 +33,19 @@
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <connections>
-                                                    <action selector="callWeatherButtonTapped:" target="bU7-R8-ocO" id="RjU-kQ-8BC"/>
+                                                    <action selector="fetchMeteoFactsButtonTapped:" target="bU7-R8-ocO" id="ZN0-y0-hw4"/>
                                                 </connections>
                                             </button>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="II3-Ni-sjv">
-                                                <rect key="frame" x="166" y="9" width="189" height="14"/>
+                                                <rect key="frame" x="166" y="8" width="189" height="14"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" alignment="right" title="Last One: 28 Dec 2023 3:51:45 pm" id="oSM-RN-xuB">
-                                                    <font key="font" metaFont="system" size="11"/>
+                                                    <font key="font" metaFont="smallSystem"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
                                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="xUP-85-vqz">
-                                                <rect key="frame" x="108" y="8" width="16" height="16"/>
+                                                <rect key="frame" x="108" y="7" width="16" height="16"/>
                                             </progressIndicator>
                                         </subviews>
                                         <constraints>
@@ -59,14 +59,14 @@
                                             <constraint firstAttribute="trailing" secondItem="II3-Ni-sjv" secondAttribute="trailing" constant="2" id="r0m-Ka-1Ua"/>
                                         </constraints>
                                     </customView>
-                                    <tabView canDrawConcurrently="YES" appearanceType="aqua" type="rightTabsBezelBorder" initialItem="g1D-Zn-Myw" translatesAutoresizingMaskIntoConstraints="NO" id="CfE-8B-27I">
+                                    <tabView focusRingType="none" type="rightTabsBezelBorder" initialItem="g1D-Zn-Myw" translatesAutoresizingMaskIntoConstraints="NO" id="CfE-8B-27I">
                                         <rect key="frame" x="-7" y="-10" width="368" height="234"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="220" id="Q3H-IB-5Dq"/>
                                         </constraints>
                                         <font key="font" metaFont="system"/>
                                         <tabViewItems>
-                                            <tabViewItem label="Weather" identifier="" id="g1D-Zn-Myw">
+                                            <tabViewItem label="Current Weather" identifier="" id="g1D-Zn-Myw">
                                                 <view key="view" id="4E9-lB-SpT" customClass="WeatherView" customModule="Snowman" customModuleProvider="target">
                                                     <rect key="frame" x="10" y="7" width="327" height="214"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,7 +110,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="quitButtonTapped:" target="bU7-R8-ocO" id="3UD-SQ-zA2"/>
+                                            <action selector="quitButtonTapped:" target="bU7-R8-ocO" id="mbh-7H-ut0"/>
                                         </connections>
                                     </button>
                                     <button horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MSy-7h-iOl">
@@ -123,7 +123,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="aboutButtonTapped:" target="bU7-R8-ocO" id="qEf-dq-5Yo"/>
+                                            <action selector="aboutButtonTapped:" target="bU7-R8-ocO" id="oYs-Gg-GNo"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lEc-RC-GkU">
@@ -136,7 +136,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="optionsButtonTapped:" target="bU7-R8-ocO" id="Pkl-B8-FQ0"/>
+                                            <action selector="optionsButtonTapped:" target="bU7-R8-ocO" id="dub-X9-Bw2"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ub5-ci-hl1">
@@ -149,7 +149,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="hidePopoverButtonTapped:" target="bU7-R8-ocO" id="NHM-xZ-Zwf"/>
+                                            <action selector="hideAppScreensButtonTapped:" target="bU7-R8-ocO" id="SQy-KO-KG6"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -186,17 +186,19 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="aboutButton" destination="MSy-7h-iOl" id="BK1-jA-Yg4"/>
-                        <outlet property="callWeatherButton" destination="1oS-xB-Iag" id="f1j-sg-RGY"/>
-                        <outlet property="forecastTabViewItem" destination="XwN-hq-rQ0" id="rKh-up-612"/>
-                        <outlet property="hidePopoverButton" destination="Ub5-ci-hl1" id="jUj-ke-nTb"/>
-                        <outlet property="locationView" destination="KvG-58-2dT" id="7Zz-c3-eNb"/>
-                        <outlet property="madeWithLoveLabel" destination="II3-Ni-sjv" id="ohb-Gv-dHz"/>
-                        <outlet property="optionsButton" destination="lEc-RC-GkU" id="9WS-WU-GoL"/>
+                        <outlet property="buttonAbout" destination="MSy-7h-iOl" id="BK1-jA-Yg4"/>
+                        <outlet property="buttonFetchMeteoFacts" destination="1oS-xB-Iag" id="f1j-sg-RGY"/>
+                        <outlet property="buttonHideAppScreens" destination="Ub5-ci-hl1" id="jUj-ke-nTb"/>
+                        <outlet property="buttonOptions" destination="lEc-RC-GkU" id="9WS-WU-GoL"/>
+                        <outlet property="buttonQuit" destination="aTa-ms-UFz" id="uIQ-8m-vbQ"/>
+                        <outlet property="labelMadeWithLove" destination="II3-Ni-sjv" id="ohb-Gv-dHz"/>
                         <outlet property="progressIndicator" destination="xUP-85-vqz" id="6qz-VG-wtd"/>
-                        <outlet property="quitButton" destination="aTa-ms-UFz" id="uIQ-8m-vbQ"/>
-                        <outlet property="weatherTabViewItem" destination="g1D-Zn-Myw" id="7uf-lK-bWC"/>
-                        <outlet property="weatherView" destination="4E9-lB-SpT" id="aA7-4n-QTL"/>
+                        <outlet property="tabCurrentWeather" destination="g1D-Zn-Myw" id="7uf-lK-bWC"/>
+                        <outlet property="tabForecast" destination="XwN-hq-rQ0" id="rKh-up-612"/>
+                        <outlet property="viewCurrentWeather" destination="4E9-lB-SpT" id="aA7-4n-QTL"/>
+                        <outlet property="viewForecast" destination="SkI-S3-94P" id="VgG-5a-zdo"/>
+                        <outlet property="viewLocation" destination="KvG-58-2dT" id="7Zz-c3-eNb"/>
+                        <outlet property="viewTabs" destination="CfE-8B-27I" id="yUI-bj-cYS"/>
                     </connections>
                 </viewController>
                 <customObject id="9uD-mB-xHs" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

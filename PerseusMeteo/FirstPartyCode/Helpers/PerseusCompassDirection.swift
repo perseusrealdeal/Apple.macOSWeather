@@ -119,44 +119,44 @@ public enum CardinalPoint: String, CaseIterable, CustomStringConvertible {
         switch self {
 
         case .north:
-            return "N"
+            return "Compass: N"
 
         case .northNorthEast:
-            return "NNE"
+            return "Compass: NNE"
         case .northEast:
-            return "NE"
+            return "Compass: NE"
         case .eastNorthEast:
-            return "ENE"
+            return "Compass: ENE"
 
         case .east:
-            return "E"
+            return "Compass: E"
 
         case .eastSouthEast:
-            return "ESE"
+            return "Compass: ESE"
         case .southEast:
-            return "SE"
+            return "Compass: SE"
         case .southSouthEast:
-            return "SSE"
+            return "Compass: SSE"
 
         case .south:
-            return "S"
+            return "Compass: S"
 
         case .southSouthWest:
-            return "SSW"
+            return "Compass: SSW"
         case .southWest:
-            return "SW"
+            return "Compass: SW"
         case .westSouthWest:
-            return "WSW"
+            return "Compass: WSW"
 
         case .west:
-            return "W"
+            return "Compass: W"
 
         case .westNorthWest:
-            return "WNW"
+            return "Compass: WNW"
         case .northWest:
-            return "NW"
+            return "Compass: NW"
         case .northNorthWest:
-            return "NNW"
+            return "Compass: NNW"
         }
     }
 

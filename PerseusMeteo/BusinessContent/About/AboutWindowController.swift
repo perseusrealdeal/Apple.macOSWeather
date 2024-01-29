@@ -15,53 +15,53 @@
 
 import Cocoa
 
-class AboutWindowController: NSWindowController {
+public class AboutWindowController: NSWindowController {
 
     // MARK: - Internals
 
     private var alwaysOnTop: Any?
-
-    // MARK: - Storyboard instance
-
-    class func storyboardInstance() -> NSWindowController {
-
-        log.message("[\(type(of: self))].\(#function)")
-
-        let sb = NSStoryboard(name: String(describing: self), bundle: nil)
-
-        guard let screen = sb.instantiateInitialController() as? NSWindowController else {
-            let text = "NSWindowController went wrong to be created from the storyboard."
-            log.message(text, .error); fatalError(text)
-        }
-
-        // Do default setup; don't set any parameter causing loadWindow up, breaks unit tests.
-
-        return screen
-    }
+    private let darkModeObserver = DarkModeObserver()
 
     // MARK: - Initialization
 
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
 
         log.message("[\(type(of: self))].\(#function)")
 
         let nc = AppGlobals.notificationCenter
 
-        alwaysOnTop = nc.addObserver(forName: NSApplication.didResignActiveNotification,
-                                     object: nil,
-                                     queue: OperationQueue.main ) { _ in
+        // Always on top.
 
-            self.window?.level = .floating
-        }
+        let notification = NSApplication.didResignActiveNotification
+        let queue = OperationQueue.main
+
+        alwaysOnTop = nc.addObserver(forName: notification,
+                                     object: nil,
+                                     queue: queue) { _ in self.window?.level = .floating }
+
+        // Dark Mode.
+
+        darkModeObserver.action = { _ in self.makeup() }
+
+        // Localization.
+
+        nc.addObserver(self, selector: #selector(self.localize),
+                       name: NSNotification.Name.languageSwitchedManuallyNotification,
+                       object: nil)
+
+        // Apperance.
+
+        makeup()
+        localize()
     }
 
-    override func windowDidLoad() {
+    public override func windowDidLoad() {
         super.windowDidLoad()
 
         log.message("[\(type(of: self))].\(#function)")
 
-        // No title for the about the app screen.
+        // No title for the app screen.
         self.window?.title = ""
     }
 
@@ -73,5 +73,63 @@ class AboutWindowController: NSWindowController {
 
         self.window?.orderOut(sender)
         return false
+    }
+}
+
+// MARK: - STORYBOARD INSTANCE
+
+extension AboutWindowController {
+
+    class func storyboardInstance() -> AboutWindowController {
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        let sb = NSStoryboard(name: String(describing: self), bundle: nil)
+
+        guard
+            let screen = sb.instantiateInitialController() as? AboutWindowController
+        else {
+
+            let text = "[\(type(of: self))].\(#function)"
+
+            log.message(text, .error)
+            fatalError(text)
+        }
+
+        // Do default setup; don't set any parameter causing loadWindow up, breaks unit tests.
+
+        return screen
+    }
+}
+
+// MARK: - DARK MODE
+
+extension AboutWindowController {
+
+    public func makeup() {
+
+        guard
+            let screen = self.contentViewController as? AboutViewController
+        else {
+            return
+        }
+
+        screen.makeup()
+    }
+}
+
+// MARK: - LOCALIZATION
+
+extension AboutWindowController: Localizable {
+
+    @objc func localize() {
+
+        guard
+            let screen = self.contentViewController as? AboutViewController
+        else {
+            return
+        }
+
+        screen.localize()
     }
 }

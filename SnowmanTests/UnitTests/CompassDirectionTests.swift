@@ -24,82 +24,87 @@ class CompassDirectionTests: XCTestCase {
 
     func test_sector_north() {
 
-        // log.message("\(CardinalPoint.north)")
+        // act
+
+        // testlog.message("\(CardinalPoint.north)")
 
         for point in CardinalPoint.north.degrees {
 
-            // log.message("\(point)")
+            // assert
+
+            // testlog.message("\(point)")
 
             check_is_degree_in_sector(point.from, expected: .north)
             check_is_degree_in_sector(point.to, expected: .north)
         }
     }
 
+    func test_sector_northNorthWest() {
+
+        // act
+
+        for point in CardinalPoint.northNorthWest.degrees {
+
+            // assert
+
+            // testlog.message("\(point)")
+
+            check_is_degree_in_sector(point.from, expected: .northNorthWest)
+            check_is_degree_in_sector(point.to, expected: .northNorthWest)
+        }
+    }
+
     func test_compass_sectors_count() {
+
+        // arrange
 
         let compassDegrees = 0...360
         var directions = [CardinalPoint]()
 
+        // act
+
         for degree in compassDegrees {
-            if let point = try? WindDegree("\(degree)") {
-                directions.append(point.common)
-            } else {
-                XCTFail("Point for \(degree) not found.")
+
+            guard
+                let point = try? WindDegree("\(degree)")
+            else {
+                    XCTFail("Point for \(degree) not found.")
+                    return
             }
+
+            directions.append(point.common)
         }
 
-        // log.message("\(directions.count)")
-        // log.message("\(directions.filter({$0 == .northNorthWest }).count)")
+        // assert
 
-        let north = directions.filter({$0 == .north }).count
-
-        let northNorthEast = directions.filter({$0 == .northNorthEast }).count
-        let northEast = directions.filter({$0 == .northEast }).count
-        let eastNorthEast = directions.filter({$0 == .eastNorthEast }).count
-
-        let east = directions.filter({$0 == .east }).count
-
-        let eastSouthEast = directions.filter({$0 == .eastSouthEast }).count
-        let southEast = directions.filter({$0 == .southEast }).count
-        let southSouthEast = directions.filter({$0 == .southSouthEast }).count
-
-        let south = directions.filter({$0 == .south }).count
-
-        let southSouthWest = directions.filter({$0 == .southSouthWest }).count
-        let southWest = directions.filter({$0 == .southWest }).count
-        let westSouthWest = directions.filter({$0 == .westSouthWest }).count
-
-        let west = directions.filter({$0 == .west }).count
-
-        let westNorthWest = directions.filter({$0 == .westNorthWest }).count
-        let northWest = directions.filter({$0 == .northWest }).count
-        let northNorthWest = directions.filter({$0 == .northNorthWest }).count
+        // testlog.message("\(directions.count)")
+        // testlog.message("\(directions.filter({$0 == .northNorthWest }).count)")
 
         XCTAssertEqual(directions.count, compassDegrees.count)
 
-        XCTAssertEqual(north, 24)
+        check_elements_count(in: directions, with: .north, expected: 24)
 
-        XCTAssertEqual(northNorthEast, 22)
-        XCTAssertEqual(northEast, 23)
-        XCTAssertEqual(eastNorthEast, 22)
+        check_elements_count(in: directions, with: .northNorthEast, expected: 22)
+        check_elements_count(in: directions, with: .northEast, expected: 23)
+        check_elements_count(in: directions, with: .eastNorthEast, expected: 22)
 
-        XCTAssertEqual(east, 23)
+        check_elements_count(in: directions, with: .east, expected: 23)
 
-        XCTAssertEqual(eastSouthEast, 22)
-        XCTAssertEqual(southEast, 23)
-        XCTAssertEqual(southSouthEast, 22)
+        check_elements_count(in: directions, with: .eastSouthEast, expected: 22)
+        check_elements_count(in: directions, with: .southEast, expected: 23)
+        check_elements_count(in: directions, with: .southSouthEast, expected: 22)
 
-        XCTAssertEqual(south, 23)
+        check_elements_count(in: directions, with: .south, expected: 23)
 
-        XCTAssertEqual(southSouthWest, 22)
-        XCTAssertEqual(southWest, 23)
-        XCTAssertEqual(westSouthWest, 22)
+        check_elements_count(in: directions, with: .southSouthWest, expected: 22)
+        check_elements_count(in: directions, with: .southWest, expected: 23)
+        check_elements_count(in: directions, with: .westSouthWest, expected: 22)
 
-        XCTAssertEqual(west, 23)
+        check_elements_count(in: directions, with: .west, expected: 23)
 
-        XCTAssertEqual(westNorthWest, 22)
-        XCTAssertEqual(northWest, 23)
-        XCTAssertEqual(northNorthWest, 22)
+        check_elements_count(in: directions, with: .westNorthWest, expected: 22)
+        check_elements_count(in: directions, with: .northWest, expected: 23)
+        check_elements_count(in: directions, with: .northNorthWest, expected: 22)
     }
 
     private func check_is_degree_in_sector(_ degree: Double,
@@ -107,11 +112,24 @@ class CompassDirectionTests: XCTestCase {
                                            file: StaticString = #file,
                                            line: UInt = #line) {
 
-        if let sut = try? WindDegree(degree) {
-            XCTAssertEqual(sut.common, expected, file: file, line: line)
-        } else {
-            XCTFail("Point for \(degree) not found.", file: file, line: line)
-            return
+        guard
+            let sut = try? WindDegree(degree)
+        else {
+                XCTFail("Point for \(degree) not found.", file: file, line: line)
+                return
         }
+
+        XCTAssertEqual(sut.common, expected, file: file, line: line)
+    }
+
+    private func check_elements_count(in array: [CardinalPoint],
+                                      with criteria: CardinalPoint,
+                                      expected count: Int,
+                                      file: StaticString = #file,
+                                      line: UInt = #line) {
+
+        let sut = array.filter({ $0 == criteria }).count
+
+        XCTAssertEqual(sut, count, file: file, line: line)
     }
 }

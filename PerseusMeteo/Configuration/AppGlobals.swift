@@ -22,9 +22,10 @@ struct AppGlobals {
     static let appKeyOpenWeather = "79eefe16f6e4714470502074369fc77b"
 
     static let statusMenusButtonIconName = "Icon"
-    static let statusMenusButtonTitle = "The Snowman"
+    static let statusMenusButtonTitle = "Snowman"
+    static let meteoProviderName = "/\\__/\\"
 
-    static var systemAppName: String? {
+    static var systemOptionsAppName: String? {
 
         var calculatedTitle: String?
 
@@ -55,35 +56,22 @@ struct AppGlobals {
     // MARK: - Custom Services
 
     public let locationDealer: PerseusLocationDealer
-    public let weatherClient: OpenWeatherFreeClient
 
     public let statusMenusButtonPresenter: StatusMenusButtonPresenter
-    public let optionsPresenter: OptionsWindowController!
-    public let aboutPresenter: AboutWindowController!
 
     public let languageSwitcher: LanguageSwitcher
     public let dataDefender: PerseusDataDefender
 
     init() {
+
         log.message("[AppGlobals].\(#function)")
 
         self.locationDealer = PerseusLocationDealer.shared
-        self.weatherClient = OpenWeatherFreeClient()
 
         self.statusMenusButtonPresenter = StatusMenusButtonPresenter()
 
-        self.optionsPresenter =
-        OptionsWindowController.storyboardInstance() as? OptionsWindowController
-
-        self.aboutPresenter =
-        AboutWindowController.storyboardInstance()  as? AboutWindowController
-
         self.languageSwitcher = LanguageSwitcher.shared
         self.dataDefender = PerseusDataDefender.shared
-
-        // Setup weather calling logic
-
-        self.statusMenusButtonPresenter.setupCallerLogic(for: self.weatherClient)
     }
 
     static func openDefaultBrowser(string link: String) {
@@ -101,18 +89,22 @@ struct AppGlobals {
     }
 
     static func openTheApp(name: String?) {
-        // One way to open System options app
+
+        /* One way to open System options app */
+
+        let mger = FileManager.default
+
         guard
             let theAppName = name,
-            let pathURL = FileManager.default.urls(for: .applicationDirectory,
-                                                   in: .systemDomainMask
-                ).first?.appendingPathComponent(theAppName)
-            else { return }
+            let pathFirst = mger.urls(for: .applicationDirectory, in: .systemDomainMask).first
+        else {
+            return
+        }
 
-        // Another way to open System options app
+        /* Another way to open System options app */
         // guard let pathURL = URL(string: AppGlobals.openSystemApp) else { return }
 
-        NSWorkspace.shared.open(pathURL)
+        NSWorkspace.shared.open(pathFirst.appendingPathComponent(theAppName))
     }
 
     static func quitTheApp() {

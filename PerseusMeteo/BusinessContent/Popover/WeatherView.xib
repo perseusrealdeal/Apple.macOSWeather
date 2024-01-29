@@ -8,28 +8,28 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="WeatherView" customModule="Snowman" customModuleProvider="target">
             <connections>
-                <outlet property="contentView" destination="c22-O7-iKe" id="3hT-D1-bFo"/>
-                <outlet property="feelsLikeLabel" destination="mu3-08-Onq" id="r0v-In-XLG"/>
-                <outlet property="humidityLabel" destination="53y-pL-BLb" id="xT8-f1-tPe"/>
-                <outlet property="meteoDataByLabel" destination="FU5-4g-xR5" id="QMw-Ed-L2E"/>
-                <outlet property="meteoProviderNameLabel" destination="UOG-l0-JFY" id="PzX-Ma-VbD"/>
-                <outlet property="miniMaxTemperatureLabel" destination="95I-Xr-CNz" id="Lph-o1-sGz"/>
-                <outlet property="pressureLabel" destination="Nof-kn-u6m" id="Gn8-6B-RS0"/>
-                <outlet property="pressureValue" destination="Ufe-ll-cpP" id="vpr-jK-AW1"/>
-                <outlet property="sunriseLabel" destination="Mc7-Qe-7uR" id="5mc-7k-a5A"/>
-                <outlet property="sunriseValue" destination="vWh-dP-4Gl" id="Etj-oc-iFI"/>
-                <outlet property="sunsetLabel" destination="qqV-2W-t83" id="p1G-Vg-0Zb"/>
-                <outlet property="sunsetValue" destination="qBw-SP-YLr" id="W3g-DV-Z61"/>
-                <outlet property="temperatureValue" destination="QQn-0Y-EXY" id="ziI-8b-dWb"/>
-                <outlet property="visibilityLabel" destination="e2F-Oe-GY7" id="GhD-IY-7no"/>
-                <outlet property="weatherConditionIcon" destination="7ou-eL-RIc" id="zlC-N3-Sk4"/>
-                <outlet property="weatherConditionLabel" destination="1ak-U7-0E6" id="wJv-9d-91B"/>
-                <outlet property="windDirectionLabel" destination="vR5-tL-YT4" id="W9o-qK-fDN"/>
-                <outlet property="windDirectionValue" destination="DfB-CI-gff" id="2TX-p2-coX"/>
-                <outlet property="windGustsLabel" destination="CQ2-lC-Nhf" id="j9B-JG-hHm"/>
-                <outlet property="windGustsValue" destination="cvz-V8-5WT" id="ZjD-gs-17x"/>
-                <outlet property="windSpeedLabel" destination="aiz-jM-Zwf" id="T2H-7z-gbK"/>
-                <outlet property="windSpeedValue" destination="PB9-Qj-d2M" id="Lg1-UT-zbL"/>
+                <outlet property="labelFeelsLike" destination="mu3-08-Onq" id="r0v-In-XLG"/>
+                <outlet property="labelHumidity" destination="53y-pL-BLb" id="xT8-f1-tPe"/>
+                <outlet property="labelMeteoProviderTitle" destination="FU5-4g-xR5" id="QMw-Ed-L2E"/>
+                <outlet property="labelMeteoProviderValue" destination="UOG-l0-JFY" id="Veq-BY-bDt"/>
+                <outlet property="labelMiniMaxTemperature" destination="95I-Xr-CNz" id="Lph-o1-sGz"/>
+                <outlet property="labelPressureTitle" destination="Nof-kn-u6m" id="Gn8-6B-RS0"/>
+                <outlet property="labelPressureValue" destination="Ufe-ll-cpP" id="vpr-jK-AW1"/>
+                <outlet property="labelSunriseTitle" destination="Mc7-Qe-7uR" id="5mc-7k-a5A"/>
+                <outlet property="labelSunriseValue" destination="vWh-dP-4Gl" id="Etj-oc-iFI"/>
+                <outlet property="labelSunsetTitle" destination="qqV-2W-t83" id="p1G-Vg-0Zb"/>
+                <outlet property="labelSunsetValue" destination="qBw-SP-YLr" id="W3g-DV-Z61"/>
+                <outlet property="labelTemperatureValue" destination="QQn-0Y-EXY" id="ziI-8b-dWb"/>
+                <outlet property="labelVisibility" destination="e2F-Oe-GY7" id="GhD-IY-7no"/>
+                <outlet property="labelWeatherConditionValue" destination="1ak-U7-0E6" id="wJv-9d-91B"/>
+                <outlet property="labelWindDirectionTitle" destination="vR5-tL-YT4" id="W9o-qK-fDN"/>
+                <outlet property="labelWindDirectionValue" destination="DfB-CI-gff" id="2TX-p2-coX"/>
+                <outlet property="labelWindGustsTitle" destination="CQ2-lC-Nhf" id="j9B-JG-hHm"/>
+                <outlet property="labelWindGustsValue" destination="cvz-V8-5WT" id="ZjD-gs-17x"/>
+                <outlet property="labelWindSpeedTitle" destination="aiz-jM-Zwf" id="T2H-7z-gbK"/>
+                <outlet property="labelWindSpeedValue" destination="PB9-Qj-d2M" id="Lg1-UT-zbL"/>
+                <outlet property="viewContent" destination="c22-O7-iKe" id="3hT-D1-bFo"/>
+                <outlet property="viewWeatherConditionIcon" destination="7ou-eL-RIc" id="zlC-N3-Sk4"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -43,7 +43,7 @@
                 </box>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aiz-jM-Zwf">
                     <rect key="frame" x="42" y="87" width="43" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Speed" id="iql-BK-5Dk">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Speed" id="iql-BK-5Dk">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -51,7 +51,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vR5-tL-YT4">
                     <rect key="frame" x="134" y="87" width="59" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Direction" id="gMm-aa-OxW">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Direction" id="gMm-aa-OxW">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -59,7 +59,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CQ2-lC-Nhf">
                     <rect key="frame" x="243" y="87" width="40" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Gusts" id="AKF-ov-oej">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Gusts" id="AKF-ov-oej">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -94,7 +94,7 @@
                 </box>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mc7-Qe-7uR">
                     <rect key="frame" x="133" y="31" width="60" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="SUNRISE" id="xBd-fL-A9G">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="SUNRISE" id="xBd-fL-A9G">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -102,7 +102,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qqV-2W-t83">
                     <rect key="frame" x="235" y="31" width="56" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="SUNSET" id="5Ps-ic-fxm">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="SUNSET" id="5Ps-ic-fxm">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -125,8 +125,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nof-kn-u6m">
-                    <rect key="frame" x="19" y="31" width="88" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Pressure: hPa" id="lCk-zn-Bq9">
+                    <rect key="frame" x="34" y="31" width="58" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Pressure" id="lCk-zn-Bq9">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -204,7 +204,7 @@
                 </box>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FU5-4g-xR5">
                     <rect key="frame" x="-2" y="203" width="96" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Meteo Data by:" id="itt-Dm-qlk">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Meteo Data by:" id="itt-Dm-qlk">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

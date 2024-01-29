@@ -55,7 +55,7 @@
                                                         </segments>
                                                     </segmentedCell>
                                                     <connections>
-                                                        <action selector="controlDarkModeDidChange:" target="NdM-46-oIE" id="vXg-si-DBI"/>
+                                                        <action selector="controlDarkModeDidChanged:" target="NdM-46-oIE" id="Wtb-yi-86g"/>
                                                     </connections>
                                                 </segmentedControl>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mTu-dU-NiV">
@@ -85,7 +85,7 @@
                                                         </segments>
                                                     </segmentedCell>
                                                     <connections>
-                                                        <action selector="controlLanguageDidChange:" target="NdM-46-oIE" id="Pm8-Wa-jRQ"/>
+                                                        <action selector="controlLanguageDidChanged:" target="NdM-46-oIE" id="rzP-wk-RhM"/>
                                                     </connections>
                                                 </segmentedControl>
                                                 <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="F1A-GE-l8k">

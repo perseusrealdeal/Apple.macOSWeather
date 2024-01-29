@@ -18,48 +18,160 @@ import Cocoa
 
 @testable import Snowman
 
-class PerseusProductBundleTests: XCTestCase {
+// MARK: - Release notes
 
-    override class func setUp() {
-        super.setUp()
-        log.message("[\(type(of: self))].\(#function)")
-    }
+let bundleShortVersion = "0.2"
+let bundleVersion = "0"
+let theAppIsAgent = true
+let category = "public.app-category.weather"
+let appIcon = "AppIcon"
+let activationPolicy = NSApplication.ActivationPolicy.accessory
 
-    override class func tearDown() {
-        log.message("[\(type(of: self))].\(#function)")
-        super.tearDown()
-    }
+// MARK: - Customer expectations, requirements
+
+let productName = "Product Name".localizedExpectation
+let lacationUsageDescription = "Location Usage Description".localizedExpectation
+let copyright = "Copyright".localizedExpectation
+let greetings = "Greetings".localizedExpectation
+
+// MARK: - Release check list
+
+class BundleTests: XCTestCase {
 
     // func test_zero() { XCTFail("Tests not yet implemented in \(type(of: self)).") }
-    func test_the_first_success() { XCTAssertTrue(true, "It's done!") }
+    // func test_the_first_success() { XCTAssertTrue(true, "It's done!") }
 
-    /*
-    func test_CFBundleDisplayName_should_meet_requirement() {
-        let greetings_expected = "CFBundleDisplayName".localizedFromRequirements
-        let greetings_actual =
-            Bundle.main.localizedInfoDictionary?["CFBundleDisplayName"] as? String
+    func test_BundleDisplayName() {
 
-        let message_not_equal = "CFBundleDisplayName doesn't meet requirement!"
+        // arrange
 
-        XCTAssertEqual(greetings_expected, greetings_actual, message_not_equal)
+        // InfoPlist.strings localized.
+        let bundleDisplayNameInfoPlist = "CFBundleDisplayName".localizedInfoPlist
+        // Localizable.strings.
+        let productNameLocalizable = "Product Name".localizedValue
+
+        // assert
+
+        XCTAssertEqual(productName, bundleDisplayNameInfoPlist)
+        XCTAssertEqual(bundleDisplayNameInfoPlist, productNameLocalizable)
     }
 
-    func test_CFBundleName_should_meet_requirement() {
-        let greetings_expected = "CFBundleName".localizedFromRequirements
-        let greetings_actual = Bundle.main.localizedInfoDictionary?["CFBundleName"] as? String
+    func test_BundleName() {
 
-        let message_not_equal = "CFBundleName doesn't meet requirement!"
+        // arrange
 
-        XCTAssertEqual(greetings_expected, greetings_actual, message_not_equal)
+        // InfoPlist.strings localized.
+        let bundleNameInfoPlist = "CFBundleName".localizedInfoPlist
+        // Localizable.strings.
+        let productNameLocalizable = "Product Name".localizedValue
+
+        // assert
+
+        XCTAssertEqual(productName, bundleNameInfoPlist)
+        XCTAssertEqual(bundleNameInfoPlist, productNameLocalizable)
     }
 
-    func test_ActivationPolicy_is_accessory() {
-        let activationPolicy_expected = NSApplication.ActivationPolicy.accessory
-        let activationPolicy_actual = NSApplication.shared.activationPolicy()
+    func test_BundleShortVersion() {
 
-        let message_not_equal = "ActivationPolicy must be in .accessory!"
+        // InfoPlist.strings.
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")
 
-        XCTAssertEqual(activationPolicy_expected, activationPolicy_actual, message_not_equal)
+        XCTAssertEqual(bundleShortVersion, version as? String)
     }
-    */
+
+    func test_BundleVersion() {
+
+        // arrange
+
+        // InfoPlist.strings.
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")
+
+        // assert
+
+        XCTAssertEqual(bundleVersion, version as? String)
+    }
+
+    func test_TheAppIsAgent() {
+
+        // arrange
+
+        // InfoPlist.strings.
+        let itemInfoPlist = Bundle.main.object(forInfoDictionaryKey: "LSUIElement") as? Bool
+
+        // assert
+
+        XCTAssertEqual(theAppIsAgent, itemInfoPlist)
+    }
+
+    func test_LocationUsageDescription() {
+
+        // arrange
+
+        // InfoPlist.strings localized.
+        let itemInfoPlist = "NSLocationUsageDescription".localizedInfoPlist
+
+        // assert
+
+        XCTAssertEqual(lacationUsageDescription, itemInfoPlist)
+    }
+
+    func test_Copyright() {
+
+        // arrange
+
+        // InfoPlist.strings localized.
+        let itemInfoPlist = "NSHumanReadableCopyright".localizedInfoPlist
+
+        // assert
+
+        XCTAssertEqual(copyright, itemInfoPlist)
+    }
+
+    func test_ApplicationCategory() {
+
+        // arrange
+
+        // InfoPlist.strings.
+        let appCategory = Bundle.main.object(forInfoDictionaryKey: "LSApplicationCategoryType")
+
+        // assert
+
+        XCTAssertEqual(category, appCategory as? String)
+    }
+
+    func test_BundleIcon() {
+
+        // arrange
+
+        // InfoPlist.strings.
+        let iconName = Bundle.main.object(forInfoDictionaryKey: "CFBundleIconFile")
+
+        // assert
+
+        XCTAssertEqual(appIcon, iconName as? String)
+    }
+
+    func test_Greetings() {
+
+        // arrange
+
+        // Localizable.strings.
+        let greetingsLocalized = "Greetings".localizedValue
+
+        // assert
+
+        XCTAssertEqual(greetings, greetingsLocalized)
+    }
+
+    func test_ActivationPolicy() {
+
+        // arrange
+
+        let appActivationPolicy = NSApplication.shared.activationPolicy()
+        let requirement = "ActivationPolicy must be in .accessory."
+
+        // assert
+
+        XCTAssertEqual(activationPolicy, appActivationPolicy, requirement)
+    }
 }

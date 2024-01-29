@@ -12,49 +12,53 @@
 //
 //  See LICENSE for details. All rights reserved.
 //
+// swiftlint:disable file_length
+//
 
 import Cocoa
 
 class AboutViewController: NSViewController {
 
-    // MARK: - Internals
-
-    private let darkModeObserver = DarkModeObserver()
-
     // MARK: - Outlets
 
-    @IBOutlet weak var theSourceCodeGitHubButton: NSButton!
-    @IBOutlet weak var theAppleTechnologicalTreeButton: NSButton!
+    @IBOutlet private(set) weak var buttonTheAppSourceCode: NSButton!
+    @IBOutlet private(set) weak var buttonTheTechnologicalTree: NSButton!
 
-    @IBOutlet weak var theLicenseButton: NSButton!
-    @IBOutlet weak var theTermsButton: NSButton!
-    @IBOutlet weak var theCloseButton: NSButton!
+    @IBOutlet private(set) weak var buttonPerseusDarkMode: NSButton!
+    @IBOutlet private(set) weak var buttonTheOpenWeatherClient: NSButton!
+    @IBOutlet private(set) weak var buttonPerseusGeoLocationKit: NSButton!
+    @IBOutlet private(set) weak var buttonPerseusUISystemKit: NSButton!
+    @IBOutlet private(set) weak var buttonPerseusLogger: NSButton!
 
-    @IBOutlet weak var theAppNameText: NSTextField!
+    @IBOutlet private(set) weak var buttonLicense: NSButton!
+    @IBOutlet private(set) weak var buttonTerms: NSButton!
+    @IBOutlet private(set) weak var buttonClose: NSButton!
 
-    @IBOutlet weak var theAppVersionLabel: NSTextField!
-    @IBOutlet weak var theAppVertionText: NSTextField!
+    @IBOutlet private(set) weak var labelTheAppName: NSTextField!
 
-    @IBOutlet var theCopyrightText: NSTextView!
-    @IBOutlet var theCopyrightDetailsText: NSTextView!
+    @IBOutlet private(set) weak var labelTheAppVersionTitle: NSTextField!
+    @IBOutlet private(set) weak var labelTheAppVersionValue: NSTextField!
 
-    @IBOutlet var theCreditsText: NSTextView!
+    @IBOutlet private(set) var viewCopyrightText: NSTextView!
+    @IBOutlet private(set) var viewCopyrightDetailsText: NSTextView!
+
+    @IBOutlet private(set) var viewTheCreditsText: NSTextView!
 
     // MARK: - Actions
 
-    @IBAction func closeButtonTapped(_ sender: NSButton) {
+    @IBAction func buttonCloseTapped(_ sender: NSButton) {
 
-        globals.aboutPresenter.close()
+        globals.statusMenusButtonPresenter.screenAbout.close()
     }
 
-    @IBAction func licenseButtonTapped(_ sender: NSButton) {
+    @IBAction func buttonLicenseTapped(_ sender: NSButton) {
 
         log.message("[\(type(of: self))].\(#function)")
 
         // TODO: - Show licencse text for reading
     }
 
-    @IBAction func termsButtonTapped(_ sender: NSButton) {
+    @IBAction func buttonTermsAndConditionsTapped(_ sender: NSButton) {
 
         log.message("[\(type(of: self))].\(#function)")
 
@@ -63,39 +67,39 @@ class AboutViewController: NSViewController {
 
     // MARK: - Other Actions
 
-    @IBAction func theSourceCodeTagTapped(_ sender: NSButton) {
+    @IBAction func buttonTheAppSourceCodeTapped(_ sender: NSButton) {
 
-        AppGlobals.openDefaultBrowser(string: theSourceCodeLink)
+        AppGlobals.openDefaultBrowser(string: linkTheAppSourceCode)
     }
 
-    @IBAction func theAppleTechnologicalTreeTagTapped(_ sender: NSButton) {
+    @IBAction func buttonTheTechnologicalTreeTapped(_ sender: NSButton) {
 
-        AppGlobals.openDefaultBrowser(string: theAppleTechnologicalTreeLink)
+        AppGlobals.openDefaultBrowser(string: linkTheTechnologicalTree)
     }
 
-    @IBAction func thePerseusDarkModeTagTapped(_ sender: Any) {
+    @IBAction func buttonPerseusDarkModeTapped(_ sender: NSButton) {
 
-        AppGlobals.openDefaultBrowser(string: thePerseusDarkModeLink)
+        AppGlobals.openDefaultBrowser(string: linkPerseusDarkMode)
     }
 
-    @IBAction func theOpenWeatherClientTagTapped(_ sender: Any) {
+    @IBAction func buttonTheOpenWeatherClientTapped(_ sender: NSButton) {
 
-        AppGlobals.openDefaultBrowser(string: theOpenWeatherClientLink)
+        AppGlobals.openDefaultBrowser(string: linkTheOpenWeatherClient)
     }
 
-    @IBAction func thePerseusGeoLocationKitTagTapped(_ sender: Any) {
+    @IBAction func buttonPerseusGeoLocationKitTapped(_ sender: NSButton) {
 
-        AppGlobals.openDefaultBrowser(string: thePerseusGeoLocationKitLink)
+        AppGlobals.openDefaultBrowser(string: linkPerseusGeoLocationKit)
     }
 
-    @IBAction func thePerseusUISystemKitTagTapped(_ sender: Any) {
+    @IBAction func buttonPerseusUISystemKitTapped(_ sender: NSButton) {
 
-        AppGlobals.openDefaultBrowser(string: thePerseusUISystemKitLink)
+        AppGlobals.openDefaultBrowser(string: linkPerseusUISystemKit)
     }
 
-    @IBAction func thePerseusLoggerTagTapped(_ sender: Any) {
+    @IBAction func buttonPerseusLoggerTapped(_ sender: NSButton) {
 
-        AppGlobals.openDefaultBrowser(string: thePerseusLoggerLink)
+        AppGlobals.openDefaultBrowser(string: linkPerseusLogger)
     }
 
     // MARK: - Initialization
@@ -116,41 +120,32 @@ class AboutViewController: NSViewController {
                                            height: self.view.frame.size.height)
 
         configure()
-
-        // Setup DARK MODE.
-
-        darkModeObserver.action = { _ in self.callDarkModeSensitiveColours() }
-        callDarkModeSensitiveColours()
-
-        // Setup localization.
-
-        let nc = AppGlobals.notificationCenter
-
-        nc.addObserver(self, selector: #selector(self.localize),
-                       name: NSNotification.Name.languageSwitchedManuallyNotification,
-                       object: nil)
-
-        localize()
     }
 
     // MARK: - Start up Configuration
 
     private func configure() {
 
-        self.theCopyrightText.backgroundColor = .clear
-        self.theCopyrightText.isEditable = false
-        self.theCopyrightText.alignment = .center
+        viewCopyrightText.backgroundColor = .clear
+        viewCopyrightText.isEditable = false
+        viewCopyrightText.alignment = .center
 
-        self.theCopyrightDetailsText.backgroundColor = .clear
-        self.theCopyrightDetailsText.isEditable = false
-        self.theCopyrightDetailsText.alignment = .center
+        viewCopyrightDetailsText.backgroundColor = .clear
+        viewCopyrightDetailsText.isEditable = false
+        viewCopyrightDetailsText.alignment = .center
 
-        self.theCreditsText.backgroundColor = .clear
-        self.theCreditsText.isEditable = false
-        self.theCreditsText.alignment = .left
+        viewTheCreditsText.backgroundColor = .clear
+        viewTheCreditsText.isEditable = false
+        viewTheCreditsText.alignment = .left
 
-        self.theAppVertionText.stringValue =
-            Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+        buttonTheAppSourceCode.toolTip = linkTheAppSourceCode
+        buttonTheTechnologicalTree.toolTip = linkTheTechnologicalTree
+
+        buttonPerseusDarkMode.toolTip = linkPerseusDarkMode
+        buttonTheOpenWeatherClient.toolTip = linkTheOpenWeatherClient
+        buttonPerseusGeoLocationKit.toolTip = linkPerseusGeoLocationKit
+        buttonPerseusUISystemKit.toolTip = linkPerseusUISystemKit
+        buttonPerseusLogger.toolTip = linkPerseusLogger
     }
 }
 
@@ -158,34 +153,55 @@ class AboutViewController: NSViewController {
 
 extension AboutViewController {
 
-    private func callDarkModeSensitiveColours() {
+    public func makeup() {
 
         log.message("[\(type(of: self))].\(#function), DarkMode: \(DarkMode.style)")
-        view.layer?.backgroundColor = NSColor.perseusBlue.cgColor
+
+        viewCopyrightText.textColor = .perseusGray
+        viewCopyrightDetailsText.textColor = .perseusGray
+        viewTheCreditsText.textColor = .perseusGray
     }
 }
 
-// MARK: - LOCALIZAION
+// MARK: - LOCALIZATION
 
-extension AboutViewController: Localizable {
+extension AboutViewController {
 
     @objc func localize() {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        self.theSourceCodeGitHubButton.title = "SourceCodeGitHub".localizedValue
-        self.theAppleTechnologicalTreeButton.title = "TheAppleTechnologialTree".localizedValue
+        buttonTheAppSourceCode.title = "Button: The App Source Code".localizedValue
+        buttonTheTechnologicalTree.title = "Button: The Technological Tree".localizedValue
 
-        self.theAppVersionLabel.stringValue = "App Version".localizedValue + ":"
-        self.theAppNameText.stringValue = "BundleDisplayName".localizedValue
+        labelTheAppName.stringValue = "Product Name".localizedValue
 
-        self.theCopyrightText.string = "Human Readable Copyright Short Text".localizedValue
-        self.theCopyrightDetailsText.string = "CopyrightShortDetails".localizedValue
+        labelTheAppVersionTitle.stringValue = "Label: The App Version".localizedValue + ":"
 
-        self.theCreditsText.string = "Credits".localizedValue
+        // InfoPlist.strings.
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")
+        labelTheAppVersionValue.stringValue = (version as? String) ?? "Number"
 
-        self.theLicenseButton.title = "License".localizedValue
-        self.theTermsButton.title = "Terms".localizedValue
-        self.theCloseButton.title = "Close".localizedValue
+        viewCopyrightText.string = "Label: Star Copyright Notice".localizedValue
+        viewCopyrightDetailsText.string = "Label: Copyright Details".localizedValue
+
+        viewTheCreditsText.string = combineCredits()
+
+        buttonLicense.title = "Button: License".localizedValue
+        buttonTerms.title = "Button: Terms & Conditions".localizedValue
+        buttonClose.title = "Button: Close".localizedValue
+    }
+
+    private func combineCredits() -> String {
+
+        return """
+        \("Label: Credits".localizedValue):
+          \("Label: Balancing and Control".localizedValue) \("Label: Author".localizedValue)
+          \("Label: Writing".localizedValue) \("Label: Author".localizedValue)
+          \("Label: Documenting".localizedValue) \("Label: Author".localizedValue)
+          \("Label: Artworking".localizedValue) \("Label: Author".localizedValue)
+          \("Label: EN Expectation".localizedValue) \("Label: Author".localizedValue)
+          \("Label: RU Expectation".localizedValue) \("Label: Author".localizedValue)
+        """
     }
 }

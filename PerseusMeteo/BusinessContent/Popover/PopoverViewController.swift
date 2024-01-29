@@ -27,50 +27,35 @@
 
 import Cocoa
 
-class PopoverViewController: NSViewController {
+public class PopoverViewController: NSViewController {
 
     // MARK: - Internals
 
     private let darkModeObserver = DarkModeObserver()
-
-    // MARK: - Storyboard instance
-
-    class func storyboardInstance() -> NSViewController {
-
-        log.message("[\(type(of: self))].\(#function)")
-
-        let sb = NSStoryboard(name: String(describing: self), bundle: nil)
-
-        guard let screen = sb.instantiateInitialController() as? NSViewController else {
-            let text = "PopoverViewController went wrong to be created from the storyboard."
-            log.message(text, .error); fatalError(text)
-        }
-
-        // Do default setup; don't set any parameter causing loadWindow up, breaks unit tests.
-
-        return screen
-    }
+    private let meteoFactsSource = MeteoDataParser()
 
     // MARK: - Outlets
 
-    @IBOutlet weak var locationView: LocationView!
-    @IBOutlet weak var weatherView: WeatherView!
+    @IBOutlet private(set) weak var viewLocation: LocationView!
+    @IBOutlet private(set) weak var viewCurrentWeather: WeatherView!
+    @IBOutlet private(set) weak var viewForecast: ForecastView!
 
-    @IBOutlet weak var callWeatherButton: NSButton!
-    @IBOutlet weak var progressIndicator: NSProgressIndicator!
-    @IBOutlet weak var madeWithLoveLabel: NSTextField!
+    @IBOutlet private(set) weak var buttonFetchMeteoFacts: NSButton!
+    @IBOutlet private(set) weak var progressIndicator: NSProgressIndicator!
+    @IBOutlet private(set) weak var labelMadeWithLove: NSTextField!
 
-    @IBOutlet weak var weatherTabViewItem: NSTabViewItem!
-    @IBOutlet weak var forecastTabViewItem: NSTabViewItem!
+    @IBOutlet private(set) weak var viewTabs: NSTabView!
+    @IBOutlet private(set) weak var tabCurrentWeather: NSTabViewItem!
+    @IBOutlet private(set) weak var tabForecast: NSTabViewItem!
 
-    @IBOutlet weak var quitButton: NSButton!
-    @IBOutlet weak var aboutButton: NSButton!
-    @IBOutlet weak var optionsButton: NSButton!
-    @IBOutlet weak var hidePopoverButton: NSButton!
+    @IBOutlet private(set) weak var buttonQuit: NSButton!
+    @IBOutlet private(set) weak var buttonAbout: NSButton!
+    @IBOutlet private(set) weak var buttonOptions: NSButton!
+    @IBOutlet private(set) weak var buttonHideAppScreens: NSButton!
 
     // MARK: - Actions
 
-    @IBAction func callWeatherButtonTapped(_ sender: NSButton) {
+    @IBAction func fetchMeteoFactsButtonTapped(_ sender: NSButton) {
 
         log.message("[\(type(of: self))].\(#function)")
 
@@ -89,33 +74,37 @@ class PopoverViewController: NSViewController {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        globals.aboutPresenter.showWindow(sender)
+        globals.statusMenusButtonPresenter.screenAbout.showWindow(sender)
     }
 
     @IBAction func optionsButtonTapped(_ sender: NSButton) {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        globals.optionsPresenter.showWindow(sender)
+        globals.statusMenusButtonPresenter.screenOptions.showWindow(sender)
     }
 
-    @IBAction func hidePopoverButtonTapped(_ sender: NSButton) {
+    @IBAction func hideAppScreensButtonTapped(_ sender: NSButton) {
 
         log.message("[\(type(of: self))].\(#function)")
 
         guard let popover = globals.statusMenusButtonPresenter.popover else { return }
+
+        globals.statusMenusButtonPresenter.screenAbout.close()
+        globals.statusMenusButtonPresenter.screenOptions.close()
+
         popover.performClose(sender)
     }
 
     // MARK: - Initialization
 
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
 
         log.message("[\(type(of: self))].\(#function)")
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
 
         log.message("[\(type(of: self))].\(#function)")
@@ -126,33 +115,49 @@ class PopoverViewController: NSViewController {
         self.preferredContentSize = NSSize(width: self.view.frame.size.width,
                                            height: self.view.frame.size.height)
 
-        // Setup DARK MODE.
+        // Dark Mode.
 
-        darkModeObserver.action = { _ in self.callDarkModeSensitiveColours() }
-        callDarkModeSensitiveColours()
+        darkModeObserver.action = { _ in self.makeup() }
 
-        // Setup localization.
+        // Localization.
 
         let nc = AppGlobals.notificationCenter
 
         nc.addObserver(self, selector: #selector(localize),
                        name: NSNotification.Name.languageSwitchedManuallyNotification,
                        object: nil)
+
+        // Meteo data.
+
+        nc.addObserver(self, selector: #selector(reloadData),
+                       name: NSNotification.Name.meteoDataOptionsDidChanged,
+                       object: nil)
+
+        // Data source.
+
+        meteoFactsSource.path = { AppGlobals.appDelegate?.weather ?? Data() }
+        viewCurrentWeather.data = meteoFactsSource
+
+        // Appearance.
+
+        makeup()
         localize()
 
-        // Setup progress indicator.
-
-        stopAnimationProgressIndicator(nil)
+        stopAnimationProgressIndicator(self)
     }
 
     // MARK: - Contract
 
-    public func reloadData() {
+    @objc public func reloadData() {
 
-        guard let weather = self.weatherView else { return }
+        guard
+            let weather = self.viewCurrentWeather
+        else {
+            return
+        }
 
         weather.reloadData()
-        madeWithLoveLabel.stringValue = weatherView.dataSource.lastOne
+        labelMadeWithLove.stringValue = meteoFactsSource.lastOne
     }
 
     public func startAnimationProgressIndicator(_ sender: Any?) {
@@ -164,21 +169,66 @@ class PopoverViewController: NSViewController {
         self.progressIndicator.isHidden = true
         self.progressIndicator.stopAnimation(sender)
     }
-    
+}
+
+// MARK: - STORYBOARD INSTANCE
+
+extension PopoverViewController {
+
+    public class func storyboardInstance() -> PopoverViewController {
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        let sb = NSStoryboard(name: String(describing: self), bundle: nil)
+
+        guard
+            let screen = sb.instantiateInitialController() as? PopoverViewController
+        else {
+
+            let text = "[\(type(of: self))].\(#function)"
+
+            log.message(text, .error)
+            fatalError(text)
+        }
+
+        // Do default setup; don't set any parameter causing loadWindow up, breaks unit tests.
+
+        return screen
+    }
 }
 
 // MARK: - DARK MODE
 
 extension PopoverViewController {
 
-    private func callDarkModeSensitiveColours() {
+    private func makeup() {
 
         log.message("[\(type(of: self))].\(#function), DarkMode: \(DarkMode.style)")
+
+        // Subviews.
+
+        viewLocation?.makeup()
+        viewCurrentWeather?.makeup()
+        viewForecast?.makeup()
+
+        // Make the appearance up.
+
+        let appearance = DarkMode.style == .light ?
+        NSAppearance(named: .aqua) : NSAppearance(named: .vibrantDark)
+
+        globals.statusMenusButtonPresenter.popover?.appearance = appearance
+        view.appearance = appearance
+
+        guard #available(macOS 10.14, *) else {
+            viewTabs.appearance = NSAppearance(named: .aqua)
+            return
+        }
+
         // view.layer?.backgroundColor = NSColor.perseusBlue.cgColor
     }
 }
 
-// MARK: - LOCALIZAION
+// MARK: - LOCALIZATION
 
 extension PopoverViewController: Localizable {
 
@@ -186,19 +236,25 @@ extension PopoverViewController: Localizable {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        // Buttons
+        // Subviews.
 
-        callWeatherButton.title = "Call Weather Button".localizedValue
-        madeWithLoveLabel.stringValue = weatherView?.dataSource.lastOne ??
-            "Made with Love".localizedValue
+        viewLocation?.localize()
+        viewCurrentWeather?.localize()
+        viewForecast?.localize()
 
-        weatherTabViewItem.label = "Weather Tab Label".localizedValue
-        forecastTabViewItem.label = "Forecast Tab Label".localizedValue
+        // Buttons and labels.
 
-        aboutButton.title = "About Button".localizedValue
-        hidePopoverButton.title = "Hide Button".localizedValue
-        optionsButton.title = "Options Button".localizedValue
+        buttonFetchMeteoFacts.title = "Button: Call Weather".localizedValue
+        labelMadeWithLove.stringValue = meteoFactsSource.lastOne
 
-        quitButton.title = "Quit Button".localizedValue
+        tabCurrentWeather.label = "Tab: Current Weather".localizedValue
+        tabForecast.label = "Tab: Forecast".localizedValue
+
+        buttonQuit.title = "Button: Quit".localizedValue
+
+        buttonAbout.title = "Button: About".localizedValue
+        buttonOptions.title = "Button: Options".localizedValue
+
+        buttonHideAppScreens.title = "Button: Hide".localizedValue
     }
 }

@@ -19,10 +19,6 @@ import Cocoa
 
 class OptionsViewController: NSViewController, NSTextFieldDelegate {
 
-    // MARK: - Internals
-
-    private let darkModeObserver = DarkModeObserver()
-
     // MARK: - Outlets
 
     @IBOutlet private(set) weak var controlAppOptionsSection: NSBox!
@@ -52,7 +48,7 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
 
     // MARK: - Actions
 
-    @IBAction func controlDarkModeDidChange(_ sender: NSSegmentedControl) {
+    @IBAction func controlDarkModeDidChanged(_ sender: NSSegmentedControl) {
 
         log.message("[\(type(of: self))].\(#function) - \(controlDarkMode.selectedSegment)")
 
@@ -68,7 +64,7 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
         }
     }
 
-    @IBAction func controlLanguageDidChange(_ sender: NSSegmentedControl) {
+    @IBAction func controlLanguageDidChanged(_ sender: NSSegmentedControl) {
 
         log.message("[\(type(of: self))].\(#function) - \(controlLanguage.selectedSegment)")
 
@@ -102,7 +98,7 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
         }
 
         let nc = AppGlobals.notificationCenter
-        nc.post(Notification.init(name: .weatherUnitsOptionsDidChanged))
+        nc.post(Notification.init(name: .meteoDataOptionsDidChanged))
     }
 
     @IBAction func controlUnlockButtonTapped(_ sender: NSButton) {
@@ -135,7 +131,7 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
         }
 
         let nc = AppGlobals.notificationCenter
-        nc.post(Notification.init(name: .weatherUnitsOptionsDidChanged))
+        nc.post(Notification.init(name: .meteoDataOptionsDidChanged))
     }
 
     @IBAction func controlWindSpeedDidChanged(_ sender: NSSegmentedControl) {
@@ -154,7 +150,7 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
         }
 
         let nc = AppGlobals.notificationCenter
-        nc.post(Notification.init(name: .weatherUnitsOptionsDidChanged))
+        nc.post(Notification.init(name: .meteoDataOptionsDidChanged))
     }
 
     @IBAction func controlPressureDidChanged(_ sender: NSSegmentedControl) {
@@ -173,7 +169,7 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
         }
 
         let nc = AppGlobals.notificationCenter
-        nc.post(Notification.init(name: .weatherUnitsOptionsDidChanged))
+        nc.post(Notification.init(name: .meteoDataOptionsDidChanged))
     }
 
     @IBAction func controlDistanceDidChanged(_ sender: NSSegmentedControl) {
@@ -190,12 +186,12 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
         }
 
         let nc = AppGlobals.notificationCenter
-        nc.post(Notification.init(name: .weatherUnitsOptionsDidChanged))
+        nc.post(Notification.init(name: .meteoDataOptionsDidChanged))
     }
 
     @IBAction func closeOptionsWindow(_ sender: NSButton) {
 
-        globals.optionsPresenter.close()
+        globals.statusMenusButtonPresenter.screenOptions.close()
     }
 
     // MARK: - Initialization
@@ -219,21 +215,6 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
 
         configure()
         lockOpenWeatherKeyHole()
-
-        // Setup DARK MODE.
-
-        darkModeObserver.action = { _ in self.callDarkModeSensitiveColours() }
-        callDarkModeSensitiveColours()
-
-        // Setup localization.
-
-        let nc = AppGlobals.notificationCenter
-
-        nc.addObserver(self, selector: #selector(self.localize),
-                       name: NSNotification.Name.languageSwitchedManuallyNotification,
-                       object: nil)
-
-        localize()
     }
 
     override func viewDidAppear() {
@@ -327,25 +308,25 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
     }
 
     private func lockOpenWeatherKeyHole() {
-        self.controlOpenWeatherKey.isEditable = false
+        controlOpenWeatherKey.isEditable = false
 
-        self.controlOpenWeatherKey.stringValue = ""
-        self.controlOpenWeatherKey.placeholderString = "Hidden key hole...".localizedValue
+        controlOpenWeatherKey.stringValue = ""
+        controlOpenWeatherKey.placeholderString = "OpenWeather: Hidden".localizedValue
 
-        self.controlUnlockButton.title = "Unlock".localizedValue
+        controlUnlockButton.title = "OpenWeather: Unlock".localizedValue
     }
 
     private func unlockOpenWeatherKeyHole(stringValue: String = "") {
-        self.controlOpenWeatherKey.isEditable = true
+        controlOpenWeatherKey.isEditable = true
 
         if stringValue.isEmpty {
-            self.controlOpenWeatherKey.stringValue = ""
-            self.controlOpenWeatherKey.placeholderString = "Past the key...".localizedValue
+            controlOpenWeatherKey.stringValue = ""
+            controlOpenWeatherKey.placeholderString = "OpenWeather: Editable".localizedValue
         } else {
-            self.controlOpenWeatherKey.stringValue = stringValue
+            controlOpenWeatherKey.stringValue = stringValue
         }
 
-        self.controlUnlockButton.title = "Lock".localizedValue
+        controlUnlockButton.title = "OpenWeather: Lock".localizedValue
     }
 
     private func updateControlTemperature() {
@@ -423,73 +404,77 @@ class OptionsViewController: NSViewController, NSTextFieldDelegate {
 
 extension OptionsViewController {
 
-    private func callDarkModeSensitiveColours() {
+    public func makeup() {
 
         log.message("[\(type(of: self))].\(#function), DarkMode: \(DarkMode.style)")
 
-        view.layer?.backgroundColor = NSColor.perseusBlue.cgColor
+        // view.layer?.backgroundColor = NSColor.perseusBlue.cgColor
     }
 }
 
-// MARK: - LOCALIZAION
+// MARK: - LOCALIZATION
 
-extension OptionsViewController: Localizable {
+extension OptionsViewController {
 
-    @objc func localize() {
+    public func localize() {
 
         log.message("[\(type(of: self))].\(#function)")
 
         self.view.window?.title = self.windowTitleLocalized
 
-        controlCloseButton.title = "Close".localizedValue
-        controlAppOptionsSection.title = "App Options Section".localizedValue
-        controlWeatherOptionsSection.title = "Weather Options Section".localizedValue
+        controlAppOptionsSection.title = "Section: App Options".localizedValue + ":"
 
-        labelDarkMode.stringValue = "Dark Mode".localizedValue
-        labelLanguage.stringValue = "Language".localizedValue
-        labelOpenWeatherKey.stringValue = "OpenWeather Key".localizedValue
-        labelTimeFormat.stringValue = "Time Format".localizedValue
+        labelDarkMode.stringValue = "Option: Dark Mode".localizedValue
+        labelLanguage.stringValue = "Option: Language".localizedValue
+        labelOpenWeatherKey.stringValue = "Option: OpenWeather Key".localizedValue
+        labelTimeFormat.stringValue = "Option: Time Format".localizedValue
 
-        labelTemperature.stringValue = "Temperature Options Screen".localizedValue
-        labelWindSpeed.stringValue = "Wind Speed Options Screen".localizedValue
-        labelPressure.stringValue = "Pressure Options Screen".localizedValue
-        labelDistance.stringValue = "Distance Options Screen".localizedValue
+        controlWeatherOptionsSection.title = "Section: Meteo Options".localizedValue + ":"
+
+        labelTemperature.stringValue = "Option: Temperature".localizedValue
+        labelWindSpeed.stringValue = "Option: Wind Speed".localizedValue
+        labelPressure.stringValue = "Option: Pressure".localizedValue
+        labelDistance.stringValue = "Option: Distance".localizedValue
 
         controlOpenWeatherKey.placeholderString = controlOpenWeatherKey.isEditable ?
-        "Past the key...".localizedValue : "Hidden key hole...".localizedValue
+            "OpenWeather: Editable".localizedValue :
+            "OpenWeather: Hidden".localizedValue
 
         controlUnlockButton.title = controlOpenWeatherKey.isEditable ?
-        "Lock".localizedValue : "Unlock".localizedValue
+            "OpenWeather: Lock".localizedValue :
+            "OpenWeather: Unlock".localizedValue
 
-        controlDarkMode.setLabel("Light".localizedValue, forSegment: 0)
-        controlDarkMode.setLabel("Dark".localizedValue, forSegment: 1)
-        controlDarkMode.setLabel("System".localizedValue, forSegment: 2)
+        controlDarkMode.setLabel("Unit: Light".localizedValue, forSegment: 0)
+        controlDarkMode.setLabel("Unit: Dark".localizedValue, forSegment: 1)
+        controlDarkMode.setLabel("Unit: System".localizedValue, forSegment: 2)
 
-        controlLanguage.setLabel("English".localizedValue, forSegment: 0)
-        controlLanguage.setLabel("Russian".localizedValue, forSegment: 1)
-        controlLanguage.setLabel("System".localizedValue, forSegment: 2)
+        controlLanguage.setLabel("Unit: English".localizedValue, forSegment: 0)
+        controlLanguage.setLabel("Unit: Russian".localizedValue, forSegment: 1)
+        controlLanguage.setLabel("Unit: System".localizedValue, forSegment: 2)
 
-        controlTimeFormat.setLabel("24-hour".localizedValue, forSegment: 0)
-        controlTimeFormat.setLabel("12-hour".localizedValue, forSegment: 1)
-        controlTimeFormat.setLabel("System".localizedValue, forSegment: 2)
+        controlTimeFormat.setLabel("Unit: 24-hour".localizedValue, forSegment: 0)
+        controlTimeFormat.setLabel("Unit: 12-hour".localizedValue, forSegment: 1)
+        controlTimeFormat.setLabel("Unit: System".localizedValue, forSegment: 2)
 
-        controlTemperature.setLabel("Kelvin".localizedValue + " K", forSegment: 0)
-        controlTemperature.setLabel("Celsius".localizedValue + " °C", forSegment: 1)
-        controlTemperature.setLabel("Fahrenheit".localizedValue + " °F", forSegment: 2)
+        controlTemperature.setLabel("Unit: Kelvin".localizedValue + " K", forSegment: 0)
+        controlTemperature.setLabel("Unit: Celsius".localizedValue + " °C", forSegment: 1)
+        controlTemperature.setLabel("Unit: Fahrenheit".localizedValue + " °F", forSegment: 2)
 
-        controlWindSpeed.setLabel("meter/sec".localizedValue, forSegment: 0)
-        controlWindSpeed.setLabel("km/hour".localizedValue, forSegment: 1)
-        controlWindSpeed.setLabel("miles per hour".localizedValue, forSegment: 2)
+        controlWindSpeed.setLabel("Unit: m/s long".localizedValue, forSegment: 0)
+        controlWindSpeed.setLabel("Unit: km/h long".localizedValue, forSegment: 1)
+        controlWindSpeed.setLabel("Unit: mph long".localizedValue, forSegment: 2)
 
-        controlPressure.setLabel("hPa".localizedValue, forSegment: 0)
-        controlPressure.setLabel("mmHg".localizedValue, forSegment: 1)
-        controlPressure.setLabel("mb".localizedValue, forSegment: 2)
+        controlPressure.setLabel("Unit: hPa".localizedValue, forSegment: 0)
+        controlPressure.setLabel("Unit: mmHg".localizedValue, forSegment: 1)
+        controlPressure.setLabel("Unit: mb".localizedValue, forSegment: 2)
 
-        controlDistance.setLabel("Length kilometre".localizedValue, forSegment: 0)
-        controlDistance.setLabel("Length mile".localizedValue, forSegment: 1)
+        controlDistance.setLabel("Unit: Kilometre long".localizedValue, forSegment: 0)
+        controlDistance.setLabel("Unit: Mile long".localizedValue, forSegment: 1)
+
+        controlCloseButton.title = "Button: Close".localizedValue
     }
 
     private var windowTitleLocalized: String {
-        return "Options Window Title".localizedValue + ": " + "BundleName".localizedValue
+        return "Title: Options Screen".localizedValue + " — " + "Product Name".localizedValue
     }
 }

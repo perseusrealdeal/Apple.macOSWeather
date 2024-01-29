@@ -20,21 +20,17 @@ import Cocoa
 @IBDesignable
 class LocationView: NSView {
 
-    // MARK: - Internals
-
-    private let darkModeObserver = DarkModeObserver()
-
     // MARK: - Outlets
 
-    @IBOutlet var contentView: NSView!
+    @IBOutlet private(set) var viewContent: NSView!
 
-    @IBOutlet private(set) weak var locationNameValueLabel: NSTextField!
-    @IBOutlet private(set) weak var geoCoupleDataValueLabel: NSTextField!
+    @IBOutlet private(set) weak var labelLocationNameValue: NSTextField!
+    @IBOutlet private(set) weak var labelGeoCoupleDataValue: NSTextField!
 
-    @IBOutlet weak var permissionLabel: NSTextField!
-    @IBOutlet weak var permissionValueLabel: NSTextField!
+    @IBOutlet private(set) weak var labelPermissionTitle: NSTextField!
+    @IBOutlet private(set) weak var labelPermissionValue: NSTextField!
 
-    @IBOutlet private(set) weak var refreshButton: NSButton!
+    @IBOutlet private(set) weak var buttonRefresh: NSButton!
 
     // MARK: - Actions
 
@@ -55,7 +51,7 @@ class LocationView: NSView {
             try? globals.locationDealer.askForCurrentLocation()
         } else {
             // Open system options action.
-            AppGlobals.openTheApp(name: AppGlobals.systemAppName)
+            AppGlobals.openTheApp(name: AppGlobals.systemOptionsAppName)
         }
     }
 
@@ -101,12 +97,12 @@ class LocationView: NSView {
 
         var newConstraints: [NSLayoutConstraint] = []
 
-        for oldConstraint in contentView.constraints {
+        for oldConstraint in viewContent.constraints {
 
-            let firstItem = oldConstraint.firstItem === contentView ?
+            let firstItem = oldConstraint.firstItem === viewContent ?
             self : oldConstraint.firstItem
 
-            let secondItem = oldConstraint.secondItem === contentView ?
+            let secondItem = oldConstraint.secondItem === viewContent ?
             self : oldConstraint.secondItem
 
             newConstraints.append(
@@ -120,26 +116,15 @@ class LocationView: NSView {
             )
         }
 
-        for newView in contentView.subviews {
+        for newView in viewContent.subviews {
             self.addSubview(newView)
         }
 
         self.addConstraints(newConstraints)
 
-        // Setup DARK MODE.
-
-        darkModeObserver.action = { _ in self.callDarkModeSensitiveColours() }
-        callDarkModeSensitiveColours()
-
-        // Setup localization.
+        // Setup location event handlers.
 
         let nc = AppGlobals.notificationCenter
-
-        nc.addObserver(self, selector: #selector(localize),
-                       name: NSNotification.Name.languageSwitchedManuallyNotification,
-                       object: nil)
-
-        // Setup location event handlers.
 
         nc.addObserver(self, selector: #selector(locationDealerCurrentHandler(_:)),
                        name: .locationDealerCurrentNotification,
@@ -154,15 +139,23 @@ class LocationView: NSView {
 
     public func reloadData() {
 
+        // TODO: - Add location title if exists
+
+        /*
         if AppGlobals.appDelegate?.location != nil {
             locationNameValueLabel.stringValue = "Location Name Label".localizedValue
         } else {
-            locationNameValueLabel.stringValue = "greetings".localizedValue
+            locationNameValueLabel.stringValue = "Greetings".localizedValue
         }
+        */
 
-        permissionValueLabel.stringValue = permissionStatusLocalized
-        geoCoupleDataValueLabel.stringValue = geoCoupleDataLocalized
-        refreshButton.title = locationRefreshButtonTitleLocalized
+        labelPermissionTitle.stringValue = "Label: Permission".localizedValue + ":"
+        labelPermissionValue.stringValue = permissionStatusLocalized
+
+        labelLocationNameValue.stringValue = "Greetings".localizedValue
+
+        labelGeoCoupleDataValue.stringValue = geoCoupleDataLocalized
+        buttonRefresh.title = locationRefreshButtonTitleLocalized
     }
 }
 
@@ -170,21 +163,19 @@ class LocationView: NSView {
 
 extension LocationView {
 
-    private func callDarkModeSensitiveColours() {
+    public func makeup() {
 
         log.message("[\(type(of: self))].\(#function), DarkMode: \(DarkMode.style)")
     }
 }
 
-// MARK: - LOCALIZAION
+// MARK: - LOCALIZATION
 
 extension LocationView {
 
-    @objc func localize() {
+    public func localize() {
 
         log.message("[\(type(of: self))].\(#function)")
-
-        permissionLabel.stringValue = "Permission".localizedValue + ":"
 
         reloadData()
     }
@@ -238,17 +229,17 @@ extension LocationView {
 
         switch permit {
         case .notDetermined:
-            titleLocalized = "Allow Geo... Location Button".localizedValue
+            titleLocalized = "Button: Allow Geo...".localizedValue
         case .deniedForAllAndRestricted:
-            titleLocalized = "Go to Settings... Location Button".localizedValue
+            titleLocalized = "Button: Go to Settings...".localizedValue
         case .restricted:
-            titleLocalized = "Go to Settings... Location Button".localizedValue
+            titleLocalized = "Button: Go to Settings...".localizedValue
         case .deniedForAllApps:
-            titleLocalized = "Go to Settings... Location Button".localizedValue
+            titleLocalized = "Button: Go to Settings...".localizedValue
         case .deniedForTheApp:
-            titleLocalized = "Go to Settings... Location Button".localizedValue
+            titleLocalized = "Button: Go to Settings...".localizedValue
         case .allowed:
-            titleLocalized = "Refresh Location Button".localizedValue
+            titleLocalized = "Button: Refresh Current Location".localizedValue
         }
 
         return titleLocalized
@@ -256,16 +247,13 @@ extension LocationView {
 
     private var geoCoupleDataLocalized: String {
 
-        guard let location = AppGlobals.appDelegate?.location else {
-            log.message("[\(type(of: self))].\(#function)", .error)
-            return "Latitude, Longitude".localizedValue
+        guard
+            let location = AppGlobals.appDelegate?.location
+        else {
+            return "Geo Couple".localizedValue
         }
 
-        let couple = "\(location.latitude.cut(.four)), \(location.longitude.cut(.four))"
-
-        log.message("[\(type(of: self))].\(#function): \(couple)")
-
-        return couple
+        return "\(location.latitude.cut(.four)), \(location.longitude.cut(.four))"
     }
 
     private var permissionStatusLocalized: String {
@@ -282,17 +270,17 @@ extension LocationView {
 
         switch permit {
         case .notDetermined:
-            statusLocalized = ".notDetermined".localizedValue
+            statusLocalized = "GeoAccess: .notDetermined".localizedValue
         case .deniedForAllAndRestricted:
-            statusLocalized = ".deniedForAllAndRestricted".localizedValue
+            statusLocalized = "GeoAccess: .deniedForAllAndRestricted".localizedValue
         case .restricted:
-            statusLocalized = ".restricted".localizedValue
+            statusLocalized = "GeoAccess: .restricted".localizedValue
         case .deniedForAllApps:
-            statusLocalized = ".deniedForAllApps".localizedValue
+            statusLocalized = "GeoAccess: .deniedForAllApps".localizedValue
         case .deniedForTheApp:
-            statusLocalized = ".deniedForTheApp".localizedValue
+            statusLocalized = "GeoAccess: .deniedForTheApp".localizedValue
         case .allowed:
-            statusLocalized = ".allowed".localizedValue
+            statusLocalized = "GeoAccess: .allowed".localizedValue
         }
 
         return statusLocalized
