@@ -28,6 +28,9 @@ class AboutViewController: NSViewController {
     @IBOutlet private(set) weak var buttonTheOpenWeatherClient: NSButton!
     @IBOutlet private(set) weak var buttonPerseusGeoLocationKit: NSButton!
     @IBOutlet private(set) weak var buttonPerseusUISystemKit: NSButton!
+
+    @IBOutlet private(set) weak var buttonPerseusCompassDirection: NSButton!
+    @IBOutlet private(set) weak var buttonPerseusTimeFormat: NSButton!
     @IBOutlet private(set) weak var buttonPerseusLogger: NSButton!
 
     @IBOutlet private(set) weak var buttonLicense: NSButton!
@@ -55,14 +58,14 @@ class AboutViewController: NSViewController {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        // TODO: - Show licencse text for reading
+        AppGlobals.openDefaultBrowser(string: linkLicense)
     }
 
     @IBAction func buttonTermsAndConditionsTapped(_ sender: NSButton) {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        // TODO: - Show terms and conditions text for reading
+        AppGlobals.openDefaultBrowser(string: linkTermsAndConditions)
     }
 
     // MARK: - Other Actions
@@ -95,6 +98,16 @@ class AboutViewController: NSViewController {
     @IBAction func buttonPerseusUISystemKitTapped(_ sender: NSButton) {
 
         AppGlobals.openDefaultBrowser(string: linkPerseusUISystemKit)
+    }
+
+    @IBAction func buttonPerseusCompassDirectionTapped(_ sender: NSButton) {
+
+        AppGlobals.openDefaultBrowser(string: linkPerseusCompassDirection)
+    }
+
+    @IBAction func buttonPerseusTimeFormatTapped(_ sender: NSButton) {
+
+        AppGlobals.openDefaultBrowser(string: linkPerseusTimeFormat)
     }
 
     @IBAction func buttonPerseusLoggerTapped(_ sender: NSButton) {
@@ -145,6 +158,9 @@ class AboutViewController: NSViewController {
         buttonTheOpenWeatherClient.toolTip = linkTheOpenWeatherClient
         buttonPerseusGeoLocationKit.toolTip = linkPerseusGeoLocationKit
         buttonPerseusUISystemKit.toolTip = linkPerseusUISystemKit
+
+        buttonPerseusCompassDirection.toolTip = linkPerseusCompassDirection
+        buttonPerseusTimeFormat.toolTip = linkPerseusTimeFormat
         buttonPerseusLogger.toolTip = linkPerseusLogger
     }
 }

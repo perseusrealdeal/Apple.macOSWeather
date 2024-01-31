@@ -30,6 +30,6 @@ public class OpenMeteoRefresher: MeteoDataRefresherProtocol {
 
         meteoFacts = object
 
-        // TODO: - Refresh meteo facts from OpenMeteo source here.
+        // MARK: - Refresh meteo facts from OpenMeteo source here.
     }
 }
