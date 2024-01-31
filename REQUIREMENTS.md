@@ -14,7 +14,7 @@ September, the 1st of Slavic year.
 See LICENSE for details. All rights reserved.
 
 -->
-> # The App's Name: Weather
+> # The App's Name: Snowman
 
 > # Idea history
 
@@ -27,13 +27,17 @@ See LICENSE for details. All rights reserved.
         <td>0.2</td>
         <td>Developer release (candidate) with minimum functionality (current weather).</td>
     </tr>
+    <tr>
+        <td>Rejected / Changed</td>
+        <td>Option 00-3 Starts on login had been canceled.</td>
+    </tr>
 </table>
 
 > # Business Tasks:
 
 | ID   | Description                 | Operations |
 | ---- | --------------------------- | ---------- |
-| BT-1 | Fetching weather forecast   | OP-1, OP-2 |
+| BT-1 | Fetching current weather    | OP-1, OP-2 |
 
 > # Sketches (GUI requirements)
 
@@ -48,11 +52,11 @@ See LICENSE for details. All rights reserved.
     </tr>
     <tr>
         <td></td>
-        <td><img src="Sketches/StatusMenusItemSketch.png" width="400" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;"/></td>
+        <td><img src="https://github.com/perseusrealdeal/macOS.Weather/assets/50202963/b8c4b185-41cf-4c7c-be2f-8cb31c6958fb" width="400" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;"/></td>
     </tr>
     <tr>
         <td nowrap>GUI-2</td>
-        <td>The app should run as a Status Menus app.</td>
+        <td>The app should run as a Status Menus app (the Menu Bar one).</td>
     </tr>
     <tr>
         <td nowrap>GUI-3</td>
@@ -77,7 +81,7 @@ See LICENSE for details. All rights reserved.
     </tr>
     <tr>
         <td nowrap>US-1</td>
-        <td>As Mikhail, I want to be aware of the current weather condition both in short and in detail as well, so I can feel more in selfcare.</td>
+        <td>As Mikhail, I want to be aware of the current weather condition, so I can feel more in selfcare.</td>
     </tr>
     <tr>
         <td nowrap>US-2</td>
@@ -127,4 +131,6 @@ See LICENSE for details. All rights reserved.
 | ---- | ------------------- | ---------------- | ----------- |
 | OO-1 | Dark Mode           | Auto, On, Off    | Apply: Auto |
 | OO-2 | OpenWeather API key | User Input       | -           |
-| OO-3 | Starts on login     | True, False      | Apply: True |
+| OO-3* | Starts on login     | True, False      | Apply: True |
+
+> \* rejected

@@ -1,7 +1,5 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
-
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
@@ -12,20 +10,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- This changelog file (#17).
-- About Weather App (#12).
-- App icon set (#11).
-- Go to Settings... button (#20).
-- OpenWeather API key option (#6).
-- Localization option (#15).
-- Dark Mode option (#5).
-- Starts on login option (#7).
-- Quit option (#4).
-- Functional specification for release 0.2.
+- Screen: Popover.
+- View: for Current Location.
+- View: for Current Weather.
+- Screen: Options.
+- Option: Dark Mode.
+- Option: Localization (EN and RU).
+- Option: Time Format (24/12).
+- Option: OpenWeather API Key.
+- Option: Temperature.
+- Option: Wind Speed.
+- Option: Pressure (Barometer).
+- Option: Distance (Visibility).
+- Screen: About.
+- Image: App Icon (logo).
 
 ### Security
 
-- Perseus Data Defender based on Keychain API to keep OpenWeather API key in safe (#6).
+- To keep OpenWeather API key in safe Perseus Data Defender based on Keychain API used (#6).
 
 ### Changed
 
@@ -35,4 +37,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Initial point of development process of [The Apple Technological Tree](https://github.com/perseusrealdeal/XcodeTemplateProject/tree/Xcode-10.1-macOS-App).
+- Initial point of development process of [The Technological Tree](https://github.com/perseusrealdeal/TheTechnologicalTree).

@@ -15,8 +15,6 @@
 //  Special thanks for the Keychain API tutorial goes to Lorenzo Boaro.
 //  https://www.kodeco.com/9240-keychain-services-api-tutorial-for-passwords-in-swift
 //
-// TODO: - Add the mention of Lorenzo Boaro to README.
-//
 
 import Foundation
 import Security

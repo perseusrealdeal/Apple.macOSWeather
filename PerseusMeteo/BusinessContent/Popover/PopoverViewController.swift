@@ -15,12 +15,8 @@
 //  Special thanks for the macos-status-bar-apps tutorial goes to Gabriel Theodoropoulos.
 //  https://www.appcoda.com/macos-status-bar-apps/
 //
-// TODO: - Add the mention of Gabriel Theodoropoulos to README.
-//
 //  Special thanks for the SwiftCustomControl sample goes to Bill Waggoner.
 //  https://github.com/ctgreybeard/SwiftCustomControl
-//
-// TODO: - Add the mention of Bill Waggoner to README.
 //
 // swiftlint:disable file_length
 //

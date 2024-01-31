@@ -15,8 +15,6 @@
 //  Special thanks for common convertion weather values formulas goes to Google Inc.
 //  https://www.google.com/search?q=temperature+converter
 //
-// TODO: - Add the mention of Google Inc. to README.
-//
 // swiftlint:disable file_length
 //
 
@@ -28,11 +26,7 @@ public func representTemperature(_ value: String,
                                  asIs: TemperatureOption,
                                  toBe: TemperatureOption) -> String {
 
-    guard
-        let temp = Double(value)
-    else {
-        return value
-    }
+    guard  let temperature = Double(value) else { return value }
 
     var calculated = value.description
 
@@ -40,7 +34,7 @@ public func representTemperature(_ value: String,
     if asIs == .imperial, toBe == .metric {
 
         // (0°F − 32) × 5/9
-        let tempRecalculated = Int(((temp - 32) * 5/9).rounded())
+        let tempRecalculated = Int(((temperature - 32) * 5/9).rounded())
 
         calculated = tempRecalculated.description
     }
@@ -49,7 +43,7 @@ public func representTemperature(_ value: String,
     if asIs == .imperial, toBe == .standard {
 
         // (0°F − 32) × 5/9 + 273.15
-        let tempRecalculated = (temp - 32) * 5/9 + 273.15
+        let tempRecalculated = (temperature - 32) * 5/9 + 273.15
 
         calculated = tempRecalculated.cut(.two).description
     }
@@ -63,11 +57,7 @@ public func representWindSpeedGusts(_ value: String,
                                     asIs: WindSpeedOption,
                                     toBe: WindSpeedOption) -> String {
 
-    guard
-        let speed = Double(value)
-    else {
-        return value
-    }
+    guard let speed = Double(value) else { return value }
 
     var calculated = value.description
 
@@ -98,11 +88,7 @@ public func representPressure(_ value: String,
                               asIs: PressureOption,
                               toBe: PressureOption) -> String {
 
-    guard
-        let pressure = Double(value)
-    else {
-        return value
-    }
+    guard let pressure = Double(value) else { return value }
 
     var calculated = value
 
@@ -211,13 +197,14 @@ public func representLastOneCalculationTime(_ value: Int,
         // Parse.
 
         guard
-            let day = components.day,
-            let month = components.month,
-            let year = components.year else { return (nil, nil) }
+            let dayNumber = components.day,
+            let monthNumber = components.month,
+            let yearNumber = components.year else { return (nil, nil) }
 
         // Formate.
 
-        let theDay = "\(day) \(months[month-1].localizedValue) \(year)"
+        let month = ("Month: " + months[monthNumber-1]).localizedValue
+        let theDay = "\(dayNumber) \(month) \(yearNumber)"
 
         return (theDay, theTime)
 }
@@ -225,8 +212,5 @@ public func representLastOneCalculationTime(_ value: Int,
 // MARK: - Icon name
 
 public func representOpenWeatherMapIcon(_ id: Int, _ icon: String) -> String {
-
-    // TODO: - Recalculate weather Icon name.
-
-    return "Icon"
+    return AppGlobals.statusMenusButtonIconName
 }

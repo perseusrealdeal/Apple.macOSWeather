@@ -82,7 +82,10 @@ public class MeteoClientManager {
         let lon = location.longitude.cut(.two).description
         let lang = globals.languageSwitcher.currentAppLanguage
 
-        let callDetails = OpenWeatherDetails(appid: AppGlobals.appKeyOpenWeather,
+        let key = AppGlobals.appKeyOpenWeather.isEmpty ? AppOptions.OpenWeatherAPIOption ?? ""
+        : AppGlobals.appKeyOpenWeather
+
+        let callDetails = OpenWeatherDetails(appid: key,
                                              format: .currentWeather,
                                              lat: lat,
                                              lon: lon,
