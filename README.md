@@ -103,14 +103,14 @@ Please consider [translation for EN](/PerseusMeteo/Configuration/Translations/Tr
 
 > During the dev process of the release v0.2 there're several things were also taken into the account.
 
-Thanks Google Inc. for [convertion formulas](https://www.google.com/search?q=temperature+converter) easy seachable in public.</br>
-- Convertion formulas applied in [MeteoFactsRepresenter.swift](/PerseusMeteo/BusinessData/MeteoFactsRepresenter.swift)
+***Thanks Google Inc.*** for [convertion formulas](https://www.google.com/search?q=temperature+converter) easy seachable in public.</br>
+Convertion formulas applied in [MeteoFactsRepresenter.swift](/PerseusMeteo/BusinessData/MeteoFactsRepresenter.swift)
 
-Thanks Lorenzo Boaro for [the Keychain API tutorial](https://www.kodeco.com/9240-keychain-services-api-tutorial-for-passwords-in-swift).<br/>
-- Keychain API applied in [PerseusDataDefender.swift](/PerseusMeteo/FirstPartyCode/PerseusDataDefender/PerseusDataDefender.swift)
+***Thanks Lorenzo Boaro*** for [the Keychain API tutorial](https://www.kodeco.com/9240-keychain-services-api-tutorial-for-passwords-in-swift).<br/>
+Keychain API applied in [PerseusDataDefender.swift](/PerseusMeteo/FirstPartyCode/PerseusDataDefender/PerseusDataDefender.swift)
 
-Thanks Gabriel Theodoropoulos for [the macos-status-bar-apps tutorial](https://www.appcoda.com/macos-status-bar-apps/).<br/>
-- [StatusMenusButtonPresenter.swift](/PerseusMeteo/BusinessLogic/StatusMenusButtonPresenter.swift)
+***Thanks Gabriel Theodoropoulos*** for [the macos-status-bar-apps tutorial](https://www.appcoda.com/macos-status-bar-apps/).<br/>
+[StatusMenusButtonPresenter.swift](/PerseusMeteo/BusinessLogic/StatusMenusButtonPresenter.swift)
 
-Thanks Bill Waggoner for the SwiftCustomControl [sample](https://github.com/ctgreybeard/SwiftCustomControl).<br/>
-- Ideas applied in LocationView.swift, [WeatherView.swift](/PerseusMeteo/BusinessContent/Popover/WeatherView.swift), and ForecastView.swift
+***Thanks Bill Waggoner*** for the SwiftCustomControl [sample](https://github.com/ctgreybeard/SwiftCustomControl).<br/>
+Ideas applied in LocationView.swift, [WeatherView.swift](/PerseusMeteo/BusinessContent/Popover/WeatherView.swift), and ForecastView.swift
