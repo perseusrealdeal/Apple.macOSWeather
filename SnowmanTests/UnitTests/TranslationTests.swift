@@ -1,5 +1,5 @@
 //
-//  ExpectationsTests.swift
+//  TranslationTests.swift
 //  SnowmanTests
 //
 //  Created by Mikhail Zhigulin in 7532.
@@ -18,14 +18,14 @@
 import XCTest
 @testable import Snowman
 
-class ExpectationsTests: XCTestCase {
+class TranslationTests: XCTestCase {
 
     // func test_zero() { XCTFail("Tests not yet implemented in \(type(of: self)).") }
     // func test_the_first_success() { XCTAssertTrue(true, "It's done!") }
 
     // MARK: - Popover Screen
 
-    func test_Expectations_of_PopoverScreen() {
+    func test_translation_of_PopoverScreen() {
 
         // assert
 
@@ -56,7 +56,7 @@ class ExpectationsTests: XCTestCase {
 
     // MARK: - LocationView
 
-    func test_Expectations_of_PopoverScreen_LocationView() {
+    func test_translation_of_PopoverScreen_LocationView() {
 
         // assert
 
@@ -97,7 +97,7 @@ class ExpectationsTests: XCTestCase {
 
     // MARK: - WeatherView
 
-    func test_Expectations_of_PopoverScreen_WeatherView() {
+    func test_translation_of_PopoverScreen_WeatherView() {
 
         // assert
 
@@ -188,7 +188,7 @@ class ExpectationsTests: XCTestCase {
 
     // MARK: - ForecastView
 
-    func test_Expectations_of_PopoverScreen_ForecastView() {
+    func test_translation_of_PopoverScreen_ForecastView() {
 
         // assert
 
@@ -196,7 +196,7 @@ class ExpectationsTests: XCTestCase {
 
     // MARK: - Options Screen
 
-    func test_Expectations_of_OptionsScreen() {
+    func test_translation_of_OptionsScreen() {
 
         // assert
 
@@ -293,7 +293,7 @@ class ExpectationsTests: XCTestCase {
 
     // MARK: - Compass Directions
 
-    func test_Expectations_of_Compass_Directions() {
+    func test_translation_of_Compass_Directions() {
 
         // assert
 
@@ -317,7 +317,7 @@ class ExpectationsTests: XCTestCase {
 
     // MARK: - Months
 
-    func test_Expectations_of_Compass_Months() {
+    func test_translation_of_Compass_Months() {
 
         // assert
 
@@ -349,7 +349,7 @@ class ExpectationsTests: XCTestCase {
 
     // MARK: - About Screen
 
-    func test_Expectations_of_AboutScreen() {
+    func test_translation_of_AboutScreen() {
 
         // assert
 

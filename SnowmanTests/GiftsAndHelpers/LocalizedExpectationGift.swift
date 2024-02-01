@@ -12,7 +12,7 @@ import Foundation
 
 // Customer requirements for localization.
 
-let customerRequirementsFilePrefix = "Expectations_"
+let customerRequirementsFilePrefix = "Translation_"
 let customerRequirements = ["en", "ru"] // Just add another one if needed.
 
 extension String {

@@ -39,7 +39,7 @@ To install the app use the appropriate build-system.
 # Software requirements
 
 - [Functional specification](/REQUIREMENTS.md)
-- Localization requirements [[EN](/PerseusMeteo/Configuration/CustomerExpectations/Expectations_en.plist), [RU](/PerseusMeteo/Configuration/CustomerExpectations/Expectations_ru.plist)]
+- Translations [[EN](/PerseusMeteo/Configuration/Translations/Translation_en.plist), [RU](/PerseusMeteo/Configuration/Translations/Translation_ru.plist)]
 
 # First-party software
 
@@ -94,10 +94,10 @@ Russian Localization by Mikhail Zhigulin<br/>
 - Artwork tool: [GIMP](https://www.gimp.org/) / [2.10.36](https://download.gimp.org/gimp/v2.10/osx/) for macOS 10.12 Sierra or newer
 - Language support: [Reverso](https://www.reverso.net/) 
 
-# Contributing localization
+# Contributing Translations
 
 Localizations in other languages are very welcome from the app version 1.0.<br/>
-Please consider [customer expectations for EN](/PerseusMeteo/Configuration/CustomerExpectations/Expectations_en.plist) as a template.
+Please consider [customer expectations for EN](/PerseusMeteo/Configuration/Translations/Translation_en.plist) as a template.
 
 # Acknowledgements
 
