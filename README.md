@@ -97,7 +97,7 @@ Russian Localization by Mikhail Zhigulin<br/>
 # Contributing Translations
 
 Localizations in other languages are very welcome from the app version 1.0.<br/>
-Please consider [customer expectations for EN](/PerseusMeteo/Configuration/Translations/Translation_en.plist) as a template.
+Please consider [translation for EN](/PerseusMeteo/Configuration/Translations/Translation_en.plist) as a template.
 
 # Acknowledgements
 
