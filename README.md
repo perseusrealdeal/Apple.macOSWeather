@@ -88,8 +88,8 @@ Project Balance and Control kept by Mikhail Zhigulin<br/>
 Source Code written by Mikhail Zhigulin<br/>
 Project documented by Mikhail Zhigulin<br/>
 Artwork by Mikhail Zhigulin<br/>
-English Localization by Mikhail Zhigulin<br/>
-Russian Localization by Mikhail Zhigulin<br/>
+English Translation by Mikhail Zhigulin<br/>
+Russian Translation by Mikhail Zhigulin<br/>
 
 - Artwork tool: [GIMP](https://www.gimp.org/) / [2.10.36](https://download.gimp.org/gimp/v2.10/osx/) for macOS 10.12 Sierra or newer
 - Language support: [Reverso](https://www.reverso.net/) 
