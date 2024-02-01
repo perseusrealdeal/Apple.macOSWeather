@@ -39,7 +39,7 @@ To install the app use the appropriate build-system.
 # Software requirements
 
 - [Functional specification](/REQUIREMENTS.md)
-- Translations [[EN](/PerseusMeteo/Configuration/Translations/Translation_en.plist), [RU](/PerseusMeteo/Configuration/Translations/Translation_ru.plist)]
+- Translations [EN](/PerseusMeteo/Configuration/Translations/Translation_en.plist), [RU](/PerseusMeteo/Configuration/Translations/Translation_ru.plist)
 
 # First-party software
 
