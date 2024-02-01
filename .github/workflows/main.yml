@@ -20,11 +20,11 @@ jobs:
     - name: Show xcode embedded SDKs
       run: xcodebuild -showsdks
     - name: Show buildable schemes
-      run: xcodebuild -list -project ./PerseusWeather.xcodeproj
+      run: xcodebuild -list -project ./PerseusMeteo.xcodeproj
     - uses: mxcl/xcodebuild@v1.9.2
       with:
         platform: macOS
-        scheme: 'PerseusWeather'
+        scheme: 'PerseusMeteo'
         action: build
         working-directory: ./
         verbosity: xcpretty
@@ -41,11 +41,11 @@ jobs:
     - name: Show xcode embedded SDKs
       run: xcodebuild -showsdks
     - name: Show buildable schemes
-      run: xcodebuild -list -project ./PerseusWeather.xcodeproj
+      run: xcodebuild -list -project ./PerseusMeteo.xcodeproj
     - uses: mxcl/xcodebuild@v1.9.2
       with:
         platform: macOS
-        scheme: 'PerseusWeather'
+        scheme: 'PerseusMeteo'
         action: test
         code-coverage: true
         working-directory: ./
@@ -63,11 +63,11 @@ jobs:
     - name: Show xcode embedded SDKs
       run: xcodebuild -showsdks
     - name: Show buildable schemes
-      run: xcodebuild -list -project ./PerseusWeather.xcodeproj
+      run: xcodebuild -list -project ./PerseusMeteo.xcodeproj
     - uses: mxcl/xcodebuild@v1.9.2
       with:
         platform: macOS
-        scheme: 'PerseusWeather_RU'
+        scheme: 'PerseusMeteoRU'
         action: test
         code-coverage: true
         working-directory: ./

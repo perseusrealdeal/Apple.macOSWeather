@@ -1,0 +1,202 @@
+/*
+  Localizable.strings (Russian)
+  PerseusMeteo
+
+  Created by Mikhail Zhigulin in 7531.
+
+  Copyright © 7531 - 7532 Mikhail Zhigulin of Novosibirsk
+  Copyright © 7531 - 7532 PerseusRealDeal
+
+  The year starts from the creation of the world according to a Slavic calendar.
+  September, the 1st of Slavic year.
+
+  See LICENSE for details. All rights reserved.
+*/
+
+"Product Name" = "Cнеговик";
+"Greetings" = "Рады приветствовать!";
+
+/* Popover Screen – PopoverViewController */
+
+"Button: Call Weather" = "Запроси Погоду";
+"Label: Made with Love" = "C любовью из Новосибирска.";
+
+"Tab: Current Weather" = "Наблюдение";
+"Tab: Forecast" = "Прогноз";
+
+"Button: Quit" = "Выйди";
+
+"Button: About" = "Себяшка";
+"Button: Options" = "Настройки";
+
+"Button: Hide" = "Скройся";
+
+/* Location View */
+
+"Label: Permission" = "Гео Доступ";
+
+"GeoAccess: .notDetermined" = "Не определен";
+"GeoAccess: .deniedForAllAndRestricted" = "Заблокирован для всех и ограничен";
+"GeoAccess: .restricted" = "Ограничен";
+"GeoAccess: .deniedForAllApps" = "Заблокирован для всех";
+"GeoAccess: .deniedForTheApp" = "Заблокирован";
+"GeoAccess: .allowed" = "Предоставлен";
+
+"Geo Couple" = "Широта, Долгота";
+
+"Button: Allow Geo..." = "Спроси Разрешение";
+"Button: Go to Settings..." = "Системные Настройки";
+"Button: Refresh Current Location" = "Обнови Геолокацию";
+
+/* Current Weather View */
+
+"Label: Meteo Data Provider" = "Метео сведения от";
+"Label: About Current Weather" = "О погоде сейчас...";
+
+"Prefix: Curren Weather in Brief" = "Коротко";
+"Prefix: Feels Like" = "Наверное";
+"Prefix: Min" = "Мин";
+"Prefix: Max" = "Макс";
+
+"Prefix: Humidity" = "Влага";
+"Prefix: Visibility" = "Обзор";
+
+"Unit: Meter" = "м";
+"Unit: Kilometre" = "км";
+"Unit: Mile" = "ми";
+"Unit: Foot" = "фт";
+
+"Label: Speed" = "Ветер";
+"Label: Direction" = "Направление";
+"Label: Gust" = "Порывы";
+
+"Unit: m/s" = "м/с";
+"Unit: km/h" = "км/ч";
+"Unit: mph" = "мили/ч";
+
+"Label: Pressure" = "Давление";
+
+"Unit: hPa" = "гПа";
+"Unit: mmHg" = "мм.рт.ст.";
+"Unit: mb" = "мбар";
+
+"Label: Sunrise" = "ВОСХОД";
+"Label: Sunset" = "ЗАХОД";
+
+/* Time */
+
+"AM" = "ДП";
+"PM" = "ПП";
+
+"Postfix: Year" = " г.";
+
+"Prefix: Last One" = "Расчет от";
+
+/* Forecast View */
+
+"Label: Info" = "Секция в разработке выпуска версии 0.3.";
+
+/* Options Screen – OptionsWindowController, OptionsViewController */
+
+"Title: Options Screen" = "Изделие";
+
+"Section: App Options" = "Настройки Изделия";
+
+"Option: Dark Mode" = "Сторона Луны";
+"Option: Language" = "Язык";
+"Option: OpenWeather Key" = "Ключ OpenWeather";
+"Option: Time Format" = "Формат Времени";
+
+"Section: Meteo Options" = "Метео Просмотр";
+
+"Option: Temperature" = "Температура";
+"Option: Wind Speed" = "Скорость Ветра";
+"Option: Pressure" = "Барометр";
+"Option: Distance" = "Дальность Обзора";
+
+"OpenWeather: Lock" = "Скрыть";
+"OpenWeather: Unlock" = "Открыть";
+"OpenWeather: Hidden" = "Скрытая замочная скважина...";
+"OpenWeather: Editable" = "Нужен токен (ключ)";
+
+"Unit: Light" = "Cветлая";
+"Unit: Dark" = "Темная";
+"Unit: System" = "Среда";
+
+"Unit: English" = "Английский";
+"Unit: Russian" = "Русский";
+
+"Unit: 24-hour" = "24-часовой";
+"Unit: 12-hour" = "12-часовой";
+
+"Unit: Kelvin" = "Кельвин";
+"Unit: Celsius" = "Цельсий";
+"Unit: Fahrenheit" = "Фаренгейт";
+
+"Unit: m/s long" = "метр/сек";
+"Unit: km/h long" = "км/час";
+"Unit: mph long" = "мили в час";
+
+"Unit: Kilometre long" = "Километры";
+"Unit: Mile long" = "Мили";
+
+"Button: Close" = "Исчезни";
+
+/* Compass Directions */
+
+"Compass: N" = "С";
+"Compass: NNE" = "С/СВ";
+"Compass: NE" = "СВ";
+"Compass: ENE" = "В/СВ";
+"Compass: E" = "В";
+"Compass: ESE" = "В/ЮВ";
+"Compass: SE" = "ЮВ";
+"Compass: SSE" = "Ю/ЮВ";
+"Compass: S" = "Ю";
+"Compass: SSW" = "Ю/ЮЗ";
+"Compass: SW" = "ЮЗ";
+"Compass: WSW" = "З/ЮЗ";
+"Compass: W" = "З";
+"Compass: WNW" = "З/СЗ";
+"Compass: NW" = "СЗ";
+"Compass: NNW" = "С/СЗ";
+
+/* Months' names */
+
+"Month: December" = "дек.";
+"Month: January" = "янв.";
+"Month: February" = "фев.";
+"Month: March" = "мар.";
+"Month: April" = "апр.";
+"Month: May" = "май";
+"Month: June" = "июн.";
+"Month: Jule" = "июл.";
+"Month: August" = "авг.";
+"Month: September" = "сен.";
+"Month: October" = "окт.";
+"Month: November" = "нояб.";
+
+/* About Screen – AboutWindowController, AboutViewController */
+
+"Button: The App Source Code" = "Исходники Изделия";
+"Button: The Technological Tree" = "Лукоморья Дуб Зелёный";
+
+"Label: The App Version" = "Выпуск";
+
+"Label: Star Copyright Notice" = "Охраняется авторским правом © 7531 - 7532 Михаил A. Жигулин из Новосибирска.";
+
+"Label: Copyright Details" = "Летоисчесление ведется от Сотворения Мира в Звездном Храме в соответствии со славянским календарем в котором первый месяц сентябрь.";
+
+"Label: Credits" = "Работы выполнены";
+
+"Label: Balancing and Control" = "Контроль и Балансировка";
+"Label: Writing" = "Кодирование";
+"Label: Documenting" = "Документирование";
+"Label: Artworking" = "Изобразительное Искусство";
+"Label: EN Expectation" = "Английский";
+"Label: RU Expectation" = "Русский";
+
+"Label: Author" = "Михаил А. Жигулин";
+
+"Button: License" = "Текст лицензии";
+"Button: Terms & Conditions" = "Соглашение";
