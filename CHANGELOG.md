@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Expectation > Translation.
 
-## [0.2] - 2024-01-01
+## [0.2] - 2024-02-01
 
 ### Added
 
