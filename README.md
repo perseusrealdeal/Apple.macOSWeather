@@ -3,7 +3,7 @@
 > Home-made weather macOS app that runs in the Status Menus (top-right).
 
 [![Actions Status](https://github.com/perseusrealdeal/Apple.macOSWeather/actions/workflows/main.yml/badge.svg)](https://github.com/perseusrealdeal/Apple.macOSWeather/actions)
-[![Version](https://img.shields.io/badge/Version-0.2-green.svg)](/CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-0.3-green.svg)](/CHANGELOG.md)
 [![Platform macOS](https://img.shields.io/badge/Platform-macOS%2010.11+-orange.svg)](https://en.wikipedia.org/wiki/MacOS_version_history)
 [![Xcode 10.1](https://img.shields.io/badge/Xcode-10.1+-red.svg)](https://en.wikipedia.org/wiki/Xcode)
 [![Swift 4.2](https://img.shields.io/badge/Swift-4.2-orange.svg)](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html)
@@ -96,7 +96,8 @@ Russian Localization by Mikhail Zhigulin<br/>
 
 # Contributing localization
 
-Localizations in other languages are very welcome from the app version 1.0, please consider [customer expectations for EN](/PerseusMeteo/Configuration/CustomerExpectations/Expectations_en.plist) as a template.
+Localizations in other languages are very welcome from the app version 1.0.<br/>
+Please consider [customer expectations for EN](/PerseusMeteo/Configuration/CustomerExpectations/Expectations_en.plist) as a template.
 
 # Acknowledgements
 
