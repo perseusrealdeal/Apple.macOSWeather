@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fixed incorrect Location Access Status display in Popover Screen (#30).
+- Incorrect Location Access Status display in Popover Screen (#30).
 
 ### Changed
 
