@@ -86,8 +86,8 @@ public class PopoverViewController: NSViewController {
 
         guard let popover = globals.statusMenusButtonPresenter.popover else { return }
 
-        globals.statusMenusButtonPresenter.screenAbout.close()
-        globals.statusMenusButtonPresenter.screenOptions.close()
+        // globals.statusMenusButtonPresenter.screenAbout.close()
+        // globals.statusMenusButtonPresenter.screenOptions.close()
 
         popover.performClose(sender)
     }
