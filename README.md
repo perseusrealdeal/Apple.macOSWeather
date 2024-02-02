@@ -65,10 +65,13 @@ To install the app use the appropriate build-system.
 
 # Points taken into account
 
-- Explicit start point placed in main.swift file
-- Explicit testing app delegate with test bundle
+- Explicit start point placed in [main.swift](/PerseusMeteo/main.swift)
+- Explicit app delegate with test bundle
+- Explicit app globals placed in [AppGlobals.swift](/PerseusMeteo/Configuration/AppGlobals.swift)
+- Explicit app appearance placed in [AppAppearance.swift](/PerseusMeteo/Configuration/AppAppearance.swift)
 - Localization test schemes for EN and RU as well
 - SwiftLint shell script as a build phase
+- Software requirements
 
 # The Clear BSD License
 
