@@ -91,10 +91,17 @@ public class StatusMenusButtonPresenter {
         }
     }
 
-    public func callWeather(_ sender: Any?) {
+    public func callCurrentWeather(_ sender: Any?) {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        meteoClientManager?.fetchMeteoData(sender)
+        meteoClientManager?.fetchCurrent(sender)
+    }
+
+    public func callForecast(_ sender: Any?) {
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        meteoClientManager?.fetchForecast(sender)
     }
 }

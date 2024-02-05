@@ -23,12 +23,22 @@
 
 import Cocoa
 
-public class PopoverViewController: NSViewController {
+public class PopoverViewController: NSViewController, NSTabViewDelegate {
+
+    public enum MeteoCategory {
+        case current
+        case forecast
+    }
 
     // MARK: - Internals
 
     private let darkModeObserver = DarkModeObserver()
-    private let meteoFactsSource = MeteoDataParser()
+
+    private let sourceCurrentWeather = CurrentWeatherParser()
+    private let sourceForecast = ForecastParser()
+
+    private let tabCurrentWeatherID = "CurrentWeather"
+    private let tabForecastID = "Forecast"
 
     // MARK: - Outlets
 
@@ -37,7 +47,6 @@ public class PopoverViewController: NSViewController {
     @IBOutlet private(set) weak var viewForecast: ForecastView!
 
     @IBOutlet private(set) weak var buttonFetchMeteoFacts: NSButton!
-    @IBOutlet private(set) weak var progressIndicator: NSProgressIndicator!
     @IBOutlet private(set) weak var labelMadeWithLove: NSTextField!
 
     @IBOutlet private(set) weak var viewTabs: NSTabView!
@@ -55,7 +64,16 @@ public class PopoverViewController: NSViewController {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        globals.statusMenusButtonPresenter.callWeather(sender)
+        if
+            let tabSelected = viewTabs.selectedTabViewItem,
+            let tabId = tabSelected.identifier as? String {
+
+            if tabId == tabCurrentWeatherID {
+                globals.statusMenusButtonPresenter.callCurrentWeather(sender)
+            } else if tabId == tabForecastID {
+                globals.statusMenusButtonPresenter.callForecast(sender)
+            }
+        }
     }
 
     @IBAction func quitButtonTapped(_ sender: NSButton) {
@@ -92,6 +110,13 @@ public class PopoverViewController: NSViewController {
         popover.performClose(sender)
     }
 
+    public func tabView(_ tabView: NSTabView, didSelect tabViewItem: NSTabViewItem?) {
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        actualizeCallingSection()
+    }
+
     // MARK: - Initialization
 
     public override func awakeFromNib() {
@@ -111,11 +136,18 @@ public class PopoverViewController: NSViewController {
         self.preferredContentSize = NSSize(width: self.view.frame.size.width,
                                            height: self.view.frame.size.height)
 
+        // Tabs event delegate.
+
+        tabCurrentWeather.identifier = tabCurrentWeatherID
+        tabForecast.identifier = tabForecastID
+
+        viewTabs.delegate = self
+
         // Dark Mode.
 
         darkModeObserver.action = { _ in self.makeup() }
 
-        // Localization.
+        // Localization, option changed event.
 
         let nc = AppGlobals.notificationCenter
 
@@ -123,47 +155,59 @@ public class PopoverViewController: NSViewController {
                        name: NSNotification.Name.languageSwitchedManuallyNotification,
                        object: nil)
 
-        // Meteo data.
+        // Meteo data, view options changed event.
 
         nc.addObserver(self, selector: #selector(reloadData),
                        name: NSNotification.Name.meteoDataOptionsDidChanged,
                        object: nil)
 
-        // Data source.
+        // Business values, connecting to data sources.
 
-        meteoFactsSource.path = { AppGlobals.appDelegate?.weather ?? Data() }
-        viewCurrentWeather.data = meteoFactsSource
+        sourceCurrentWeather.path = { AppGlobals.appDelegate?.weather ?? Data() }
+        sourceForecast.path = { AppGlobals.appDelegate?.forecast ?? Data() }
+
+        viewCurrentWeather.dataSource = sourceCurrentWeather
+        viewForecast.dataSource = sourceForecast
 
         // Appearance.
 
         makeup()
         localize()
 
-        stopAnimationProgressIndicator(self)
+        // stopAnimationProgressIndicator(self)
     }
 
     // MARK: - Contract
 
     @objc public func reloadData() {
 
-        guard
-            let weather = self.viewCurrentWeather
-        else {
-            return
-        }
+        guard let weather = self.viewCurrentWeather else { return }
 
         weather.reloadData()
-        labelMadeWithLove.stringValue = meteoFactsSource.lastOne
+
+        actualizeCallingSection()
     }
 
-    public func startAnimationProgressIndicator(_ sender: Any?) {
-        self.progressIndicator.isHidden = false
-        self.progressIndicator.startAnimation(sender)
+    public func startAnimationProgressIndicator(_ section: MeteoCategory,
+                                                _ sender: Any? = nil) {
+
+        switch section {
+        case .current:
+            viewCurrentWeather.progressIndicator = true
+        case .forecast:
+            viewForecast.progressIndicator = true
+        }
     }
 
-    public func stopAnimationProgressIndicator(_ sender: Any?) {
-        self.progressIndicator.isHidden = true
-        self.progressIndicator.stopAnimation(sender)
+    public func stopAnimationProgressIndicator(_ section: MeteoCategory,
+                                               _ sender: Any? = nil) {
+
+        switch section {
+        case .current:
+            viewCurrentWeather.progressIndicator = false
+        case .forecast:
+            viewForecast.progressIndicator = false
+        }
     }
 }
 
@@ -240,8 +284,7 @@ extension PopoverViewController: Localizable {
 
         // Buttons and labels.
 
-        buttonFetchMeteoFacts.title = "Button: Call Weather".localizedValue
-        labelMadeWithLove.stringValue = meteoFactsSource.lastOne
+        actualizeCallingSection()
 
         tabCurrentWeather.label = "Tab: Current Weather".localizedValue
         tabForecast.label = "Tab: Forecast".localizedValue
@@ -252,5 +295,21 @@ extension PopoverViewController: Localizable {
         buttonOptions.title = "Button: Options".localizedValue
 
         buttonHideAppScreens.title = "Button: Hide".localizedValue
+    }
+
+    private func actualizeCallingSection() {
+
+        if
+            let tabSelected = viewTabs.selectedTabViewItem,
+            let tabId = tabSelected.identifier as? String {
+
+            if tabId == tabCurrentWeatherID {
+                buttonFetchMeteoFacts.title = "Button: Call Weather".localizedValue
+                labelMadeWithLove.stringValue = sourceCurrentWeather.lastOne
+            } else if tabId == tabForecastID {
+                buttonFetchMeteoFacts.title = "Button: Call Forecast".localizedValue
+                labelMadeWithLove.stringValue = sourceForecast.lastOne
+            }
+        }
     }
 }

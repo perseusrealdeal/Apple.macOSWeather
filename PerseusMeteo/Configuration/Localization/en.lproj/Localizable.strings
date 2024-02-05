@@ -19,6 +19,8 @@
 /* Popover Screen – PopoverViewController */
 
 "Button: Call Weather" = "Call Weather";
+"Button: Call Forecast" = "Call Forecast";
+
 "Label: Made with Love" = "Made with Love from Novosibirsk.";
 
 "Tab: Current Weather" = "Current Weather";

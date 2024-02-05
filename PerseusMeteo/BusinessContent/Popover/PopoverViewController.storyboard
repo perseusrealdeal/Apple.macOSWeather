@@ -44,13 +44,8 @@
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="xUP-85-vqz">
-                                                <rect key="frame" x="108" y="7" width="16" height="16"/>
-                                            </progressIndicator>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="xUP-85-vqz" firstAttribute="centerY" secondItem="1oS-xB-Iag" secondAttribute="centerY" id="0EW-aq-MRa"/>
-                                            <constraint firstItem="xUP-85-vqz" firstAttribute="leading" secondItem="1oS-xB-Iag" secondAttribute="trailing" constant="2" id="CGY-sQ-iu3"/>
                                             <constraint firstItem="1oS-xB-Iag" firstAttribute="centerY" secondItem="zay-Cg-HHE" secondAttribute="centerY" id="JcW-ps-KmT"/>
                                             <constraint firstItem="1oS-xB-Iag" firstAttribute="leading" secondItem="zay-Cg-HHE" secondAttribute="leading" id="M6g-Hi-CXR"/>
                                             <constraint firstItem="1oS-xB-Iag" firstAttribute="top" secondItem="zay-Cg-HHE" secondAttribute="top" constant="4" id="g7e-4A-DGa"/>
@@ -66,19 +61,22 @@
                                         </constraints>
                                         <font key="font" metaFont="system"/>
                                         <tabViewItems>
-                                            <tabViewItem label="Current Weather" identifier="" id="g1D-Zn-Myw">
+                                            <tabViewItem label="Current Weather" id="g1D-Zn-Myw">
                                                 <view key="view" id="4E9-lB-SpT" customClass="WeatherView" customModule="Snowman" customModuleProvider="target">
                                                     <rect key="frame" x="10" y="7" width="327" height="214"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </view>
                                             </tabViewItem>
-                                            <tabViewItem label="Forecast" identifier="" id="XwN-hq-rQ0">
+                                            <tabViewItem label="Forecast" id="XwN-hq-rQ0">
                                                 <view key="view" id="SkI-S3-94P" customClass="ForecastView" customModule="Snowman" customModuleProvider="target">
                                                     <rect key="frame" x="10" y="7" width="327" height="214"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </view>
                                             </tabViewItem>
                                         </tabViewItems>
+                                        <connections>
+                                            <outlet property="delegate" destination="bU7-R8-ocO" id="x1l-o8-gal"/>
+                                        </connections>
                                     </tabView>
                                 </subviews>
                                 <constraints>
@@ -192,7 +190,6 @@
                         <outlet property="buttonOptions" destination="lEc-RC-GkU" id="9WS-WU-GoL"/>
                         <outlet property="buttonQuit" destination="aTa-ms-UFz" id="uIQ-8m-vbQ"/>
                         <outlet property="labelMadeWithLove" destination="II3-Ni-sjv" id="ohb-Gv-dHz"/>
-                        <outlet property="progressIndicator" destination="xUP-85-vqz" id="6qz-VG-wtd"/>
                         <outlet property="tabCurrentWeather" destination="g1D-Zn-Myw" id="7uf-lK-bWC"/>
                         <outlet property="tabForecast" destination="XwN-hq-rQ0" id="rKh-up-612"/>
                         <outlet property="viewCurrentWeather" destination="4E9-lB-SpT" id="aA7-4n-QTL"/>

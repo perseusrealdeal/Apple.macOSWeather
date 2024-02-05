@@ -32,6 +32,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+    var forecast: Data? {
+        didSet {
+            let text = "JSON:\n\(forecast?.prettyPrinted ?? "")"
+            log.message("[\(type(of: self))].\(#function)\n\(text)")
+        }
+    }
+
     // MARK: - On Launch...
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {

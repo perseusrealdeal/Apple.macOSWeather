@@ -32,6 +32,9 @@ class TranslationTests: XCTestCase {
         XCTAssertEqual("Button: Call Weather".localizedExpectation,
                        "Button: Call Weather".localizedValue)
 
+        XCTAssertEqual("Button: Call Forecast".localizedExpectation,
+                       "Button: Call Forecast".localizedValue)
+
         XCTAssertEqual("Label: Made with Love".localizedExpectation,
                        "Label: Made with Love".localizedValue)
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -8,7 +9,9 @@
         <customObject id="-2" userLabel="File's Owner" customClass="ForecastView" customModule="Snowman" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="c22-O7-iKe" id="Sgz-HJ-2z6"/>
-                <outlet property="labelInDevelop" destination="RqP-Rv-nzd" id="IwG-y9-spl"/>
+                <outlet property="indicator" destination="QGQ-z2-uOh" id="G9m-IL-HY4"/>
+                <outlet property="labelMeteoProviderTitle" destination="RqP-Rv-nzd" id="jsg-nl-hPw"/>
+                <outlet property="labelMeteoProviderValue" destination="YyR-ui-s1a" id="Ge5-2y-yzh"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -18,17 +21,32 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RqP-Rv-nzd">
-                    <rect key="frame" x="8" y="303" width="109" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="In development..." id="WyF-eG-QYY">
+                    <rect key="frame" x="-2" y="303" width="96" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Meteo Data by:" id="WyF-eG-QYY">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YyR-ui-s1a">
+                    <rect key="frame" x="18" y="286" width="136" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Meteo Provider Name" id="eay-U8-hkg">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="QGQ-z2-uOh">
+                    <rect key="frame" x="2" y="287" width="16" height="16"/>
+                </progressIndicator>
             </subviews>
             <constraints>
-                <constraint firstItem="RqP-Rv-nzd" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="NVq-lK-6jY"/>
+                <constraint firstItem="RqP-Rv-nzd" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="NVq-lK-6jY"/>
+                <constraint firstItem="YyR-ui-s1a" firstAttribute="top" secondItem="RqP-Rv-nzd" secondAttribute="bottom" id="giR-nr-xga"/>
+                <constraint firstItem="QGQ-z2-uOh" firstAttribute="centerY" secondItem="YyR-ui-s1a" secondAttribute="centerY" id="iNK-9B-67n"/>
+                <constraint firstItem="YyR-ui-s1a" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="tae-3E-H6V"/>
                 <constraint firstItem="RqP-Rv-nzd" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="tkx-S1-iKn"/>
+                <constraint firstItem="QGQ-z2-uOh" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="2" id="xU8-ZH-7XU"/>
             </constraints>
             <point key="canvasLocation" x="57" y="-36"/>
         </customView>

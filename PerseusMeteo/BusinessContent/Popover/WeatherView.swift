@@ -22,10 +22,17 @@ class WeatherView: NSView {
 
     // MARK: - View Data Source
 
-    public var data: MeteoDataParser?
-
-    private var dataSource: MeteoDataParser {
-        return data ?? MeteoDataParser()
+    public var dataSource = CurrentWeatherParser()
+    public var progressIndicator: Bool = false {
+        didSet {
+            if progressIndicator {
+                indicator.isHidden = false
+                indicator.startAnimation(nil)
+            } else {
+                indicator.isHidden = true
+                indicator.stopAnimation(nil)
+            }
+        }
     }
 
     // MARK: - Outlets
@@ -34,6 +41,7 @@ class WeatherView: NSView {
 
     @IBOutlet private(set) weak var labelMeteoProviderTitle: NSTextField!
     @IBOutlet private(set) weak var labelMeteoProviderValue: NSTextField!
+    @IBOutlet private(set) weak var indicator: NSProgressIndicator!
 
     @IBOutlet private(set) weak var labelFeelsLike: NSTextField!
     @IBOutlet private(set) weak var labelMiniMaxTemperature: NSTextField!
@@ -79,6 +87,7 @@ class WeatherView: NSView {
         log.message("[\(type(of: self))].\(#function)")
 
         localize()
+        progressIndicator = false
     }
 
     required public init?(coder: NSCoder) {

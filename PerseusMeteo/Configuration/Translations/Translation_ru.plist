@@ -14,6 +14,8 @@
 	<string>--</string>
 	<key>Button: Call Weather</key>
 	<string>Запроси Погоду</string>
+	<key>Button: Call Forecast</key>
+	<string>Запроси Прогноз</string>
 	<key>Label: Made with Love</key>
 	<string>C любовью из Новосибирска.</string>
 	<key>Tab: Current Weather</key>

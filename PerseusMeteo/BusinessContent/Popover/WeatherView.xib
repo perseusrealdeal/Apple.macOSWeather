@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="WeatherView" customModule="Snowman" customModuleProvider="target">
             <connections>
+                <outlet property="indicator" destination="lEf-fh-mLw" id="jkg-HB-omu"/>
                 <outlet property="labelFeelsLike" destination="mu3-08-Onq" id="r0v-In-XLG"/>
                 <outlet property="labelHumidity" destination="53y-pL-BLb" id="xT8-f1-tPe"/>
                 <outlet property="labelMeteoProviderTitle" destination="FU5-4g-xR5" id="QMw-Ed-L2E"/>
@@ -211,7 +212,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UOG-l0-JFY">
-                    <rect key="frame" x="-2" y="186" width="136" height="17"/>
+                    <rect key="frame" x="18" y="186" width="136" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Meteo Provider Name" id="FdZ-xx-QOa">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -234,6 +235,9 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="lEf-fh-mLw">
+                    <rect key="frame" x="2" y="187" width="16" height="16"/>
+                </progressIndicator>
             </subviews>
             <constraints>
                 <constraint firstItem="DfB-CI-gff" firstAttribute="top" secondItem="vR5-tL-YT4" secondAttribute="bottom" constant="3" id="0o7-jH-MP9"/>
@@ -242,6 +246,7 @@
                 <constraint firstItem="PB9-Qj-d2M" firstAttribute="centerX" secondItem="aiz-jM-Zwf" secondAttribute="centerX" id="7s9-A8-YNl"/>
                 <constraint firstItem="qBw-SP-YLr" firstAttribute="top" secondItem="qqV-2W-t83" secondAttribute="bottom" constant="3" id="8ez-Yr-6zJ"/>
                 <constraint firstItem="53y-pL-BLb" firstAttribute="top" secondItem="mu3-08-Onq" secondAttribute="bottom" constant="5" id="AB5-J6-z6R"/>
+                <constraint firstItem="lEf-fh-mLw" firstAttribute="centerY" secondItem="UOG-l0-JFY" secondAttribute="centerY" id="AF7-zm-DOC"/>
                 <constraint firstItem="cvz-V8-5WT" firstAttribute="centerX" secondItem="CQ2-lC-Nhf" secondAttribute="centerX" id="Aqr-zR-EGT"/>
                 <constraint firstItem="Mc7-Qe-7uR" firstAttribute="centerX" secondItem="Nof-kn-u6m" secondAttribute="centerX" constant="100" id="CvA-uX-6hI"/>
                 <constraint firstItem="qqV-2W-t83" firstAttribute="centerX" secondItem="Mc7-Qe-7uR" secondAttribute="centerX" constant="100" id="FeV-Q8-rvH"/>
@@ -250,7 +255,7 @@
                 <constraint firstItem="cvz-V8-5WT" firstAttribute="top" secondItem="CQ2-lC-Nhf" secondAttribute="bottom" constant="3" id="GoY-c8-cA6"/>
                 <constraint firstItem="mu3-08-Onq" firstAttribute="top" secondItem="95I-Xr-CNz" secondAttribute="bottom" id="JJm-U7-455"/>
                 <constraint firstItem="qqV-2W-t83" firstAttribute="centerY" secondItem="Mc7-Qe-7uR" secondAttribute="centerY" id="JlC-yi-JV6"/>
-                <constraint firstItem="UOG-l0-JFY" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="KGL-rn-9Ur"/>
+                <constraint firstItem="UOG-l0-JFY" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="KGL-rn-9Ur"/>
                 <constraint firstAttribute="trailing" secondItem="e2F-Oe-GY7" secondAttribute="trailing" id="Li6-rZ-1NN"/>
                 <constraint firstAttribute="trailing" secondItem="95I-Xr-CNz" secondAttribute="trailing" id="MR2-kl-zWK"/>
                 <constraint firstItem="1ak-U7-0E6" firstAttribute="leading" secondItem="7ou-eL-RIc" secondAttribute="trailing" constant="2" id="OXV-mV-jKd"/>
@@ -274,6 +279,7 @@
                 <constraint firstItem="Nof-kn-u6m" firstAttribute="centerY" secondItem="Mc7-Qe-7uR" secondAttribute="centerY" id="h2e-WP-pti"/>
                 <constraint firstItem="Mc7-Qe-7uR" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="i6a-O7-NKH"/>
                 <constraint firstItem="FU5-4g-xR5" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="ifv-Rg-1Ia"/>
+                <constraint firstItem="lEf-fh-mLw" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="2" id="jFX-2F-SrX"/>
                 <constraint firstItem="FU5-4g-xR5" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="kjc-du-3qZ"/>
                 <constraint firstAttribute="trailing" secondItem="53y-pL-BLb" secondAttribute="trailing" id="lZB-t7-SKN"/>
                 <constraint firstItem="3Vs-1D-kcY" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="lxh-MY-LH5"/>

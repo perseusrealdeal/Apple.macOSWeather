@@ -1,5 +1,5 @@
 //
-//  OpenMeteoRefresher.swift
+//  OpenWeatherForecastRefresher.swift
 //  PerseusMeteo
 //
 //  Created by Mikhail Zhigulin in 7532.
@@ -15,21 +15,19 @@
 
 import Foundation
 
-public class OpenMeteoRefresher: MeteoDataRefresherProtocol {
+public class OpenWeatherForecastRefresher: ForecastRefresherProtocol {
 
-    private var meteoFacts: MeteoFacts!
+    private var meteoFacts: ForecastMeteoFacts!
 
-    public func refresh(object: MeteoFacts, _ source: [String: Any]) {
+    public func refresh(object: ForecastMeteoFacts, _ source: [String: Any]) {
 
-        guard
-            source.isEmpty == false
-        else {
+        guard source.isEmpty == false else {
             object.removeAll()
             return
         }
 
         meteoFacts = object
 
-        // MARK: - Refresh meteo facts from OpenMeteo source here.
+        // MARK: - Refresh meteo facts from OpenWeather source here.
     }
 }

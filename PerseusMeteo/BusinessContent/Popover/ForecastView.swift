@@ -18,11 +18,29 @@ import Cocoa
 @IBDesignable
 class ForecastView: NSView {
 
+    // MARK: - View Data Source
+
+    public var dataSource = ForecastParser()
+    public var progressIndicator: Bool = false {
+        didSet {
+            if progressIndicator {
+                indicator.isHidden = false
+                indicator.startAnimation(nil)
+            } else {
+                indicator.isHidden = true
+                indicator.stopAnimation(nil)
+            }
+        }
+    }
+
     // MARK: - Outlets
 
     @IBOutlet private(set) var contentView: NSView!
 
-    @IBOutlet private(set) weak var labelInDevelop: NSTextField!
+    @IBOutlet private(set) weak var labelMeteoProviderTitle: NSTextField!
+    @IBOutlet private(set) weak var labelMeteoProviderValue: NSTextField!
+
+    @IBOutlet private(set) weak var indicator: NSProgressIndicator!
 
     // MARK: - Initialization
 
@@ -44,6 +62,7 @@ class ForecastView: NSView {
         log.message("[\(type(of: self))].\(#function)")
 
         localize()
+        progressIndicator = false
     }
 
     required public init?(coder: NSCoder) {
@@ -92,6 +111,20 @@ class ForecastView: NSView {
 
         self.addConstraints(newConstraints)
     }
+
+    // MARK: - Contract
+
+    public func reloadData() {
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        dataSource.refresh()
+
+        // Meteo Data Provider.
+
+        labelMeteoProviderTitle.stringValue = "Label: Meteo Data Provider".localizedValue
+        labelMeteoProviderValue.stringValue = dataSource.meteoDataProviderName
+    }
 }
 
 // MARK: - DARK MODE
@@ -112,6 +145,6 @@ extension ForecastView {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        labelInDevelop.stringValue = "Label: Info".localizedValue
+        reloadData()
     }
 }

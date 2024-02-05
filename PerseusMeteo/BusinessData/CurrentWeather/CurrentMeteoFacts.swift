@@ -1,5 +1,5 @@
 //
-//  MeteoFacts.swift
+//  CurrentMeteoFacts.swift
 //  PerseusMeteo
 //
 //  Created by Mikhail Zhigulin in 7532.
@@ -15,33 +15,9 @@
 
 import Foundation
 
-// MARK: - Protocols
-
-public protocol MeteoDataRefresherProtocol {
-    func refresh(object: MeteoFacts, _ source: [String: Any])
-}
-
-public protocol MeteoDataSourceProtocol {
-    var meteoDataProvider: MeteoDataProvider { get set }
-}
-
-// MARK: - Providers list
-
-public enum MeteoDataProvider: CustomStringConvertible {
-
-    public var description: String {
-        switch self {
-        case .serviceOpenWeatherMap:
-            return "OpenWeather" // Market name.
-        }
-    }
-
-    case serviceOpenWeatherMap // Version 2.5.
-}
-
 // MARK: - Meteo facts from the data source just AS IS
 
-public class MeteoFacts {
+public class CurrentMeteoFacts {
 
     public var meteoDataProviderName: String?
 
@@ -68,7 +44,7 @@ public class MeteoFacts {
     public var timezone: Int?
 }
 
-extension MeteoFacts {
+extension CurrentMeteoFacts {
 
     public func removeAll() {
 

@@ -1,5 +1,5 @@
 //
-//  MeteoFactsDefaults.swift
+//  CurrentMeteoFactsDefaults.swift
 //  PerseusMeteo
 //
 //  Created by Mikhail Zhigulin in 7532.
@@ -15,10 +15,14 @@
 
 import Foundation
 
-extension MeteoFacts {
+extension CurrentMeteoFacts {
 
     public static var meteoDataProviderNameDefault: String {
         return AppGlobals.meteoProviderName
+    }
+
+    public static var lastOneDefault: String {
+        return "Label: Made with Love".localizedValue
     }
 
     public static var weatherIconNameDefault: String {
@@ -67,10 +71,6 @@ extension MeteoFacts {
         }
 
         return template
-    }
-
-    public static var lastOneDefault: String {
-        return "Label: Made with Love".localizedValue
     }
 
     public static var temperatureCurrentUnit: String {
