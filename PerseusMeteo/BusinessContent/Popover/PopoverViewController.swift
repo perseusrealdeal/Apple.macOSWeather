@@ -173,17 +173,19 @@ public class PopoverViewController: NSViewController, NSTabViewDelegate {
 
         makeup()
         localize()
-
-        // stopAnimationProgressIndicator(self)
     }
 
     // MARK: - Contract
 
     @objc public func reloadData() {
 
-        guard let weather = self.viewCurrentWeather else { return }
+        guard
+            let weather = self.viewCurrentWeather,
+            let forecast = self.viewForecast
+        else { return }
 
         weather.reloadData()
+        forecast.reloadData()
 
         actualizeCallingSection()
     }

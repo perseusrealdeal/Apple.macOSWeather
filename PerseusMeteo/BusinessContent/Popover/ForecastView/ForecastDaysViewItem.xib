@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ForecastDaysViewItem" customModule="Snowman" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="c22-O7-iKe" id="GOK-h3-0W7"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="70" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s8f-Ug-kfR">
+                    <rect key="frame" x="16" y="12" width="37" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="0xz-dL-lqL">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="s8f-Ug-kfR" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="4CC-4O-484"/>
+                <constraint firstItem="s8f-Ug-kfR" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="OQU-sB-Sry"/>
+            </constraints>
+        </customView>
+        <customObject id="jCB-aO-bPE" customClass="ForecastDaysViewItem" customModule="Snowman" customModuleProvider="target">
+            <connections>
+                <outlet property="textField" destination="s8f-Ug-kfR" id="vU6-7h-5NN"/>
+                <outlet property="view" destination="c22-O7-iKe" id="Ej9-j7-lcb"/>
+            </connections>
+        </customObject>
+    </objects>
+</document>

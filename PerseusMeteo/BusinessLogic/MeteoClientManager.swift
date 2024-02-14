@@ -180,13 +180,14 @@ public class MeteoClientManager {
         let key = AppGlobals.appKeyOpenWeather.isEmpty ?
             AppOptions.OpenWeatherAPIOption ?? "" : AppGlobals.appKeyOpenWeather
 
-        let callDetails = OpenWeatherDetails(appid: key,
+        var callDetails = OpenWeatherDetails(appid: key,
                                              format: .forecast,
                                              lat: lat,
                                              lon: lon,
                                              units: .imperial,
                                              lang: .init(rawValue: lang),
                                              mode: .json)
+        callDetails.cnt = 40
 
         log.message(callDetails.urlString)
 

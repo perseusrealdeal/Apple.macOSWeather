@@ -12,11 +12,21 @@
 //
 //  See LICENSE for details. All rights reserved.
 //
+// swiftlint:disable file_length
+//
 
 import Cocoa
 
 @IBDesignable
 class ForecastView: NSView {
+
+    // MARK: - Internals
+
+    private let collectionForecastDaysID =
+        NSUserInterfaceItemIdentifier(rawValue: "ForecastDays")
+
+    private let collectionForecastHoursID =
+        NSUserInterfaceItemIdentifier(rawValue: "ForecastHours")
 
     // MARK: - View Data Source
 
@@ -42,6 +52,11 @@ class ForecastView: NSView {
 
     @IBOutlet private(set) weak var indicator: NSProgressIndicator!
 
+    @IBOutlet weak var viewForecastDays: NSCollectionView!
+    @IBOutlet weak var viewForecastHours: NSCollectionView!
+
+    @IBOutlet private(set) weak var viewForecastDetails: ForecastDetailsView!
+
     // MARK: - Initialization
 
     override func viewWillDraw() {
@@ -62,7 +77,25 @@ class ForecastView: NSView {
         log.message("[\(type(of: self))].\(#function)")
 
         localize()
+
         progressIndicator = false
+
+        self.viewForecastDays.identifier = collectionForecastDaysID
+        self.viewForecastHours.identifier = collectionForecastHoursID
+
+        self.viewForecastDays.dataSource = self
+        self.viewForecastHours.dataSource = self
+
+        self.viewForecastDays.delegate = self
+        self.viewForecastHours.delegate = self
+
+        self.viewForecastDays.wantsLayer = true
+        self.viewForecastDays.backgroundColors = [NSColor.clear]
+
+        self.viewForecastHours.wantsLayer = true
+        self.viewForecastHours.backgroundColors = [NSColor.clear]
+
+        wantsLayer = true
     }
 
     required public init?(coder: NSCoder) {
@@ -119,11 +152,141 @@ class ForecastView: NSView {
         log.message("[\(type(of: self))].\(#function)")
 
         dataSource.refresh()
+        reloadCollectionIfNecessary()
 
         // Meteo Data Provider.
 
         labelMeteoProviderTitle.stringValue = "Label: Meteo Data Provider".localizedValue
         labelMeteoProviderValue.stringValue = dataSource.meteoDataProviderName
+    }
+}
+
+// MARK: - NSCollectionViewDataSource
+
+extension ForecastView: NSCollectionViewDataSource {
+
+    func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection
+        section: Int) -> Int {
+
+        log.message("[\(type(of: self))].\(#function) : \(dataSource.forecastDays.count)")
+
+        // Amount of items in collection Forecast Days.
+
+        if collectionView.identifier == collectionForecastDaysID {
+            return dataSource.forecastDays.count
+        }
+
+        // Amount of items in collection Forecast Hours for the forecast day selected.
+
+        if collectionView.identifier == collectionForecastHoursID {
+
+            if
+                let selectedIndexPath = viewForecastDays.selectionIndexPaths.first,
+                !dataSource.forecastDays.isEmpty,
+                (selectedIndexPath as NSIndexPath).item != -1 {
+
+                let day = dataSource.forecastDays[(selectedIndexPath as NSIndexPath).item]
+
+                return day.forecastHours.count
+            }
+        }
+
+        return 0
+    }
+
+    func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt
+        indexPath: IndexPath) -> NSCollectionViewItem {
+
+        // New item for collection Forecast Days.
+
+        if collectionView.identifier == collectionForecastDaysID {
+
+            let data = dataSource.forecastDays[(indexPath as NSIndexPath).item]
+            let item = ForecastDaysViewItem.makeItem(collectionView, indexPath, data)
+
+            log.message("[\(type(of: self))].\(#function)")
+
+            return item
+        }
+
+        // New item for collection Forecast Hours.
+
+        if collectionView.identifier == collectionForecastHoursID {
+
+            if
+                let selectedIndexPath = viewForecastDays.selectionIndexPaths.first,
+                !dataSource.forecastDays.isEmpty,
+                (selectedIndexPath as NSIndexPath).item != -1 {
+
+                let day = dataSource.forecastDays[(selectedIndexPath as NSIndexPath).item]
+
+                let data = day.forecastHours[(indexPath as NSIndexPath).item]
+                let item = ForecastHoursViewItem.makeItem(collectionView, indexPath, data)
+
+                log.message("[\(type(of: self))].\(#function)")
+
+                return item
+            }
+        }
+
+        return NSCollectionViewItem()
+    }
+
+    private func reloadCollectionIfNecessary() {
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        if dataSource.forecastDays.isEmpty {
+            log.message("[\(type(of: self))].\(#function), there's no forecast.")
+            return
+        }
+
+        viewForecastDays.reloadData()
+
+        if viewForecastDays.selectionIndexPaths.first == nil {
+            viewForecastHours.reloadData()
+            viewForecastDetails.data = nil
+        }
+    }
+}
+
+// MARK: - NSCollectionViewDelegate
+
+extension ForecastView: NSCollectionViewDelegate {
+
+    func collectionView(_ collectionView: NSCollectionView,
+                        didSelectItemsAt indexPaths: Set<IndexPath>) {
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        if collectionView.identifier == collectionForecastDaysID {
+
+            viewForecastHours.reloadData()
+        }
+
+        if collectionView.identifier == collectionForecastHoursID {
+
+            var hourDetails: ForecastHour?
+
+            if
+                let selectedIndexPath = viewForecastDays.selectionIndexPaths.first,
+                !dataSource.forecastDays.isEmpty,
+                (selectedIndexPath as NSIndexPath).item != -1,
+                let hourIndexPaths = indexPaths.first {
+
+                let day = dataSource.forecastDays[(selectedIndexPath as NSIndexPath).item]
+
+                hourDetails = day.forecastHours[(hourIndexPaths as NSIndexPath).item]
+            }
+
+            viewForecastDetails.data = hourDetails
+        }
+    }
+
+    func collectionView(_ collectionView: NSCollectionView,
+                        didDeselectItemsAt indexPaths: Set<IndexPath>) {
+
+        log.message("[\(type(of: self))].\(#function)")
     }
 }
 

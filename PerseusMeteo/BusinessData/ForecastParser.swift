@@ -64,4 +64,15 @@ public class ForecastParser: JsonDataDictionary, MeteoProviderProtocol {
         return ForecastMeteoFacts.lastOneDefault
     }
 
+    public var forecastDays: [ForecastDay] {
+
+        var days = [ForecastDay]()
+
+        for item in 0...4 {
+            days.append(ForecastDay(label: item.description))
+        }
+
+        return days
+    }
+
 }
