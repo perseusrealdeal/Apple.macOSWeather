@@ -53,7 +53,6 @@ public class PopoverViewController: NSViewController, NSTabViewDelegate {
     @IBOutlet private(set) weak var tabCurrentWeather: NSTabViewItem!
     @IBOutlet private(set) weak var tabForecast: NSTabViewItem!
 
-    @IBOutlet private(set) weak var buttonQuit: NSButton!
     @IBOutlet private(set) weak var buttonAbout: NSButton!
     @IBOutlet private(set) weak var buttonOptions: NSButton!
     @IBOutlet private(set) weak var buttonHideAppScreens: NSButton!
@@ -74,14 +73,6 @@ public class PopoverViewController: NSViewController, NSTabViewDelegate {
                 globals.statusMenusButtonPresenter.callForecast(sender)
             }
         }
-    }
-
-    @IBAction func quitButtonTapped(_ sender: NSButton) {
-
-        log.message("[\(type(of: self))].\(#function)")
-
-        // AppOptions.removeAll()
-        AppGlobals.quitTheApp()
     }
 
     @IBAction func aboutButtonTapped(_ sender: NSButton) {
@@ -290,8 +281,6 @@ extension PopoverViewController: Localizable {
 
         tabCurrentWeather.label = "Tab: Current Weather".localizedValue
         tabForecast.label = "Tab: Forecast".localizedValue
-
-        buttonQuit.title = "Button: Quit".localizedValue
 
         buttonAbout.title = "Button: About".localizedValue
         buttonOptions.title = "Button: Options".localizedValue

@@ -28,6 +28,8 @@ class LocationView: NSView {
 
     @IBOutlet private(set) var viewContent: NSView!
 
+    @IBOutlet private(set) weak var buttonQuit: NSButton!
+
     @IBOutlet private(set) weak var labelLocationNameValue: NSTextField!
     @IBOutlet private(set) weak var labelGeoCoupleDataValue: NSTextField!
 
@@ -37,6 +39,14 @@ class LocationView: NSView {
     @IBOutlet private(set) weak var buttonRefresh: NSButton!
 
     // MARK: - Actions
+
+    @IBAction func quitButtonTapped(_ sender: NSButton) {
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        // AppOptions.removeAll()
+        AppGlobals.quitTheApp()
+    }
 
     @IBAction func refreshButtonTapped(_ sender: NSButton) {
 
@@ -150,6 +160,8 @@ class LocationView: NSView {
         // Run this code only in Interface Builder.
         refreshedForPermit = .deniedForAllAndRestricted
 #endif
+
+        buttonQuit.title = "Button: Quit".localizedValue
 
         labelLocationNameValue.stringValue = "Greetings".localizedValue
         labelGeoCoupleDataValue.stringValue = geoCoupleDataLocalized

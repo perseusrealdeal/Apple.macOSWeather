@@ -98,21 +98,8 @@
                             <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ped-mA-ACD" userLabel="Commands Stack">
                                 <rect key="frame" x="0.0" y="0.0" width="355" height="30"/>
                                 <subviews>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aTa-ms-UFz">
-                                        <rect key="frame" x="-6" y="-2" width="92" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="e0B-zd-IAq"/>
-                                        </constraints>
-                                        <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pMV-1O-fOQ">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="quitButtonTapped:" target="bU7-R8-ocO" id="mbh-7H-ut0"/>
-                                        </connections>
-                                    </button>
                                     <button horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MSy-7h-iOl">
-                                        <rect key="frame" x="79" y="-2" width="102" height="32"/>
+                                        <rect key="frame" x="-6" y="-2" width="102" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="90" id="9IS-19-PYQ"/>
                                         </constraints>
@@ -125,7 +112,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lEc-RC-GkU">
-                                        <rect key="frame" x="174" y="-2" width="102" height="32"/>
+                                        <rect key="frame" x="89" y="-2" width="102" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="90" id="YpF-pI-mZI"/>
                                         </constraints>
@@ -137,10 +124,16 @@
                                             <action selector="optionsButtonTapped:" target="bU7-R8-ocO" id="dub-X9-Bw2"/>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ub5-ci-hl1">
-                                        <rect key="frame" x="269" y="-2" width="92" height="32"/>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="5qj-zM-4et" userLabel="Empty Block">
+                                        <rect key="frame" x="190" y="0.0" width="70" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="TIj-fw-ccb"/>
+                                            <constraint firstAttribute="width" constant="70" id="hVA-pX-2La"/>
+                                        </constraints>
+                                    </customView>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ub5-ci-hl1">
+                                        <rect key="frame" x="259" y="-2" width="102" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="TIj-fw-ccb"/>
                                         </constraints>
                                         <buttonCell key="cell" type="push" title="Hide" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5DE-zQ-BGm">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -154,11 +147,10 @@
                                 <constraints>
                                     <constraint firstItem="Ub5-ci-hl1" firstAttribute="centerY" secondItem="ped-mA-ACD" secondAttribute="centerY" id="13V-ch-qLm"/>
                                     <constraint firstItem="lEc-RC-GkU" firstAttribute="centerY" secondItem="ped-mA-ACD" secondAttribute="centerY" id="4cU-jW-XQB"/>
-                                    <constraint firstItem="aTa-ms-UFz" firstAttribute="centerY" secondItem="ped-mA-ACD" secondAttribute="centerY" id="8g7-c0-QxT"/>
                                     <constraint firstItem="Ub5-ci-hl1" firstAttribute="trailing" secondItem="ped-mA-ACD" secondAttribute="trailing" id="AmP-yQ-Ori"/>
                                     <constraint firstItem="MSy-7h-iOl" firstAttribute="centerY" secondItem="ped-mA-ACD" secondAttribute="centerY" id="B6p-5T-zOX"/>
                                     <constraint firstAttribute="height" constant="30" id="HNg-fD-LWy"/>
-                                    <constraint firstItem="aTa-ms-UFz" firstAttribute="leading" secondItem="ped-mA-ACD" secondAttribute="leading" id="bSm-MY-Ife"/>
+                                    <constraint firstAttribute="width" constant="355" id="stT-cK-8bM"/>
                                 </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
@@ -188,7 +180,6 @@
                         <outlet property="buttonFetchMeteoFacts" destination="1oS-xB-Iag" id="f1j-sg-RGY"/>
                         <outlet property="buttonHideAppScreens" destination="Ub5-ci-hl1" id="jUj-ke-nTb"/>
                         <outlet property="buttonOptions" destination="lEc-RC-GkU" id="9WS-WU-GoL"/>
-                        <outlet property="buttonQuit" destination="aTa-ms-UFz" id="uIQ-8m-vbQ"/>
                         <outlet property="labelMadeWithLove" destination="II3-Ni-sjv" id="ohb-Gv-dHz"/>
                         <outlet property="tabCurrentWeather" destination="g1D-Zn-Myw" id="7uf-lK-bWC"/>
                         <outlet property="tabForecast" destination="XwN-hq-rQ0" id="rKh-up-612"/>
