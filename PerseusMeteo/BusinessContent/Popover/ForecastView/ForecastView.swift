@@ -152,16 +152,50 @@ class ForecastView: NSView {
         log.message("[\(type(of: self))].\(#function)")
 
         dataSource.refresh()
-        reloadCollectionIfNecessary()
+
+        reloadDaysCollection()
+        reloadHoursCollection()
 
         // Meteo Data Provider.
 
         labelMeteoProviderTitle.stringValue = "Label: Meteo Data Provider".localizedValue
         labelMeteoProviderValue.stringValue = dataSource.meteoDataProviderName
     }
+
+    // MARK: - Realization
+
+    private func reloadDaysCollection() {
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        let paths = viewForecastDays.selectionIndexPaths
+
+        viewForecastDays.reloadData()
+        viewForecastDays.selectItems(at: paths, scrollPosition: .nearestHorizontalEdge)
+    }
+
+    private func reloadHoursCollection() {
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        guard viewForecastDays.selectionIndexPaths.first != nil else {
+
+            viewForecastHours.reloadData()
+            viewForecastDetails.data = nil
+
+            return
+        }
+
+        let paths = viewForecastHours.selectionIndexPaths
+
+        viewForecastHours.reloadData()
+        viewForecastHours.selectItems(at: paths, scrollPosition: .nearestHorizontalEdge)
+
+        viewForecastDetails.reload()
+    }
 }
 
-// MARK: - NSCollectionViewDataSource
+// MARK: - NSCollectionViewDataSource, creating collection items
 
 extension ForecastView: NSCollectionViewDataSource {
 
@@ -170,24 +204,24 @@ extension ForecastView: NSCollectionViewDataSource {
 
         log.message("[\(type(of: self))].\(#function) : \(dataSource.forecastDays.count)")
 
-        // Amount of items in collection Forecast Days.
+        // Amount of items in the Forecast Days collection.
 
         if collectionView.identifier == collectionForecastDaysID {
             return dataSource.forecastDays.count
         }
 
-        // Amount of items in collection Forecast Hours for the forecast day selected.
+        // Amount of items in the Forecast Hours collection of the day selected.
 
-        if collectionView.identifier == collectionForecastHoursID {
+        if collectionView.identifier == collectionForecastHoursID,
+            dataSource.forecastDays.isEmpty == false {
 
             if
                 let selectedIndexPath = viewForecastDays.selectionIndexPaths.first,
-                !dataSource.forecastDays.isEmpty,
                 (selectedIndexPath as NSIndexPath).item != -1 {
 
-                let day = dataSource.forecastDays[(selectedIndexPath as NSIndexPath).item]
+                let theDay = dataSource.forecastDays[(selectedIndexPath as NSIndexPath).item]
 
-                return day.forecastHours.count
+                return theDay.forecastHours.count
             }
         }
 
@@ -197,56 +231,51 @@ extension ForecastView: NSCollectionViewDataSource {
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt
         indexPath: IndexPath) -> NSCollectionViewItem {
 
-        // New item for collection Forecast Days.
+        // New Forecast Day.
 
         if collectionView.identifier == collectionForecastDaysID {
 
+            // Find the day.
+
             let data = dataSource.forecastDays[(indexPath as NSIndexPath).item]
-            let item = ForecastDaysViewItem.makeItem(collectionView, indexPath, data)
+
+            // Create a view of the day.
+
+            let viewDay = ForecastDaysViewItem.makeItem(collectionView, indexPath, data)
 
             log.message("[\(type(of: self))].\(#function)")
 
-            return item
+            return viewDay
         }
 
-        // New item for collection Forecast Hours.
+        // New Forecast Hour.
 
-        if collectionView.identifier == collectionForecastHoursID {
+        if collectionView.identifier == collectionForecastHoursID,
+            dataSource.forecastDays.isEmpty == false {
 
             if
                 let selectedIndexPath = viewForecastDays.selectionIndexPaths.first,
-                !dataSource.forecastDays.isEmpty,
                 (selectedIndexPath as NSIndexPath).item != -1 {
+
+                // Find the day the hour for.
 
                 let day = dataSource.forecastDays[(selectedIndexPath as NSIndexPath).item]
 
-                let data = day.forecastHours[(indexPath as NSIndexPath).item]
-                let item = ForecastHoursViewItem.makeItem(collectionView, indexPath, data)
+                // Find the hour of the day.
+
+                let hour = day.forecastHours[(indexPath as NSIndexPath).item]
+
+                // Create a new view of the hour.
+
+                let viewHour = ForecastHoursViewItem.makeItem(collectionView, indexPath, hour)
 
                 log.message("[\(type(of: self))].\(#function)")
 
-                return item
+                return viewHour
             }
         }
 
         return NSCollectionViewItem()
-    }
-
-    private func reloadCollectionIfNecessary() {
-
-        log.message("[\(type(of: self))].\(#function)")
-
-        if dataSource.forecastDays.isEmpty {
-            log.message("[\(type(of: self))].\(#function), there's no forecast.")
-            return
-        }
-
-        viewForecastDays.reloadData()
-
-        if viewForecastDays.selectionIndexPaths.first == nil {
-            viewForecastHours.reloadData()
-            viewForecastDetails.data = nil
-        }
     }
 }
 
@@ -260,8 +289,8 @@ extension ForecastView: NSCollectionViewDelegate {
         log.message("[\(type(of: self))].\(#function)")
 
         if collectionView.identifier == collectionForecastDaysID {
-
             viewForecastHours.reloadData()
+            viewForecastDetails.data = nil
         }
 
         if collectionView.identifier == collectionForecastHoursID {
@@ -281,12 +310,6 @@ extension ForecastView: NSCollectionViewDelegate {
 
             viewForecastDetails.data = hourDetails
         }
-    }
-
-    func collectionView(_ collectionView: NSCollectionView,
-                        didDeselectItemsAt indexPaths: Set<IndexPath>) {
-
-        log.message("[\(type(of: self))].\(#function)")
     }
 }
 
