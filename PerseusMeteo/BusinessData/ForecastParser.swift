@@ -24,7 +24,7 @@ public class ForecastParser: JsonDataDictionary, MeteoProviderProtocol {
     private var meteoFacts: ForecastMeteoFacts = ForecastMeteoFacts()
     private var refresher: ForecastRefresherProtocol = OpenWeatherForecastRefresher()
 
-    // MARK: - Meteo data provider
+    // MARK: - Contract
 
     public var providerMeteoData: MeteoProvider = .serviceOpenWeatherMap {
         didSet {
@@ -37,8 +37,6 @@ public class ForecastParser: JsonDataDictionary, MeteoProviderProtocol {
         }
     }
 
-    // MARK: - Load meteo facts from source
-
     public func refresh() {
 
         guard let json = json else { return }
@@ -49,7 +47,11 @@ public class ForecastParser: JsonDataDictionary, MeteoProviderProtocol {
         }
     }
 
-    // MARK: - Loaded meteo data ready for reading, viewing on a screen
+    public func updateLastOneDateAndTime(dt: Int) {
+        meteoFacts.lastOne = dt
+    }
+
+    // MARK: - VALUES for viewing
 
     public var meteoDataProviderName: String {
 
@@ -61,7 +63,23 @@ public class ForecastParser: JsonDataDictionary, MeteoProviderProtocol {
     }
 
     public var lastOne: String { // Last time API request response.
-        return ForecastMeteoFacts.lastOneDefault
+
+        guard
+            let value = meteoFacts.lastOne,
+            let timezone = meteoFacts.timezone
+        else {
+            return ForecastMeteoFacts.lastOneDefault
+        }
+
+        let lastOne = representLastOneCalculationTime(value,
+                                                      timezone,
+                                                      toBe: AppOptions.timeFormatOption)
+        let prefix = "Prefix: Last One".localizedValue
+        let postfixYear = "Postfix: Year".localizedValue
+
+        let day = lastOne.day == nil ? "" : "\(lastOne.day ?? "")\(postfixYear) "
+
+        return "\(prefix): \(day)\(lastOne.time ?? ForecastMeteoFacts.lastOneDefault)"
     }
 
     public var forecastDays: [ForecastDay] {
@@ -74,5 +92,4 @@ public class ForecastParser: JsonDataDictionary, MeteoProviderProtocol {
 
         return days
     }
-
 }

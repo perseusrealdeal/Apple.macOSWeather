@@ -371,15 +371,35 @@
 			path = Translations;
 			sourceTree = "<group>";
 		};
+		4B5F7D2C2B82987E00121946 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4BB2045C2B70EE3A007E0308 /* Protocols.swift */,
+				4BB2045E2B70EE69007E0308 /* MeteoProvider.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		4B5F7D2D2B8298CF00121946 /* OpenMeteoRefresher */ = {
+			isa = PBXGroup;
+			children = (
+				4B3384632B5404DD004682DF /* OpenMeteoCurrentRefresher.swift */,
+			);
+			name = OpenMeteoRefresher;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		4B684C6D2B438A370063E359 /* BusinessData */ = {
 			isa = PBXGroup;
 			children = (
 				4BB2045A2B7029FC007E0308 /* ForecastParser.swift */,
 				4B684C6E2B438A730063E359 /* CurrentWeatherParser.swift */,
 				4B1073942B4607CE008A692D /* MeteoFactsRepresenter.swift */,
+				4B5F7D2C2B82987E00121946 /* Common */,
 				4BB204592B7023C3007E0308 /* Forecast */,
 				4BB204582B702384007E0308 /* CurrentWeather */,
-				4B7690D22B4CA703007F09D9 /* DataRefreshers */,
+				4B5F7D2D2B8298CF00121946 /* OpenMeteoRefresher */,
+				4B7690D22B4CA703007F09D9 /* OpenWeatherRefresher */,
 			);
 			path = BusinessData;
 			sourceTree = "<group>";
@@ -417,16 +437,13 @@
 			path = GiftsAndHelpers;
 			sourceTree = "<group>";
 		};
-		4B7690D22B4CA703007F09D9 /* DataRefreshers */ = {
+		4B7690D22B4CA703007F09D9 /* OpenWeatherRefresher */ = {
 			isa = PBXGroup;
 			children = (
 				4B1073962B46A2E5008A692D /* OpenWeatherCurrentRefresher.swift */,
 				4BB204622B70F2FE007E0308 /* OpenWeatherForecastRefresher.swift */,
-				4B3384632B5404DD004682DF /* OpenMeteoCurrentRefresher.swift */,
-				4BB2045C2B70EE3A007E0308 /* Protocols.swift */,
-				4BB2045E2B70EE69007E0308 /* MeteoProvider.swift */,
 			);
-			path = DataRefreshers;
+			path = OpenWeatherRefresher;
 			sourceTree = "<group>";
 		};
 		4B7691362B4F2C6B007F09D9 /* UnitTests */ = {

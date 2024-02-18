@@ -36,6 +36,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         didSet {
             let text = "JSON:\n\(forecast?.prettyPrinted ?? "")"
             log.message("[\(type(of: self))].\(#function)\n\(text)")
+
+            // Save the date and time of the last one.
+
+            let src = globals.statusMenusButtonPresenter.screenPopover.viewForecast.dataSource
+            let currentTimeInUTC = Date().timeIntervalSince1970
+
+            src.updateLastOneDateAndTime(dt: Int(currentTimeInUTC))
         }
     }
 

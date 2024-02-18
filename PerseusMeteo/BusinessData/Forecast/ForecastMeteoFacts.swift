@@ -20,6 +20,9 @@ import Foundation
 public class ForecastMeteoFacts {
 
     public var meteoDataProviderName: String?
+
+    public var lastOne: Int?
+    public var timezone: Int?
 }
 
 extension ForecastMeteoFacts {
@@ -27,5 +30,8 @@ extension ForecastMeteoFacts {
     public func removeAll() {
 
         meteoDataProviderName = nil
+
+        lastOne = nil
+        timezone = nil
     }
 }
