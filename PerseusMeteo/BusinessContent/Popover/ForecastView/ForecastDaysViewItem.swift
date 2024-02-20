@@ -70,7 +70,7 @@ class ForecastDaysViewItem: NSCollectionViewItem {
 
         guard let day = self.data else { return }
 
-        textField?.stringValue = day.label
+        textField?.stringValue = day.date
         view.layer?.backgroundColor = NSColor.clear.cgColor
 
         // imageView?.image = NSImage(named: friend.iconName)

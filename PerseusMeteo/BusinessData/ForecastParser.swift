@@ -84,10 +84,15 @@ public class ForecastParser: JsonDataDictionary, MeteoProviderProtocol {
 
     public var forecastDays: [ForecastDay] {
 
+        if let facts = meteoFacts.forecastDays {
+            return facts
+        }
+
         var days = [ForecastDay]()
 
         for item in 0...4 {
-            days.append(ForecastDay(label: item.description))
+            let hours = [ForecastHour]()
+            days.append(ForecastDay(date: item.description, hours: hours))
         }
 
         return days

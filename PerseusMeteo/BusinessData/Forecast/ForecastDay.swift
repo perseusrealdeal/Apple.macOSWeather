@@ -17,7 +17,8 @@ import Foundation
 
 public struct ForecastDay {
 
-    public var label = ""
+    public let date: String // Formate: YYYY-MM-DD, it's uniq value
+    public let hours: [ForecastHour]
 
     public var forecastHours: [ForecastHour] {
 

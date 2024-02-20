@@ -15,7 +15,7 @@
 
 import Foundation
 
-// MARK: - Meteo facts from the data source just AS IS
+// MARK: - Meteo facts from the data source just AS IS, but parsed from json
 
 public class ForecastMeteoFacts {
 
@@ -23,6 +23,8 @@ public class ForecastMeteoFacts {
 
     public var lastOne: Int?
     public var timezone: Int?
+
+    public var forecastDays: [ForecastDay]?
 }
 
 extension ForecastMeteoFacts {
@@ -33,5 +35,7 @@ extension ForecastMeteoFacts {
 
         lastOne = nil
         timezone = nil
+
+        forecastDays = nil
     }
 }
