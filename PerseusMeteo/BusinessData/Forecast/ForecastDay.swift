@@ -19,15 +19,4 @@ public struct ForecastDay {
 
     public let date: String // Formate: YYYY-MM-DD, it's uniq value
     public let hours: [ForecastHour]
-
-    public var forecastHours: [ForecastHour] {
-
-        var days = [ForecastHour]()
-
-        for item in 0...24 {
-            days.append(ForecastHour(label: item.description))
-        }
-
-        return days
-    }
 }

@@ -68,8 +68,8 @@ public class OpenWeatherForecastRefresher: ForecastRefresherProtocol {
 
             for item in daysSorted {
 
-                let addition = "DAY KEY: \(item.key) : count \(item.value.count)"
-                log.message("[\(type(of: self))].\(#function) \(addition)")
+                // let addition = "DAY KEY: \(item.key) : count \(item.value.count)"
+                // log.message("[\(type(of: self))].\(#function) \(addition)")
 
                 let hours = createForecastHours(from: item.value)
 
@@ -130,7 +130,17 @@ public class OpenWeatherForecastRefresher: ForecastRefresherProtocol {
             return [ForecastHour]()
         }
 
-        return [ForecastHour]()
+        var hours = [ForecastHour]()
+
+        for item in source {
+            guard let item = item else {
+                continue
+            }
+
+            hours.append(ForecastHour(source: item, title: "auto"))
+        }
+
+        return hours
     }
 
     fileprivate func createDate(from date: String, format: String = "yyyy-MM-dd") -> Date {
@@ -143,4 +153,3 @@ public class OpenWeatherForecastRefresher: ForecastRefresherProtocol {
         return theDay
     }
 }
-

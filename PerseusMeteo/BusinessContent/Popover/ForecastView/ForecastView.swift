@@ -221,7 +221,7 @@ extension ForecastView: NSCollectionViewDataSource {
 
                 let theDay = dataSource.forecastDays[(selectedIndexPath as NSIndexPath).item]
 
-                return theDay.forecastHours.count
+                return theDay.hours.count
             }
         }
 
@@ -263,7 +263,7 @@ extension ForecastView: NSCollectionViewDataSource {
 
                 // Find the hour of the day.
 
-                let hour = day.forecastHours[(indexPath as NSIndexPath).item]
+                let hour = day.hours[(indexPath as NSIndexPath).item]
 
                 // Create a new view of the hour.
 
@@ -305,7 +305,7 @@ extension ForecastView: NSCollectionViewDelegate {
 
                 let day = dataSource.forecastDays[(selectedIndexPath as NSIndexPath).item]
 
-                hourDetails = day.forecastHours[(hourIndexPaths as NSIndexPath).item]
+                hourDetails = day.hours[(hourIndexPaths as NSIndexPath).item]
             }
 
             viewForecastDetails.data = hourDetails
