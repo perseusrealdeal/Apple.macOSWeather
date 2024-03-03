@@ -42,6 +42,8 @@ public class PopoverViewController: NSViewController, NSTabViewDelegate {
 
     // MARK: - Outlets
 
+    @IBOutlet private(set) weak var buttonQuit: NSButton!
+
     @IBOutlet private(set) weak var viewLocation: LocationView!
     @IBOutlet private(set) weak var viewCurrentWeather: WeatherView!
     @IBOutlet private(set) weak var viewForecast: ForecastView!
@@ -58,6 +60,14 @@ public class PopoverViewController: NSViewController, NSTabViewDelegate {
     @IBOutlet private(set) weak var buttonHideAppScreens: NSButton!
 
     // MARK: - Actions
+
+    @IBAction func quitButtonTapped(_ sender: NSButton) {
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        // AppOptions.removeAll()
+        AppGlobals.quitTheApp()
+    }
 
     @IBAction func fetchMeteoFactsButtonTapped(_ sender: NSButton) {
 
@@ -276,6 +286,8 @@ extension PopoverViewController: Localizable {
         viewForecast?.localize()
 
         // Buttons and labels.
+
+        buttonQuit.title = "Button: Quit".localizedValue
 
         actualizeCallingSection()
 

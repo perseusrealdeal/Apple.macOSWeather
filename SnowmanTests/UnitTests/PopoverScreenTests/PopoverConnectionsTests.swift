@@ -37,6 +37,8 @@ class PopoverConnectionsTests: XCTestCase {
 
         // assert
 
+        XCTAssertNotNil(sut.buttonQuit)
+
         XCTAssertNotNil(sut.viewLocation)
         XCTAssertNotNil(sut.viewCurrentWeather)
         XCTAssertNotNil(sut.viewForecast)
@@ -62,8 +64,6 @@ class PopoverConnectionsTests: XCTestCase {
         // assert
 
         XCTAssertNotNil(sut.viewLocation.viewContent)
-
-        XCTAssertNotNil(sut.viewLocation.buttonQuit)
 
         XCTAssertNotNil(sut.viewLocation.labelLocationNameValue)
         XCTAssertNotNil(sut.viewLocation.labelGeoCoupleDataValue)

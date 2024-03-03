@@ -37,6 +37,9 @@ class PopoverScreenLocalizationTests: XCTestCase {
 
         // assert
 
+        XCTAssertEqual(sut.buttonQuit.title,
+                       "Button: Quit".localizedValue)
+
         XCTAssertEqual(sut.buttonFetchMeteoFacts.title,
                        "Button: Call Weather".localizedValue)
 
@@ -66,9 +69,6 @@ class PopoverScreenLocalizationTests: XCTestCase {
         sut.loadView()
 
         // assert
-
-        XCTAssertEqual(sut.viewLocation.buttonQuit.title,
-                       "Button: Quit".localizedValue)
 
         XCTAssertEqual(sut.viewLocation.labelLocationNameValue.stringValue,
                        "Greetings".localizedValue)
