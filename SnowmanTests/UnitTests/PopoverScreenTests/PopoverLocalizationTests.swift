@@ -114,7 +114,7 @@ class PopoverScreenLocalizationTests: XCTestCase {
         let minmax = min + " / " + max
         XCTAssertEqual(sut.viewCurrentWeather.labelMiniMaxTemperature.stringValue, minmax)
 
-        let hum = "Prefix: Humidity".localizedValue + ": \(CurrentMeteoFacts.humidityDefault)"
+        let hum = "Prefix: Humidity".localizedValue + ": \(MeteoFactsDefaults.humidity)"
         XCTAssertEqual(sut.viewCurrentWeather.labelHumidity.stringValue, hum)
 
         let vis = "Prefix: Visibility".localizedValue +
