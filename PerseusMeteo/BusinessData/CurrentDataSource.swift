@@ -1,5 +1,5 @@
 //
-//  CurrentWeatherParser.swift
+//  CurrentDataSource.swift
 //  PerseusMeteo
 //
 //  Created by Mikhail Zhigulin in 7532.
@@ -19,56 +19,36 @@ import Foundation
 
 // MARK: - Weather App values ready for reading, viewing on a screen
 
-public class CurrentWeatherParser: JsonDataDictionary, MeteoProviderProtocol {
+public class CurrentDataSource: MeteoDataSource {
 
-    // MARK: - Meteo facts and refresher
+    // MARK: - Init
 
-    private var meteoFacts: CurrentMeteoFacts = CurrentMeteoFacts()
-    private var refresher: CurrentWeatherRefresherProtocol = OpenWeatherCurrentRefresher()
+    init() {
+        super.init(contant: .current)
 
-    // MARK: - Meteo data provider
-
-    public var providerMeteoData: MeteoProvider = .serviceOpenWeatherMap {
-        didSet {
-            switch providerMeteoData {
-            case .serviceOpenWeatherMap:
-                refresher = OpenWeatherCurrentRefresher()
-            }
-
-            log.message("[\(type(of: self))].\(#function)")
-        }
     }
 
-    // MARK: - Load meteo facts from source
-
-    public func refresh() {
-
-        guard let json = json else { return }
-
-        switch providerMeteoData {
-        case .serviceOpenWeatherMap:
-            refresher.refresh(object: meteoFacts, json)
-        }
-    }
-
-    // MARK: - Loaded meteo data ready for reading, viewing on a screen
+    // MARK: - Properties
 
     public var meteoDataProviderName: String {
 
-        guard let value = meteoFacts.meteoDataProviderName else {
-            return CurrentMeteoFacts.meteoDataProviderNameDefault
+        guard
+            let providerTitle = meteoProvider
+        else {
+            return MeteoFactsDefaults.meteoDataProviderName
         }
 
-        return value
+        return "\(providerTitle)"
     }
 
     public var lastOne: String { // Last time API request response.
 
         guard
-            let value = meteoFacts.lastOne,
-            let timezone = meteoFacts.timezone
+            let reader = self.reader as? CurrentDataSourceReader,
+            let value = reader.lastOne,
+            let timezone = reader.timezone
         else {
-            return CurrentMeteoFacts.lastOneDefault
+            return MeteoFactsDefaults.lastOne
         }
 
         let lastOne = representLastOneCalculationTime(value,
@@ -79,15 +59,16 @@ public class CurrentWeatherParser: JsonDataDictionary, MeteoProviderProtocol {
 
         let day = lastOne.day == nil ? "" : "\(lastOne.day ?? "")\(postfixYear) "
 
-        return "\(prefix): \(day)\(lastOne.time ?? CurrentMeteoFacts.lastOneDefault)"
+        return "\(prefix): \(day)\(lastOne.time ?? MeteoFactsDefaults.lastOne)"
     }
 
     public var weatherIconName: String {
 
         guard
-            let value = meteoFacts.weatherIconName
+            let reader = self.reader as? CurrentDataSourceReader,
+            let value = reader.weatherIconName
         else {
-            return CurrentMeteoFacts.weatherIconNameDefault
+            return MeteoFactsDefaults.weatherIconName
         }
 
         return value
@@ -96,9 +77,10 @@ public class CurrentWeatherParser: JsonDataDictionary, MeteoProviderProtocol {
     public var weatherDescription: String {
 
         guard
-            let value = meteoFacts.weatherDescription
+            let reader = self.reader as? CurrentDataSourceReader,
+            let value = reader.weatherDescription
         else {
-            return CurrentMeteoFacts.weatherDescriptionDefault
+            return MeteoFactsDefaults.weatherDescription
         }
 
         return "Prefix: Curren Weather in Brief".localizedValue + ": \(value)"
@@ -107,9 +89,10 @@ public class CurrentWeatherParser: JsonDataDictionary, MeteoProviderProtocol {
     public var temperature: String {
 
         guard
-            let value = meteoFacts.temperature
+            let reader = self.reader as? CurrentDataSourceReader,
+            let value = reader.temperature
         else {
-            return CurrentMeteoFacts.temperatureDefault
+            return MeteoFactsDefaults.temperature
         }
 
         // Recalculate if needed.
@@ -117,15 +100,16 @@ public class CurrentWeatherParser: JsonDataDictionary, MeteoProviderProtocol {
                                                asIs: TemperatureOption.imperial,
                                                toBe: AppOptions.temperatureOption)
 
-        return "\(represented) \(CurrentMeteoFacts.temperatureCurrentUnit)"
+        return "\(represented) \(AppOptions.temperatureOption.unit)"
     }
 
     public var temperatureFeelsLike: String {
 
         guard
-            let value = meteoFacts.temperatureFeelsLike
+            let reader = self.reader as? CurrentDataSourceReader,
+            let value = reader.temperatureFeelsLike
         else {
-            return CurrentMeteoFacts.temperatureDefault
+            return MeteoFactsDefaults.temperature
         }
 
         // Recalculate if needed.
@@ -133,15 +117,16 @@ public class CurrentWeatherParser: JsonDataDictionary, MeteoProviderProtocol {
                                                asIs: TemperatureOption.imperial,
                                                toBe: AppOptions.temperatureOption)
 
-        return "\(represented) \(CurrentMeteoFacts.temperatureCurrentUnit)"
+        return "\(represented) \(AppOptions.temperatureOption.unit)"
     }
 
     public var temperatureMinimum: String {
 
         guard
-            let value = meteoFacts.temperatureMinimum
+            let reader = self.reader as? CurrentDataSourceReader,
+            let value = reader.temperatureMinimum
         else {
-            return CurrentMeteoFacts.temperatureDefault
+            return MeteoFactsDefaults.temperature
         }
 
         // Recalculate if needed.
@@ -149,15 +134,16 @@ public class CurrentWeatherParser: JsonDataDictionary, MeteoProviderProtocol {
                                                asIs: TemperatureOption.imperial,
                                                toBe: AppOptions.temperatureOption)
 
-        return "\(represented) \(CurrentMeteoFacts.temperatureCurrentUnit)"
+        return "\(represented) \(AppOptions.temperatureOption.unit)"
     }
 
     public var temperatureMaximum: String {
 
         guard
-            let value = meteoFacts.temperatureMaximum
+            let reader = self.reader as? CurrentDataSourceReader,
+            let value = reader.temperatureMaximum
         else {
-            return CurrentMeteoFacts.temperatureDefault
+            return MeteoFactsDefaults.temperature
         }
 
         // Recalculate if needed.
@@ -165,48 +151,51 @@ public class CurrentWeatherParser: JsonDataDictionary, MeteoProviderProtocol {
                                                asIs: TemperatureOption.imperial,
                                                toBe: AppOptions.temperatureOption)
 
-        return "\(represented) \(CurrentMeteoFacts.temperatureCurrentUnit)"
+        return "\(represented) \(AppOptions.temperatureOption.unit)"
     }
 
     public var windSpeed: String {
 
         guard
-            let value = meteoFacts.windSpeed
+            let reader = self.reader as? CurrentDataSourceReader,
+            let value = reader.windSpeed
         else {
-            return CurrentMeteoFacts.windSpeedDefault
+            return MeteoFactsDefaults.windSpeed
         }
 
         // Recalculate if needed.
         let represented = representWindSpeedGusts(value,
-                                        asIs: WindSpeedOption.ms,
-                                        toBe: AppOptions.windSpeedOption)
+                                                  asIs: WindSpeedOption.ms,
+                                                  toBe: AppOptions.windSpeedOption)
 
-        return "\(represented) \(CurrentMeteoFacts.windUnitsLocalized)"
+        return "\(represented) \(AppOptions.windSpeedOption.unitLocalized)"
     }
 
     public var windGusts: String {
 
         guard
-            let value = meteoFacts.windGusts
+            let reader = self.reader as? CurrentDataSourceReader,
+            let value = reader.windGusts
         else {
-            return CurrentMeteoFacts.windSpeedDefault
+            return MeteoFactsDefaults.windSpeed
         }
 
         // Recalculate if needed.
         let represented = representWindSpeedGusts(value,
-                                        asIs: WindSpeedOption.ms,
-                                        toBe: AppOptions.windSpeedOption)
+                                                  asIs: WindSpeedOption.ms,
+                                                  toBe: AppOptions.windSpeedOption)
 
-        return "\(represented) \(CurrentMeteoFacts.windUnitsLocalized)"
+        return "\(represented) \(AppOptions.windSpeedOption.unitLocalized)"
     }
 
     public var windDirection: String {
 
         guard
-            let value = meteoFacts.windDirection,
+            let reader = self.reader as? CurrentDataSourceReader,
+            let value = reader.windDirection,
             let point = try? WindDegree(value)
         else {
-            return CurrentMeteoFacts.windDirectionDefault
+            return MeteoFactsDefaults.windDirection
         }
 
         return "\(Int(point.degree))°: \(point.common.abbreviation.localizedValue)"
@@ -215,9 +204,10 @@ public class CurrentWeatherParser: JsonDataDictionary, MeteoProviderProtocol {
     public var pressure: String {
 
         guard
-            let value = meteoFacts.pressure
+            let reader = self.reader as? CurrentDataSourceReader,
+            let value = reader.pressure
         else {
-            return CurrentMeteoFacts.pressureDefault
+            return MeteoFactsDefaults.pressure
         }
 
         // Recalculate if needed.
@@ -225,15 +215,16 @@ public class CurrentWeatherParser: JsonDataDictionary, MeteoProviderProtocol {
                                             asIs: PressureOption.hPa,
                                             toBe: AppOptions.pressureOption)
 
-        return "\(represented) \(CurrentMeteoFacts.pressureUnitsLocalized)"
+        return "\(represented) \(AppOptions.pressureOption.unitLocalized)"
     }
 
     public var humidity: String {
 
         guard
-            let value = meteoFacts.humidity
+            let reader = self.reader as? CurrentDataSourceReader,
+            let value = reader.humidity
         else {
-            return CurrentMeteoFacts.humidityDefault
+            return MeteoFactsDefaults.humidity
         }
 
         return "\(value) %"
@@ -242,9 +233,10 @@ public class CurrentWeatherParser: JsonDataDictionary, MeteoProviderProtocol {
     public var visibility: String {
 
         guard
-            let value = meteoFacts.visibility
+            let reader = self.reader as? CurrentDataSourceReader,
+            let value = reader.visibility
         else {
-            return CurrentMeteoFacts.visibilityDefault
+            return MeteoFactsDefaults.visibility
         }
 
         // Recalculate if needed.
@@ -252,16 +244,17 @@ public class CurrentWeatherParser: JsonDataDictionary, MeteoProviderProtocol {
                                             asIs: LengthOption.meter,
                                             toBe: AppOptions.distanceOption)
 
-        return "\(represented) \(CurrentMeteoFacts.distanceUnitsLocalized)"
+        return "\(represented) \(AppOptions.distanceOption.unitLocalized)"
     }
 
     public var sunrise: String {
 
         guard
-            let value = meteoFacts.sunrise,
-            let timezone = meteoFacts.timezone
+            let reader = self.reader as? CurrentDataSourceReader,
+            let value = reader.sunrise,
+            let timezone = reader.timezone
         else {
-            return CurrentMeteoFacts.sunrizeSunsetDefault
+            return MeteoFactsDefaults.sunrizesunset
         }
 
         // Recalculate if needed.
@@ -269,16 +262,17 @@ public class CurrentWeatherParser: JsonDataDictionary, MeteoProviderProtocol {
                                              timezone,
                                              toBe: AppOptions.timeFormatOption)
 
-        return "\(represented ?? CurrentMeteoFacts.sunrizeSunsetDefault)"
+        return "\(represented ?? MeteoFactsDefaults.sunrizesunset)"
     }
 
     public var sunset: String {
 
         guard
-            let value = meteoFacts.sunset,
-            let timezone = meteoFacts.timezone
+            let reader = self.reader as? CurrentDataSourceReader,
+            let value = reader.sunset,
+            let timezone = reader.timezone
         else {
-            return CurrentMeteoFacts.sunrizeSunsetDefault
+            return MeteoFactsDefaults.sunrizesunset
         }
 
         // Recalculate if needed.
@@ -286,6 +280,6 @@ public class CurrentWeatherParser: JsonDataDictionary, MeteoProviderProtocol {
                                              timezone,
                                              toBe: AppOptions.timeFormatOption)
 
-        return "\(represented ?? CurrentMeteoFacts.sunrizeSunsetDefault)"
+        return "\(represented ?? MeteoFactsDefaults.sunrizesunset)"
     }
 }

@@ -1,5 +1,5 @@
 //
-//  ForecastMeteoFactsDefaults.swift
+//  MeteoCategory.swift
 //  PerseusMeteo
 //
 //  Created by Mikhail Zhigulin in 7532.
@@ -15,13 +15,7 @@
 
 import Foundation
 
-extension ForecastMeteoFacts {
-
-    public static var meteoDataProviderNameDefault: String {
-        return AppGlobals.meteoProviderName
-    }
-
-    public static var lastOneDefault: String {
-        return "Label: Made with Love".localizedValue
-    }
+public enum MeteoCategory {
+    case current
+    case forecast
 }

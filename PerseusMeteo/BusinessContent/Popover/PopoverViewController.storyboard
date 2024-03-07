@@ -32,7 +32,7 @@
                                     </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zc8-I8-0yO">
                                         <rect key="frame" x="96" y="7" width="261" height="17"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Today: Date with the Day of Week" id="rlK-5p-gP0">
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Greetings" id="rlK-5p-gP0">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

@@ -15,8 +15,52 @@
 
 import Foundation
 
+/* OpenWeatherMap JSON forecast list items sample
+
+{
+  "message" : 0,
+  "cod" : "200",
+  "cnt" : 1,
+  "list" : [
+    // Forecast hours ...
+  ],
+  "city" : {
+    "sunset" : 1708775436,
+    "country" : "RU",
+    "id" : 1496747,
+    "coord" : {
+      "lat" : 55.060000000000002,
+      "lon" : 83
+    },
+    "population" : 1419007,
+    "timezone" : 25200,
+    "sunrise" : 1708738346,
+    "name" : "Novosibirsk"
+  }
+}
+
+*/
+
 public struct ForecastDay {
 
-    public let date: String // Formate: YYYY-MM-DD, it's uniq value
+    // MARK: - Data
+
+    public let date: String // Formate: YYYY-MM-DD, it's uniq calculated value
     public let hours: [ForecastHour]
+
+    // MARK: - Init
+
+    // MARK: - Contract
+
+    public var dateTitle: String {
+        return ""
+    }
+
+    public var minDateTemperature: String {
+        return ""
+    }
+
+    public var maxDateTemperature: String {
+        return ""
+    }
 }

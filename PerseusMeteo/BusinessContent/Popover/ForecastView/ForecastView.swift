@@ -30,7 +30,7 @@ class ForecastView: NSView {
 
     // MARK: - View Data Source
 
-    public var dataSource = ForecastParser()
+    public var dataSource = ForecastDataSource()
     public var progressIndicator: Bool = false {
         didSet {
             if progressIndicator {
@@ -151,7 +151,7 @@ class ForecastView: NSView {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        dataSource.refresh()
+        // dataSource.refresh()
 
         reloadDaysCollection()
         reloadHoursCollection()

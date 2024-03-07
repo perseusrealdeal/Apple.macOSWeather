@@ -25,17 +25,9 @@ import Cocoa
 
 public class PopoverViewController: NSViewController, NSTabViewDelegate {
 
-    public enum MeteoCategory {
-        case current
-        case forecast
-    }
-
     // MARK: - Internals
 
     private let darkModeObserver = DarkModeObserver()
-
-    private let sourceCurrentWeather = CurrentWeatherParser()
-    private let sourceForecast = ForecastParser()
 
     private let tabCurrentWeatherID = "CurrentWeather"
     private let tabForecastID = "Forecast"
@@ -164,11 +156,8 @@ public class PopoverViewController: NSViewController, NSTabViewDelegate {
 
         // Business values, connecting to data sources.
 
-        sourceCurrentWeather.path = { AppGlobals.appDelegate?.weather ?? Data() }
-        sourceForecast.path = { AppGlobals.appDelegate?.forecast ?? Data() }
-
-        viewCurrentWeather.dataSource = sourceCurrentWeather
-        viewForecast.dataSource = sourceForecast
+        viewCurrentWeather.dataSource = globals.sourceCurrentWeather
+        viewForecast.dataSource = globals.sourceForecast
 
         // Appearance.
 
@@ -308,10 +297,10 @@ extension PopoverViewController: Localizable {
 
             if tabId == tabCurrentWeatherID {
                 buttonFetchMeteoFacts.title = "Button: Call Weather".localizedValue
-                labelMadeWithLove.stringValue = sourceCurrentWeather.lastOne
+                labelMadeWithLove.stringValue = globals.sourceCurrentWeather.lastOne
             } else if tabId == tabForecastID {
                 buttonFetchMeteoFacts.title = "Button: Call Forecast".localizedValue
-                labelMadeWithLove.stringValue = sourceForecast.lastOne
+                labelMadeWithLove.stringValue = globals.sourceForecast.lastOne
             }
         }
     }

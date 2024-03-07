@@ -69,7 +69,7 @@ public class MeteoClientManager {
                 }
             }
 
-            self.currentWeatherHandler(meteoData ?? Data())
+            self.serviceCurrentOpenWeatherMapHandler(meteoData ?? Data())
         }
 
         forecast.onDataGiven = { response in
@@ -94,7 +94,7 @@ public class MeteoClientManager {
                 }
             }
 
-            self.forecastHandler(meteoData ?? Data())
+            self.serviceForecastOpenWeatherMapHandler(meteoData ?? Data())
         }
 
         isReadyToCall = true
@@ -187,7 +187,7 @@ public class MeteoClientManager {
                                              units: .imperial,
                                              lang: .init(rawValue: lang),
                                              mode: .json)
-        callDetails.cnt = 40
+        callDetails.cnt = 1
 
         log.message(callDetails.urlString)
 
@@ -208,7 +208,7 @@ public class MeteoClientManager {
 
     // MARK: - Event handlers
 
-    private func currentWeatherHandler(_ data: Data) {
+    private func serviceCurrentOpenWeatherMapHandler(_ data: Data) {
 
         log.message("[\(type(of: self))].\(#function)")
 
@@ -221,6 +221,8 @@ public class MeteoClientManager {
 
             AppGlobals.appDelegate?.weather = data
 
+            globals.sourceCurrentWeather.meteoProvider = .serviceOpenWeatherMap
+
             presenter.screenPopover.stopAnimationProgressIndicator(.current)
             presenter.screenPopover.reloadData()
 
@@ -228,7 +230,7 @@ public class MeteoClientManager {
         }
     }
 
-    private func forecastHandler(_ data: Data) {
+    private func serviceForecastOpenWeatherMapHandler(_ data: Data) {
 
         log.message("[\(type(of: self))].\(#function)")
 
@@ -240,6 +242,8 @@ public class MeteoClientManager {
         DispatchQueue.main.async {
 
             AppGlobals.appDelegate?.forecast = data
+
+            globals.sourceForecast.meteoProvider = .serviceOpenWeatherMap
 
             presenter.screenPopover.stopAnimationProgressIndicator(.forecast)
             presenter.screenPopover.reloadData()

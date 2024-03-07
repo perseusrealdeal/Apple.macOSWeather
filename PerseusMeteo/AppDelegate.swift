@@ -42,7 +42,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let src = globals.statusMenusButtonPresenter.screenPopover.viewForecast.dataSource
             let currentTimeInUTC = Date().timeIntervalSince1970
 
-            src.updateLastOneDateAndTime(dt: Int(currentTimeInUTC))
+            src.addResponseDateAndTime(dt: Int(currentTimeInUTC))
         }
     }
 

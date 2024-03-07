@@ -15,7 +15,8 @@
 
 import Foundation
 
-/* JSON forecast hour sample
+/* OpenWeatherMap JSON forecast hour sample in case if cnt = 1
+
 {
    "clouds":{
       "all":100
@@ -55,15 +56,13 @@ import Foundation
    },
    "visibility":130
 }
+
 */
 
 public struct ForecastHour {
 
     private var source = [String: Any]()
-
-    // MARK: - Contract
-
-    public let label: String
+    private var timezone = 0
 
     // MARK: - Init
 
@@ -71,10 +70,50 @@ public struct ForecastHour {
         self.label = title
     }
 
-    init(source: [String: Any], title: String = "") {
+    init(source: [String: Any], timezone: Int, title: String = "") {
         self.init(title: title)
 
         // Data source
         self.source = source
+        self.timezone = timezone
+    }
+
+    // MARK: - Contract
+
+    public let label: String
+
+    // MARK: - Time of Hour
+
+    public var hourTitle: String {
+        return ""
+    }
+
+    // MARK: - Temperature
+
+    public var temperature: String {
+        return ""
+    }
+
+    // MARK: - Humidity
+
+    public var humidity: String {
+
+        if source.isEmpty { return MeteoFactsDefaults.humidity }
+
+        var parameter: Int = -1
+
+        if let main = source["main"] as? [String: Any] {
+            if let value = main["humidity"] as? Int {
+
+                parameter = value
+
+            } else {
+                log.message("[\(type(of: self))].\(#function) Humidity wrong.", .error)
+            }
+        } else {
+            log.message("[\(type(of: self))].\(#function) Main wrong.", .error)
+        }
+
+        return parameter == -1 ? MeteoFactsDefaults.humidity : "\(parameter) %"
     }
 }

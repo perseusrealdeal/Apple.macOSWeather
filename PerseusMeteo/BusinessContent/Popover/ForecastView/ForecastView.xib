@@ -61,7 +61,7 @@
                         <constraint firstItem="9LQ-hh-HNr" firstAttribute="centerY" secondItem="dCJ-un-aLi" secondAttribute="centerY" id="gKh-aH-MQZ"/>
                     </constraints>
                 </customView>
-                <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3U-jg-8cN">
+                <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="C3U-jg-8cN">
                     <rect key="frame" x="70" y="240" width="314" height="40"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="pMm-aP-dHN">
                         <rect key="frame" x="0.0" y="0.0" width="314" height="40"/>
@@ -89,7 +89,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUv-Pj-QKs">
+                <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="cUv-Pj-QKs">
                     <rect key="frame" x="0.0" y="0.0" width="70" height="240"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="l2K-BI-YG7">
                         <rect key="frame" x="0.0" y="0.0" width="70" height="240"/>

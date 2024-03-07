@@ -15,72 +15,53 @@
 
 import Foundation
 
-public class OpenWeatherForecastRefresher: ForecastRefresherProtocol {
+public class OpenWeatherForecastParser: ForecastParserProtocol {
 
-    private var meteoFacts: ForecastMeteoFacts!
-
-    // MARK: - Contract
-
-    public func refresh(object: ForecastMeteoFacts, _ source: [String: Any]) {
-
-        guard source.isEmpty == false else {
-            object.removeAll()
-            return
-        }
-
-        meteoFacts = object
-
-        // Make a notice what data source used...
-        meteoFacts.meteoDataProviderName = "\(MeteoProvider.serviceOpenWeatherMap)"
-
-        // Update timezone.
-        updateTimezone(from: source)
-
-        // Update forecast days.
-        updateForecastDays(from: source)
-    }
-
-    // MARK: - Realization
-
-    private func updateTimezone(from dictionary: [String: Any]) {
+    public func getTimeZone(from dictionary: [String: Any]) -> Int? {
 
         log.message("[\(type(of: self))].\(#function)")
 
         if let city = dictionary["city"] as? [String: Any] {
             if let timezone = city["timezone"] as? Int {
-                meteoFacts.timezone = timezone
+
+                return timezone
+
             } else {
                 log.message("[\(type(of: self))].\(#function) timezone wrong.", .error)
             }
         } else {
             log.message("[\(type(of: self))].\(#function) city wrong.", .error)
         }
+
+        return nil
     }
 
-    private func updateForecastDays(from dictionary: [String: Any]) {
+    public func getForecastDays(from dictionary: [String: Any]) -> [ForecastDay]? {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        if let list = dictionary["list"] as? [Any], let timezone = meteoFacts.timezone {
-
-            let daysSorted = createForecastDays(from: list, timezone: timezone)
-            var forecastDays = [ForecastDay]()
-
-            for item in daysSorted {
-
-                // let addition = "DAY KEY: \(item.key) : count \(item.value.count)"
-                // log.message("[\(type(of: self))].\(#function) \(addition)")
-
-                let hours = createForecastHours(from: item.value)
-
-                forecastDays.append(ForecastDay(date: item.key, hours: hours))
-            }
-
-            meteoFacts.forecastDays = forecastDays
-
-        } else {
-            log.message("[\(type(of: self))].\(#function) city wrong.", .error)
+        guard
+            let list = dictionary["list"] as? [Any],
+            let timezone = getTimeZone(from: dictionary)
+        else {
+            log.message("[\(type(of: self))].\(#function) list wrong.", .error)
+            return nil
         }
+
+        let daysSorted = createForecastDays(from: list, timezone: timezone)
+        var forecastDays = [ForecastDay]()
+
+        for item in daysSorted {
+
+            // let addition = "DAY KEY: \(item.key) : count \(item.value.count)"
+            // log.message("[\(type(of: self))].\(#function) \(addition)")
+
+            let hours = createForecastHours(from: item.value, timezone)
+
+            forecastDays.append(ForecastDay(date: item.key, hours: hours))
+        }
+
+        return forecastDays
     }
 
     fileprivate func createForecastDays(from list: [Any], timezone: Int) ->
@@ -125,7 +106,8 @@ public class OpenWeatherForecastRefresher: ForecastRefresherProtocol {
             return daysSorted
     }
 
-    fileprivate func createForecastHours(from source: [[String: Any]?]) -> [ForecastHour] {
+    fileprivate func createForecastHours(from source: [[String: Any]?],
+                                         _ timezone: Int = 0) -> [ForecastHour] {
         guard source.isEmpty == false else {
             return [ForecastHour]()
         }
@@ -137,7 +119,7 @@ public class OpenWeatherForecastRefresher: ForecastRefresherProtocol {
                 continue
             }
 
-            hours.append(ForecastHour(source: item, title: "auto"))
+            hours.append(ForecastHour(source: item, timezone: timezone, title: "auto"))
         }
 
         return hours
