@@ -30,7 +30,7 @@ class ForecastView: NSView {
 
     // MARK: - View Data Source
 
-    public var dataSource = ForecastDataSource()
+    public let dataSource = globals.sourceForecast
     public var progressIndicator: Bool = false {
         didSet {
             if progressIndicator {

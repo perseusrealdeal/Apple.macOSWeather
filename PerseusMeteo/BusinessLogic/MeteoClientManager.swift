@@ -217,11 +217,14 @@ public class MeteoClientManager {
             return
         }
 
+        // TODO: - Make no matter what order of the two following instraction below
+
+        // Here, but for now it's matter >
+
+        AppGlobals.appDelegate?.weather = data
+        globals.sourceCurrentWeather.meteoProvider = .serviceOpenWeatherMap
+
         DispatchQueue.main.async {
-
-            AppGlobals.appDelegate?.weather = data
-
-            globals.sourceCurrentWeather.meteoProvider = .serviceOpenWeatherMap
 
             presenter.screenPopover.stopAnimationProgressIndicator(.current)
             presenter.screenPopover.reloadData()
@@ -239,11 +242,12 @@ public class MeteoClientManager {
             return
         }
 
+        // And here, but for now it's matter >
+
+        AppGlobals.appDelegate?.forecast = data
+        globals.sourceForecast.meteoProvider = .serviceOpenWeatherMap
+
         DispatchQueue.main.async {
-
-            AppGlobals.appDelegate?.forecast = data
-
-            globals.sourceForecast.meteoProvider = .serviceOpenWeatherMap
 
             presenter.screenPopover.stopAnimationProgressIndicator(.forecast)
             presenter.screenPopover.reloadData()

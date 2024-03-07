@@ -22,7 +22,7 @@ class WeatherView: NSView {
 
     // MARK: - View Data Source
 
-    public var dataSource = CurrentDataSource()
+    public let dataSource = globals.sourceCurrentWeather
     public var progressIndicator: Bool = false {
         didSet {
             if progressIndicator {
@@ -141,8 +141,6 @@ class WeatherView: NSView {
     public func reloadData() {
 
         log.message("[\(type(of: self))].\(#function)")
-
-        // dataSource.refresh()
 
         // Meteo Data Provider.
 

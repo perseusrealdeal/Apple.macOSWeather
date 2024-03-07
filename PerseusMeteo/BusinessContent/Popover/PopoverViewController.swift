@@ -154,11 +154,6 @@ public class PopoverViewController: NSViewController, NSTabViewDelegate {
                        name: NSNotification.Name.meteoDataOptionsDidChanged,
                        object: nil)
 
-        // Business values, connecting to data sources.
-
-        viewCurrentWeather.dataSource = globals.sourceCurrentWeather
-        viewForecast.dataSource = globals.sourceForecast
-
         // Appearance.
 
         makeup()
@@ -174,10 +169,13 @@ public class PopoverViewController: NSViewController, NSTabViewDelegate {
             let forecast = self.viewForecast
         else { return }
 
-        weather.reloadData()
-        forecast.reloadData()
+        DispatchQueue.main.async {
 
-        actualizeCallingSection()
+            weather.reloadData()
+            forecast.reloadData()
+
+            self.actualizeCallingSection()
+        }
     }
 
     public func startAnimationProgressIndicator(_ section: MeteoCategory,
