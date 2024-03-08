@@ -38,6 +38,7 @@
 		4B5F7D3B2B98EACA00121946 /* MeteoCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F7D3A2B98EACA00121946 /* MeteoCategory.swift */; };
 		4B5F7D3D2B9906F300121946 /* CurrentDataSourceReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F7D3C2B9906F300121946 /* CurrentDataSourceReader.swift */; };
 		4B5F7D3F2B99099F00121946 /* OpenWeatherCurrentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F7D3E2B99099F00121946 /* OpenWeatherCurrentParser.swift */; };
+		4B5F7D412B9AD05900121946 /* MeteoDataSourceReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F7D402B9AD05900121946 /* MeteoDataSourceReader.swift */; };
 		4B62FA7629DC1A6400DF6B85 /* PerseusLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62FA7529DC1A6400DF6B85 /* PerseusLogger.swift */; };
 		4B684C712B446A560063E359 /* JsonDataDictionaryGift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B684C702B446A560063E359 /* JsonDataDictionaryGift.swift */; };
 		4B6F98622927D95500ADB03A /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4B6F98612927D95500ADB03A /* .swiftlint.yml */; };
@@ -141,6 +142,7 @@
 		4B5F7D3A2B98EACA00121946 /* MeteoCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoCategory.swift; sourceTree = "<group>"; };
 		4B5F7D3C2B9906F300121946 /* CurrentDataSourceReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDataSourceReader.swift; sourceTree = "<group>"; };
 		4B5F7D3E2B99099F00121946 /* OpenWeatherCurrentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherCurrentParser.swift; sourceTree = "<group>"; };
+		4B5F7D402B9AD05900121946 /* MeteoDataSourceReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoDataSourceReader.swift; sourceTree = "<group>"; };
 		4B62FA7529DC1A6400DF6B85 /* PerseusLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerseusLogger.swift; sourceTree = "<group>"; };
 		4B684C702B446A560063E359 /* JsonDataDictionaryGift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataDictionaryGift.swift; sourceTree = "<group>"; };
 		4B6F98612927D95500ADB03A /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 				4B5F7D2E2B89243800121946 /* MeteoFactsDefaults.swift */,
 				4B5F7D362B985C5D00121946 /* MeteoDataSource.swift */,
 				4B5F7D3A2B98EACA00121946 /* MeteoCategory.swift */,
+				4B5F7D402B9AD05900121946 /* MeteoDataSourceReader.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -711,6 +714,7 @@
 				4B1073952B4607CE008A692D /* MeteoFactsRepresenter.swift in Sources */,
 				4BB2045D2B70EE3A007E0308 /* Protocols.swift in Sources */,
 				4BB2046E2B755BDB007E0308 /* ForecastDay.swift in Sources */,
+				4B5F7D412B9AD05900121946 /* MeteoDataSourceReader.swift in Sources */,
 				4BEE281D2B4AE07700F06A69 /* AppOptions.swift in Sources */,
 				4B030E792B277E6500ED9018 /* AboutViewController.swift in Sources */,
 				4B993DB82B3738A7008C1FE7 /* PopoverViewController.swift in Sources */,

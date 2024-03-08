@@ -15,10 +15,6 @@
 
 import Foundation
 
-public class MeteoDataSourceReader {
-    public var data: [String: Any]?
-}
-
 public class MeteoDataSource: DataDictionarySource {
 
     internal let meteoCategory: MeteoCategory
