@@ -33,7 +33,7 @@ class ForecastDaysViewItem: NSCollectionViewItem {
         didSet {
             super.isSelected = isSelected
 
-            view.layer?.borderWidth = isSelected ? 5.0 : 0.0
+            view.layer?.borderWidth = isSelected ? 2.0 : 0.0
             makeup()
         }
     }
@@ -60,7 +60,7 @@ class ForecastDaysViewItem: NSCollectionViewItem {
 
     func configure() {
         view.layer = CALayer()
-        view.layer?.cornerRadius = 15.0
+        view.layer?.cornerRadius = 5.0
         view.layer?.masksToBounds = true
 
         view.wantsLayer = true
@@ -70,7 +70,7 @@ class ForecastDaysViewItem: NSCollectionViewItem {
 
         guard let day = self.data else { return }
 
-        textField?.stringValue = day.date
+        // textField?.stringValue = day.date
         view.layer?.backgroundColor = NSColor.clear.cgColor
 
         // imageView?.image = NSImage(named: friend.iconName)

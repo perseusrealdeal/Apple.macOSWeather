@@ -82,7 +82,7 @@ public class ForecastDataSource: MeteoDataSource {
 
         if let days = reader.forecastDays {
 
-            // Return parsed days
+            // Return available days
 
             return days
         }
@@ -92,7 +92,13 @@ public class ForecastDataSource: MeteoDataSource {
         var days = [ForecastDay]()
 
         for item in 0...4 {
-            let hours = [ForecastHour]()
+
+            var hours = [ForecastHour]()
+
+            for item in 0...4 {
+                hours.append(ForecastHour(title: "\(item)"))
+            }
+
             days.append(ForecastDay(date: item.description, hours: hours))
         }
 

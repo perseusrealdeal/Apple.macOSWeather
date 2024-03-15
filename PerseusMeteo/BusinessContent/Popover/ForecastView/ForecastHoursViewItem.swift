@@ -33,7 +33,7 @@ class ForecastHoursViewItem: NSCollectionViewItem {
         didSet {
             super.isSelected = isSelected
 
-            view.layer?.borderWidth = isSelected ? 5.0 : 0.0
+            view.layer?.borderWidth = isSelected ? 2.0 : 0.0
             makeup()
         }
     }
@@ -60,7 +60,7 @@ class ForecastHoursViewItem: NSCollectionViewItem {
 
     func configure() {
         view.layer = CALayer()
-        view.layer?.cornerRadius = 15.0
+        view.layer?.cornerRadius = 5.0
         view.layer?.masksToBounds = true
 
         view.wantsLayer = true
@@ -70,7 +70,7 @@ class ForecastHoursViewItem: NSCollectionViewItem {
 
         guard let hour = self.data else { return }
 
-        textField?.stringValue = hour.label
+        // textField?.stringValue = hour.label
         view.layer?.backgroundColor = NSColor.clear.cgColor
     }
 
