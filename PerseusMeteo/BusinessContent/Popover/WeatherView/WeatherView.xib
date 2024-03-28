@@ -46,16 +46,16 @@
                     <rect key="frame" x="20" y="131" width="286" height="5"/>
                 </box>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WZn-vI-Mzs" userLabel="Label Min Max">
-                    <rect key="frame" x="34" y="113" width="58" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Min Max" id="dUp-cl-0rt">
+                    <rect key="frame" x="31" y="113" width="63" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Min, Max" id="dUp-cl-0rt">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="95I-Xr-CNz" userLabel="Value Mini Max">
-                    <rect key="frame" x="3" y="93" width="120" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="270.15 K / 270.15 K" id="Ad2-3x-hyW">
+                    <rect key="frame" x="3" y="93" width="119" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="270.15 K : 270.15 K" id="Ad2-3x-hyW">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

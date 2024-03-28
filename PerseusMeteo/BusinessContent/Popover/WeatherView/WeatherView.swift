@@ -166,7 +166,7 @@ class WeatherView: NSView {
         let titleMinMax = "Prefix: Min".localizedValue + ", " + "Prefix: Max".localizedValue
         titleMinMaxTemperature.stringValue = titleMinMax
 
-        let valueMinMax = "\(dataSource.temperatureMinimum) / \(dataSource.temperatureMaximum)"
+        let valueMinMax = "\(dataSource.temperatureMinimum) : \(dataSource.temperatureMaximum)"
         valueMinMaxTemperature.stringValue = valueMinMax
 
         // Humidity and visibility.

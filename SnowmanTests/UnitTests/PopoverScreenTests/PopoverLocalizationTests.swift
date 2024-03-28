@@ -112,7 +112,7 @@ class PopoverScreenLocalizationTests: XCTestCase {
         XCTAssertEqual(sut.viewCurrentWeather.titleMinMaxTemperature.stringValue, minmaxtitle)
 
         let minmax =
-            "\(MeteoFactsDefaults.temperature)" + " / " + "\(MeteoFactsDefaults.temperature)"
+            "\(MeteoFactsDefaults.temperature)" + " : " + "\(MeteoFactsDefaults.temperature)"
         XCTAssertEqual(sut.viewCurrentWeather.valueMinMaxTemperature.stringValue, minmax)
 
         let fltitle = "Prefix: Feels Like".localizedValue
