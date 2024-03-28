@@ -14,43 +14,19 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="75" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="116" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s8f-Ug-kfR">
-                    <rect key="frame" x="2" y="31" width="20" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Fri" id="0xz-dL-lqL">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s8f-Ug-kfR" userLabel="TheDay">
+                    <rect key="frame" x="2" y="31" width="42" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Friday" id="0xz-dL-lqL">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="taj-SK-YGd">
-                    <rect key="frame" x="2" y="17" width="16" height="14"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="D:" id="gVc-bR-H6a">
-                        <font key="font" metaFont="system" size="11"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jFb-4Q-Nui">
-                    <rect key="frame" x="2" y="3" width="16" height="14"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="N:" id="Dxq-bz-6dS">
-                        <font key="font" metaFont="system" size="11"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5l7-JY-jBj">
-                    <rect key="frame" x="19" y="3" width="52" height="14"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="263.72 K" id="gQh-ce-WN5">
-                        <font key="font" metaFont="system" size="11"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pnO-ke-yt3">
-                    <rect key="frame" x="14" y="31" width="59" height="17"/>
+                    <rect key="frame" x="55" y="31" width="59" height="17"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="55" id="312-iL-zYb"/>
                     </constraints>
@@ -60,9 +36,17 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bgw-mv-Dlr">
-                    <rect key="frame" x="19" y="17" width="37" height="14"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="— / —" id="Fck-IE-k2R">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5l7-JY-jBj">
+                    <rect key="frame" x="-2" y="17" width="120" height="14"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="— / — : 263.72 K" id="gQh-ce-WN5">
+                        <font key="font" metaFont="system" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4da-Qb-tkp">
+                    <rect key="frame" x="-2" y="2" width="116" height="14"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="46.8 км/ч" id="zcX-fu-Jqh">
                         <font key="font" metaFont="system" size="11"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -70,20 +54,18 @@
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstItem="jFb-4Q-Nui" firstAttribute="top" secondItem="taj-SK-YGd" secondAttribute="bottom" id="0Fv-PM-zwF"/>
                 <constraint firstItem="pnO-ke-yt3" firstAttribute="centerY" secondItem="s8f-Ug-kfR" secondAttribute="centerY" id="2Kx-gy-172"/>
+                <constraint firstAttribute="bottom" secondItem="4da-Qb-tkp" secondAttribute="bottom" constant="2" id="Ch6-it-PH0"/>
+                <constraint firstAttribute="trailing" secondItem="5l7-JY-jBj" secondAttribute="trailing" id="Dom-Sr-DDJ"/>
                 <constraint firstAttribute="trailing" secondItem="pnO-ke-yt3" secondAttribute="trailing" constant="4" id="G1Y-ER-7mu"/>
-                <constraint firstItem="Bgw-mv-Dlr" firstAttribute="centerY" secondItem="taj-SK-YGd" secondAttribute="centerY" id="LXA-nP-9P4"/>
-                <constraint firstItem="taj-SK-YGd" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="4" id="M90-dB-jh8"/>
+                <constraint firstItem="5l7-JY-jBj" firstAttribute="top" secondItem="s8f-Ug-kfR" secondAttribute="bottom" id="HVV-Hh-TCD"/>
+                <constraint firstItem="4da-Qb-tkp" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="Q7u-XY-Yux"/>
                 <constraint firstItem="s8f-Ug-kfR" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="2" id="QPt-vc-ejF"/>
                 <constraint firstItem="s8f-Ug-kfR" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="4" id="XRr-MJ-DyX"/>
-                <constraint firstItem="Bgw-mv-Dlr" firstAttribute="leading" secondItem="taj-SK-YGd" secondAttribute="trailing" constant="5" id="Z2f-E0-vcf"/>
-                <constraint firstItem="5l7-JY-jBj" firstAttribute="centerY" secondItem="jFb-4Q-Nui" secondAttribute="centerY" id="ZBl-Eo-COC"/>
-                <constraint firstItem="jFb-4Q-Nui" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="4" id="guC-mM-uWB"/>
-                <constraint firstItem="5l7-JY-jBj" firstAttribute="leading" secondItem="jFb-4Q-Nui" secondAttribute="trailing" constant="5" id="kx9-9K-Jz2"/>
-                <constraint firstItem="taj-SK-YGd" firstAttribute="top" secondItem="s8f-Ug-kfR" secondAttribute="bottom" id="mKV-sJ-WF7"/>
+                <constraint firstItem="5l7-JY-jBj" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="a8R-cc-JEv"/>
+                <constraint firstAttribute="trailing" secondItem="4da-Qb-tkp" secondAttribute="trailing" constant="4" id="qf5-HD-Abp"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="153.5"/>
+            <point key="canvasLocation" x="138" y="153"/>
         </customView>
         <customObject id="jCB-aO-bPE" customClass="ForecastDaysViewItem" customModule="Snowman" customModuleProvider="target">
             <connections>

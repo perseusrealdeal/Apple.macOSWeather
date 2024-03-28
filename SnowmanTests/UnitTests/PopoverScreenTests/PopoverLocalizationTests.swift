@@ -100,26 +100,32 @@ class PopoverScreenLocalizationTests: XCTestCase {
                        "Label: Meteo Data Provider".localizedValue)
 
         XCTAssertEqual(sut.viewCurrentWeather.labelMeteoProviderValue.stringValue,
-                       CurrentMeteoFacts.meteoDataProviderNameDefault)
+                       MeteoFactsDefaults.meteoDataProviderName)
 
         XCTAssertEqual(sut.viewCurrentWeather.labelWeatherConditionValue.stringValue,
                        "Label: About Current Weather".localizedValue)
 
-        let fl = "Prefix: Feels Like".localizedValue +
-        ": \(CurrentMeteoFacts.temperatureDefault)"
-        XCTAssertEqual(sut.viewCurrentWeather.labelFeelsLike.stringValue, fl)
-
-        let min = "Prefix: Min".localizedValue + ": \(CurrentMeteoFacts.temperatureDefault)"
-        let max = "Prefix: Max".localizedValue + ": \(CurrentMeteoFacts.temperatureDefault)"
-        let minmax = min + " / " + max
-        XCTAssertEqual(sut.viewCurrentWeather.labelMiniMaxTemperature.stringValue, minmax)
-
         let hum = "Prefix: Humidity".localizedValue + ": \(MeteoFactsDefaults.humidity)"
         XCTAssertEqual(sut.viewCurrentWeather.labelHumidity.stringValue, hum)
 
-        let vis = "Prefix: Visibility".localizedValue +
-        ": \(CurrentMeteoFacts.visibilityDefault)"
-        XCTAssertEqual(sut.viewCurrentWeather.labelVisibility.stringValue, vis)
+        let minmaxtitle = "Prefix: Min".localizedValue + ", " + "Prefix: Max".localizedValue
+        XCTAssertEqual(sut.viewCurrentWeather.titleMinMaxTemperature.stringValue, minmaxtitle)
+
+        let minmax =
+            "\(MeteoFactsDefaults.temperature)" + " / " + "\(MeteoFactsDefaults.temperature)"
+        XCTAssertEqual(sut.viewCurrentWeather.valueMinMaxTemperature.stringValue, minmax)
+
+        let fltitle = "Prefix: Feels Like".localizedValue
+        XCTAssertEqual(sut.viewCurrentWeather.titleFeelsLike.stringValue, fltitle)
+
+        let fl = MeteoFactsDefaults.temperature
+        XCTAssertEqual(sut.viewCurrentWeather.valueFeelsLike.stringValue, fl)
+
+        let vistitle = "Prefix: Visibility".localizedValue
+        XCTAssertEqual(sut.viewCurrentWeather.titleVisibility.stringValue, vistitle)
+
+        let vis = MeteoFactsDefaults.visibility
+        XCTAssertEqual(sut.viewCurrentWeather.valueVisibility.stringValue, vis)
 
         XCTAssertEqual(sut.viewCurrentWeather.labelWindSpeedTitle.stringValue,
                        "Label: Speed".localizedValue)
@@ -129,19 +135,19 @@ class PopoverScreenLocalizationTests: XCTestCase {
                        "Label: Gust".localizedValue)
 
         XCTAssertEqual(sut.viewCurrentWeather.labelWindSpeedValue.stringValue,
-                       CurrentMeteoFacts.windSpeedDefault)
+                       MeteoFactsDefaults.windSpeed)
 
         XCTAssertEqual(sut.viewCurrentWeather.labelWindDirectionValue.stringValue,
-                       CurrentMeteoFacts.windDirectionDefault)
+                       MeteoFactsDefaults.windDirection)
 
         XCTAssertEqual(sut.viewCurrentWeather.labelWindGustsValue.stringValue,
-                       CurrentMeteoFacts.windSpeedDefault)
+                       MeteoFactsDefaults.windSpeed)
 
         XCTAssertEqual(sut.viewCurrentWeather.labelPressureTitle.stringValue,
                        "Label: Pressure".localizedValue)
 
         XCTAssertEqual(sut.viewCurrentWeather.labelPressureValue.stringValue,
-                       CurrentMeteoFacts.pressureDefault)
+                       MeteoFactsDefaults.pressure)
 
         XCTAssertEqual(sut.viewCurrentWeather.labelSunriseTitle.stringValue,
                        "Label: Sunrise".localizedValue)

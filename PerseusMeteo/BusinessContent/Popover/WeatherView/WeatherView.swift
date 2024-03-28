@@ -43,15 +43,19 @@ class WeatherView: NSView {
     @IBOutlet private(set) weak var labelMeteoProviderValue: NSTextField!
     @IBOutlet private(set) weak var indicator: NSProgressIndicator!
 
-    @IBOutlet private(set) weak var labelFeelsLike: NSTextField!
-    @IBOutlet private(set) weak var labelMiniMaxTemperature: NSTextField!
-
-    @IBOutlet private(set) weak var labelHumidity: NSTextField!
-    @IBOutlet private(set) weak var labelVisibility: NSTextField!
-
     @IBOutlet private(set) weak var viewWeatherConditionIcon: NSImageView!
     @IBOutlet private(set) weak var labelTemperatureValue: NSTextField!
     @IBOutlet private(set) weak var labelWeatherConditionValue: NSTextField!
+
+    @IBOutlet private(set) weak var labelHumidity: NSTextField!
+
+    @IBOutlet private(set) weak var titleMinMaxTemperature: NSTextField!
+    @IBOutlet private(set) weak var titleFeelsLike: NSTextField!
+    @IBOutlet private(set) weak var titleVisibility: NSTextField!
+
+    @IBOutlet private(set) weak var valueMinMaxTemperature: NSTextField!
+    @IBOutlet private(set) weak var valueFeelsLike: NSTextField!
+    @IBOutlet private(set) weak var valueVisibility: NSTextField!
 
     @IBOutlet private(set) weak var labelWindSpeedTitle: NSTextField!
     @IBOutlet private(set) weak var labelWindSpeedValue: NSTextField!
@@ -156,20 +160,22 @@ class WeatherView: NSView {
 
         labelTemperatureValue.stringValue = dataSource.temperature
 
-        let fl = "Prefix: Feels Like".localizedValue + ": \(dataSource.temperatureFeelsLike)"
-        labelFeelsLike.stringValue = fl
+        titleFeelsLike.stringValue = "Prefix: Feels Like".localizedValue
+        valueFeelsLike.stringValue = dataSource.temperatureFeelsLike
 
-        let min = "Prefix: Min".localizedValue + ": \(dataSource.temperatureMinimum)"
-        let max = "Prefix: Max".localizedValue + ": \(dataSource.temperatureMaximum)"
-        labelMiniMaxTemperature.stringValue = min + " / " + max
+        let titleMinMax = "Prefix: Min".localizedValue + ", " + "Prefix: Max".localizedValue
+        titleMinMaxTemperature.stringValue = titleMinMax
+
+        let valueMinMax = "\(dataSource.temperatureMinimum) / \(dataSource.temperatureMaximum)"
+        valueMinMaxTemperature.stringValue = valueMinMax
 
         // Humidity and visibility.
 
         let humidity = "Prefix: Humidity".localizedValue + ": \(dataSource.humidity)"
         labelHumidity.stringValue = humidity
 
-        let visibility = "Prefix: Visibility".localizedValue + ": \(dataSource.visibility)"
-        labelVisibility.stringValue = visibility
+        titleVisibility.stringValue = "Prefix: Visibility".localizedValue
+        valueVisibility.stringValue = dataSource.visibility
 
         // Wind.
 

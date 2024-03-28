@@ -89,11 +89,11 @@ class PopoverConnectionsTests: XCTestCase {
 
         XCTAssertNotNil(sut.viewCurrentWeather.indicator)
 
-        XCTAssertNotNil(sut.viewCurrentWeather.labelFeelsLike)
-        XCTAssertNotNil(sut.viewCurrentWeather.labelMiniMaxTemperature)
+        XCTAssertNotNil(sut.viewCurrentWeather.valueFeelsLike)
+        XCTAssertNotNil(sut.viewCurrentWeather.valueMinMaxTemperature)
 
         XCTAssertNotNil(sut.viewCurrentWeather.labelHumidity)
-        XCTAssertNotNil(sut.viewCurrentWeather.labelVisibility)
+        XCTAssertNotNil(sut.viewCurrentWeather.valueVisibility)
 
         XCTAssertNotNil(sut.viewCurrentWeather.viewWeatherConditionIcon)
         XCTAssertNotNil(sut.viewCurrentWeather.labelTemperatureValue)
