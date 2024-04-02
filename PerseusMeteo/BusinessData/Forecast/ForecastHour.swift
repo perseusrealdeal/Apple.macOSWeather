@@ -116,4 +116,8 @@ public struct ForecastHour {
 
         return parameter == -1 ? MeteoFactsDefaults.humidity : "\(parameter) %"
     }
+
+    public func getMeteoGroupData() -> MeteoGroupData {
+        return MeteoGroupData()
+    }
 }

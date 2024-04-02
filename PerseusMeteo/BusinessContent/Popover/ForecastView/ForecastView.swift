@@ -55,7 +55,7 @@ class ForecastView: NSView {
     @IBOutlet weak var viewForecastDays: NSCollectionView!
     @IBOutlet weak var viewForecastHours: NSCollectionView!
 
-    @IBOutlet private(set) weak var viewForecastDetails: ForecastDetailsView!
+    @IBOutlet private(set) weak var viewForecastDetails: MeteoGroupView!
 
     // MARK: - Initialization
 
@@ -308,7 +308,7 @@ extension ForecastView: NSCollectionViewDelegate {
                 hourDetails = day.hours[(hourIndexPaths as NSIndexPath).item]
             }
 
-            viewForecastDetails.data = hourDetails
+            viewForecastDetails.data = hourDetails?.getMeteoGroupData()
         }
     }
 }

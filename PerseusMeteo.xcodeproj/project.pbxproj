@@ -39,6 +39,9 @@
 		4B5F7D3D2B9906F300121946 /* CurrentDataSourceReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F7D3C2B9906F300121946 /* CurrentDataSourceReader.swift */; };
 		4B5F7D3F2B99099F00121946 /* OpenWeatherCurrentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F7D3E2B99099F00121946 /* OpenWeatherCurrentParser.swift */; };
 		4B5F7D412B9AD05900121946 /* MeteoDataSourceReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F7D402B9AD05900121946 /* MeteoDataSourceReader.swift */; };
+		4B5F7D442BB6984D00121946 /* MeteoGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F7D432BB6984D00121946 /* MeteoGroupView.swift */; };
+		4B5F7D462BB6986B00121946 /* MeteoGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5F7D452BB6986B00121946 /* MeteoGroupView.xib */; };
+		4B5F7D482BBBDAE800121946 /* MeteoGroupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F7D472BBBDAE800121946 /* MeteoGroupData.swift */; };
 		4B62FA7629DC1A6400DF6B85 /* PerseusLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62FA7529DC1A6400DF6B85 /* PerseusLogger.swift */; };
 		4B684C712B446A560063E359 /* JsonDataDictionaryGift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B684C702B446A560063E359 /* JsonDataDictionaryGift.swift */; };
 		4B6F98622927D95500ADB03A /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4B6F98612927D95500ADB03A /* .swiftlint.yml */; };
@@ -72,8 +75,6 @@
 		4BB2046C2B753CC7007E0308 /* ForecastDaysViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BB2046B2B753CC7007E0308 /* ForecastDaysViewItem.xib */; };
 		4BB2046E2B755BDB007E0308 /* ForecastDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB2046D2B755BDB007E0308 /* ForecastDay.swift */; };
 		4BB204742B7805DF007E0308 /* ForecastHour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB204732B7805DF007E0308 /* ForecastHour.swift */; };
-		4BB204762B78D910007E0308 /* ForecastDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB204752B78D910007E0308 /* ForecastDetailsView.swift */; };
-		4BB204782B78DBCB007E0308 /* ForecastDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BB204772B78DBCB007E0308 /* ForecastDetailsView.xib */; };
 		4BB2047A2B79368A007E0308 /* ForecastHoursViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BB204792B79368A007E0308 /* ForecastHoursViewItem.xib */; };
 		4BB2047C2B7936CB007E0308 /* ForecastHoursViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB2047B2B7936CB007E0308 /* ForecastHoursViewItem.swift */; };
 		4BB957432B568EDB005EB98E /* PerseusLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB957422B568EDB005EB98E /* PerseusLogger.swift */; };
@@ -143,6 +144,9 @@
 		4B5F7D3C2B9906F300121946 /* CurrentDataSourceReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDataSourceReader.swift; sourceTree = "<group>"; };
 		4B5F7D3E2B99099F00121946 /* OpenWeatherCurrentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherCurrentParser.swift; sourceTree = "<group>"; };
 		4B5F7D402B9AD05900121946 /* MeteoDataSourceReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoDataSourceReader.swift; sourceTree = "<group>"; };
+		4B5F7D432BB6984D00121946 /* MeteoGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoGroupView.swift; sourceTree = "<group>"; };
+		4B5F7D452BB6986B00121946 /* MeteoGroupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeteoGroupView.xib; sourceTree = "<group>"; };
+		4B5F7D472BBBDAE800121946 /* MeteoGroupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoGroupData.swift; sourceTree = "<group>"; };
 		4B62FA7529DC1A6400DF6B85 /* PerseusLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerseusLogger.swift; sourceTree = "<group>"; };
 		4B684C702B446A560063E359 /* JsonDataDictionaryGift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataDictionaryGift.swift; sourceTree = "<group>"; };
 		4B6F98612927D95500ADB03A /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -178,8 +182,6 @@
 		4BB2046B2B753CC7007E0308 /* ForecastDaysViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastDaysViewItem.xib; sourceTree = "<group>"; };
 		4BB2046D2B755BDB007E0308 /* ForecastDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastDay.swift; sourceTree = "<group>"; };
 		4BB204732B7805DF007E0308 /* ForecastHour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastHour.swift; sourceTree = "<group>"; };
-		4BB204752B78D910007E0308 /* ForecastDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastDetailsView.swift; sourceTree = "<group>"; };
-		4BB204772B78DBCB007E0308 /* ForecastDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastDetailsView.xib; sourceTree = "<group>"; };
 		4BB204792B79368A007E0308 /* ForecastHoursViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastHoursViewItem.xib; sourceTree = "<group>"; };
 		4BB2047B2B7936CB007E0308 /* ForecastHoursViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastHoursViewItem.swift; sourceTree = "<group>"; };
 		4BB957422B568EDB005EB98E /* PerseusLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerseusLogger.swift; sourceTree = "<group>"; };
@@ -386,6 +388,16 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		4B5F7D422BB6980600121946 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4B5F7D472BBBDAE800121946 /* MeteoGroupData.swift */,
+				4B5F7D432BB6984D00121946 /* MeteoGroupView.swift */,
+				4B5F7D452BB6986B00121946 /* MeteoGroupView.xib */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		4B684C6D2B438A370063E359 /* BusinessData */ = {
 			isa = PBXGroup;
 			children = (
@@ -489,6 +501,7 @@
 				4BB204662B7536BA007E0308 /* LocationView */,
 				4BB204672B7536D0007E0308 /* WeatherView */,
 				4BB204682B7536E5007E0308 /* ForecastView */,
+				4B5F7D422BB6980600121946 /* Common */,
 			);
 			path = Popover;
 			sourceTree = "<group>";
@@ -540,8 +553,6 @@
 				4BB204692B753A47007E0308 /* ForecastDaysViewItem.swift */,
 				4BB204792B79368A007E0308 /* ForecastHoursViewItem.xib */,
 				4BB2047B2B7936CB007E0308 /* ForecastHoursViewItem.swift */,
-				4BB204772B78DBCB007E0308 /* ForecastDetailsView.xib */,
-				4BB204752B78D910007E0308 /* ForecastDetailsView.swift */,
 			);
 			path = ForecastView;
 			sourceTree = "<group>";
@@ -647,8 +658,8 @@
 				4B993DBA2B3738CF008C1FE7 /* PopoverViewController.storyboard in Resources */,
 				4B6F986C2927E0F000ADB03A /* Translation_en.plist in Resources */,
 				4B6F98712927E4FC00ADB03A /* Localizable.strings in Resources */,
+				4B5F7D462BB6986B00121946 /* MeteoGroupView.xib in Resources */,
 				4B6F98622927D95500ADB03A /* .swiftlint.yml in Resources */,
-				4BB204782B78DBCB007E0308 /* ForecastDetailsView.xib in Resources */,
 				4B6F987E2928259E00ADB03A /* REQUIREMENTS.md in Resources */,
 				4BB2047A2B79368A007E0308 /* ForecastHoursViewItem.xib in Resources */,
 				4B993DCD2B383AA2008C1FE7 /* WeatherView.xib in Resources */,
@@ -707,10 +718,12 @@
 				4BFA5FDE2989A1F000AC09F5 /* OptionsViewController.swift in Sources */,
 				4B52C536292CD05C00C7792A /* DarkModeSwitching.swift in Sources */,
 				4B7690D42B4CA82A007F09D9 /* PerseusTimeFormat.swift in Sources */,
+				4B5F7D442BB6984D00121946 /* MeteoGroupView.swift in Sources */,
 				4B030E772B277DD600ED9018 /* AboutWindowController.swift in Sources */,
 				4BA719872AF0D5E10074F7CD /* StatusMenusButtonPresenter.swift in Sources */,
 				4BE29E922B3A23340027515A /* ForecastView.swift in Sources */,
 				4B5F7D2F2B89243800121946 /* MeteoFactsDefaults.swift in Sources */,
+				4B5F7D482BBBDAE800121946 /* MeteoGroupData.swift in Sources */,
 				4B1073952B4607CE008A692D /* MeteoFactsRepresenter.swift in Sources */,
 				4BB2045D2B70EE3A007E0308 /* Protocols.swift in Sources */,
 				4BB2046E2B755BDB007E0308 /* ForecastDay.swift in Sources */,
@@ -724,7 +737,6 @@
 				4B62FA7629DC1A6400DF6B85 /* PerseusLogger.swift in Sources */,
 				4B3384682B547609004682DF /* JsonDataPrettyPrintedGift.swift in Sources */,
 				4B1CA6A32B549358003F3EBF /* MeteoClientManager.swift in Sources */,
-				4BB204762B78D910007E0308 /* ForecastDetailsView.swift in Sources */,
 				4B5F7D3F2B99099F00121946 /* OpenWeatherCurrentParser.swift in Sources */,
 				4BB2045B2B7029FC007E0308 /* ForecastDataSource.swift in Sources */,
 				4BB2047C2B7936CB007E0308 /* ForecastHoursViewItem.swift in Sources */,
