@@ -89,25 +89,10 @@ class PopoverConnectionsTests: XCTestCase {
 
         XCTAssertNotNil(sut.viewCurrentWeather.indicator)
 
-        XCTAssertNotNil(sut.viewCurrentWeather.valueFeelsLike)
-        XCTAssertNotNil(sut.viewCurrentWeather.valueMinMaxTemperature)
-
-        XCTAssertNotNil(sut.viewCurrentWeather.labelHumidity)
-        XCTAssertNotNil(sut.viewCurrentWeather.valueVisibility)
-
         XCTAssertNotNil(sut.viewCurrentWeather.viewWeatherConditionIcon)
         XCTAssertNotNil(sut.viewCurrentWeather.labelTemperatureValue)
         XCTAssertNotNil(sut.viewCurrentWeather.labelWeatherConditionValue)
 
-        XCTAssertNotNil(sut.viewCurrentWeather.labelWindSpeedTitle)
-        XCTAssertNotNil(sut.viewCurrentWeather.labelWindSpeedValue)
-        XCTAssertNotNil(sut.viewCurrentWeather.labelWindDirectionTitle)
-        XCTAssertNotNil(sut.viewCurrentWeather.labelWindDirectionValue)
-        XCTAssertNotNil(sut.viewCurrentWeather.labelWindGustsTitle)
-        XCTAssertNotNil(sut.viewCurrentWeather.labelWindGustsValue)
-
-        XCTAssertNotNil(sut.viewCurrentWeather.labelPressureTitle)
-        XCTAssertNotNil(sut.viewCurrentWeather.labelPressureValue)
         XCTAssertNotNil(sut.viewCurrentWeather.labelSunriseTitle)
         XCTAssertNotNil(sut.viewCurrentWeather.labelSunriseValue)
         XCTAssertNotNil(sut.viewCurrentWeather.labelSunsetTitle)
@@ -126,5 +111,56 @@ class PopoverConnectionsTests: XCTestCase {
         XCTAssertNotNil(sut.viewForecast.labelMeteoProviderValue)
 
         XCTAssertNotNil(sut.viewForecast.indicator)
+    }
+
+    func test_ConnectionsNotNil_MeteoGroupView() {
+
+        // arrange
+
+        sut.loadView()
+
+        // assert
+
+        XCTAssertNotNil(sut.viewCurrentWeather.viewMeteoGroup.title1)
+        XCTAssertNotNil(sut.viewCurrentWeather.viewMeteoGroup.title2)
+        XCTAssertNotNil(sut.viewCurrentWeather.viewMeteoGroup.title3)
+        XCTAssertNotNil(sut.viewCurrentWeather.viewMeteoGroup.title4)
+        XCTAssertNotNil(sut.viewCurrentWeather.viewMeteoGroup.title5)
+        XCTAssertNotNil(sut.viewCurrentWeather.viewMeteoGroup.title5)
+        XCTAssertNotNil(sut.viewCurrentWeather.viewMeteoGroup.title6)
+        XCTAssertNotNil(sut.viewCurrentWeather.viewMeteoGroup.title7)
+        XCTAssertNotNil(sut.viewCurrentWeather.viewMeteoGroup.title9)
+
+        XCTAssertNotNil(sut.viewCurrentWeather.viewMeteoGroup.value1)
+        XCTAssertNotNil(sut.viewCurrentWeather.viewMeteoGroup.value2)
+        XCTAssertNotNil(sut.viewCurrentWeather.viewMeteoGroup.value3)
+        XCTAssertNotNil(sut.viewCurrentWeather.viewMeteoGroup.value4)
+        XCTAssertNotNil(sut.viewCurrentWeather.viewMeteoGroup.value5)
+        XCTAssertNotNil(sut.viewCurrentWeather.viewMeteoGroup.value6)
+        XCTAssertNotNil(sut.viewCurrentWeather.viewMeteoGroup.value7)
+        XCTAssertNotNil(sut.viewCurrentWeather.viewMeteoGroup.value8)
+        XCTAssertNotNil(sut.viewCurrentWeather.viewMeteoGroup.value9)
+
+        // assert
+
+        XCTAssertNotNil(sut.viewForecast.viewForecastDetails.title1)
+        XCTAssertNotNil(sut.viewForecast.viewForecastDetails.title2)
+        XCTAssertNotNil(sut.viewForecast.viewForecastDetails.title3)
+        XCTAssertNotNil(sut.viewForecast.viewForecastDetails.title4)
+        XCTAssertNotNil(sut.viewForecast.viewForecastDetails.title5)
+        XCTAssertNotNil(sut.viewForecast.viewForecastDetails.title5)
+        XCTAssertNotNil(sut.viewForecast.viewForecastDetails.title6)
+        XCTAssertNotNil(sut.viewForecast.viewForecastDetails.title7)
+        XCTAssertNotNil(sut.viewForecast.viewForecastDetails.title9)
+
+        XCTAssertNotNil(sut.viewForecast.viewForecastDetails.value1)
+        XCTAssertNotNil(sut.viewForecast.viewForecastDetails.value2)
+        XCTAssertNotNil(sut.viewForecast.viewForecastDetails.value3)
+        XCTAssertNotNil(sut.viewForecast.viewForecastDetails.value4)
+        XCTAssertNotNil(sut.viewForecast.viewForecastDetails.value5)
+        XCTAssertNotNil(sut.viewForecast.viewForecastDetails.value6)
+        XCTAssertNotNil(sut.viewForecast.viewForecastDetails.value7)
+        XCTAssertNotNil(sut.viewForecast.viewForecastDetails.value8)
+        XCTAssertNotNil(sut.viewForecast.viewForecastDetails.value9)
     }
 }

@@ -44,33 +44,14 @@ class WeatherView: NSView {
     @IBOutlet private(set) weak var labelMeteoProviderTitle: NSTextField!
     @IBOutlet private(set) weak var labelMeteoProviderValue: NSTextField!
     @IBOutlet private(set) weak var indicator: NSProgressIndicator!
+
     @IBOutlet private(set) weak var viewWeatherConditionIcon: NSImageView!
     @IBOutlet private(set) weak var labelTemperatureValue: NSTextField!
     @IBOutlet private(set) weak var labelWeatherConditionValue: NSTextField!
 
-    // Depricated
-
-    @IBOutlet private(set) weak var labelHumidity: NSTextField!
-
-    @IBOutlet private(set) weak var titleMinMaxTemperature: NSTextField!
-    @IBOutlet private(set) weak var titleFeelsLike: NSTextField!
-    @IBOutlet private(set) weak var titleVisibility: NSTextField!
-
-    @IBOutlet private(set) weak var valueMinMaxTemperature: NSTextField!
-    @IBOutlet private(set) weak var valueFeelsLike: NSTextField!
-    @IBOutlet private(set) weak var valueVisibility: NSTextField!
-
-    @IBOutlet private(set) weak var labelWindSpeedTitle: NSTextField!
-    @IBOutlet private(set) weak var labelWindSpeedValue: NSTextField!
-    @IBOutlet private(set) weak var labelWindDirectionTitle: NSTextField!
-    @IBOutlet private(set) weak var labelWindDirectionValue: NSTextField!
-    @IBOutlet private(set) weak var labelWindGustsTitle: NSTextField!
-    @IBOutlet private(set) weak var labelWindGustsValue: NSTextField!
-
-    @IBOutlet private(set) weak var labelPressureTitle: NSTextField!
-    @IBOutlet private(set) weak var labelPressureValue: NSTextField!
     @IBOutlet private(set) weak var labelSunriseTitle: NSTextField!
     @IBOutlet private(set) weak var labelSunriseValue: NSTextField!
+
     @IBOutlet private(set) weak var labelSunsetTitle: NSTextField!
     @IBOutlet private(set) weak var labelSunsetValue: NSTextField!
 
