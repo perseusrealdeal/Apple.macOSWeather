@@ -52,8 +52,8 @@ class ForecastView: NSView {
 
     @IBOutlet private(set) weak var indicator: NSProgressIndicator!
 
-    @IBOutlet weak var viewForecastDays: NSCollectionView!
-    @IBOutlet weak var viewForecastHours: NSCollectionView!
+    @IBOutlet private(set) weak var viewForecastDays: NSCollectionView!
+    @IBOutlet private(set) weak var viewForecastHours: NSCollectionView!
 
     @IBOutlet private(set) weak var viewForecastDetails: MeteoGroupView!
 

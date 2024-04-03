@@ -30,25 +30,25 @@ class MeteoGroupView: NSView {
 
     @IBOutlet private(set) var viewContent: NSView!
 
-    @IBOutlet weak var title1: NSTextField!
-    @IBOutlet weak var title2: NSTextField!
-    @IBOutlet weak var title3: NSTextField!
-    @IBOutlet weak var title4: NSTextField!
-    @IBOutlet weak var title5: NSTextField!
-    @IBOutlet weak var title6: NSTextField!
-    @IBOutlet weak var title7: NSTextField!
-    @IBOutlet weak var title8: NSTextField!
-    @IBOutlet weak var title9: NSTextField!
+    @IBOutlet private(set) weak var title1: NSTextField!
+    @IBOutlet private(set) weak var title2: NSTextField!
+    @IBOutlet private(set) weak var title3: NSTextField!
+    @IBOutlet private(set) weak var title4: NSTextField!
+    @IBOutlet private(set) weak var title5: NSTextField!
+    @IBOutlet private(set) weak var title6: NSTextField!
+    @IBOutlet private(set) weak var title7: NSTextField!
+    @IBOutlet private(set) weak var title8: NSTextField!
+    @IBOutlet private(set) weak var title9: NSTextField!
 
-    @IBOutlet weak var value1: NSTextField!
-    @IBOutlet weak var value2: NSTextField!
-    @IBOutlet weak var value3: NSTextField!
-    @IBOutlet weak var value4: NSTextField!
-    @IBOutlet weak var value5: NSTextField!
-    @IBOutlet weak var value6: NSTextField!
-    @IBOutlet weak var value7: NSTextField!
-    @IBOutlet weak var value8: NSTextField!
-    @IBOutlet weak var value9: NSTextField!
+    @IBOutlet private(set) weak var value1: NSTextField!
+    @IBOutlet private(set) weak var value2: NSTextField!
+    @IBOutlet private(set) weak var value3: NSTextField!
+    @IBOutlet private(set) weak var value4: NSTextField!
+    @IBOutlet private(set) weak var value5: NSTextField!
+    @IBOutlet private(set) weak var value6: NSTextField!
+    @IBOutlet private(set) weak var value7: NSTextField!
+    @IBOutlet private(set) weak var value8: NSTextField!
+    @IBOutlet private(set) weak var value9: NSTextField!
 
     // MARK: - Initialization
 
@@ -68,7 +68,7 @@ class MeteoGroupView: NSView {
         guard
             let className = type(of: self).className().components(separatedBy: ".").last,
             let nib = NSNib(nibNamed: className, bundle: Bundle(for: type(of: self)))
-            else {
+        else {
                 let text = "[\(type(of: self))].\(#function) No nib loaded."
                 log.message(text, .error); fatalError(text)
         }
