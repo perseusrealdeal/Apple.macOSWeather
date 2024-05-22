@@ -43,7 +43,7 @@
                 </box>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LLh-TS-DB5">
                     <rect key="frame" x="85" y="126" width="43" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Title 1" id="erK-9o-wR3">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Title 1" id="erK-9o-wR3">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -51,7 +51,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0jc-A6-Vc5">
                     <rect key="frame" x="83" y="108" width="47" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Value 1" id="AaO-k0-BGJ">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Value 1" id="AaO-k0-BGJ">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -59,7 +59,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FSN-ae-JiL">
                     <rect key="frame" x="147" y="126" width="45" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Title 2" id="uwY-zU-JdS">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Title 2" id="uwY-zU-JdS">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -67,7 +67,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rov-50-Nam">
                     <rect key="frame" x="145" y="108" width="49" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Value 2" id="HwK-os-5gg">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Value 2" id="HwK-os-5gg">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -75,7 +75,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rSW-gx-hcf">
                     <rect key="frame" x="20" y="126" width="45" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Title 3" id="ftI-6f-X0Y">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Title 3" id="ftI-6f-X0Y">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -83,7 +83,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qdH-wm-Bv4">
                     <rect key="frame" x="18" y="108" width="49" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Value 3" id="WgA-gd-Ak3">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Value 3" id="WgA-gd-Ak3">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -91,7 +91,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v01-pr-ZYJ">
                     <rect key="frame" x="84" y="74" width="45" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Title 4" id="0Vt-Ms-phZ">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Title 4" id="0Vt-Ms-phZ">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -99,7 +99,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kXz-EO-gXP">
                     <rect key="frame" x="81" y="55" width="50" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Value 4" id="4Ej-Ab-czw">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Value 4" id="4Ej-Ab-czw">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -107,7 +107,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IYJ-Q3-9zL">
                     <rect key="frame" x="84" y="25" width="44" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Title 7" id="ew6-6P-DDj">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Title 7" id="ew6-6P-DDj">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -115,7 +115,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lJ4-Ku-HwB">
                     <rect key="frame" x="82" y="7" width="49" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Value 7" id="QJD-vf-ejE">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Value 7" id="QJD-vf-ejE">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -123,7 +123,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NiZ-O4-ms6">
                     <rect key="frame" x="20" y="74" width="45" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Title 6" id="cMY-TH-CQM">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Title 6" id="cMY-TH-CQM">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -131,7 +131,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ic9-je-WVi">
                     <rect key="frame" x="17" y="55" width="50" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Value 6" id="woB-eA-ksL">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Value 6" id="woB-eA-ksL">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -139,7 +139,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="axT-QQ-vTz">
                     <rect key="frame" x="147" y="74" width="45" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Title 5" id="qbu-jd-GqK">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Title 5" id="qbu-jd-GqK">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -147,7 +147,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k38-Fl-SoJ">
                     <rect key="frame" x="145" y="55" width="49" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Value 5" id="6ZS-vU-aHK">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Value 5" id="6ZS-vU-aHK">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -155,7 +155,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eJ9-PD-r5S">
                     <rect key="frame" x="147" y="25" width="46" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Title 8" id="T4r-2z-ko2">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Title 8" id="T4r-2z-ko2">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -163,7 +163,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vIO-ab-5rc">
                     <rect key="frame" x="145" y="7" width="50" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Value 8" id="8s5-8I-Fie">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Value 8" id="8s5-8I-Fie">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -171,7 +171,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="16b-JX-6eM">
                     <rect key="frame" x="20" y="25" width="45" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Title 9" id="F2A-zV-8dL">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Title 9" id="F2A-zV-8dL">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -179,7 +179,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x4G-eI-RnZ">
                     <rect key="frame" x="17" y="7" width="50" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Value 9" id="Rsi-p0-72N">
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Value 9" id="Rsi-p0-72N">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
