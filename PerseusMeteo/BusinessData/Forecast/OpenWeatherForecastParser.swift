@@ -19,10 +19,12 @@ public class OpenWeatherForecastParser: ForecastParserProtocol {
 
     public func getTimeZone(from dictionary: [String: Any]) -> Int? {
 
-        log.message("[\(type(of: self))].\(#function)")
+        // log.message("[\(type(of: self))].\(#function)")
 
         if let city = dictionary["city"] as? [String: Any] {
             if let timezone = city["timezone"] as? Int {
+
+                // log.message("[\(type(of: self))].\(#function): \(timezone)")
 
                 return timezone
 
@@ -38,13 +40,15 @@ public class OpenWeatherForecastParser: ForecastParserProtocol {
 
     public func getForecastDays(from dictionary: [String: Any]) -> [ForecastDay]? {
 
-        log.message("[\(type(of: self))].\(#function)")
+        // log.message("[\(type(of: self))].\(#function)")
 
         guard
             let list = dictionary["list"] as? [Any],
             let timezone = getTimeZone(from: dictionary)
         else {
+
             log.message("[\(type(of: self))].\(#function) list wrong.", .error)
+
             return nil
         }
 
@@ -60,6 +64,8 @@ public class OpenWeatherForecastParser: ForecastParserProtocol {
 
             forecastDays.append(ForecastDay(date: item.key, hours: hours))
         }
+
+        // log.message("[\(type(of: self))].\(#function): \(forecastDays)")
 
         return forecastDays
     }
