@@ -84,14 +84,20 @@ public struct ForecastHour {
 
     // MARK: - Time of Hour
 
-    public var hourTitle: String {
-        return ""
+    public var time: String {
+        return "NN:NN AM"
     }
 
     // MARK: - Temperature
 
     public var temperature: String {
-        return ""
+        return "NNN.NN K"
+    }
+
+    // MARK: - Incoming Precipitation
+
+    public var incomingPrecipitation: String {
+        return "light snow"
     }
 
     // MARK: - Humidity

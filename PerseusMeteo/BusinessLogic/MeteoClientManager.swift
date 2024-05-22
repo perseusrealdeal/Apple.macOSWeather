@@ -227,7 +227,7 @@ public class MeteoClientManager {
         DispatchQueue.main.async {
 
             presenter.screenPopover.stopAnimationProgressIndicator(.current)
-            presenter.screenPopover.reloadData()
+            presenter.screenPopover.reloadCurrentWeatherData()
 
             self.isReadyToCall = true
         }
@@ -250,7 +250,7 @@ public class MeteoClientManager {
         DispatchQueue.main.async {
 
             presenter.screenPopover.stopAnimationProgressIndicator(.forecast)
-            presenter.screenPopover.reloadData()
+            presenter.screenPopover.reloadForecastData()
 
             self.isReadyToCallForecast = true
         }

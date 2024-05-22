@@ -48,19 +48,21 @@ public struct ForecastDay {
     public let date: String // Formate: YYYY-MM-DD, it's uniq calculated value
     public let hours: [ForecastHour]
 
-    // MARK: - Init
-
     // MARK: - Contract
 
-    public var dateTitle: String {
-        return ""
+    public var dateDayOfTheWeek: String {
+        return date.isEmpty ? "dateDayOfTheWeek" : "Xxx"
     }
 
-    public var minDateTemperature: String {
-        return ""
+    public var dateDayMonth: String {
+        return date.isEmpty ? "dateDayMonth" : "NN xxx"
     }
 
-    public var maxDateTemperature: String {
-        return ""
+    public var nightTemperature: String {
+        return "NNN.NN K"
+    }
+
+    public var dayTemperature: String {
+        return "NNN.NN K"
     }
 }

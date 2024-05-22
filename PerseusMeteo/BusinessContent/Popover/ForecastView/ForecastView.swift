@@ -55,7 +55,7 @@ class ForecastView: NSView {
     @IBOutlet private(set) weak var viewForecastDays: NSCollectionView!
     @IBOutlet private(set) weak var viewForecastHours: NSCollectionView!
 
-    @IBOutlet private(set) weak var viewForecastDetails: MeteoGroupView!
+    @IBOutlet private(set) weak var viewMeteoGroup: MeteoGroupView!
 
     // MARK: - Initialization
 
@@ -96,6 +96,9 @@ class ForecastView: NSView {
         self.viewForecastHours.backgroundColors = [NSColor.clear]
 
         wantsLayer = true
+
+        // self.selectTheFirstForecastDay()
+        // self.selectTheFirstForecastHour()
     }
 
     required public init?(coder: NSCoder) {
@@ -162,16 +165,32 @@ class ForecastView: NSView {
         labelMeteoProviderValue.stringValue = dataSource.meteoDataProviderName
     }
 
+    public func selectTheFirstForecastDay() {
+
+        let indexPath = IndexPath(item: 0, section: 0)
+        let indexes: Set<IndexPath> = [indexPath]
+
+        viewForecastDays.selectItems(at: indexes, scrollPosition: .top)
+    }
+
+    public func selectTheFirstForecastHour() {
+
+        let indexPath = IndexPath(item: 0, section: 0)
+        let indexes: Set<IndexPath> = [indexPath]
+
+        viewForecastHours.selectItems(at: indexes, scrollPosition: .left)
+    }
+
     // MARK: - Realization
 
     private func reloadDaysCollection() {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        let paths = viewForecastDays.selectionIndexPaths
+        // let paths = viewForecastDays.selectionIndexPaths
 
         viewForecastDays.reloadData()
-        viewForecastDays.selectItems(at: paths, scrollPosition: .nearestHorizontalEdge)
+        // viewForecastDays.selectItems(at: paths, scrollPosition: .nearestHorizontalEdge)
     }
 
     private func reloadHoursCollection() {
@@ -181,21 +200,21 @@ class ForecastView: NSView {
         guard viewForecastDays.selectionIndexPaths.first != nil else {
 
             viewForecastHours.reloadData()
-            viewForecastDetails.data = nil
+            viewMeteoGroup.data = nil
 
             return
         }
 
-        let paths = viewForecastHours.selectionIndexPaths
+        // let paths = viewForecastHours.selectionIndexPaths
 
         viewForecastHours.reloadData()
-        viewForecastHours.selectItems(at: paths, scrollPosition: .nearestHorizontalEdge)
+        // viewForecastHours.selectItems(at: paths, scrollPosition: .nearestHorizontalEdge)
 
-        viewForecastDetails.reload()
+        viewMeteoGroup.reload()
     }
 }
 
-// MARK: - NSCollectionViewDataSource, creating collection items
+// MARK: - NSCollectionViewDataSource, CREATING
 
 extension ForecastView: NSCollectionViewDataSource {
 
@@ -231,24 +250,26 @@ extension ForecastView: NSCollectionViewDataSource {
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt
         indexPath: IndexPath) -> NSCollectionViewItem {
 
-        // New Forecast Day.
+        // Create a new Forecast Day item
 
         if collectionView.identifier == collectionForecastDaysID {
 
-            // Find the day.
+            // The day data.
 
             let data = dataSource.forecastDays[(indexPath as NSIndexPath).item]
 
-            // Create a view of the day.
+            // The view for the day.
 
-            let viewDay = ForecastDaysViewItem.makeItem(collectionView, indexPath, data)
+            let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(
+                rawValue: ForecastDaysViewItem.description()), for: indexPath)
+                as? ForecastDaysViewItem
 
-            log.message("[\(type(of: self))].\(#function)")
+            item?.data = data
 
-            return viewDay
+            return (item) ?? ForecastDaysViewItem()
         }
 
-        // New Forecast Hour.
+        // Create a new Forecast Hour item
 
         if collectionView.identifier == collectionForecastHoursID,
             dataSource.forecastDays.isEmpty == false {
@@ -257,21 +278,23 @@ extension ForecastView: NSCollectionViewDataSource {
                 let selectedIndexPath = viewForecastDays.selectionIndexPaths.first,
                 (selectedIndexPath as NSIndexPath).item != -1 {
 
-                // Find the day the hour for.
+                // The day data.
 
                 let day = dataSource.forecastDays[(selectedIndexPath as NSIndexPath).item]
 
-                // Find the hour of the day.
+                // The hour of the day data.
 
-                let hour = day.hours[(indexPath as NSIndexPath).item]
+                let data = day.hours[(indexPath as NSIndexPath).item]
 
-                // Create a new view of the hour.
+                // The new view for the hour of the day.
 
-                let viewHour = ForecastHoursViewItem.makeItem(collectionView, indexPath, hour)
+                let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(
+                    rawValue: ForecastHoursViewItem.description()), for: indexPath)
+                    as? ForecastHoursViewItem
 
-                log.message("[\(type(of: self))].\(#function)")
+                item?.data = data
 
-                return viewHour
+                return (item) ?? ForecastHoursViewItem()
             }
         }
 
@@ -279,7 +302,7 @@ extension ForecastView: NSCollectionViewDataSource {
     }
 }
 
-// MARK: - NSCollectionViewDelegate
+// MARK: - NSCollectionViewDelegate, SELECTING
 
 extension ForecastView: NSCollectionViewDelegate {
 
@@ -289,8 +312,10 @@ extension ForecastView: NSCollectionViewDelegate {
         log.message("[\(type(of: self))].\(#function)")
 
         if collectionView.identifier == collectionForecastDaysID {
+            viewMeteoGroup.data = nil
             viewForecastHours.reloadData()
-            viewForecastDetails.data = nil
+
+            // self.selectTheFirstForecastHour()
         }
 
         if collectionView.identifier == collectionForecastHoursID {
@@ -308,7 +333,7 @@ extension ForecastView: NSCollectionViewDelegate {
                 hourDetails = day.hours[(hourIndexPaths as NSIndexPath).item]
             }
 
-            viewForecastDetails.data = hourDetails?.getMeteoGroupData()
+            viewMeteoGroup.data = hourDetails?.getMeteoGroupData()
         }
     }
 }

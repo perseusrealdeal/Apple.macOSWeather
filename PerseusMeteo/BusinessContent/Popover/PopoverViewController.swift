@@ -158,6 +158,9 @@ public class PopoverViewController: NSViewController, NSTabViewDelegate {
 
         makeup()
         localize()
+
+        // viewForecast.selectTheFirstForecastDay()
+        // viewForecast.selectTheFirstForecastHour()
     }
 
     // MARK: - Contract
@@ -174,6 +177,28 @@ public class PopoverViewController: NSViewController, NSTabViewDelegate {
             weather.reloadData()
             forecast.reloadData()
 
+            self.actualizeCallingSection()
+        }
+    }
+
+    public func reloadCurrentWeatherData() {
+
+        guard let weather = self.viewCurrentWeather else { return }
+
+        DispatchQueue.main.async {
+
+            weather.reloadData()
+            self.actualizeCallingSection()
+        }
+    }
+
+    public func reloadForecastData() {
+
+        guard let forecast = self.viewForecast else { return }
+
+        DispatchQueue.main.async {
+
+            forecast.reloadData()
             self.actualizeCallingSection()
         }
     }
