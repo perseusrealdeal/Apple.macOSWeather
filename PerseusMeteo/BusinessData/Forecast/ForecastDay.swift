@@ -50,6 +50,14 @@ public struct ForecastDay {
 
     // MARK: - Contract
 
+    public var weatherConditionIconName: String {
+        return date.isEmpty ? "Icon" : "Icon"
+    }
+
+    public var weatherConditionDetails: String {
+        return date.isEmpty ? "xxxx xxxx" : "xxxx xxxx"
+    }
+
     public var dateDayOfTheWeek: String {
         return date.isEmpty ? "dateDayOfTheWeek" : "Xxx"
     }

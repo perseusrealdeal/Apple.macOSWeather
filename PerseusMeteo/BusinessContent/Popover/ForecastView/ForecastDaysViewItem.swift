@@ -40,7 +40,10 @@ class ForecastDaysViewItem: NSCollectionViewItem {
 
     // MARK: - Outlets
 
+    @IBOutlet private(set) weak var viewWeatherConditionIcon: NSImageView!
     @IBOutlet private(set) weak var date: NSTextField!
+
+    @IBOutlet private(set) weak var labelWeatherConditionValue: NSTextField!
 
     @IBOutlet private(set) weak var nightTemperature: NSTextField!
     @IBOutlet private(set) weak var dayTemperature: NSTextField!
@@ -82,17 +85,15 @@ class ForecastDaysViewItem: NSCollectionViewItem {
 
         guard let day = self.data else { return }
 
-        log.message("\(day.dateDayOfTheWeek), \(day.dateDayMonth)")
-        log.message("\(day.nightTemperature), \(day.dayTemperature)")
-
         // textField?.stringValue = day.date
         view.layer?.backgroundColor = NSColor.clear.cgColor
 
         // imageView?.image = NSImage(named: friend.iconName)
         // view.layer?.backgroundColor = NSColor.red.cgColor
 
+        self.viewWeatherConditionIcon?.image = NSImage(named: day.weatherConditionIconName)
         self.date?.stringValue = "\(day.dateDayOfTheWeek), \(day.dateDayMonth)"
-
+        self.labelWeatherConditionValue?.stringValue = day.weatherConditionDetails
         self.nightTemperature?.stringValue = day.nightTemperature
         self.dayTemperature?.stringValue = day.dayTemperature
     }

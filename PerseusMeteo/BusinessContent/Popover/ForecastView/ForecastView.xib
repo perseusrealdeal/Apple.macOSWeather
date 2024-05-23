@@ -52,7 +52,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="110" height="200"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" id="cK2-Zg-pGR">
-                                    <size key="itemSize" width="110" height="40"/>
+                                    <size key="itemSize" width="110" height="50"/>
                                 </collectionViewFlowLayout>
                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </collectionView>
