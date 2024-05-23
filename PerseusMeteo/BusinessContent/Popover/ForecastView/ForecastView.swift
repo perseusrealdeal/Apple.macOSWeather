@@ -257,6 +257,7 @@ extension ForecastView: NSCollectionViewDataSource {
             // The day data.
 
             let data = dataSource.forecastDays[(indexPath as NSIndexPath).item]
+            log.message("\((indexPath as NSIndexPath).item) - \(dataSource.forecastDays.count)")
 
             // The view for the day.
 
@@ -288,7 +289,8 @@ extension ForecastView: NSCollectionViewDataSource {
 
                 // The new view for the hour of the day.
 
-                let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(
+                let item = collectionView.makeItem(withIdentifier:
+                    NSUserInterfaceItemIdentifier(
                     rawValue: ForecastHoursViewItem.description()), for: indexPath)
                     as? ForecastHoursViewItem
 

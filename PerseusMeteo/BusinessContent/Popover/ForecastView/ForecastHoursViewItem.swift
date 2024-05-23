@@ -19,18 +19,6 @@ class ForecastHoursViewItem: NSCollectionViewItem {
 
     // MARK: - Internals
 
-    public class func makeItem(_ collection: NSCollectionView,
-                               _ index: IndexPath,
-                               _ data: ForecastHour) -> ForecastHoursViewItem {
-
-        let item = collection.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(
-            rawValue: "\(self)"), for: index) as? ForecastHoursViewItem
-
-        item?.data = data
-
-        return (item) ?? ForecastHoursViewItem()
-    }
-
     override var isSelected: Bool {
         didSet {
             super.isSelected = isSelected

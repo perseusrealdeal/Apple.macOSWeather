@@ -187,7 +187,7 @@ public class MeteoClientManager {
                                              units: .imperial,
                                              lang: .init(rawValue: lang),
                                              mode: .json)
-        callDetails.cnt = 1
+        callDetails.cnt = 40
 
         log.message(callDetails.urlString)
 

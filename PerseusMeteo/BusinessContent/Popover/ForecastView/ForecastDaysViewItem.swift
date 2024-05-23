@@ -96,5 +96,4 @@ class ForecastDaysViewItem: NSCollectionViewItem {
         self.nightTemperature?.stringValue = day.nightTemperature
         self.dayTemperature?.stringValue = day.dayTemperature
     }
-
 }

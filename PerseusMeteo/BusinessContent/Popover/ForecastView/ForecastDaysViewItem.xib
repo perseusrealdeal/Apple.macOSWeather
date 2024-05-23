@@ -8,6 +8,9 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ForecastDaysViewItem" customModule="Snowman" customModuleProvider="target">
             <connections>
+                <outlet property="date" destination="s8f-Ug-kfR" id="hXB-iJ-ash"/>
+                <outlet property="dayTemperature" destination="2sa-qX-qWf" id="REA-WS-QIT"/>
+                <outlet property="nightTemperature" destination="gvT-0f-XvS" id="7He-9E-erF"/>
                 <outlet property="view" destination="c22-O7-iKe" id="GOK-h3-0W7"/>
             </connections>
         </customObject>
@@ -57,9 +60,6 @@
         </customView>
         <customObject id="jCB-aO-bPE" customClass="ForecastDaysViewItem" customModule="Snowman" customModuleProvider="target">
             <connections>
-                <outlet property="date" destination="s8f-Ug-kfR" id="cE2-4L-dPv"/>
-                <outlet property="dayTemperature" destination="2sa-qX-qWf" id="R3U-0o-FQa"/>
-                <outlet property="nightTemperature" destination="gvT-0f-XvS" id="Hzm-7D-TI4"/>
                 <outlet property="view" destination="c22-O7-iKe" id="Ej9-j7-lcb"/>
             </connections>
         </customObject>
