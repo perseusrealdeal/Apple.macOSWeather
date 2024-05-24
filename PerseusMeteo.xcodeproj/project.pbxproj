@@ -391,9 +391,9 @@
 		4B5F7D422BB6980600121946 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				4B5F7D472BBBDAE800121946 /* MeteoGroupData.swift */,
-				4B5F7D432BB6984D00121946 /* MeteoGroupView.swift */,
 				4B5F7D452BB6986B00121946 /* MeteoGroupView.xib */,
+				4B5F7D432BB6984D00121946 /* MeteoGroupView.swift */,
+				4B5F7D472BBBDAE800121946 /* MeteoGroupData.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -529,8 +529,8 @@
 		4BB204662B7536BA007E0308 /* LocationView */ = {
 			isa = PBXGroup;
 			children = (
-				4B993DC42B380EF9008C1FE7 /* LocationView.swift */,
 				4B993DCA2B38170E008C1FE7 /* LocationView.xib */,
+				4B993DC42B380EF9008C1FE7 /* LocationView.swift */,
 			);
 			path = LocationView;
 			sourceTree = "<group>";
@@ -538,8 +538,8 @@
 		4BB204672B7536D0007E0308 /* WeatherView */ = {
 			isa = PBXGroup;
 			children = (
-				4B993DC82B380FDD008C1FE7 /* WeatherView.swift */,
 				4B993DCC2B383AA2008C1FE7 /* WeatherView.xib */,
+				4B993DC82B380FDD008C1FE7 /* WeatherView.swift */,
 			);
 			path = WeatherView;
 			sourceTree = "<group>";

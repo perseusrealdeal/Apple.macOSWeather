@@ -66,6 +66,8 @@ public struct ForecastHour {
 
     // MARK: - Init
 
+    public var label: String // For debug purpose
+
     init(title: String) {
         self.label = title
     }
@@ -73,31 +75,28 @@ public struct ForecastHour {
     init(source: [String: Any], timezone: Int, title: String = "") {
         self.init(title: title)
 
-        // Data source
         self.source = source
         self.timezone = timezone
     }
 
     // MARK: - Contract
 
-    public let label: String
-
     // MARK: - Time of Hour
 
     public var time: String {
-        return "NN:NN AM"
+        return MeteoFactsDefaults.sunrizesunset // "NN:NN AM"
     }
 
     // MARK: - Temperature
 
     public var temperature: String {
-        return "NNN.NN K"
+        return MeteoFactsDefaults.temperature // "nnn.nn K"
     }
 
     // MARK: - Incoming Precipitation
 
     public var incomingPrecipitation: String {
-        return "light snow"
+        return "xxxx xxxx"
     }
 
     // MARK: - Humidity

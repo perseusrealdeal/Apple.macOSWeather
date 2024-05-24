@@ -20,13 +20,8 @@ import Cocoa
 @IBDesignable
 class ForecastView: NSView {
 
-    // MARK: - Internals
-
-    private let collectionForecastDaysID =
-        NSUserInterfaceItemIdentifier(rawValue: "ForecastDays")
-
-    private let collectionForecastHoursID =
-        NSUserInterfaceItemIdentifier(rawValue: "ForecastHours")
+    private let daysID = NSUserInterfaceItemIdentifier(rawValue: "ForecastDays")
+    private let hoursID = NSUserInterfaceItemIdentifier(rawValue: "ForecastHours")
 
     // MARK: - View Data Source
 
@@ -80,8 +75,8 @@ class ForecastView: NSView {
 
         progressIndicator = false
 
-        self.viewForecastDays.identifier = collectionForecastDaysID
-        self.viewForecastHours.identifier = collectionForecastHoursID
+        self.viewForecastDays.identifier = daysID
+        self.viewForecastHours.identifier = hoursID
 
         self.viewForecastDays.dataSource = self
         self.viewForecastHours.dataSource = self
@@ -218,6 +213,8 @@ class ForecastView: NSView {
 
 extension ForecastView: NSCollectionViewDataSource {
 
+    // MARK: - Count of Items
+
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection
         section: Int) -> Int {
 
@@ -225,13 +222,13 @@ extension ForecastView: NSCollectionViewDataSource {
 
         // Amount of items in the Forecast Days collection.
 
-        if collectionView.identifier == collectionForecastDaysID {
+        if collectionView.identifier == daysID {
             return dataSource.forecastDays.count
         }
 
         // Amount of items in the Forecast Hours collection of the day selected.
 
-        if collectionView.identifier == collectionForecastHoursID,
+        if collectionView.identifier == hoursID,
             dataSource.forecastDays.isEmpty == false {
 
             if
@@ -247,17 +244,23 @@ extension ForecastView: NSCollectionViewDataSource {
         return 0
     }
 
+    // MARK: - Create a new Item
+
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt
         indexPath: IndexPath) -> NSCollectionViewItem {
 
         // Create a new Forecast Day item
 
-        if collectionView.identifier == collectionForecastDaysID {
+        if collectionView.identifier == daysID {
 
             // The day data.
 
-            let data = dataSource.forecastDays[(indexPath as NSIndexPath).item]
-            log.message("\((indexPath as NSIndexPath).item) - \(dataSource.forecastDays.count)")
+            let index = (indexPath as NSIndexPath).item
+            var data = dataSource.forecastDays[index]
+
+            log.message("day \(index) : \(dataSource.forecastDays.count)", .info)
+
+            data.label = "\(index)"
 
             // The view for the day.
 
@@ -272,7 +275,7 @@ extension ForecastView: NSCollectionViewDataSource {
 
         // Create a new Forecast Hour item
 
-        if collectionView.identifier == collectionForecastHoursID,
+        if collectionView.identifier == hoursID,
             dataSource.forecastDays.isEmpty == false {
 
             if
@@ -285,7 +288,12 @@ extension ForecastView: NSCollectionViewDataSource {
 
                 // The hour of the day data.
 
-                let data = day.hours[(indexPath as NSIndexPath).item]
+                let index = (indexPath as NSIndexPath).item
+                var data = day.hours[index]
+
+                log.message("hour \(index) : \(dataSource.forecastDays.count)", .info)
+
+                data.label = "\(index)"
 
                 // The new view for the hour of the day.
 
@@ -313,14 +321,14 @@ extension ForecastView: NSCollectionViewDelegate {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        if collectionView.identifier == collectionForecastDaysID {
+        if collectionView.identifier == daysID {
             viewMeteoGroup.data = nil
             viewForecastHours.reloadData()
 
             // self.selectTheFirstForecastHour()
         }
 
-        if collectionView.identifier == collectionForecastHoursID {
+        if collectionView.identifier == hoursID {
 
             var hourDetails: ForecastHour?
 

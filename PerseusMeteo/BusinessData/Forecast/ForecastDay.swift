@@ -43,10 +43,19 @@ import Foundation
 
 public struct ForecastDay {
 
+    public var label: String = "" // For debug purpose
+
     // MARK: - Data
 
     public let date: String // Formate: YYYY-MM-DD, it's uniq calculated value
     public let hours: [ForecastHour]
+
+    // MARK: - Init
+
+    init(date: String, hours: [ForecastHour]) {
+        self.date = date
+        self.hours = hours
+    }
 
     // MARK: - Contract
 
@@ -67,10 +76,10 @@ public struct ForecastDay {
     }
 
     public var nightTemperature: String {
-        return "NNN.NN K"
+        return MeteoFactsDefaults.temperature // "nnn.nn K"
     }
 
     public var dayTemperature: String {
-        return "NNN.NN K"
+        return MeteoFactsDefaults.temperature // "nnn.nn K"
     }
 }

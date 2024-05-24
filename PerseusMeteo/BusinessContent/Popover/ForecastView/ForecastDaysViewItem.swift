@@ -19,6 +19,8 @@ class ForecastDaysViewItem: NSCollectionViewItem {
 
     // MARK: - Internals
 
+    let darkModeObserver = DarkModeObserver()
+
     override var isSelected: Bool {
         didSet {
             super.isSelected = isSelected
@@ -35,8 +37,6 @@ class ForecastDaysViewItem: NSCollectionViewItem {
             reload()
         }
     }
-
-    let darkModeObserver = DarkModeObserver()
 
     // MARK: - Outlets
 
@@ -81,9 +81,9 @@ class ForecastDaysViewItem: NSCollectionViewItem {
 
     private func reload() {
 
-        log.message("[\(type(of: self))].\(#function)")
-
         guard let day = self.data else { return }
+
+        log.message("[\(type(of: self))].\(#function) day \(day.label)")
 
         // textField?.stringValue = day.date
         view.layer?.backgroundColor = NSColor.clear.cgColor
@@ -92,8 +92,10 @@ class ForecastDaysViewItem: NSCollectionViewItem {
         // view.layer?.backgroundColor = NSColor.red.cgColor
 
         self.viewWeatherConditionIcon?.image = NSImage(named: day.weatherConditionIconName)
-        self.date?.stringValue = "\(day.dateDayOfTheWeek), \(day.dateDayMonth)"
         self.labelWeatherConditionValue?.stringValue = day.weatherConditionDetails
+
+        self.date?.stringValue = "\(day.dateDayOfTheWeek), \(day.dateDayMonth)"
+
         self.nightTemperature?.stringValue = day.nightTemperature
         self.dayTemperature?.stringValue = day.dayTemperature
     }

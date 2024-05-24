@@ -53,8 +53,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1ak-U7-0E6">
-                    <rect key="frame" x="60" y="142" width="268" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" alignment="center" title="Shortly: light snow" id="kM7-Hj-qbW">
+                    <rect key="frame" x="73" y="142" width="255" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" alignment="left" title="Shortly: light snow" id="kM7-Hj-qbW">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -142,7 +142,7 @@
                 <constraint firstItem="VsY-cE-BC8" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="5" id="KFY-kc-lxl"/>
                 <constraint firstItem="GQy-nj-ciG" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="80" id="MjB-bp-ZCa"/>
                 <constraint firstItem="VsY-cE-BC8" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="10" id="O9F-gC-Q15"/>
-                <constraint firstItem="1ak-U7-0E6" firstAttribute="leading" secondItem="7ou-eL-RIc" secondAttribute="trailing" constant="2" id="OXV-mV-jKd"/>
+                <constraint firstItem="1ak-U7-0E6" firstAttribute="leading" secondItem="7ou-eL-RIc" secondAttribute="trailing" constant="15" id="OXV-mV-jKd"/>
                 <constraint firstItem="qBw-SP-YLr" firstAttribute="top" secondItem="vWh-dP-4Gl" secondAttribute="bottom" id="QxE-4u-nbQ"/>
                 <constraint firstAttribute="trailing" secondItem="1ak-U7-0E6" secondAttribute="trailing" id="VkU-J9-mSU"/>
                 <constraint firstItem="1ak-U7-0E6" firstAttribute="centerY" secondItem="7ou-eL-RIc" secondAttribute="centerY" constant="20" id="a4k-CN-GgL"/>

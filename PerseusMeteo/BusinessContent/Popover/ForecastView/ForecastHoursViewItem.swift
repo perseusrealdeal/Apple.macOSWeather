@@ -19,6 +19,8 @@ class ForecastHoursViewItem: NSCollectionViewItem {
 
     // MARK: - Internals
 
+    let darkModeObserver = DarkModeObserver()
+
     override var isSelected: Bool {
         didSet {
             super.isSelected = isSelected
@@ -35,8 +37,6 @@ class ForecastHoursViewItem: NSCollectionViewItem {
             reload()
         }
     }
-
-    let darkModeObserver = DarkModeObserver()
 
     // MARK: - Outlets
 
@@ -75,6 +75,8 @@ class ForecastHoursViewItem: NSCollectionViewItem {
     private func reload() {
 
         guard let hour = self.data else { return }
+
+        log.message("[\(type(of: self))].\(#function) hour \(hour.label)")
 
         // textField?.stringValue = hour.label
         // view.layer?.backgroundColor = NSColor.clear.cgColor
