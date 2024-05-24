@@ -58,7 +58,7 @@
         </customView>
         <customObject id="aZw-V7-ZEl" customClass="ForecastHoursViewItem" customModule="Snowman" customModuleProvider="target">
             <connections>
-                <outlet property="view" destination="c22-O7-iKe" id="5Iy-f8-Hd9"/>
+                <outlet property="sourceItemView" destination="c22-O7-iKe" id="KPu-aT-CCe"/>
             </connections>
         </customObject>
     </objects>
