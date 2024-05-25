@@ -114,6 +114,14 @@
 	<string></string>
 	<key>Prefix: Last One</key>
 	<string>Last One</string>
+	<key>/* Forecast View */</key>
+	<string>--</string>
+	<key>Label: Conditions</key>
+	<string>Conditions</string>
+	<key>Label: Weekday short</key>
+	<string>Day</string>
+	<key>Label: Forecast Date</key>
+	<string>Date</string>
 	<key>/* Options Screen */</key>
 	<string>--</string>
 	<key>Title: Options Screen</key>

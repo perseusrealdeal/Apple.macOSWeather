@@ -61,12 +61,14 @@ import Foundation
 
 public struct ForecastHour {
 
+    public var label: String // For debug purpose
+
+    // MARK: - Data
+
     private var source = [String: Any]()
     private var timezone = 0
 
     // MARK: - Init
-
-    public var label: String // For debug purpose
 
     init(title: String) {
         self.label = title
@@ -84,45 +86,47 @@ public struct ForecastHour {
     // MARK: - Time of Hour
 
     public var time: String {
-        return MeteoFactsDefaults.sunrizesunset // "NN:NN AM"
+
+        let time = getTime()
+
+        return time.isEmpty ? MeteoFactsDefaults.sunrizesunset : time
     }
 
     // MARK: - Temperature
 
     public var temperature: String {
-        return MeteoFactsDefaults.temperature // "nnn.nn K"
+
+        let temperature = getTemperature()
+
+        return temperature.isEmpty ? MeteoFactsDefaults.temperature : temperature
     }
 
     // MARK: - Incoming Precipitation
 
-    public var incomingPrecipitation: String {
-        return "xxxx xxxx"
+    public var weatherConditions: String {
+
+        let conditions = getConditions()
+
+        return conditions.isEmpty ? MeteoFactsDefaults.conditions : conditions
     }
 
-    // MARK: - Humidity
-
-    public var humidity: String {
-
-        if source.isEmpty { return MeteoFactsDefaults.humidity }
-
-        var parameter: Int = -1
-
-        if let main = source["main"] as? [String: Any] {
-            if let value = main["humidity"] as? Int {
-
-                parameter = value
-
-            } else {
-                log.message("[\(type(of: self))].\(#function) Humidity wrong.", .error)
-            }
-        } else {
-            log.message("[\(type(of: self))].\(#function) Main wrong.", .error)
-        }
-
-        return parameter == -1 ? MeteoFactsDefaults.humidity : "\(parameter) %"
-    }
+    // MARK: - Public calculations
 
     public func getMeteoGroupData() -> MeteoGroupData {
         return MeteoGroupData()
+    }
+
+    // MARK: - Realization
+
+    private func getTime() -> String {
+        return ""
+    }
+
+    private func getTemperature() -> String {
+        return ""
+    }
+
+    private func getConditions() -> String {
+        return ""
     }
 }

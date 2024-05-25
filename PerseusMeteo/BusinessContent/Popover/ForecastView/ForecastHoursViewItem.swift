@@ -85,6 +85,6 @@ class ForecastHoursViewItem: NSCollectionViewItem {
 
         self.time?.stringValue = hour.time
         self.temperature?.stringValue = hour.temperature
-        self.incomingPrecipitation?.stringValue = hour.incomingPrecipitation
+        self.incomingPrecipitation?.stringValue = hour.weatherConditions
     }
 }

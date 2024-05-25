@@ -92,7 +92,7 @@ class ForecastDaysViewItem: NSCollectionViewItem {
         // view.layer?.backgroundColor = NSColor.red.cgColor
 
         self.viewWeatherConditionIcon?.image = NSImage(named: day.weatherConditionIconName)
-        self.labelWeatherConditionValue?.stringValue = day.weatherConditionDetails
+        self.labelWeatherConditionValue?.stringValue = day.weatherConditions
 
         self.date?.stringValue = "\(day.dateDayOfTheWeek), \(day.dateDayMonth)"
 

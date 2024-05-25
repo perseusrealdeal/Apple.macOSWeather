@@ -60,26 +60,70 @@ public struct ForecastDay {
     // MARK: - Contract
 
     public var weatherConditionIconName: String {
-        return date.isEmpty ? "Icon" : "Icon"
+
+        let iconName = getIconName()
+
+        return iconName.isEmpty ? "Icon" : iconName
     }
 
-    public var weatherConditionDetails: String {
-        return date.isEmpty ? "xxxx xxxx" : "xxxx xxxx"
+    public var weatherConditions: String {
+
+        let conditions = getConditions()
+
+        return conditions.isEmpty ? MeteoFactsDefaults.conditions : conditions
     }
 
     public var dateDayOfTheWeek: String {
-        return date.isEmpty ? "dateDayOfTheWeek" : "Xxx"
+
+        let weekday = getWeekday()
+
+        return weekday.isEmpty ? MeteoFactsDefaults.weekday : weekday
     }
 
     public var dateDayMonth: String {
-        return date.isEmpty ? "dateDayMonth" : "NN xxx"
+
+        let forecastDate = getForecastDate()
+
+        return forecastDate.isEmpty ? MeteoFactsDefaults.forecastDate : forecastDate
     }
 
     public var nightTemperature: String {
-        return MeteoFactsDefaults.temperature // "nnn.nn K"
+
+        let temperature = getNightTemperature()
+
+        return temperature.isEmpty ? MeteoFactsDefaults.temperature : temperature
     }
 
     public var dayTemperature: String {
-        return MeteoFactsDefaults.temperature // "nnn.nn K"
+
+        let temperature = getDayTemperature()
+
+        return temperature.isEmpty ? MeteoFactsDefaults.temperature : temperature
+    }
+
+    // MARK: - Realization
+
+    private func getIconName() -> String {
+        return ""
+    }
+
+    private func getConditions() -> String {
+        return ""
+    }
+
+    private func getWeekday() -> String {
+        return ""
+    }
+
+    private func getForecastDate() -> String {
+        return ""
+    }
+
+    private func getNightTemperature() -> String {
+        return ""
+    }
+
+    private func getDayTemperature() -> String {
+        return ""
     }
 }

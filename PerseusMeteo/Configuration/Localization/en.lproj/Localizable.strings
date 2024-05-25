@@ -97,6 +97,9 @@
 /* Forecast View */
 
 "Label: Info" = "This tab in release 0.3 developing.";
+"Label: Conditions" = "Conditions";
+"Label: Weekday short" = "Day";
+"Label: Forecast Date" = "Date";
 
 /* Options Screen – OptionsWindowController, OptionsViewController */
 

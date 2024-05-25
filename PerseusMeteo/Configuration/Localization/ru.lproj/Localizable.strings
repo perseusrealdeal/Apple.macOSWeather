@@ -97,6 +97,9 @@
 /* Forecast View */
 
 "Label: Info" = "Секция в разработке выпуска версии 0.3.";
+"Label: Conditions" = "Условия";
+"Label: Weekday short" = "День";
+"Label: Forecast Date" = "Дата";
 
 /* Options Screen – OptionsWindowController, OptionsViewController */
 

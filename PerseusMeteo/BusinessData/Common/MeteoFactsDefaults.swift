@@ -73,6 +73,18 @@ public struct MeteoFactsDefaults {
         return template
     }
 
+    public static var conditions: String {
+        return "Label: Conditions".localizedValue
+    }
+
+    public static var weekday: String {
+        return "Label: Weekday short".localizedValue
+    }
+
+    public static var forecastDate: String {
+        return "Label: Forecast Date".localizedValue
+    }
+
     // MARK: - Private Properties
 
     private static var temperatureCurrentFormat: String {

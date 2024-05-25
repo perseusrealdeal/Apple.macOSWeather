@@ -114,6 +114,14 @@
 	<string> г.</string>
 	<key>Prefix: Last One</key>
 	<string>Расчет от</string>
+	<key>/* Forecast View */</key>
+	<string>--</string>
+	<key>Label: Conditions</key>
+	<string>Условия</string>
+	<key>Label: Weekday short</key>
+	<string>День</string>
+	<key>Label: Forecast Date</key>
+	<string>Дата</string>
 	<key>/* Options Screen */</key>
 	<string>--</string>
 	<key>Title: Options Screen</key>
