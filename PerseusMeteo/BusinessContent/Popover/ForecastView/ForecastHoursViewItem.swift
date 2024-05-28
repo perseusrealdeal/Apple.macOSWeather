@@ -68,8 +68,9 @@ class ForecastHoursViewItem: NSCollectionViewItem {
     }
 
     private func makeup() {
-
-        view.layer?.backgroundColor = isSelected ? NSColor.red.cgColor : NSColor.clear.cgColor
+        /*
+         view.layer?.backgroundColor = isSelected ? NSColor.red.cgColor : NSColor.clear.cgColor
+         */
     }
 
     private func reload() {
@@ -81,7 +82,9 @@ class ForecastHoursViewItem: NSCollectionViewItem {
         // textField?.stringValue = hour.label
         // view.layer?.backgroundColor = NSColor.clear.cgColor
 
+        /*
         view.layer?.backgroundColor = isSelected ? NSColor.red.cgColor : NSColor.clear.cgColor
+         */
 
         self.time?.stringValue = hour.time
         self.temperature?.stringValue = hour.temperature

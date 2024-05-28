@@ -159,7 +159,11 @@ public class PopoverViewController: NSViewController, NSTabViewDelegate {
         makeup()
         localize()
 
-        // viewForecast.selectTheFirstForecastDay()
+        // Forecast items selected by default.
+
+        viewForecast.selectTheFirstForecastDay()
+
+        // Locks hours collection scrolling, it's an issue
         // viewForecast.selectTheFirstForecastHour()
     }
 
@@ -172,35 +176,29 @@ public class PopoverViewController: NSViewController, NSTabViewDelegate {
             let forecast = self.viewForecast
         else { return }
 
-        DispatchQueue.main.async {
+        weather.reloadData()
+        forecast.reloadData(saveSelection: true)
 
-            weather.reloadData()
-            forecast.reloadData()
-
-            self.actualizeCallingSection()
-        }
+        self.actualizeCallingSection()
     }
 
     public func reloadCurrentWeatherData() {
 
         guard let weather = self.viewCurrentWeather else { return }
 
-        DispatchQueue.main.async {
-
-            weather.reloadData()
-            self.actualizeCallingSection()
-        }
+        weather.reloadData()
+        self.actualizeCallingSection()
     }
 
     public func reloadForecastData() {
 
         guard let forecast = self.viewForecast else { return }
 
-        DispatchQueue.main.async {
+        forecast.reloadData(saveSelection: false)
+        self.actualizeCallingSection()
 
-            forecast.reloadData()
-            self.actualizeCallingSection()
-        }
+        self.viewForecast.selectTheFirstForecastDay()
+        self.viewForecast.selectTheFirstForecastHour()
     }
 
     public func startAnimationProgressIndicator(_ section: MeteoCategory,

@@ -145,14 +145,14 @@ class ForecastView: NSView {
 
     // MARK: - Contract
 
-    public func reloadData() {
+    public func reloadData(saveSelection: Bool) {
 
         log.message("[\(type(of: self))].\(#function)")
 
         // dataSource.refresh()
 
-        reloadDaysCollection()
-        reloadHoursCollection()
+        reloadDaysCollection(selectionSaved: saveSelection)
+        reloadHoursCollection(selectionSaved: saveSelection)
 
         // Meteo Data Provider.
 
@@ -162,6 +162,8 @@ class ForecastView: NSView {
 
     public func selectTheFirstForecastDay() {
 
+        log.message("[\(type(of: self))].\(#function)")
+
         let indexPath = IndexPath(item: 0, section: 0)
         let indexes: Set<IndexPath> = [indexPath]
 
@@ -170,25 +172,40 @@ class ForecastView: NSView {
 
     public func selectTheFirstForecastHour() {
 
+        log.message("[\(type(of: self))].\(#function)")
+
         let indexPath = IndexPath(item: 0, section: 0)
         let indexes: Set<IndexPath> = [indexPath]
 
         viewForecastHours.selectItems(at: indexes, scrollPosition: .left)
+
+        if !dataSource.forecastDays.isEmpty {
+            log.message("[\(type(of: self))].\(#function) forecastDays not empty")
+
+            if !dataSource.forecastDays[0].hours.isEmpty {
+                log.message("[\(type(of: self))].\(#function) hours not empty")
+
+                viewMeteoGroup.data = dataSource.forecastDays[0].hours[0].getMeteoGroupData()
+            }
+        }
     }
 
     // MARK: - Realization
 
-    private func reloadDaysCollection() {
+    private func reloadDaysCollection(selectionSaved: Bool) {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        // let paths = viewForecastDays.selectionIndexPaths
+        let paths = viewForecastDays.selectionIndexPaths
 
         viewForecastDays.reloadData()
-        // viewForecastDays.selectItems(at: paths, scrollPosition: .nearestHorizontalEdge)
+
+        if selectionSaved {
+            viewForecastDays.selectItems(at: paths, scrollPosition: .nearestHorizontalEdge)
+        }
     }
 
-    private func reloadHoursCollection() {
+    private func reloadHoursCollection(selectionSaved: Bool) {
 
         log.message("[\(type(of: self))].\(#function)")
 
@@ -200,10 +217,13 @@ class ForecastView: NSView {
             return
         }
 
-        // let paths = viewForecastHours.selectionIndexPaths
+        let paths = viewForecastHours.selectionIndexPaths
 
         viewForecastHours.reloadData()
-        // viewForecastHours.selectItems(at: paths, scrollPosition: .nearestHorizontalEdge)
+
+        if selectionSaved {
+            viewForecastHours.selectItems(at: paths, scrollPosition: .nearestVerticalEdge)
+        }
 
         viewMeteoGroup.reload()
     }
@@ -325,7 +345,7 @@ extension ForecastView: NSCollectionViewDelegate {
             viewMeteoGroup.data = nil
             viewForecastHours.reloadData()
 
-            // self.selectTheFirstForecastHour()
+            self.selectTheFirstForecastHour()
         }
 
         if collectionView.identifier == hoursID {
@@ -366,6 +386,6 @@ extension ForecastView {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        reloadData()
+        reloadData(saveSelection: true)
     }
 }
