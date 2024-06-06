@@ -10,6 +10,8 @@
 	<string>Гео сведения (широта и долгота) обязательны для получения метео данных.</string>
 	<key>Copyright</key>
 	<string>Охраняется авторским правом © 2023 - 2024 Михаил A. Жигулин из Новосибирска.</string>
+	<key>Default: N/A</key>
+	<string>нет</string>
 	<key>/* Popover Screen */</key>
 	<string>--</string>
 	<key>Button: Call Weather</key>

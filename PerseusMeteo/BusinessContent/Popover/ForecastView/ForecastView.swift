@@ -145,7 +145,7 @@ class ForecastView: NSView {
 
     // MARK: - Contract
 
-    public func reloadData(saveSelection: Bool) {
+    public func reloadData(saveSelection: Bool = false) {
 
         log.message("[\(type(of: self))].\(#function)")
 

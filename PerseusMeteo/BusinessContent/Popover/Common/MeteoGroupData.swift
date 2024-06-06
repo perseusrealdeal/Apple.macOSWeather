@@ -27,13 +27,13 @@ public struct MeteoGroupData {
     public var title8: String = "-- / --"
     public var title9: String = "-- / --"
 
-    public var value1: String = "N/A"
-    public var value2: String = "N/A"
-    public var value3: String = "N/A"
-    public var value4: String = "N/A"
-    public var value5: String = "N/A"
-    public var value6: String = "N/A"
-    public var value7: String = "N/A"
-    public var value8: String = "N/A"
-    public var value9: String = "N/A"
+    public var value1: String = "Default: N/A".localizedValue
+    public var value2: String = "Default: N/A".localizedValue
+    public var value3: String = "Default: N/A".localizedValue
+    public var value4: String = "Default: N/A".localizedValue
+    public var value5: String = "Default: N/A".localizedValue
+    public var value6: String = "Default: N/A".localizedValue
+    public var value7: String = "Default: N/A".localizedValue
+    public var value8: String = "Default: N/A".localizedValue
+    public var value9: String = "Default: N/A".localizedValue
 }

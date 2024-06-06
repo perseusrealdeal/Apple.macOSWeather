@@ -10,6 +10,8 @@
 	<string>Geo information—latitude and longitude—is required to fetch meteo facts.</string>
 	<key>Copyright</key>
 	<string>Copyright © 2023 - 2024 Mikhail Zhigulin of Novosibirsk. All rights reserved.</string>
+	<key>Default: N/A</key>
+	<string>N/A</string>
 	<key>/* Popover Screen */</key>
 	<string>--</string>
 	<key>Button: Call Weather</key>

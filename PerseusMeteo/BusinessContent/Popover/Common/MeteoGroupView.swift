@@ -107,24 +107,31 @@ class MeteoGroupView: NSView {
 
     func reload() {
 
-        self.title1.stringValue = data?.title1 ?? "Title 1"
-        self.title2.stringValue = data?.title2 ?? "Title 2"
-        self.title3.stringValue = data?.title3 ?? "Title 3"
-        self.title4.stringValue = data?.title4 ?? "Title 4"
-        self.title5.stringValue = data?.title5 ?? "Title 5"
-        self.title6.stringValue = data?.title6 ?? "Title 6"
-        self.title7.stringValue = data?.title7 ?? "Title 7"
-        self.title8.stringValue = data?.title8 ?? "Title 8"
-        self.title9.stringValue = data?.title9 ?? "Title 9"
+        self.title1.stringValue = data?.title1 ?? "/- 1 -/"
+        self.value1.stringValue = data?.value1 ?? "/- 1 -/"
 
-        self.value1.stringValue = data?.value1 ?? "Value 1"
-        self.value2.stringValue = data?.value2 ?? "Value 2"
-        self.value3.stringValue = data?.value3 ?? "Value 3"
-        self.value4.stringValue = data?.value4 ?? "Value 4"
-        self.value5.stringValue = data?.value5 ?? "Value 5"
-        self.value6.stringValue = data?.value6 ?? "Value 6"
-        self.value7.stringValue = data?.value7 ?? "Value 7"
-        self.value8.stringValue = data?.value8 ?? "Value 8"
-        self.value9.stringValue = data?.value9 ?? "Value 9"
+        self.title2.stringValue = data?.title2 ?? "/- 2 -/"
+        self.value2.stringValue = data?.value2 ?? "/- 2 -/"
+
+        self.title3.stringValue = data?.title3 ?? "/- 3 -/"
+        self.value3.stringValue = data?.value3 ?? "/- 3 -/"
+
+        self.title4.stringValue = data?.title4 ?? "/- 4 -/"
+        self.value4.stringValue = data?.value4 ?? "/- 4 -/"
+
+        self.title5.stringValue = data?.title5 ?? "/- 5 -/"
+        self.value5.stringValue = data?.value5 ?? "/- 5 -/"
+
+        self.title6.stringValue = data?.title6 ?? "/- 6 -/"
+        self.value6.stringValue = data?.value6 ?? "/- 6 -/"
+
+        self.title7.stringValue = data?.title7 ?? "/- 7 -/"
+        self.value7.stringValue = data?.value7 ?? "/- 7 -/"
+
+        self.title8.stringValue = data?.title8 ?? "/- 8 -/"
+        self.value8.stringValue = data?.value8 ?? "/- 8 -/"
+
+        self.title9.stringValue = data?.title9 ?? "/- 9 -/"
+        self.value9.stringValue = data?.value9 ?? "/- 9 -/"
     }
 }

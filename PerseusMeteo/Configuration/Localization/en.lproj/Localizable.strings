@@ -16,6 +16,8 @@
 "Product Name" = "Snowman";
 "Greetings" = "Hello world!";
 
+"Default: N/A" = "N/A";
+
 /* Popover Screen – PopoverViewController */
 
 "Button: Call Weather" = "Call Weather";

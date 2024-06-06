@@ -16,6 +16,8 @@
 "Product Name" = "Cнеговик";
 "Greetings" = "Рады приветствовать!";
 
+"Default: N/A" = "нет";
+
 /* Popover Screen – PopoverViewController */
 
 "Button: Call Weather" = "Запроси Погоду";
