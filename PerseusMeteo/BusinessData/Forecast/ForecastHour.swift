@@ -113,7 +113,50 @@ public struct ForecastHour {
     // MARK: - Public calculations
 
     public func getMeteoGroupData() -> MeteoGroupData {
-        return MeteoGroupData()
+
+        // Setup titles
+
+        var meteogroup = MeteoGroupData()
+
+        let titleMinMax = "Prefix: Min".localizedValue + ", " + "Prefix: Max".localizedValue
+    // let valueMinMax = "\(dataSource.temperatureMinimum) : \(dataSource.temperatureMaximum)"
+
+        // Array 1
+
+        meteogroup.title3 = titleMinMax
+        // meteogroup.value3 = valueMinMax
+
+        meteogroup.title1 = "Prefix: Feels Like".localizedValue
+        // meteogroup.value1 = dataSource.temperatureFeelsLike
+
+        meteogroup.title2 = "Prefix: Visibility".localizedValue
+        // meteogroup.value2 = dataSource.visibility
+
+        // Array 2
+
+        meteogroup.title6 = "Label: Speed".localizedValue
+        // meteogroup.value6 = dataSource.windSpeed
+
+        meteogroup.title4 = "Label: Direction".localizedValue
+        // meteogroup.value4 = dataSource.windDirection
+
+        meteogroup.title5 = "Label: Gust".localizedValue
+        // meteogroup.value5 = dataSource.windGusts
+
+        // Array 3
+
+        meteogroup.title9 = "Label: Pressure".localizedValue
+        // meteogroup.value9 = dataSource.pressure
+
+        meteogroup.title7 = "Prefix: Humidity".localizedValue
+        // meteogroup.value7 = dataSource.humidity
+
+        // TODO: - Add cloudiness
+
+        // meteogroup.title8 = "Prefix: Cloudiness".localizedValue
+        // meteogroup.value8 = dataSource.cloudiness
+
+        return meteogroup
     }
 
     // MARK: - Realization

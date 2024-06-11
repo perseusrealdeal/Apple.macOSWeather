@@ -105,6 +105,38 @@ class MeteoGroupView: NSView {
         self.addConstraints(newConstraints)
     }
 
+    func applyCompactFonts() {
+
+        let fontSize: CGFloat = 10
+
+        title1.font = NSFont.boldSystemFont(ofSize: fontSize)
+        value1.font = NSFont.systemFont(ofSize: fontSize)
+
+        title2.font = NSFont.boldSystemFont(ofSize: fontSize)
+        value2.font = NSFont.systemFont(ofSize: fontSize)
+
+        title3.font = NSFont.boldSystemFont(ofSize: fontSize)
+        value3.font = NSFont.systemFont(ofSize: fontSize)
+
+        title4.font = NSFont.boldSystemFont(ofSize: fontSize)
+        value4.font = NSFont.systemFont(ofSize: fontSize)
+
+        title5.font = NSFont.boldSystemFont(ofSize: fontSize)
+        value5.font = NSFont.systemFont(ofSize: fontSize)
+
+        title6.font = NSFont.boldSystemFont(ofSize: fontSize)
+        value6.font = NSFont.systemFont(ofSize: fontSize)
+
+        title7.font = NSFont.boldSystemFont(ofSize: fontSize)
+        value7.font = NSFont.systemFont(ofSize: fontSize)
+
+        title8.font = NSFont.boldSystemFont(ofSize: fontSize)
+        value8.font = NSFont.systemFont(ofSize: fontSize)
+
+        title9.font = NSFont.boldSystemFont(ofSize: fontSize)
+        value9.font = NSFont.systemFont(ofSize: fontSize)
+    }
+
     func reload() {
 
         self.title1.stringValue = data?.title1 ?? "/- 1 -/"

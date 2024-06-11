@@ -94,6 +94,8 @@ class ForecastView: NSView {
 
         // self.selectTheFirstForecastDay()
         // self.selectTheFirstForecastHour()
+
+        viewMeteoGroup.applyCompactFonts()
     }
 
     required public init?(coder: NSCoder) {
@@ -225,7 +227,27 @@ class ForecastView: NSView {
             viewForecastHours.selectItems(at: paths, scrollPosition: .nearestVerticalEdge)
         }
 
-        viewMeteoGroup.reload()
+        // Reload selected item
+
+        let indexDay = viewForecastDays.selectionIndexPaths.first
+        let indexHour = paths.first
+
+        if !dataSource.forecastDays.isEmpty && indexDay != nil {
+            log.message("[\(type(of: self))].\(#function) forecastDays not empty")
+
+            let dayItem = indexDay!.item
+
+            if !dataSource.forecastDays[dayItem].hours.isEmpty && indexHour != nil {
+                log.message("[\(type(of: self))].\(#function) hours not empty")
+
+                let hourItem = indexHour!.item
+
+                viewMeteoGroup.data =
+                    dataSource.forecastDays[dayItem].hours[hourItem].getMeteoGroupData()
+            }
+        }
+
+        // viewMeteoGroup.reload()
     }
 }
 
