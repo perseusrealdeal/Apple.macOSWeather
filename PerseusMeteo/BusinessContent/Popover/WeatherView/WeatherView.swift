@@ -142,43 +142,43 @@ class WeatherView: NSView {
 
         var meteogroup = MeteoGroupData()
 
+        // Array 1
+
         let titleMinMax = "Prefix: Min".localizedValue + ", " + "Prefix: Max".localizedValue
         let valueMinMax = "\(dataSource.temperatureMinimum) : \(dataSource.temperatureMaximum)"
 
-        // Array 1
+        meteogroup.title1 = titleMinMax
+        meteogroup.value1 = valueMinMax
 
-        meteogroup.title3 = titleMinMax
-        meteogroup.value3 = valueMinMax
+        meteogroup.title2 = "Prefix: Feels Like".localizedValue
+        meteogroup.value2 = dataSource.temperatureFeelsLike
 
-        meteogroup.title1 = "Prefix: Feels Like".localizedValue
-        meteogroup.value1 = dataSource.temperatureFeelsLike
-
-        meteogroup.title2 = "Prefix: Visibility".localizedValue
-        meteogroup.value2 = dataSource.visibility
+        meteogroup.title3 = "Prefix: Visibility".localizedValue
+        meteogroup.value3 = dataSource.visibility
 
         // Array 2
 
-        meteogroup.title6 = "Label: Speed".localizedValue
-        meteogroup.value6 = dataSource.windSpeed
+        meteogroup.title4 = "Label: Speed".localizedValue
+        meteogroup.value4 = dataSource.windSpeed
 
-        meteogroup.title4 = "Label: Direction".localizedValue
-        meteogroup.value4 = dataSource.windDirection
+        meteogroup.title5 = "Label: Direction".localizedValue
+        meteogroup.value5 = dataSource.windDirection
 
-        meteogroup.title5 = "Label: Gust".localizedValue
-        meteogroup.value5 = dataSource.windGusts
+        meteogroup.title6 = "Label: Gust".localizedValue
+        meteogroup.value6 = dataSource.windGusts
 
         // Array 3
 
-        meteogroup.title9 = "Label: Pressure".localizedValue
-        meteogroup.value9 = dataSource.pressure
+        meteogroup.title7 = "Label: Pressure".localizedValue
+        meteogroup.value7 = dataSource.pressure
 
-        meteogroup.title7 = "Prefix: Humidity".localizedValue
-        meteogroup.value7 = dataSource.humidity
+        meteogroup.title8 = "Prefix: Humidity".localizedValue
+        meteogroup.value8 = dataSource.humidity
 
         // TODO: - Add cloudiness
 
-        // meteogroup.title8 = "Prefix: Cloudiness".localizedValue
-        // meteogroup.value8 = dataSource.cloudiness
+        // meteogroup.title9 = "Prefix: Cloudiness".localizedValue
+        // meteogroup.value9 = dataSource.cloudiness
 
         self.viewMeteoGroup.data = meteogroup
     }

@@ -33,9 +33,11 @@ class MeteoGroupView: NSView {
     @IBOutlet private(set) weak var title1: NSTextField!
     @IBOutlet private(set) weak var title2: NSTextField!
     @IBOutlet private(set) weak var title3: NSTextField!
+
     @IBOutlet private(set) weak var title4: NSTextField!
     @IBOutlet private(set) weak var title5: NSTextField!
     @IBOutlet private(set) weak var title6: NSTextField!
+
     @IBOutlet private(set) weak var title7: NSTextField!
     @IBOutlet private(set) weak var title8: NSTextField!
     @IBOutlet private(set) weak var title9: NSTextField!
@@ -43,9 +45,11 @@ class MeteoGroupView: NSView {
     @IBOutlet private(set) weak var value1: NSTextField!
     @IBOutlet private(set) weak var value2: NSTextField!
     @IBOutlet private(set) weak var value3: NSTextField!
+
     @IBOutlet private(set) weak var value4: NSTextField!
     @IBOutlet private(set) weak var value5: NSTextField!
     @IBOutlet private(set) weak var value6: NSTextField!
+
     @IBOutlet private(set) weak var value7: NSTextField!
     @IBOutlet private(set) weak var value8: NSTextField!
     @IBOutlet private(set) weak var value9: NSTextField!

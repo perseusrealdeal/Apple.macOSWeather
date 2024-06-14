@@ -37,3 +37,31 @@ public struct MeteoGroupData {
     public var value8: String = "Default: N/A".localizedValue
     public var value9: String = "Default: N/A".localizedValue
 }
+
+public func setupMeteoGroupTitles(group: MeteoGroupData) -> MeteoGroupData {
+
+    var group = group
+
+    // Array 1
+
+    group.title1 = "Prefix: Min".localizedValue + ", " + "Prefix: Max".localizedValue
+    group.title2 = "Prefix: Feels Like".localizedValue
+    group.title3 = "Prefix: Visibility".localizedValue
+
+    // Array 2
+
+    group.title4 = "Label: Speed".localizedValue
+    group.title5 = "Label: Direction".localizedValue
+    group.title6 = "Label: Gust".localizedValue
+
+    // Array 3
+
+    group.title7 = "Label: Pressure".localizedValue
+    group.title8 = "Prefix: Humidity".localizedValue
+
+    // TODO: - Add cloudiness
+
+    // group.title9 = "Prefix: Cloudiness".localizedValue
+
+    return group
+}

@@ -59,6 +59,8 @@ import Foundation
 
 */
 
+public var count = 0
+
 public struct ForecastHour {
 
     public var label: String // For debug purpose
@@ -114,47 +116,59 @@ public struct ForecastHour {
 
     public func getMeteoGroupData() -> MeteoGroupData {
 
-        // Setup titles
+        count += 1
+
+        log.message("- GET GROUP COUNT: \(count)")
+
+        // Set titles up
 
         var meteogroup = MeteoGroupData()
 
-        let titleMinMax = "Prefix: Min".localizedValue + ", " + "Prefix: Max".localizedValue
+        // Array 1
+
+        meteogroup.title1 = "Prefix: Min".localizedValue + ", " + "Prefix: Max".localizedValue
+        meteogroup.title2 = "Prefix: Feels Like".localizedValue
+        meteogroup.title3 = "Prefix: Visibility".localizedValue
+
+        // Array 2
+
+        meteogroup.title4 = "Label: Speed".localizedValue
+        meteogroup.title5 = "Label: Direction".localizedValue
+        meteogroup.title6 = "Label: Gust".localizedValue
+
+        // Array 3
+
+        meteogroup.title7 = "Label: Pressure".localizedValue
+        meteogroup.title8 = "Prefix: Humidity".localizedValue
+
+        // TODO: - Add cloudiness
+
+        // meteogroup.title9 = "Prefix: Cloudiness".localizedValue
+
+        // Set values up
+
     // let valueMinMax = "\(dataSource.temperatureMinimum) : \(dataSource.temperatureMaximum)"
 
         // Array 1
 
-        meteogroup.title3 = titleMinMax
-        // meteogroup.value3 = valueMinMax
-
-        meteogroup.title1 = "Prefix: Feels Like".localizedValue
-        // meteogroup.value1 = dataSource.temperatureFeelsLike
-
-        meteogroup.title2 = "Prefix: Visibility".localizedValue
-        // meteogroup.value2 = dataSource.visibility
+        // meteogroup.value1 = valueMinMax
+        // meteogroup.value2 = dataSource.temperatureFeelsLike
+        // meteogroup.value3 = dataSource.visibility
 
         // Array 2
 
-        meteogroup.title6 = "Label: Speed".localizedValue
-        // meteogroup.value6 = dataSource.windSpeed
-
-        meteogroup.title4 = "Label: Direction".localizedValue
-        // meteogroup.value4 = dataSource.windDirection
-
-        meteogroup.title5 = "Label: Gust".localizedValue
-        // meteogroup.value5 = dataSource.windGusts
+        // meteogroup.value4 = dataSource.windSpeed
+        // meteogroup.value5 = dataSource.windDirection
+        // meteogroup.value6 = dataSource.windGusts
 
         // Array 3
 
-        meteogroup.title9 = "Label: Pressure".localizedValue
-        // meteogroup.value9 = dataSource.pressure
-
-        meteogroup.title7 = "Prefix: Humidity".localizedValue
-        // meteogroup.value7 = dataSource.humidity
+        // meteogroup.value7 = dataSource.pressure
+        // meteogroup.value8 = dataSource.humidity
 
         // TODO: - Add cloudiness
 
-        // meteogroup.title8 = "Prefix: Cloudiness".localizedValue
-        // meteogroup.value8 = dataSource.cloudiness
+        // meteogroup.value9 = dataSource.cloudiness
 
         return meteogroup
     }
