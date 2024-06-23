@@ -82,9 +82,12 @@ public struct ForecastDay {
 
     public var dateDayMonth: String {
 
-        let forecastDate = getForecastDate()
+        guard let firstHour = hours.first else { return MeteoFactsDefaults.forecastDate }
 
-        return forecastDate.isEmpty ? MeteoFactsDefaults.forecastDate : forecastDate
+        let source = firstHour.source
+        let tz = firstHour.timezone
+
+        return getForecastDay(from: source, timezone: tz)
     }
 
     public var nightTemperature: String {

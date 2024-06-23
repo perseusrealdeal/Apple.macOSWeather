@@ -156,6 +156,8 @@ class ForecastView: NSView {
         reloadDaysCollection(selectionSaved: saveSelection)
         reloadHoursCollection(selectionSaved: saveSelection)
 
+        viewMeteoGroup.reload()
+
         // Meteo Data Provider.
 
         labelMeteoProviderTitle.stringValue = "Label: Meteo Data Provider".localizedValue
@@ -187,7 +189,7 @@ class ForecastView: NSView {
             if !dataSource.forecastDays[0].hours.isEmpty {
                 log.message("[\(type(of: self))].\(#function) hours not empty")
 
-                viewMeteoGroup.data = dataSource.forecastDays[0].hours[0].getMeteoGroupData()
+                viewMeteoGroup.data = dataSource.forecastDays[0].hours[0].prepareMeteoGroupData()
             }
         }
     }
@@ -243,7 +245,7 @@ class ForecastView: NSView {
                 let hourItem = indexHour!.item
 
                 viewMeteoGroup.data =
-                    dataSource.forecastDays[dayItem].hours[hourItem].getMeteoGroupData()
+                    dataSource.forecastDays[dayItem].hours[hourItem].prepareMeteoGroupData()
             }
         }
 
@@ -385,7 +387,7 @@ extension ForecastView: NSCollectionViewDelegate {
                 hourDetails = day.hours[(hourIndexPaths as NSIndexPath).item]
             }
 
-            viewMeteoGroup.data = hourDetails?.getMeteoGroupData()
+            viewMeteoGroup.data = hourDetails?.prepareMeteoGroupData()
         }
     }
 }

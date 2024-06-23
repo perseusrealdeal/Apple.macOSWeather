@@ -12,6 +12,34 @@
 //
 //  See LICENSE for details. All rights reserved.
 //
+// swiftlint:disable file_length
+//
+
+/* OpenWeatherMap JSON forecast list items sample
+
+{
+  "message" : 0,
+  "cod" : "200",
+  "cnt" : 1,
+  "list" : [
+    // Forecast hours ...
+  ],
+  "city" : {
+    "sunset" : 1708775436,
+    "country" : "RU",
+    "id" : 1496747,
+    "coord" : {
+      "lat" : 55.060000000000002,
+      "lon" : 83
+    },
+    "population" : 1419007,
+    "timezone" : 25200,
+    "sunrise" : 1708738346,
+    "name" : "Novosibirsk"
+  }
+}
+
+*/
 
 import Foundation
 
@@ -47,7 +75,7 @@ public class OpenWeatherForecastParser: ForecastParserProtocol {
             let timezone = getTimeZone(from: dictionary)
         else {
 
-            log.message("[\(type(of: self))].\(#function) list wrong.", .error)
+            log.message("[\(type(of: self))].\(#function) Wrong list.", .error)
 
             return nil
         }
@@ -140,4 +168,318 @@ public class OpenWeatherForecastParser: ForecastParserProtocol {
 
         return theDay
     }
+}
+
+// MARK: Getting Forecast Day Values
+
+public func getForecastDay(from source: [String: Any], timezone: Int) -> String {
+
+    var value = -1
+
+    // Get value.
+    if let dt = source["dt"] as? Int {
+
+        value = dt
+
+    } else {
+        log.message("[\(#function) [dt] wrong.", .error)
+    }
+
+    guard value != -1 else { return MeteoFactsDefaults.forecastDate }
+
+    let theDay = representLastOneCalculationTime(value,
+                                                  timezone,
+                                                  toBe: AppOptions.timeFormatOption)
+
+    let theDayItems = theDay.day?.split(separator: " ")
+
+    guard let items = theDayItems, items.count > 2 else {
+        return MeteoFactsDefaults.forecastDate
+    }
+
+    return "\(items[0]) \(items[1])"
+}
+
+// MARK: Getting Forecast Hour Values
+
+public func getForecastHourDt(from source: [String: Any], timezone: Int) -> String {
+
+    var value = -1
+
+    // Get value.
+    if let dt = source["dt"] as? Int {
+
+        value = dt
+
+    } else {
+        log.message("[\(#function) [dt] wrong.", .error)
+    }
+
+    guard value != -1 else { return MeteoFactsDefaults.sunrizesunset }
+
+    // Recalculate if needed.
+    let represented = representMeteoTime(value,
+                                         timezone,
+                                         toBe: AppOptions.timeFormatOption)
+
+    return "\(represented ?? MeteoFactsDefaults.sunrizesunset)"
+}
+
+public func getForecastHourTemp(from source: [String: Any]) -> String {
+
+    var value = ""
+
+    // Get value.
+    if let main = source["main"] as? [String: Any] {
+        if let temp_min = main["temp"] as? Double {
+
+            value = temp_min.description
+
+        } else {
+            log.message("[\(#function) [temp] wrong.", .error)
+        }
+    } else {
+        log.message("[\(#function) [main] wrong.", .error)
+    }
+
+    guard value != "" else { return MeteoFactsDefaults.temperature }
+
+    // Recalculate if needed.
+    let represented = representTemperature(value,
+                                           asIs: TemperatureOption.imperial,
+                                           toBe: AppOptions.temperatureOption)
+
+    return "\(represented) \(AppOptions.temperatureOption.unit)"
+}
+
+public func getForecastHourTempMin(from source: [String: Any]) -> String {
+
+    var value = ""
+
+    // Get value.
+    if let main = source["main"] as? [String: Any] {
+        if let temp_min = main["temp_min"] as? Double {
+
+            value = temp_min.description
+
+        } else {
+            log.message("[\(#function) [temp_min] wrong.", .error)
+        }
+    } else {
+        log.message("[\(#function) [main] wrong.", .error)
+    }
+
+    guard value != "" else { return MeteoFactsDefaults.temperature }
+
+    // Recalculate if needed.
+    let represented = representTemperature(value,
+                                           asIs: TemperatureOption.imperial,
+                                           toBe: AppOptions.temperatureOption)
+
+    return "\(represented) \(AppOptions.temperatureOption.unit)"
+}
+
+public func getForecastHourTempMax(from source: [String: Any]) -> String {
+
+    var value = ""
+
+    // Get value.
+    if let main = source["main"] as? [String: Any] {
+        if let temp_max = main["temp_max"] as? Double {
+
+            value = temp_max.description
+
+        } else {
+            log.message("[\(#function) [temp_max] wrong.", .error)
+        }
+    } else {
+        log.message("[\(#function) [main] wrong.", .error)
+    }
+
+    guard value != "" else { return MeteoFactsDefaults.temperature }
+
+    // Recalculate if needed.
+    let represented = representTemperature(value,
+                                           asIs: TemperatureOption.imperial,
+                                           toBe: AppOptions.temperatureOption)
+
+    return "\(represented) \(AppOptions.temperatureOption.unit)"
+}
+
+public func getForecastHourTempKinda(from source: [String: Any]) -> String {
+
+    var value = ""
+
+    // Get value.
+    if let main = source["main"] as? [String: Any] {
+        if let feels_like = main["feels_like"] as? Double {
+
+            value = feels_like.description
+
+        } else {
+            log.message("[\(#function) [feels_like] wrong.", .error)
+        }
+    } else {
+        log.message("[\(#function) [main] wrong.", .error)
+    }
+
+    guard value != "" else { return MeteoFactsDefaults.temperature }
+
+    // Recalculate if needed.
+    let represented = representTemperature(value,
+                                           asIs: TemperatureOption.imperial,
+                                           toBe: AppOptions.temperatureOption)
+
+    return "\(represented) \(AppOptions.temperatureOption.unit)"
+}
+
+public func getForecastHourVisibility(from source: [String: Any]) -> String {
+
+    var value = -1
+
+    // Get value.
+    if let visibility = source["visibility"] as? Int {
+
+        value = visibility
+
+    } else {
+        log.message("[\(#function) [visibility] wrong.", .error)
+    }
+
+    guard value != -1 else { return MeteoFactsDefaults.visibility }
+
+    // Recalculate if needed.
+    let represented = representDistance(value,
+                                        asIs: LengthOption.meter,
+                                        toBe: AppOptions.distanceOption)
+
+    return "\(represented) \(AppOptions.distanceOption.unitLocalized)"
+}
+
+public func getForecastHourWindSpeed(from source: [String: Any]) -> String {
+
+    var value = ""
+
+    // Get value.
+    if let wind = source["wind"] as? [String: Any] {
+        if let speed = wind["speed"] as? Double {
+
+            value = speed.description
+
+        } else {
+            log.message("[\(#function) [speed] wrong.", .error)
+        }
+    } else {
+        log.message("[\(#function) [wind] wrong.", .error)
+    }
+
+    guard value != "" else { return MeteoFactsDefaults.windSpeed }
+
+    // Recalculate if needed.
+    let represented = representWindSpeedGusts(value,
+                                              asIs: WindSpeedOption.ms,
+                                              toBe: AppOptions.windSpeedOption)
+
+    return "\(represented) \(AppOptions.windSpeedOption.unitLocalized)"
+}
+
+public func getForecastHourWindDirection(from source: [String: Any]) -> String {
+
+    var value = ""
+
+    if let wind = source["wind"] as? [String: Any] {
+        if let deg = wind["deg"] as? Int {
+
+            value = deg.description
+
+        } else {
+            log.message("[\(#function) [deg] wrong.", .error)
+        }
+    } else {
+        log.message("[\(#function) [wind] wrong.", .error)
+    }
+
+    guard
+        value != "",
+        let point = try? WindDegree(value)
+    else {
+        return MeteoFactsDefaults.windDirection
+    }
+
+    return "\(Int(point.degree))°: \(point.common.abbreviation.localizedValue)"
+}
+
+public func getForecastHourWindGusts(from source: [String: Any]) -> String {
+
+    var value = ""
+
+    if let wind = source["wind"] as? [String: Any] {
+        if let gust = wind["gust"] as? Double {
+
+            value = gust.description
+
+        } else {
+            log.message("[\(#function) [gust] wrong.", .error)
+        }
+    } else {
+        log.message("[\(#function) [wind] wrong.", .error)
+    }
+
+    guard value != "" else { return MeteoFactsDefaults.windSpeed }
+
+    // Recalculate if needed.
+    let represented = representWindSpeedGusts(value,
+                                              asIs: WindSpeedOption.ms,
+                                              toBe: AppOptions.windSpeedOption)
+
+    return "\(represented) \(AppOptions.windSpeedOption.unitLocalized)"
+}
+
+public func getForecastHourPressure(from source: [String: Any]) -> String {
+
+    var value = ""
+
+    // Get value.
+    if let main = source["main"] as? [String: Any] {
+        if let pressure = main["pressure"] as? Int {
+
+            value = pressure.description
+
+        } else {
+            log.message("[\(#function) [pressure] wrong.", .error)
+        }
+    } else {
+        log.message("[\(#function) [main] wrong.", .error)
+    }
+
+    guard value != "" else { return MeteoFactsDefaults.pressure }
+
+    // Recalculate if needed.
+    let represented = representPressure(value,
+                                        asIs: PressureOption.hPa,
+                                        toBe: AppOptions.pressureOption)
+
+    return "\(represented) \(AppOptions.pressureOption.unitLocalized)"
+}
+
+public func getForecastHourHumidity(from source: [String: Any]) -> String {
+
+    var value = -1
+
+    // Get value.
+    if let main = source["main"] as? [String: Any] {
+        if let humidity = main["humidity"] as? Int {
+
+            value = humidity
+
+        } else {
+            log.message("[\(#function) [humidity] wrong.", .error)
+        }
+    } else {
+        log.message("[\(#function) [main] wrong.", .error)
+    }
+
+    guard value != -1 else { return MeteoFactsDefaults.humidity }
+
+    return "\(value) %"
 }

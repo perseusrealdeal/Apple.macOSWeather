@@ -405,8 +405,8 @@
 				4B5F7D382B98CA3900121946 /* CurrentDataSource.swift */,
 				4B1073942B4607CE008A692D /* MeteoFactsRepresenter.swift */,
 				4B5F7D2C2B82987E00121946 /* Common */,
-				4BB204592B7023C3007E0308 /* Forecast */,
 				4BB204582B702384007E0308 /* CurrentWeather */,
+				4BB204592B7023C3007E0308 /* Forecast */,
 			);
 			path = BusinessData;
 			sourceTree = "<group>";

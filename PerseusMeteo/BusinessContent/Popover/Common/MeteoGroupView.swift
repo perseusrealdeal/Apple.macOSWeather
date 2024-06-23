@@ -111,63 +111,70 @@ class MeteoGroupView: NSView {
 
     func applyCompactFonts() {
 
-        let fontSize: CGFloat = 10
+        let fontSizeTitle: CGFloat = 10
+        let fontSizeValue: CGFloat = 8
 
-        title1.font = NSFont.boldSystemFont(ofSize: fontSize)
-        value1.font = NSFont.systemFont(ofSize: fontSize)
+        title1.font = NSFont.boldSystemFont(ofSize: fontSizeTitle)
+        value1.font = NSFont.systemFont(ofSize: fontSizeValue)
 
-        title2.font = NSFont.boldSystemFont(ofSize: fontSize)
-        value2.font = NSFont.systemFont(ofSize: fontSize)
+        title2.font = NSFont.boldSystemFont(ofSize: fontSizeTitle)
+        value2.font = NSFont.systemFont(ofSize: fontSizeValue)
 
-        title3.font = NSFont.boldSystemFont(ofSize: fontSize)
-        value3.font = NSFont.systemFont(ofSize: fontSize)
+        title3.font = NSFont.boldSystemFont(ofSize: fontSizeTitle)
+        value3.font = NSFont.systemFont(ofSize: fontSizeValue)
 
-        title4.font = NSFont.boldSystemFont(ofSize: fontSize)
-        value4.font = NSFont.systemFont(ofSize: fontSize)
+        title4.font = NSFont.boldSystemFont(ofSize: fontSizeTitle)
+        value4.font = NSFont.systemFont(ofSize: fontSizeValue)
 
-        title5.font = NSFont.boldSystemFont(ofSize: fontSize)
-        value5.font = NSFont.systemFont(ofSize: fontSize)
+        title5.font = NSFont.boldSystemFont(ofSize: fontSizeTitle)
+        value5.font = NSFont.systemFont(ofSize: fontSizeValue)
 
-        title6.font = NSFont.boldSystemFont(ofSize: fontSize)
-        value6.font = NSFont.systemFont(ofSize: fontSize)
+        title6.font = NSFont.boldSystemFont(ofSize: fontSizeTitle)
+        value6.font = NSFont.systemFont(ofSize: fontSizeValue)
 
-        title7.font = NSFont.boldSystemFont(ofSize: fontSize)
-        value7.font = NSFont.systemFont(ofSize: fontSize)
+        title7.font = NSFont.boldSystemFont(ofSize: fontSizeTitle)
+        value7.font = NSFont.systemFont(ofSize: fontSizeValue)
 
-        title8.font = NSFont.boldSystemFont(ofSize: fontSize)
-        value8.font = NSFont.systemFont(ofSize: fontSize)
+        title8.font = NSFont.boldSystemFont(ofSize: fontSizeTitle)
+        value8.font = NSFont.systemFont(ofSize: fontSizeValue)
 
-        title9.font = NSFont.boldSystemFont(ofSize: fontSize)
-        value9.font = NSFont.systemFont(ofSize: fontSize)
+        title9.font = NSFont.boldSystemFont(ofSize: fontSizeTitle)
+        value9.font = NSFont.systemFont(ofSize: fontSizeValue)
     }
 
     func reload() {
 
-        self.title1.stringValue = data?.title1 ?? "/- 1 -/"
-        self.value1.stringValue = data?.value1 ?? "/- 1 -/"
+        let title1str = "Prefix: Min".localizedValue + ", " + "Prefix: Max".localizedValue
+        let value1str = "\(MeteoFactsDefaults.temperature) : \(MeteoFactsDefaults.temperature)"
 
-        self.title2.stringValue = data?.title2 ?? "/- 2 -/"
-        self.value2.stringValue = data?.value2 ?? "/- 2 -/"
+        self.title1.stringValue = data?.title1 ?? title1str
+        self.value1.stringValue = data?.value1 ?? value1str
 
-        self.title3.stringValue = data?.title3 ?? "/- 3 -/"
-        self.value3.stringValue = data?.value3 ?? "/- 3 -/"
+        self.title2.stringValue = data?.title2 ?? "Prefix: Feels Like".localizedValue
+        self.value2.stringValue = data?.value2 ?? MeteoFactsDefaults.temperature
 
-        self.title4.stringValue = data?.title4 ?? "/- 4 -/"
-        self.value4.stringValue = data?.value4 ?? "/- 4 -/"
+        self.title3.stringValue = data?.title3 ?? "Prefix: Visibility".localizedValue
+        self.value3.stringValue = data?.value3 ?? MeteoFactsDefaults.visibility
 
-        self.title5.stringValue = data?.title5 ?? "/- 5 -/"
-        self.value5.stringValue = data?.value5 ?? "/- 5 -/"
+        self.title4.stringValue = data?.title4 ?? "Label: Speed".localizedValue
+        self.value4.stringValue = data?.value4 ?? MeteoFactsDefaults.windSpeed
 
-        self.title6.stringValue = data?.title6 ?? "/- 6 -/"
-        self.value6.stringValue = data?.value6 ?? "/- 6 -/"
+        self.title5.stringValue = data?.title5 ?? "Label: Direction".localizedValue
+        self.value5.stringValue = data?.value5 ?? MeteoFactsDefaults.windDirection
 
-        self.title7.stringValue = data?.title7 ?? "/- 7 -/"
-        self.value7.stringValue = data?.value7 ?? "/- 7 -/"
+        self.title6.stringValue = data?.title6 ?? "Label: Gust".localizedValue
+        self.value6.stringValue = data?.value6 ?? MeteoFactsDefaults.windSpeed
 
-        self.title8.stringValue = data?.title8 ?? "/- 8 -/"
-        self.value8.stringValue = data?.value8 ?? "/- 8 -/"
+        self.title7.stringValue = data?.title7 ?? "Label: Pressure".localizedValue
+        self.value7.stringValue = data?.value7 ?? MeteoFactsDefaults.pressure
+
+        self.title8.stringValue = data?.title8 ?? "Prefix: Humidity".localizedValue
+        self.value8.stringValue = data?.value8 ?? MeteoFactsDefaults.humidity
+
+        // TODO: - Cloudiness
 
         self.title9.stringValue = data?.title9 ?? "/- 9 -/"
+        // "Prefix: Cloudiness".localizedValue
         self.value9.stringValue = data?.value9 ?? "/- 9 -/"
     }
 }

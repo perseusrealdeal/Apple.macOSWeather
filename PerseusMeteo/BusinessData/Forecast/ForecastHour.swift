@@ -67,20 +67,21 @@ public struct ForecastHour {
 
     // MARK: - Data
 
-    private var source = [String: Any]()
-    private var timezone = 0
+    public let source: [String: Any]
+    public let timezone: Int
+
+    private var meteoGroupData = MeteoGroupData()
 
     // MARK: - Init
 
-    init(title: String) {
+    init(title: String, source: [String: Any] = [:], timezone: Int = 0) {
         self.label = title
+        self.source = source
+        self.timezone = timezone
     }
 
     init(source: [String: Any], timezone: Int, title: String = "") {
-        self.init(title: title)
-
-        self.source = source
-        self.timezone = timezone
+        self.init(title: title, source: source, timezone: timezone)
     }
 
     // MARK: - Contract
@@ -88,19 +89,13 @@ public struct ForecastHour {
     // MARK: - Time of Hour
 
     public var time: String {
-
-        let time = getTime()
-
-        return time.isEmpty ? MeteoFactsDefaults.sunrizesunset : time
+        return getForecastHourDt(from: source, timezone: timezone)
     }
 
     // MARK: - Temperature
 
     public var temperature: String {
-
-        let temperature = getTemperature()
-
-        return temperature.isEmpty ? MeteoFactsDefaults.temperature : temperature
+        return getForecastHourTemp(from: source)
     }
 
     // MARK: - Incoming Precipitation
@@ -112,9 +107,9 @@ public struct ForecastHour {
         return conditions.isEmpty ? MeteoFactsDefaults.conditions : conditions
     }
 
-    // MARK: - Public calculations
+    // MARK: - Public calculation requests
 
-    public func getMeteoGroupData() -> MeteoGroupData {
+    public func prepareMeteoGroupData() -> MeteoGroupData {
 
         count += 1
 
@@ -141,32 +136,35 @@ public struct ForecastHour {
         meteogroup.title7 = "Label: Pressure".localizedValue
         meteogroup.title8 = "Prefix: Humidity".localizedValue
 
-        // TODO: - Add cloudiness
+        // TODO: - Add cloudiness title
 
-        // meteogroup.title9 = "Prefix: Cloudiness".localizedValue
+        // meteogroup.title9 = "" // "Prefix: Cloudiness".localizedValue
 
         // Set values up
 
-    // let valueMinMax = "\(dataSource.temperatureMinimum) : \(dataSource.temperatureMaximum)"
+        let tempMin = getForecastHourTempMin(from: source)
+        let tempMax = getForecastHourTempMax(from: source)
+
+        let valueMinMax = "\(tempMin) : \(tempMax)"
 
         // Array 1
 
-        // meteogroup.value1 = valueMinMax
-        // meteogroup.value2 = dataSource.temperatureFeelsLike
-        // meteogroup.value3 = dataSource.visibility
+        meteogroup.value1 = valueMinMax
+        meteogroup.value2 = getForecastHourTempKinda(from: source)
+        meteogroup.value3 = getForecastHourVisibility(from: source)
 
         // Array 2
 
-        // meteogroup.value4 = dataSource.windSpeed
-        // meteogroup.value5 = dataSource.windDirection
-        // meteogroup.value6 = dataSource.windGusts
+        meteogroup.value4 = getForecastHourWindSpeed(from: source)
+        meteogroup.value5 = getForecastHourWindDirection(from: source)
+        meteogroup.value6 = getForecastHourWindGusts(from: source)
 
         // Array 3
 
-        // meteogroup.value7 = dataSource.pressure
-        // meteogroup.value8 = dataSource.humidity
+        meteogroup.value7 = getForecastHourPressure(from: source)
+        meteogroup.value8 = getForecastHourHumidity(from: source)
 
-        // TODO: - Add cloudiness
+        // TODO: - Add cloudiness value
 
         // meteogroup.value9 = dataSource.cloudiness
 
@@ -174,14 +172,6 @@ public struct ForecastHour {
     }
 
     // MARK: - Realization
-
-    private func getTime() -> String {
-        return ""
-    }
-
-    private func getTemperature() -> String {
-        return ""
-    }
 
     private func getConditions() -> String {
         return ""
