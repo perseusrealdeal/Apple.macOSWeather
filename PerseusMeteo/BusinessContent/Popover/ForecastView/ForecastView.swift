@@ -182,6 +182,7 @@ class ForecastView: NSView {
         let indexes: Set<IndexPath> = [indexPath]
 
         viewForecastHours.selectItems(at: indexes, scrollPosition: .left)
+        let daySelected = viewForecastDays.selectionIndexPaths
 
         if !dataSource.forecastDays.isEmpty {
             log.message("[\(type(of: self))].\(#function) forecastDays not empty")
@@ -189,7 +190,14 @@ class ForecastView: NSView {
             if !dataSource.forecastDays[0].hours.isEmpty {
                 log.message("[\(type(of: self))].\(#function) hours not empty")
 
-                viewMeteoGroup.data = dataSource.forecastDays[0].hours[0].prepareMeteoGroupData()
+                if let daySelectedIndex = daySelected.first {
+                    let index = daySelectedIndex.item
+                    viewMeteoGroup.data =
+                        dataSource.forecastDays[index].hours[0].prepareMeteoGroupData()
+                } else {
+                    viewMeteoGroup.data =
+                        dataSource.forecastDays[0].hours[0].prepareMeteoGroupData()
+                }
             }
         }
     }
