@@ -96,7 +96,7 @@ class ForecastDaysViewItem: NSCollectionViewItem {
 
         self.date?.stringValue = "\(day.dateDayOfTheWeek), \(day.dateDayMonth)"
 
-        self.nightTemperature?.stringValue = day.nightTemperature
-        self.dayTemperature?.stringValue = day.dayTemperature
+        self.nightTemperature?.stringValue = day.minimumTemperature
+        self.dayTemperature?.stringValue = day.maximumTemperature
     }
 }

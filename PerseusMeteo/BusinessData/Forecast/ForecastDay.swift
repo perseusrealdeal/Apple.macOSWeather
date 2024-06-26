@@ -50,11 +50,34 @@ public struct ForecastDay {
     public let date: String // Formate: YYYY-MM-DD, it's uniq calculated value
     public let hours: [ForecastHour]
 
+    private let temperatures: [Double]
+
     // MARK: - Init
 
     init(date: String, hours: [ForecastHour]) {
         self.date = date
         self.hours = hours
+
+        // Get temperatures.
+        var temperatures = [Double]()
+
+        hours.forEach {
+
+            // Get value.
+            if let main = $0.source["main"] as? [String: Any] {
+                if let temp_min = main["temp"] as? Double {
+
+                    temperatures.append(temp_min)
+
+                } else {
+                    log.message("[\(#function) [temp] wrong.", .error)
+                }
+            } else {
+                log.message("[\(#function) [main] wrong.", .error)
+            }
+        }
+
+        self.temperatures = temperatures
     }
 
     // MARK: - Contract
@@ -90,18 +113,36 @@ public struct ForecastDay {
         return getForecastDay(from: source, timezone: tz)
     }
 
-    public var nightTemperature: String {
+    public var minimumTemperature: String {
 
-        let temperature = getNightTemperature()
+        let temperature = temperatures.min()
 
-        return temperature.isEmpty ? MeteoFactsDefaults.temperature : temperature
+        guard let value = temperature?.description else {
+            return MeteoFactsDefaults.temperature
+        }
+
+        // Recalculate if needed.
+        let represented = representTemperature(value,
+                                               asIs: TemperatureOption.imperial,
+                                               toBe: AppOptions.temperatureOption)
+
+        return "\(represented) \(AppOptions.temperatureOption.unit)"
     }
 
-    public var dayTemperature: String {
+    public var maximumTemperature: String {
 
-        let temperature = getDayTemperature()
+        let temperature = temperatures.max()
 
-        return temperature.isEmpty ? MeteoFactsDefaults.temperature : temperature
+        guard let value = temperature?.description else {
+            return MeteoFactsDefaults.temperature
+        }
+
+        // Recalculate if needed.
+        let represented = representTemperature(value,
+                                               asIs: TemperatureOption.imperial,
+                                               toBe: AppOptions.temperatureOption)
+
+        return "\(represented) \(AppOptions.temperatureOption.unit)"
     }
 
     // MARK: - Realization
