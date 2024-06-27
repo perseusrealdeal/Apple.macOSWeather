@@ -190,7 +190,7 @@ public func getForecastDay(from source: [String: Any], timezone: Int) -> String 
     let theDay = representLastOneCalculationTime(value,
                                                  timezone,
                                                  toBe: AppOptions.timeFormatOption)
-    
+
     let theDayItems = theDay.day?.split(separator: " ")
 
     guard let items = theDayItems, items.count > 2 else {

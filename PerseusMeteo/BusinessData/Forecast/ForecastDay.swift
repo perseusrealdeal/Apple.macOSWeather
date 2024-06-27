@@ -98,9 +98,18 @@ public struct ForecastDay {
 
     public var dateDayOfTheWeek: String {
 
-        let weekday = getWeekday()
+        guard
+            let firstHour = hours.first,
+            let dt = firstHour.source["dt"] as? Int,
+            let theDayOfTheWeek = representLastOneCalculationTime(
+                dt,
+                firstHour.timezone,
+                toBe: AppOptions.timeFormatOption).theDayOfTheWeek
+        else {
+            return MeteoFactsDefaults.weekday
+        }
 
-        return weekday.isEmpty ? MeteoFactsDefaults.weekday : weekday
+        return theDayOfTheWeek.description
     }
 
     public var dateDayMonth: String {
@@ -152,22 +161,6 @@ public struct ForecastDay {
     }
 
     private func getConditions() -> String {
-        return ""
-    }
-
-    private func getWeekday() -> String {
-        return ""
-    }
-
-    private func getForecastDate() -> String {
-        return ""
-    }
-
-    private func getNightTemperature() -> String {
-        return ""
-    }
-
-    private func getDayTemperature() -> String {
         return ""
     }
 }
