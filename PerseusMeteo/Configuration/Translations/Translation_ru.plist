@@ -248,6 +248,22 @@
 	<string>окт.</string>
 	<key>Month: November</key>
 	<string>нояб.</string>
+    <key>/* Days&apos; Names */</key>
+    <string>--</string>
+    <key>Day: Sun</key>
+    <string>ВС</string>
+    <key>Day: Mon</key>
+    <string>ПН</string>
+    <key>Day: Tue</key>
+    <string>ВТ</string>
+    <key>Day: Wed</key>
+    <string>СР</string>
+    <key>Day: Thu</key>
+    <string>ЧТ</string>
+    <key>Day: Fri</key>
+    <string>ПТ</string>
+    <key>Day: Sat</key>
+    <string>СБ</string>
 	<key>/* About Screen */</key>
 	<string>--</string>
 	<key>Button: The App Source Code</key>

@@ -183,6 +183,16 @@
 "Month: October" = "окт.";
 "Month: November" = "нояб.";
 
+/* Days' Names */
+
+"Day: Sun" = "ВС";
+"Day: Mon" = "ПН";
+"Day: Tue" = "ВТ";
+"Day: Wed" = "СР";
+"Day: Thu" = "ЧТ";
+"Day: Fri" = "ПТ";
+"Day: Sat" = "СБ";
+
 /* About Screen – AboutWindowController, AboutViewController */
 
 "Button: The App Source Code" = "Исходники Изделия";

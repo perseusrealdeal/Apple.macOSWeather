@@ -91,6 +91,7 @@
 		4BEAB2E52B66D1C100AEACF5 /* CurrentSystemLanguageGift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEAB2E42B66D1C100AEACF5 /* CurrentSystemLanguageGift.swift */; };
 		4BEAB2E72B6711EF00AEACF5 /* AppApperance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEAB2E62B6711EF00AEACF5 /* AppApperance.swift */; };
 		4BEE281D2B4AE07700F06A69 /* AppOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE281C2B4AE07700F06A69 /* AppOptions.swift */; };
+		4BEF7A442C2D377A0028C6EA /* TheDayOfTheWeekLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEF7A432C2D377A0028C6EA /* TheDayOfTheWeekLocalized.swift */; };
 		4BFA5FDA2989A12800AC09F5 /* OptionsWindowController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BFA5FD92989A12800AC09F5 /* OptionsWindowController.storyboard */; };
 		4BFA5FDC2989A16400AC09F5 /* OptionsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFA5FDB2989A16400AC09F5 /* OptionsWindowController.swift */; };
 		4BFA5FDE2989A1F000AC09F5 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFA5FDD2989A1F000AC09F5 /* OptionsViewController.swift */; };
@@ -198,6 +199,7 @@
 		4BEAB2E42B66D1C100AEACF5 /* CurrentSystemLanguageGift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSystemLanguageGift.swift; sourceTree = "<group>"; };
 		4BEAB2E62B6711EF00AEACF5 /* AppApperance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppApperance.swift; sourceTree = "<group>"; };
 		4BEE281C2B4AE07700F06A69 /* AppOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppOptions.swift; sourceTree = "<group>"; };
+		4BEF7A432C2D377A0028C6EA /* TheDayOfTheWeekLocalized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheDayOfTheWeekLocalized.swift; sourceTree = "<group>"; };
 		4BFA5FD92989A12800AC09F5 /* OptionsWindowController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OptionsWindowController.storyboard; sourceTree = "<group>"; };
 		4BFA5FDB2989A16400AC09F5 /* OptionsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsWindowController.swift; sourceTree = "<group>"; };
 		4BFA5FDD2989A1F000AC09F5 /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 				4B5F7D362B985C5D00121946 /* MeteoDataSource.swift */,
 				4B5F7D3A2B98EACA00121946 /* MeteoCategory.swift */,
 				4B5F7D402B9AD05900121946 /* MeteoDataSourceReader.swift */,
+				4BEF7A432C2D377A0028C6EA /* TheDayOfTheWeekLocalized.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				4B7690D42B4CA82A007F09D9 /* PerseusTimeFormat.swift in Sources */,
 				4B5F7D442BB6984D00121946 /* MeteoGroupView.swift in Sources */,
 				4B030E772B277DD600ED9018 /* AboutWindowController.swift in Sources */,
+				4BEF7A442C2D377A0028C6EA /* TheDayOfTheWeekLocalized.swift in Sources */,
 				4BA719872AF0D5E10074F7CD /* StatusMenusButtonPresenter.swift in Sources */,
 				4BE29E922B3A23340027515A /* ForecastView.swift in Sources */,
 				4B5F7D2F2B89243800121946 /* MeteoFactsDefaults.swift in Sources */,

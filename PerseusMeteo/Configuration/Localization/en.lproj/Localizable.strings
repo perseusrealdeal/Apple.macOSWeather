@@ -183,6 +183,16 @@
 "Month: October" = "Oct";
 "Month: November" = "Nov";
 
+/* Days' Names */
+
+"Day: Sun" = "Sun";
+"Day: Mon" = "Mon";
+"Day: Tue" = "Tue";
+"Day: Wed" = "Wed";
+"Day: Thu" = "Thu";
+"Day: Fri" = "Fri";
+"Day: Sat" = "Sat";
+
 /* About Screen – AboutWindowController, AboutViewController */
 
 "Button: The App Source Code" = "The Product Source Code";

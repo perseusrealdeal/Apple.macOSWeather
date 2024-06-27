@@ -248,6 +248,22 @@
 	<string>Oct</string>
 	<key>Month: November</key>
 	<string>Nov</string>
+	<key>/* Days&apos; Names */</key>
+	<string>--</string>
+	<key>Day: Sun</key>
+	<string>Sun</string>
+	<key>Day: Mon</key>
+	<string>Mon</string>
+	<key>Day: Tue</key>
+	<string>Tue</string>
+	<key>Day: Wed</key>
+	<string>Wed</string>
+	<key>Day: Thu</key>
+	<string>Thu</string>
+	<key>Day: Fri</key>
+	<string>Fri</string>
+	<key>Day: Sat</key>
+	<string>Sat</string>
 	<key>/* About Screen */</key>
 	<string>--</string>
 	<key>Button: The App Source Code</key>

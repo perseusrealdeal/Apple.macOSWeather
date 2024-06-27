@@ -366,6 +366,28 @@ class TranslationTests: XCTestCase {
                        "Month: November".localizedValue)
     }
 
+    // MARK: - Days
+
+    func test_translation_of_the_day_of_the_week() {
+
+        // assert
+
+        XCTAssertEqual("Day: Sun".localizedExpectation,
+                       "Day: Sun".localizedValue)
+        XCTAssertEqual("Day: Mon".localizedExpectation,
+                       "Day: Mon".localizedValue)
+        XCTAssertEqual("Day: Tue".localizedExpectation,
+                       "Day: Tue".localizedValue)
+        XCTAssertEqual("Day: Wed".localizedExpectation,
+                       "Day: Wed".localizedValue)
+        XCTAssertEqual("Day: Thu".localizedExpectation,
+                       "Day: Thu".localizedValue)
+        XCTAssertEqual("Day: Fri".localizedExpectation,
+                       "Day: Fri".localizedValue)
+        XCTAssertEqual("Day: Sat".localizedExpectation,
+                       "Day: Sat".localizedValue)
+    }
+
     // MARK: - About Screen
 
     func test_translation_of_AboutScreen() {

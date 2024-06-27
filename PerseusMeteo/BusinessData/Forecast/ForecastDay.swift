@@ -104,12 +104,13 @@ public struct ForecastDay {
             let theDayOfTheWeek = representLastOneCalculationTime(
                 dt,
                 firstHour.timezone,
-                toBe: AppOptions.timeFormatOption).theDayOfTheWeek
+                toBe: AppOptions.timeFormatOption).theDayOfTheWeek,
+            let theDayOfTheWeekLocalized = DayOfTheWeek(rawValue: theDayOfTheWeek)?.localized
         else {
             return MeteoFactsDefaults.weekday
         }
 
-        return theDayOfTheWeek.description
+        return theDayOfTheWeekLocalized
     }
 
     public var dateDayMonth: String {
