@@ -84,6 +84,10 @@
 "Unit: mmHg" = "mmHg";
 "Unit: mb" = "mb";
 
+"Unit: mm" = "mm";
+"rain" = "rain";
+"snow" = "rain";
+
 "Label: Sunrise" = "SUNRISE";
 "Label: Sunset" = "SUNSET";
 

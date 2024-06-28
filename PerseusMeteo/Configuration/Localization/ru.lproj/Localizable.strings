@@ -84,6 +84,10 @@
 "Unit: mmHg" = "мм.рт.ст.";
 "Unit: mb" = "мбар";
 
+"Unit: mm" = "мм";
+"rain" = "дождь";
+"snow" = "снег";
+
 "Label: Sunrise" = "ВОСХОД";
 "Label: Sunset" = "ЗАХОД";
 

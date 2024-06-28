@@ -100,11 +100,8 @@ public struct ForecastHour {
 
     // MARK: - Incoming Precipitation
 
-    public var weatherConditions: String {
-
-        let conditions = getConditions()
-
-        return conditions.isEmpty ? MeteoFactsDefaults.conditions : conditions
+    public var precipitation: String {
+        return getPrecipitation(from: source)
     }
 
     // MARK: - Public calculation requests
@@ -169,11 +166,5 @@ public struct ForecastHour {
         // meteogroup.value9 = dataSource.cloudiness
 
         return meteogroup
-    }
-
-    // MARK: - Realization
-
-    private func getConditions() -> String {
-        return ""
     }
 }

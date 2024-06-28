@@ -483,3 +483,85 @@ public func getForecastHourHumidity(from source: [String: Any]) -> String {
 
     return "\(value) %"
 }
+
+/*
+
+ "rain": {
+ "3h": 0.49
+ },
+
+or
+
+ "snow":{
+ "3h":0.69999999999999996
+ },
+
+*/
+
+/*
+
+{
+...
+   "snow":{
+      "3h":0.69999999999999996
+   },
+   "pop":0.48999999999999999,
+...
+}
+
+*/
+
+public func getPrecipitation(from source: [String: Any]) -> String {
+
+    var precipitation: (Double, String, Double) = (-1, "", -1)
+
+/*
+     1. Get probability of precipitation.
+
+     The values of the parameter vary between 0 and 1,
+     where 0 is equal to 0%, 1 is equal to 100%
+ */
+
+    if let probability = source["pop"] as? Double {
+
+        precipitation.0 = probability
+
+    } else {
+        log.message("[\(#function) [pop] wrong.", .error)
+    }
+
+/*
+    2. Get Rain/Snow volume for last 3 hours, mm.
+
+    Only mm as units of measurement are available for this parameter
+*/
+
+    if let rain = source["rain"] as? [String: Any] {
+        if let mm = rain["3h"] as? Double {
+
+            precipitation.1 = "rain".localizedValue
+            precipitation.2 = mm
+
+        } else {
+            log.message("[\(#function) [rain 3h] wrong.", .error)
+        }
+    } else if let snow = source["snow"] as? [String: Any] {
+        if let mm = snow["3h"] as? Double {
+
+            precipitation.1 = "snow".localizedValue
+            precipitation.2 = mm
+
+        } else {
+            log.message("[\(#function) [snow 3h] wrong.", .error)
+        }
+    } else {
+        log.message("[\(#function) [rain], [snow] wrong.", .error)
+    }
+
+    // MeteoFactsDefaults.conditions
+    guard precipitation.1 != "" else { return "-- / --" }
+
+    // "\(precipitation.0)%, \(precipitation.1), \(precipitation.2) mm"
+    // "\(precipitation.1), \(precipitation.2)" + " " + "Unit: mm".localizedValue
+    return "\(precipitation.1)"
+}
