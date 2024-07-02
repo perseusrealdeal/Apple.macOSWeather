@@ -189,13 +189,13 @@
 
 /* Days' Names */
 
-"Day: Sun" = "ВС";
-"Day: Mon" = "ПН";
-"Day: Tue" = "ВТ";
-"Day: Wed" = "СР";
-"Day: Thu" = "ЧТ";
-"Day: Fri" = "ПТ";
-"Day: Sat" = "СБ";
+"Day: Sun" = "Вс";
+"Day: Mon" = "Пн";
+"Day: Tue" = "Вт";
+"Day: Wed" = "Ср";
+"Day: Thu" = "Чт";
+"Day: Fri" = "Пт";
+"Day: Sat" = "Сб";
 
 /* About Screen – AboutWindowController, AboutViewController */
 

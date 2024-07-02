@@ -251,19 +251,19 @@
     <key>/* Days&apos; Names */</key>
     <string>--</string>
     <key>Day: Sun</key>
-    <string>ВС</string>
+    <string>Вс</string>
     <key>Day: Mon</key>
-    <string>ПН</string>
+    <string>Пн</string>
     <key>Day: Tue</key>
-    <string>ВТ</string>
+    <string>Вт</string>
     <key>Day: Wed</key>
-    <string>СР</string>
+    <string>Ср</string>
     <key>Day: Thu</key>
-    <string>ЧТ</string>
+    <string>Чт</string>
     <key>Day: Fri</key>
-    <string>ПТ</string>
+    <string>Пт</string>
     <key>Day: Sat</key>
-    <string>СБ</string>
+    <string>Сб</string>
 	<key>/* About Screen */</key>
 	<string>--</string>
 	<key>Button: The App Source Code</key>
