@@ -52,10 +52,11 @@ public struct ForecastDay {
     public let date: String // Formate: YYYY-MM-DD, it's uniq calculated value
     public let hours: [ForecastHour]
 
-    private let temperaturesDay: [Double]
-    private let temperaturesNight: [Double]
+    private let temperaturesDay: Double?
+    private let temperaturesNight: Double?
 
-    private let precipitation: [String]
+    // private let probability: Double?
+    private let precipitation: String?
 
     // MARK: - Init
 
@@ -91,8 +92,8 @@ public struct ForecastDay {
             }
         }
 
-        self.temperaturesDay = temperaturesDay
-        self.temperaturesNight = temperaturesNight
+        self.temperaturesDay = temperaturesDay.max()
+        self.temperaturesNight = temperaturesNight.min()
 
         // Get precipitation.
         var precipitation = [String]()
@@ -111,7 +112,17 @@ public struct ForecastDay {
             }
         }
 
-        self.precipitation = precipitation
+        var conditions = ""
+
+        if precipitation.contains("rain".localizedValue) {
+            conditions.append("rain".localizedValue)
+        }
+
+        if precipitation.contains("snow".localizedValue) {
+            conditions.append(", " + "snow".localizedValue)
+        }
+
+        self.precipitation = conditions.isEmpty ? nil : conditions
     }
 
     // MARK: - Contract
@@ -124,22 +135,7 @@ public struct ForecastDay {
     }
 
     public var weatherConditions: String {
-
-        guard !precipitation.isEmpty else {
-            return "-- / --"
-        }
-
-        var conditions = ""
-
-        if precipitation.contains("rain".localizedValue) {
-            conditions.append("rain".localizedValue)
-        }
-
-        if precipitation.contains("snow".localizedValue) {
-            conditions.append(", " + "snow".localizedValue)
-        }
-
-        return conditions
+        return precipitation ?? "-- / --"
     }
 
     public var dateDayOfTheWeek: String {
@@ -171,9 +167,7 @@ public struct ForecastDay {
 
     public var minimumTemperature: String {
 
-        let temperature = temperaturesNight.min()
-
-        guard let value = temperature?.description else {
+        guard let value = temperaturesNight?.description else {
             return MeteoFactsDefaults.temperature
         }
 
@@ -187,9 +181,7 @@ public struct ForecastDay {
 
     public var maximumTemperature: String {
 
-        let temperature = temperaturesDay.max()
-
-        guard let value = temperature?.description else {
+        guard let value = temperaturesDay?.description else {
             return MeteoFactsDefaults.temperature
         }
 
