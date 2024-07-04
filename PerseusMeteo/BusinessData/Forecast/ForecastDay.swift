@@ -81,7 +81,6 @@ public struct ForecastDay {
                         }
                     }
 
-
                 } else {
                     log.message("[\(#function) [temp] wrong.", .error)
                 }
@@ -94,7 +93,23 @@ public struct ForecastDay {
         self.temperaturesNight = temperaturesNight
 
         // Get precipitation.
-        self.precipitation = [String]()
+        var precipitation = [String]()
+
+        hours.forEach {
+            if $0.source["snow"] as? [String: Any] != nil {
+                if !precipitation.contains("snow") {
+                    precipitation.append("snow".localizedValue)
+                }
+            }
+
+            if $0.source["rain"] as? [String: Any] != nil {
+                if !precipitation.contains("rain") {
+                    precipitation.append("rain".localizedValue)
+                }
+            }
+        }
+
+        self.precipitation = precipitation
     }
 
     // MARK: - Contract
@@ -108,9 +123,21 @@ public struct ForecastDay {
 
     public var weatherConditions: String {
 
-        let conditions = getConditions()
+        guard !precipitation.isEmpty else {
+            return "-- / --"
+        }
 
-        return conditions.isEmpty ? MeteoFactsDefaults.conditions : conditions
+        var conditions = ""
+
+        if precipitation.contains("rain".localizedValue) {
+            conditions.append("rain".localizedValue)
+        }
+
+        if precipitation.contains("snow".localizedValue) {
+            conditions.append(", " + "snow".localizedValue)
+        }
+
+        return conditions
     }
 
     public var dateDayOfTheWeek: String {
@@ -175,10 +202,6 @@ public struct ForecastDay {
     // MARK: - Realization
 
     private func getIconName() -> String {
-        return ""
-    }
-
-    private func getConditions() -> String {
         return ""
     }
 }
