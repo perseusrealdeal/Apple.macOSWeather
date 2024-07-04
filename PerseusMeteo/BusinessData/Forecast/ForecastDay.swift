@@ -50,7 +50,10 @@ public struct ForecastDay {
     public let date: String // Formate: YYYY-MM-DD, it's uniq calculated value
     public let hours: [ForecastHour]
 
-    private let temperatures: [Double]
+    private let temperaturesDay: [Double]
+    private let temperaturesNight: [Double]
+
+    private let precipitation: [String]
 
     // MARK: - Init
 
@@ -59,15 +62,25 @@ public struct ForecastDay {
         self.hours = hours
 
         // Get temperatures.
-        var temperatures = [Double]()
+        var temperaturesDay = [Double]()
+        var temperaturesNight = [Double]()
 
         hours.forEach {
 
             // Get value.
             if let main = $0.source["main"] as? [String: Any] {
-                if let temp_min = main["temp"] as? Double {
+                if let temp = main["temp"] as? Double {
 
-                    temperatures.append(temp_min)
+                    if let sys = $0.source["sys"] as? [String: Any] {
+                        if let pod = sys["pod"] as? String {
+                            if pod == "d" {
+                                temperaturesDay.append(temp)
+                            } else if pod == "n" {
+                                temperaturesNight.append(temp)
+                            }
+                        }
+                    }
+
 
                 } else {
                     log.message("[\(#function) [temp] wrong.", .error)
@@ -77,7 +90,11 @@ public struct ForecastDay {
             }
         }
 
-        self.temperatures = temperatures
+        self.temperaturesDay = temperaturesDay
+        self.temperaturesNight = temperaturesNight
+
+        // Get precipitation.
+        self.precipitation = [String]()
     }
 
     // MARK: - Contract
@@ -125,7 +142,7 @@ public struct ForecastDay {
 
     public var minimumTemperature: String {
 
-        let temperature = temperatures.min()
+        let temperature = temperaturesNight.min()
 
         guard let value = temperature?.description else {
             return MeteoFactsDefaults.temperature
@@ -141,7 +158,7 @@ public struct ForecastDay {
 
     public var maximumTemperature: String {
 
-        let temperature = temperatures.max()
+        let temperature = temperaturesDay.max()
 
         guard let value = temperature?.description else {
             return MeteoFactsDefaults.temperature
