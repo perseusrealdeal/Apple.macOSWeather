@@ -85,8 +85,10 @@
 "Unit: mb" = "мбар";
 
 "Unit: mm" = "мм";
+
 "rain" = "дождь";
 "snow" = "снег";
+"clear" = "без осадков";
 
 "Label: Sunrise" = "ВОСХОД";
 "Label: Sunset" = "ЗАХОД";

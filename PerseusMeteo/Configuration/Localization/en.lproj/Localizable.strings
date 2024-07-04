@@ -85,8 +85,10 @@
 "Unit: mb" = "mb";
 
 "Unit: mm" = "mm";
+
 "rain" = "rain";
 "snow" = "snow";
+"clear" = "clear";
 
 "Label: Sunrise" = "SUNRISE";
 "Label: Sunset" = "SUNSET";

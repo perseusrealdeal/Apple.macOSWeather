@@ -52,77 +52,22 @@ public struct ForecastDay {
     public let date: String // Formate: YYYY-MM-DD, it's uniq calculated value
     public let hours: [ForecastHour]
 
-    private let temperaturesDay: Double?
-    private let temperaturesNight: Double?
+    private let temperaturesNightDay: (Double?, Double?)
 
     // private let probability: Double?
     private let precipitation: String?
 
+    private let isTemplated: Bool
+
     // MARK: - Init
 
-    init(date: String, hours: [ForecastHour]) {
+    init(date: String, hours: [ForecastHour], templated: Bool = false) {
         self.date = date
         self.hours = hours
+        self.isTemplated = templated
 
-        // Get temperatures.
-        var temperaturesDay = [Double]()
-        var temperaturesNight = [Double]()
-
-        hours.forEach {
-
-            // Get value.
-            if let main = $0.source["main"] as? [String: Any] {
-                if let temp = main["temp"] as? Double {
-
-                    if let sys = $0.source["sys"] as? [String: Any] {
-                        if let pod = sys["pod"] as? String {
-                            if pod == "d" {
-                                temperaturesDay.append(temp)
-                            } else if pod == "n" {
-                                temperaturesNight.append(temp)
-                            }
-                        }
-                    }
-
-                } else {
-                    log.message("[\(#function) [temp] wrong.", .error)
-                }
-            } else {
-                log.message("[\(#function) [main] wrong.", .error)
-            }
-        }
-
-        self.temperaturesDay = temperaturesDay.max()
-        self.temperaturesNight = temperaturesNight.min()
-
-        // Get precipitation.
-        var precipitation = [String]()
-
-        hours.forEach {
-            if $0.source["snow"] as? [String: Any] != nil {
-                if !precipitation.contains("snow") {
-                    precipitation.append("snow".localizedValue)
-                }
-            }
-
-            if $0.source["rain"] as? [String: Any] != nil {
-                if !precipitation.contains("rain") {
-                    precipitation.append("rain".localizedValue)
-                }
-            }
-        }
-
-        var conditions = ""
-
-        if precipitation.contains("rain".localizedValue) {
-            conditions.append("rain".localizedValue)
-        }
-
-        if precipitation.contains("snow".localizedValue) {
-            conditions.append(", " + "snow".localizedValue)
-        }
-
-        self.precipitation = conditions.isEmpty ? nil : conditions
+        self.temperaturesNightDay = ForecastDay.initTemperatures(source: hours)
+        self.precipitation = ForecastDay.initPrecipitation(source: hours)
     }
 
     // MARK: - Contract
@@ -135,7 +80,8 @@ public struct ForecastDay {
     }
 
     public var weatherConditions: String {
-        return precipitation ?? "-- / --"
+        return isTemplated ? MeteoFactsDefaults.conditions :
+            (precipitation == nil ? "clear".localizedValue : precipitation!)
     }
 
     public var dateDayOfTheWeek: String {
@@ -167,7 +113,7 @@ public struct ForecastDay {
 
     public var minimumTemperature: String {
 
-        guard let value = temperaturesNight?.description else {
+        guard let value = temperaturesNightDay.0?.description else {
             return MeteoFactsDefaults.temperature
         }
 
@@ -181,7 +127,7 @@ public struct ForecastDay {
 
     public var maximumTemperature: String {
 
-        guard let value = temperaturesDay?.description else {
+        guard let value = temperaturesNightDay.1?.description else {
             return MeteoFactsDefaults.temperature
         }
 
@@ -197,5 +143,69 @@ public struct ForecastDay {
 
     private func getIconName() -> String {
         return ""
+    }
+
+    private static func initTemperatures(source hours: [ForecastHour]) -> (Double?, Double?) {
+
+        // Get temperatures.
+        var temperaturesDay = [Double]()
+        var temperaturesNight = [Double]()
+
+        hours.forEach {
+
+            // Get value.
+            if let main = $0.source["main"] as? [String: Any] {
+                if let temp = main["temp"] as? Double {
+
+                    if let sys = $0.source["sys"] as? [String: Any] {
+                        if let pod = sys["pod"] as? String {
+                            if pod == "d" {
+                                temperaturesDay.append(temp)
+                            } else if pod == "n" {
+                                temperaturesNight.append(temp)
+                            }
+                        }
+                    }
+
+                } else {
+                    log.message("[\(#function) [temp] wrong.", .error)
+                }
+            } else {
+                log.message("[\(#function) [main] wrong.", .error)
+            }
+        }
+
+        return (temperaturesNight.min(), temperaturesDay.max())
+    }
+
+    private static func initPrecipitation(source hours: [ForecastHour]) -> String? {
+
+        var precipitation = [String]()
+
+        hours.forEach {
+            if $0.source["snow"] as? [String: Any] != nil {
+                if !precipitation.contains("snow") {
+                    precipitation.append("snow".localizedValue)
+                }
+            }
+
+            if $0.source["rain"] as? [String: Any] != nil {
+                if !precipitation.contains("rain") {
+                    precipitation.append("rain".localizedValue)
+                }
+            }
+        }
+
+        var conditions = ""
+
+        if precipitation.contains("rain".localizedValue) {
+            conditions.append("rain".localizedValue)
+        }
+
+        if precipitation.contains("snow".localizedValue) {
+            conditions.append(", " + "snow".localizedValue)
+        }
+
+        return conditions.isEmpty ? nil : conditions
     }
 }

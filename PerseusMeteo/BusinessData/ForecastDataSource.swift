@@ -99,7 +99,7 @@ public class ForecastDataSource: MeteoDataSource {
                 hours.append(ForecastHour(title: "\(item)"))
             }
 
-            days.append(ForecastDay(date: item.description, hours: hours))
+            days.append(ForecastDay(date: item.description, hours: hours, templated: true))
         }
 
         return days
