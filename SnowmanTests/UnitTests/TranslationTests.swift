@@ -211,6 +211,13 @@ class TranslationTests: XCTestCase {
                        "Label: Weekday short".localizedValue)
         XCTAssertEqual("Label: Forecast Date".localizedExpectation,
                        "Label: Forecast Date".localizedValue)
+
+        XCTAssertEqual("rain".localizedExpectation,
+                       "rain".localizedValue)
+        XCTAssertEqual("snow".localizedExpectation,
+                       "snow".localizedValue)
+        XCTAssertEqual("clear".localizedExpectation,
+                       "clear".localizedValue)
     }
 
     // MARK: - Options Screen

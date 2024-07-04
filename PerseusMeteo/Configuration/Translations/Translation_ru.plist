@@ -120,6 +120,12 @@
 	<string>--</string>
 	<key>Label: Conditions</key>
 	<string>Условия</string>
+    <key>rain</key>
+    <string>дождь</string>
+    <key>snow</key>
+    <string>снег</string>
+    <key>clear</key>
+    <string>без осадков</string>
 	<key>Label: Weekday short</key>
 	<string>День</string>
 	<key>Label: Forecast Date</key>

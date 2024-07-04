@@ -86,10 +86,6 @@
 
 "Unit: mm" = "мм";
 
-"rain" = "дождь";
-"snow" = "снег";
-"clear" = "без осадков";
-
 "Label: Sunrise" = "ВОСХОД";
 "Label: Sunset" = "ЗАХОД";
 
@@ -106,6 +102,11 @@
 
 "Label: Info" = "Секция в разработке выпуска версии 0.3.";
 "Label: Conditions" = "Условия";
+
+"rain" = "дождь";
+"snow" = "снег";
+"clear" = "без осадков";
+
 "Label: Weekday short" = "День";
 "Label: Forecast Date" = "Дата";
 

@@ -120,7 +120,13 @@
 	<string>--</string>
 	<key>Label: Conditions</key>
 	<string>Conditions</string>
-	<key>Label: Weekday short</key>
+    <key>rain</key>
+    <string>rain</string>
+    <key>snow</key>
+    <string>snow</string>
+    <key>clear</key>
+    <string>clear</string>
+    <key>Label: Weekday short</key>
 	<string>Day</string>
 	<key>Label: Forecast Date</key>
 	<string>Date</string>

@@ -86,10 +86,6 @@
 
 "Unit: mm" = "mm";
 
-"rain" = "rain";
-"snow" = "snow";
-"clear" = "clear";
-
 "Label: Sunrise" = "SUNRISE";
 "Label: Sunset" = "SUNSET";
 
@@ -106,6 +102,11 @@
 
 "Label: Info" = "This tab in release 0.3 developing.";
 "Label: Conditions" = "Conditions";
+
+"rain" = "rain";
+"snow" = "snow";
+"clear" = "clear";
+
 "Label: Weekday short" = "Day";
 "Label: Forecast Date" = "Date";
 
