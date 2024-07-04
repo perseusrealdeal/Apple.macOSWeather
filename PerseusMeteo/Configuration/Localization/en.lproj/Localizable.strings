@@ -86,7 +86,7 @@
 
 "Unit: mm" = "mm";
 "rain" = "rain";
-"snow" = "rain";
+"snow" = "snow";
 
 "Label: Sunrise" = "SUNRISE";
 "Label: Sunset" = "SUNSET";
