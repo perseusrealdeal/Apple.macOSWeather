@@ -70,27 +70,27 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <scrollView wantsLayer="YES" borderType="none" horizontalLineScroll="0.0" horizontalPageScroll="0.0" verticalLineScroll="0.0" verticalPageScroll="0.0" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="C3U-jg-8cN">
-                    <rect key="frame" x="110" y="160" width="217" height="40"/>
+                <scrollView wantsLayer="YES" borderType="none" horizontalLineScroll="0.0" horizontalPageScroll="0.0" verticalLineScroll="0.0" verticalPageScroll="0.0" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="C3U-jg-8cN">
+                    <rect key="frame" x="110" y="150" width="217" height="50"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="pMm-aP-dHN">
-                        <rect key="frame" x="0.0" y="0.0" width="217" height="40"/>
+                        <rect key="frame" x="0.0" y="0.0" width="217" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView selectable="YES" allowsEmptySelection="NO" id="0YB-xy-CuN">
-                                <rect key="frame" x="0.0" y="0.0" width="217" height="40"/>
+                                <rect key="frame" x="0.0" y="0.0" width="217" height="50"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" id="vVe-k9-PSY">
-                                    <size key="itemSize" width="66" height="40"/>
+                                    <size key="itemSize" width="66" height="50"/>
                                 </collectionViewFlowLayout>
                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </collectionView>
                         </subviews>
                     </clipView>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="L0D-L9-Kcl"/>
+                        <constraint firstAttribute="height" constant="50" id="L0D-L9-Kcl"/>
                     </constraints>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Khc-Ly-bXy">
-                        <rect key="frame" x="-100" y="-100" width="217" height="16"/>
+                    <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="Khc-Ly-bXy">
+                        <rect key="frame" x="0.0" y="34" width="217" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Cwq-aQ-Dl8">
@@ -99,7 +99,7 @@
                     </scroller>
                 </scrollView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="hhL-fD-lWA" customClass="MeteoGroupView" customModule="Snowman" customModuleProvider="target">
-                    <rect key="frame" x="110" y="0.0" width="217" height="160"/>
+                    <rect key="frame" x="110" y="0.0" width="217" height="150"/>
                 </customView>
             </subviews>
             <constraints>
