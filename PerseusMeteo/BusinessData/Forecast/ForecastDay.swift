@@ -46,6 +46,7 @@ import Foundation
 public struct ForecastDay {
 
     public var label: String = "" // For debug purpose
+    private let isTemplated: Bool
 
     // MARK: - Data
 
@@ -54,10 +55,8 @@ public struct ForecastDay {
 
     private let temperaturesNightDay: (Double?, Double?)
 
-    // private let probability: Double?
+    private let probability: Double?
     private let precipitation: String?
-
-    private let isTemplated: Bool
 
     // MARK: - Init
 
@@ -67,7 +66,8 @@ public struct ForecastDay {
         self.isTemplated = templated
 
         self.temperaturesNightDay = ForecastDay.initTemperatures(source: hours)
-        self.precipitation = ForecastDay.initPrecipitation(source: hours)
+        self.probability = ForecastDay.initProbability(source: hours)
+        self.precipitation = ForecastDay.initPrecipitation(source: hours, pop: probability)
     }
 
     // MARK: - Contract
@@ -178,7 +178,8 @@ public struct ForecastDay {
         return (temperaturesNight.min(), temperaturesDay.max())
     }
 
-    private static func initPrecipitation(source hours: [ForecastHour]) -> String? {
+    private static func initPrecipitation(source hours: [ForecastHour],
+                                          pop: Double? = nil) -> String? {
 
         var precipitation = [String]()
 
@@ -203,9 +204,27 @@ public struct ForecastDay {
         }
 
         if precipitation.contains("snow".localizedValue) {
-            conditions.append(", " + "snow".localizedValue)
+            conditions.append(" " + "snow".localizedValue)
         }
 
-        return conditions.isEmpty ? nil : conditions
+        let popRepresented = representProbabilityOfPrecipitation(pop)
+
+        return conditions.isEmpty ? nil :
+            (pop == nil ? conditions : "\(popRepresented)% \(conditions)")
+    }
+
+    private static func initProbability(source hours: [ForecastHour]) -> Double? {
+        // "pop":0.48999999999999999
+
+        var pops = [Double]()
+
+        hours.forEach {
+            // Get values.
+            if let pop = $0.source["pop"] as? Double {
+                pops.append(pop)
+            }
+        }
+
+        return pops.max()
     }
 }

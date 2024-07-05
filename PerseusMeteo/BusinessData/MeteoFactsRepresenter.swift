@@ -20,6 +20,17 @@
 
 import Foundation
 
+// MARK: - Probability of precipitation (pop)
+
+public func representProbabilityOfPrecipitation(_ value: Double?) -> String {
+
+    guard let probability = value else { return "" }
+
+    let calculated = probability * 100
+
+    return Int(calculated.cut(.two)).description
+}
+
 // MARK: - Temperature
 
 public func representTemperature(_ value: String,
