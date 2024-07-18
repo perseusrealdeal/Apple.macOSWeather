@@ -231,6 +231,8 @@ public struct ForecastDay {
 
     private static func initIconName(source hours: [ForecastHour]) -> String? {
 
+        // Ranks
+
         let iconRanks: [String: Int] = [
             "01": 9, // clear sky
             "02": 8, // few clouds
@@ -244,6 +246,7 @@ public struct ForecastDay {
         ]
 
         // Icons
+
         var icons = [String]()
 
         hours.forEach {
