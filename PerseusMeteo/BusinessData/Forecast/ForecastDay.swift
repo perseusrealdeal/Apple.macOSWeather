@@ -233,14 +233,14 @@ public struct ForecastDay {
 
         let iconRanks: [String: Int] = [
             "01": 9, // clear sky
-            "02": 7, // few clouds
-            "03": 6, // scattered clouds
-            "04": 5, // broken clouds
-            "09": 4, // shower rain
-            "10": 3, // rain
+            "02": 8, // few clouds
+            "03": 7, // scattered clouds
+            "04": 6, // broken clouds
+            "09": 3, // shower rain
+            "10": 4, // rain
             "11": 1, // thunderstorm
             "13": 2, // snow
-            "50": 8  // mist
+            "50": 5  // mist
         ]
 
         // Icons

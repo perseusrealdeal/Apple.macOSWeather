@@ -163,7 +163,6 @@ class ForecastView: NSView {
 
         labelMeteoProviderTitle.stringValue = "Label: Meteo Data Provider".localizedValue
         labelMeteoProviderValue.stringValue = dataSource.meteoDataProviderName
-        labelWeatherDescription.stringValue = MeteoFactsDefaults.conditions
     }
 
     public func selectTheFirstForecastDay() {
@@ -226,6 +225,8 @@ class ForecastView: NSView {
     private func reloadHoursCollection(selectionSaved: Bool) {
 
         log.message("[\(type(of: self))].\(#function)")
+
+        labelWeatherDescription.stringValue = MeteoFactsDefaults.conditions
 
         guard viewForecastDays.selectionIndexPaths.first != nil else {
 
