@@ -102,7 +102,7 @@ class PopoverScreenLocalizationTests: XCTestCase {
         XCTAssertEqual(sut.viewCurrentWeather.labelMeteoProviderValue.stringValue,
                        MeteoFactsDefaults.meteoDataProviderName)
 
-        XCTAssertEqual(sut.viewCurrentWeather.labelWeatherConditionValue.stringValue,
+        XCTAssertEqual(sut.viewCurrentWeather.labelWeatherConditionsDescriptionValue.stringValue,
                        "Label: About Current Weather".localizedValue)
 
         XCTAssertEqual(sut.viewCurrentWeather.labelSunriseTitle.stringValue,

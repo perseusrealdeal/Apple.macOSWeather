@@ -45,9 +45,9 @@ class WeatherView: NSView {
     @IBOutlet private(set) weak var labelMeteoProviderValue: NSTextField!
     @IBOutlet private(set) weak var indicator: NSProgressIndicator!
 
-    @IBOutlet private(set) weak var viewWeatherConditionIcon: NSImageView!
+    @IBOutlet private(set) weak var viewWeatherConditionsIcon: NSImageView!
     @IBOutlet private(set) weak var labelTemperatureValue: NSTextField!
-    @IBOutlet private(set) weak var labelWeatherConditionValue: NSTextField!
+    @IBOutlet private(set) weak var labelWeatherConditionsDescriptionValue: NSTextField!
 
     @IBOutlet private(set) weak var labelSunriseTitle: NSTextField!
     @IBOutlet private(set) weak var labelSunriseValue: NSTextField!
@@ -132,8 +132,8 @@ class WeatherView: NSView {
         // viewWeatherConditionIcon.image = NSImage(named: dataSource.weatherIconName)
         // labelWeatherConditionValue.stringValue = dataSource.weatherDescription
 
-        viewWeatherConditionIcon.image = NSImage(named: wcs.icon)
-        labelWeatherConditionValue.stringValue = wcs.description
+        viewWeatherConditionsIcon.image = NSImage(named: wcs.icon)
+        labelWeatherConditionsDescriptionValue.stringValue = wcs.description
 
         // Sunrise and sunset.
 
