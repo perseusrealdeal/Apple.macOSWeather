@@ -132,4 +132,13 @@ public class CurrentDataSourceReader: MeteoDataSourceReader {
 
         return parser?.getSunset(from: dict)
     }
+
+    public var weatherConditions: WeatherConditions {
+
+        if let dict = data, let parser = parser {
+            return parser.getWeatherConditions(from: dict)
+        }
+
+        return MeteoFactsDefaults.weatherConditions
+    }
 }

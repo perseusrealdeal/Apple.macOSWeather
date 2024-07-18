@@ -104,6 +104,12 @@ public struct ForecastHour {
         return getPrecipitation(from: source)
     }
 
+    // MARK: - Weather conditions
+
+    public var weatherConditions: WeatherConditions {
+        return getWeatherConditions(from: source)
+    }
+
     // MARK: - Public calculation requests
 
     public func prepareMeteoGroupData() -> MeteoGroupData {

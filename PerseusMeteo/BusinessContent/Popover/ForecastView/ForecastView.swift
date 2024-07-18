@@ -50,6 +50,7 @@ class ForecastView: NSView {
     @IBOutlet private(set) weak var viewForecastDays: NSCollectionView!
     @IBOutlet private(set) weak var viewForecastHours: NSCollectionView!
 
+    @IBOutlet private(set) weak var labelWeatherDescription: NSTextField!
     @IBOutlet private(set) weak var viewMeteoGroup: MeteoGroupView!
 
     // MARK: - Initialization
@@ -162,6 +163,7 @@ class ForecastView: NSView {
 
         labelMeteoProviderTitle.stringValue = "Label: Meteo Data Provider".localizedValue
         labelMeteoProviderValue.stringValue = dataSource.meteoDataProviderName
+        labelWeatherDescription.stringValue = MeteoFactsDefaults.conditions
     }
 
     public func selectTheFirstForecastDay() {
@@ -192,11 +194,15 @@ class ForecastView: NSView {
 
                 if let daySelectedIndex = daySelected.first {
                     let index = daySelectedIndex.item
-                    viewMeteoGroup.data =
-                        dataSource.forecastDays[index].hours[0].prepareMeteoGroupData()
+                    let item = dataSource.forecastDays[index].hours[0]
+
+                    viewMeteoGroup.data = item.prepareMeteoGroupData()
+                    labelWeatherDescription.stringValue = item.weatherConditions.description
                 } else {
-                    viewMeteoGroup.data =
-                        dataSource.forecastDays[0].hours[0].prepareMeteoGroupData()
+                    let item = dataSource.forecastDays[0].hours[0]
+
+                    viewMeteoGroup.data = item.prepareMeteoGroupData()
+                    labelWeatherDescription.stringValue = item.weatherConditions.description
                 }
             }
         }
@@ -251,9 +257,10 @@ class ForecastView: NSView {
                 log.message("[\(type(of: self))].\(#function) hours not empty")
 
                 let hourItem = indexHour!.item
+                let item = dataSource.forecastDays[dayItem].hours[hourItem]
 
-                viewMeteoGroup.data =
-                    dataSource.forecastDays[dayItem].hours[hourItem].prepareMeteoGroupData()
+                viewMeteoGroup.data = item.prepareMeteoGroupData()
+                labelWeatherDescription.stringValue = item.weatherConditions.description
             }
         }
 
@@ -395,6 +402,8 @@ extension ForecastView: NSCollectionViewDelegate {
                 hourDetails = day.hours[(hourIndexPaths as NSIndexPath).item]
             }
 
+            labelWeatherDescription.stringValue =
+                hourDetails?.weatherConditions.description ?? MeteoFactsDefaults.conditions
             viewMeteoGroup.data = hourDetails?.prepareMeteoGroupData()
         }
     }

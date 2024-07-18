@@ -85,6 +85,10 @@ public struct MeteoFactsDefaults {
         return "Label: Forecast Date".localizedValue
     }
 
+    public static var weatherConditions: WeatherConditions {
+        return WeatherConditions(code: WeatherCode(rawValue: 99)!, name: "Icon")
+    }
+
     // MARK: - Private Properties
 
     private static var temperatureCurrentFormat: String {

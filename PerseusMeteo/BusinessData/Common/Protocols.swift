@@ -28,6 +28,7 @@ public protocol CurrentParserProtocol {
 
     func getWeatherDescription(from dictionary: [String: Any]) -> String?
     func getWeatherIconName(from dictionary: [String: Any]) -> String?
+    func getWeatherConditions(from source: [String: Any]) -> WeatherConditions
 
     func getTemperature(from dictionary: [String: Any]) -> String?
     func getTemperatureFeelsLike(from dictionary: [String: Any]) -> String?

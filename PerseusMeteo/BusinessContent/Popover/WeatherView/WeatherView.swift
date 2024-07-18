@@ -127,8 +127,13 @@ class WeatherView: NSView {
 
         labelTemperatureValue.stringValue = dataSource.temperature
 
-        viewWeatherConditionIcon.image = NSImage(named: dataSource.weatherIconName)
-        labelWeatherConditionValue.stringValue = dataSource.weatherDescription
+        let wcs = dataSource.weatherConditions
+
+        // viewWeatherConditionIcon.image = NSImage(named: dataSource.weatherIconName)
+        // labelWeatherConditionValue.stringValue = dataSource.weatherDescription
+
+        viewWeatherConditionIcon.image = NSImage(named: wcs.icon)
+        labelWeatherConditionValue.stringValue = wcs.description
 
         // Sunrise and sunset.
 

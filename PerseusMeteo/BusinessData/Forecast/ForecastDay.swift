@@ -58,6 +58,8 @@ public struct ForecastDay {
     private let probability: Double?
     private let precipitation: String?
 
+    private let iconName: String?
+
     // MARK: - Init
 
     init(date: String, hours: [ForecastHour], templated: Bool = false) {
@@ -65,6 +67,7 @@ public struct ForecastDay {
         self.hours = hours
         self.isTemplated = templated
 
+        self.iconName = ForecastDay.initIconName(source: hours)
         self.temperaturesNightDay = ForecastDay.initTemperatures(source: hours)
         self.probability = ForecastDay.initProbability(source: hours)
         self.precipitation = ForecastDay.initPrecipitation(source: hours, pop: probability)
@@ -74,9 +77,9 @@ public struct ForecastDay {
 
     public var weatherConditionIconName: String {
 
-        let iconName = getIconName()
+        guard let icon = self.iconName else { return MeteoFactsDefaults.weatherIconName }
 
-        return iconName.isEmpty ? "Icon" : iconName
+        return "\(icon)@4x"
     }
 
     public var weatherConditions: String {
@@ -140,10 +143,6 @@ public struct ForecastDay {
     }
 
     // MARK: - Realization
-
-    private func getIconName() -> String {
-        return ""
-    }
 
     private static func initTemperatures(source hours: [ForecastHour]) -> (Double?, Double?) {
 
@@ -226,5 +225,48 @@ public struct ForecastDay {
         }
 
         return pops.max()
+    }
+
+    // MARK: - Initialization OpenWather weather condition icon
+
+    private static func initIconName(source hours: [ForecastHour]) -> String? {
+
+        let iconRanks: [String: Int] = [
+            "01": 9, // clear sky
+            "02": 7, // few clouds
+            "03": 6, // scattered clouds
+            "04": 5, // broken clouds
+            "09": 4, // shower rain
+            "10": 3, // rain
+            "11": 1, // thunderstorm
+            "13": 2, // snow
+            "50": 8  // mist
+        ]
+
+        // Icons
+        var icons = [String]()
+
+        hours.forEach {
+            if let weather = $0.source["weather"] as? [Any] {
+                if let wFirst = weather.first as? [String: Any] {
+                    if let icon = wFirst["icon"] as? String {
+                        icons.append(icon) // String(icon.dropLast())
+                    }
+                }
+            }
+        }
+
+        // Ranked icons
+
+        var rankedIcons = [String: Int]()
+
+        icons.forEach { item in
+            let rank = iconRanks["\(item.dropLast())"]
+            rankedIcons["\(item)"] = rank
+        }
+
+        // The most relevant icon
+
+        return (rankedIcons.min { $0.value < $1.value })?.key
     }
 }

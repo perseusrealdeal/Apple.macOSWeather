@@ -12,6 +12,7 @@
                 <outlet property="indicator" destination="QGQ-z2-uOh" id="G9m-IL-HY4"/>
                 <outlet property="labelMeteoProviderTitle" destination="RqP-Rv-nzd" id="jsg-nl-hPw"/>
                 <outlet property="labelMeteoProviderValue" destination="YyR-ui-s1a" id="Ge5-2y-yzh"/>
+                <outlet property="labelWeatherDescription" destination="FBr-DI-wL7" id="7WX-SE-6ga"/>
                 <outlet property="viewForecastDays" destination="HMb-ib-xly" id="j3N-zd-Zuj"/>
                 <outlet property="viewForecastHours" destination="0YB-xy-CuN" id="BFj-5A-r84"/>
                 <outlet property="viewMeteoGroup" destination="hhL-fD-lWA" id="aXL-ah-4m4"/>
@@ -98,8 +99,27 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="klC-xc-C8u">
+                    <rect key="frame" x="110" y="130" width="217" height="20"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FBr-DI-wL7">
+                            <rect key="frame" x="-2" y="2" width="221" height="17"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Weather Description" id="DX1-Jw-qih">
+                                <font key="font" usesAppearanceFont="YES"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="0ih-VB-XRS"/>
+                        <constraint firstItem="FBr-DI-wL7" firstAttribute="leading" secondItem="klC-xc-C8u" secondAttribute="leading" id="2MY-X2-7GW"/>
+                        <constraint firstAttribute="trailing" secondItem="FBr-DI-wL7" secondAttribute="trailing" id="TFL-03-dlf"/>
+                        <constraint firstItem="FBr-DI-wL7" firstAttribute="centerY" secondItem="klC-xc-C8u" secondAttribute="centerY" id="xjO-pd-wLU"/>
+                    </constraints>
+                </customView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="hhL-fD-lWA" customClass="MeteoGroupView" customModule="Snowman" customModuleProvider="target">
-                    <rect key="frame" x="110" y="0.0" width="217" height="150"/>
+                    <rect key="frame" x="110" y="0.0" width="217" height="130"/>
                 </customView>
             </subviews>
             <constraints>
@@ -109,14 +129,17 @@
                 <constraint firstItem="C3U-jg-8cN" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="Buc-us-SAf"/>
                 <constraint firstAttribute="bottom" secondItem="cUv-Pj-QKs" secondAttribute="bottom" id="H1R-bB-G0A"/>
                 <constraint firstItem="RqP-Rv-nzd" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="NVq-lK-6jY"/>
-                <constraint firstItem="hhL-fD-lWA" firstAttribute="leading" secondItem="HMb-ib-xly" secondAttribute="trailing" id="OxH-at-vCL"/>
                 <constraint firstItem="YyR-ui-s1a" firstAttribute="centerY" secondItem="RqP-Rv-nzd" secondAttribute="centerY" id="PSf-nR-17p"/>
                 <constraint firstAttribute="trailing" secondItem="C3U-jg-8cN" secondAttribute="trailing" id="Q4o-jf-gIO"/>
+                <constraint firstItem="klC-xc-C8u" firstAttribute="top" secondItem="C3U-jg-8cN" secondAttribute="bottom" id="Qla-NA-nYg"/>
+                <constraint firstItem="klC-xc-C8u" firstAttribute="leading" secondItem="cUv-Pj-QKs" secondAttribute="trailing" id="W5m-VU-2jf"/>
                 <constraint firstItem="YyR-ui-s1a" firstAttribute="leading" secondItem="RqP-Rv-nzd" secondAttribute="trailing" constant="5" id="aoV-qb-U3Y"/>
                 <constraint firstItem="C3U-jg-8cN" firstAttribute="leading" secondItem="HMb-ib-xly" secondAttribute="trailing" id="cYl-Xd-bMH"/>
-                <constraint firstItem="hhL-fD-lWA" firstAttribute="top" secondItem="C3U-jg-8cN" secondAttribute="bottom" id="j9X-Ph-V6L"/>
+                <constraint firstItem="hhL-fD-lWA" firstAttribute="leading" secondItem="HMb-ib-xly" secondAttribute="trailing" id="nVQ-rT-1S8"/>
+                <constraint firstItem="hhL-fD-lWA" firstAttribute="top" secondItem="klC-xc-C8u" secondAttribute="bottom" id="q2v-a6-0DF"/>
                 <constraint firstAttribute="bottom" secondItem="hhL-fD-lWA" secondAttribute="bottom" id="swf-Sl-fgW"/>
                 <constraint firstItem="RqP-Rv-nzd" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="tkx-S1-iKn"/>
+                <constraint firstItem="klC-xc-C8u" firstAttribute="width" secondItem="C3U-jg-8cN" secondAttribute="width" id="uiJ-sl-Cvc"/>
                 <constraint firstItem="QGQ-z2-uOh" firstAttribute="trailing" secondItem="c22-O7-iKe" secondAttribute="trailing" constant="-2" id="xU8-ZH-7XU"/>
                 <constraint firstItem="cUv-Pj-QKs" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="z56-nY-FOg"/>
             </constraints>

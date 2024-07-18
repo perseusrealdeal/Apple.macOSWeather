@@ -86,6 +86,16 @@ public class CurrentDataSource: MeteoDataSource {
         return "Prefix: Curren Weather in Brief".localizedValue + ": \(value)"
     }
 
+    public var weatherConditions: WeatherConditions {
+
+        guard let reader = self.reader as? CurrentDataSourceReader
+        else {
+            return MeteoFactsDefaults.weatherConditions
+        }
+
+        return reader.weatherConditions
+    }
+
     public var temperature: String {
 
         guard

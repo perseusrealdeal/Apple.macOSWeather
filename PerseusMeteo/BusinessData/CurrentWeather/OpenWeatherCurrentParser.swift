@@ -354,4 +354,31 @@ public class OpenWeatherCurrentParser: CurrentParserProtocol {
         return nil
     }
 
+    public func getWeatherConditions(from source: [String: Any]) -> WeatherConditions {
+
+        var value: WeatherConditions?
+
+        if let weather = source["weather"] as? [Any] {
+            if let wFirst = weather.first as? [String: Any] {
+                if
+                    let id = wFirst["id"] as? Int,
+                    let icon = wFirst["icon"] as? String,
+                    let code = WeatherCode(rawValue: id) {
+
+                    value = WeatherConditions(code: code, name: "\(icon)@4x")
+
+                } else {
+                    log.message("\(#function) [id / icon] wrong.", .error)
+                }
+            } else {
+                log.message("\(#function) Weather first wrong.", .error)
+            }
+        } else {
+            log.message("\(#function) [weather] wrong.", .error)
+        }
+
+        guard let conditions = value else { return MeteoFactsDefaults.weatherConditions }
+
+        return conditions
+    }
 }
