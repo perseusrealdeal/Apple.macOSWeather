@@ -13,6 +13,9 @@
 //  See LICENSE for details. All rights reserved.
 //
 //  Data from https://openweathermap.org/weather-conditions
+//
+// swiftlint:disable file_length
+//
 
 import Foundation
 
