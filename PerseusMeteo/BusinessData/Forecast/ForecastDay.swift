@@ -83,7 +83,7 @@ public struct ForecastDay {
     }
 
     public var weatherConditions: String {
-        return isTemplated ? MeteoFactsDefaults.conditions :
+        return isTemplated ? MeteoFactsDefaults.forecastDaysItemWeatherDescription :
             (precipitation == nil ? "clear".localizedValue : precipitation!)
     }
 

@@ -12,7 +12,7 @@
 //
 //  See LICENSE for details. All rights reserved.
 //
-// swiftlint:disable file_length
+// swiftlint:disable file_length type_body_length function_body_length
 //
 
 import XCTest
@@ -117,8 +117,8 @@ class TranslationTests: XCTestCase {
         XCTAssertEqual("Label: Meteo Data Provider".localizedExpectation,
                        "Label: Meteo Data Provider".localizedValue)
 
-        XCTAssertEqual("Label: About Current Weather".localizedExpectation,
-                       "Label: About Current Weather".localizedValue)
+        XCTAssertEqual("Label: Weather Conditions".localizedExpectation,
+                       "Label: Weather Conditions".localizedValue)
 
         XCTAssertEqual("Prefix: Curren Weather in Brief".localizedExpectation,
                        "Prefix: Curren Weather in Brief".localizedValue)
@@ -203,10 +203,10 @@ class TranslationTests: XCTestCase {
 
     func test_translation_of_PopoverScreen_ForecastView() {
 
-        // assert
+        // assert "Label: DayItem Weather Conditions"
 
-        XCTAssertEqual("Label: Conditions".localizedExpectation,
-                       "Label: Conditions".localizedValue)
+        XCTAssertEqual("Label: DayItem Weather Conditions".localizedExpectation,
+                       "Label: DayItem Weather Conditions".localizedValue)
         XCTAssertEqual("Label: Weekday short".localizedExpectation,
                        "Label: Weekday short".localizedValue)
         XCTAssertEqual("Label: Forecast Date".localizedExpectation,
@@ -431,5 +431,146 @@ class TranslationTests: XCTestCase {
                        "Button: License".localizedValue)
         XCTAssertEqual("Button: Terms & Conditions".localizedExpectation,
                        "Button: Terms & Conditions".localizedValue)
+    }
+
+    // MARK: - Weather-conditions descriptions
+
+    func test_translation_weather_conditions_descriptions() {
+
+        // assert
+
+        XCTAssertEqual("Main: clear sky".localizedExpectation,
+                       "Main: clear sky".localizedValue)
+        XCTAssertEqual("Main: few clouds".localizedExpectation,
+                       "Main: few clouds".localizedValue)
+        XCTAssertEqual("Main: scattered clouds".localizedExpectation,
+                       "Main: scattered clouds".localizedValue)
+        XCTAssertEqual("Main: broken clouds".localizedExpectation,
+                       "Main: broken clouds".localizedValue)
+        XCTAssertEqual("Main: shower rain".localizedExpectation,
+                       "Main: shower rain".localizedValue)
+        XCTAssertEqual("Main: rain".localizedExpectation,
+                       "Main: rain".localizedValue)
+        XCTAssertEqual("Main: thunderstorm".localizedExpectation,
+                       "Main: thunderstorm".localizedValue)
+        XCTAssertEqual("Main: snow".localizedExpectation,
+                       "Main: snow".localizedValue)
+        XCTAssertEqual("Main: mist".localizedExpectation,
+                       "Main: mist".localizedValue)
+
+        XCTAssertEqual("Code: thunderstormWithLightRain".localizedExpectation,
+                       "Code: thunderstormWithLightRain".localizedValue)
+        XCTAssertEqual("Code: thunderstormWithRain".localizedExpectation,
+                       "Code: thunderstormWithRain".localizedValue)
+        XCTAssertEqual("Code: thunderstormWithHeavyRain".localizedExpectation,
+                       "Code: thunderstormWithHeavyRain".localizedValue)
+        XCTAssertEqual("Code: lightThunderstorm".localizedExpectation,
+                       "Code: lightThunderstorm".localizedValue)
+        XCTAssertEqual("Code: thunderstorm".localizedExpectation,
+                       "Code: thunderstorm".localizedValue)
+        XCTAssertEqual("Code: heavyThunderstorm".localizedExpectation,
+                       "Code: heavyThunderstorm".localizedValue)
+        XCTAssertEqual("Code: raggedThunderstorm".localizedExpectation,
+                       "Code: raggedThunderstorm".localizedValue)
+        XCTAssertEqual("Code: thunderstormWithLightDrizzle".localizedExpectation,
+                       "Code: thunderstormWithLightDrizzle".localizedValue)
+        XCTAssertEqual("Code: thunderstormWithDrizzle".localizedExpectation,
+                       "Code: thunderstormWithDrizzle".localizedValue)
+        XCTAssertEqual("Code: thunderstormWithHeavyDrizzle".localizedExpectation,
+                       "Code: thunderstormWithHeavyDrizzle".localizedValue)
+
+        XCTAssertEqual("Code: lightIntensityDrizzle".localizedExpectation,
+                       "Code: lightIntensityDrizzle".localizedValue)
+        XCTAssertEqual("Code: drizzle".localizedExpectation,
+                       "Code: drizzle".localizedValue)
+        XCTAssertEqual("Code: heavyIntensityDrizzle".localizedExpectation,
+                       "Code: heavyIntensityDrizzle".localizedValue)
+        XCTAssertEqual("Code: lightIntensityDrizzleRain".localizedExpectation,
+                       "Code: lightIntensityDrizzleRain".localizedValue)
+        XCTAssertEqual("Code: drizzleRain".localizedExpectation,
+                       "Code: drizzleRain".localizedValue)
+        XCTAssertEqual("Code: heavyIntensityDrizzleRain".localizedExpectation,
+                       "Code: heavyIntensityDrizzleRain".localizedValue)
+        XCTAssertEqual("Code: showerRainAndDrizzle".localizedExpectation,
+                       "Code: showerRainAndDrizzle".localizedValue)
+        XCTAssertEqual("Code: heavyShowerRainAndDrizzle".localizedExpectation,
+                       "Code: heavyShowerRainAndDrizzle".localizedValue)
+        XCTAssertEqual("Code: showerDrizzle".localizedExpectation,
+                       "Code: showerDrizzle".localizedValue)
+        XCTAssertEqual("Code: lightRain".localizedExpectation,
+                       "Code: lightRain".localizedValue)
+
+        XCTAssertEqual("Code: moderateRain".localizedExpectation,
+                       "Code: moderateRain".localizedValue)
+        XCTAssertEqual("Code: heavyIntensityRain".localizedExpectation,
+                       "Code: heavyIntensityRain".localizedValue)
+        XCTAssertEqual("Code: veryHeavyRain".localizedExpectation,
+                       "Code: veryHeavyRain".localizedValue)
+        XCTAssertEqual("Code: extremeRain".localizedExpectation,
+                       "Code: extremeRain".localizedValue)
+        XCTAssertEqual("Code: freezingRain".localizedExpectation,
+                       "Code: freezingRain".localizedValue)
+        XCTAssertEqual("Code: lightIntensityShowerRain".localizedExpectation,
+                       "Code: lightIntensityShowerRain".localizedValue)
+        XCTAssertEqual("Code: showerRain".localizedExpectation,
+                       "Code: showerRain".localizedValue)
+        XCTAssertEqual("Code: heavyIntensityShowerRain".localizedExpectation,
+                       "Code: heavyIntensityShowerRain".localizedValue)
+        XCTAssertEqual("Code: raggedShowerRain".localizedExpectation,
+                       "Code: raggedShowerRain".localizedValue)
+        XCTAssertEqual("Code: lightSnow".localizedExpectation,
+                       "Code: lightSnow".localizedValue)
+
+        XCTAssertEqual("Code: snow".localizedExpectation,
+                       "Code: snow".localizedValue)
+        XCTAssertEqual("Code: heavySnow".localizedExpectation,
+                       "Code: heavySnow".localizedValue)
+        XCTAssertEqual("Code: sleet".localizedExpectation,
+                       "Code: sleet".localizedValue)
+        XCTAssertEqual("Code: lightShowerSleet".localizedExpectation,
+                       "Code: lightShowerSleet".localizedValue)
+        XCTAssertEqual("Code: showerSleet".localizedExpectation,
+                       "Code: showerSleet".localizedValue)
+        XCTAssertEqual("Code: lightRainAndSnow".localizedExpectation,
+                       "Code: lightRainAndSnow".localizedValue)
+        XCTAssertEqual("Code: rainAndSnow".localizedExpectation,
+                       "Code: rainAndSnow".localizedValue)
+        XCTAssertEqual("Code: lightShowerSnow".localizedExpectation,
+                       "Code: lightShowerSnow".localizedValue)
+        XCTAssertEqual("Code: showerSnow".localizedExpectation,
+                       "Code: showerSnow".localizedValue)
+        XCTAssertEqual("Code: heavyShowerSnow".localizedExpectation,
+                       "Code: heavyShowerSnow".localizedValue)
+
+        XCTAssertEqual("Code: mist".localizedExpectation,
+                       "Code: mist".localizedValue)
+        XCTAssertEqual("Code: smoke".localizedExpectation,
+                       "Code: smoke".localizedValue)
+        XCTAssertEqual("Code: haze".localizedExpectation,
+                       "Code: haze".localizedValue)
+        XCTAssertEqual("Code: sandDustWhirls".localizedExpectation,
+                       "Code: sandDustWhirls".localizedValue)
+        XCTAssertEqual("Code: fog".localizedExpectation,
+                       "Code: fog".localizedValue)
+        XCTAssertEqual("Code: sand".localizedExpectation,
+                       "Code: sand".localizedValue)
+        XCTAssertEqual("Code: dust".localizedExpectation,
+                       "Code: dust".localizedValue)
+        XCTAssertEqual("Code: volcanicAsh".localizedExpectation,
+                       "Code: volcanicAsh".localizedValue)
+        XCTAssertEqual("Code: squalls".localizedExpectation,
+                       "Code: squalls".localizedValue)
+        XCTAssertEqual("Code: tornado".localizedExpectation,
+                       "Code: tornado".localizedValue)
+        XCTAssertEqual("Code: clearSky".localizedExpectation,
+                       "Code: clearSky".localizedValue)
+        XCTAssertEqual("Code: fewClouds_11_25".localizedExpectation,
+                       "Code: fewClouds_11_25".localizedValue)
+        XCTAssertEqual("Code: scatteredClouds_25_50".localizedExpectation,
+                       "Code: scatteredClouds_25_50".localizedValue)
+        XCTAssertEqual("Code: brokenClouds_51_84".localizedExpectation,
+                       "Code: brokenClouds_51_84".localizedValue)
+        XCTAssertEqual("Code: overcastClouds_85_100".localizedExpectation,
+                       "Code: overcastClouds_85_100".localizedValue)
     }
 }

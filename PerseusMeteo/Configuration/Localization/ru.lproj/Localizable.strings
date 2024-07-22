@@ -55,7 +55,7 @@
 /* Current Weather View */
 
 "Label: Meteo Data Provider" = "Метео сведения от";
-"Label: About Current Weather" = "О погоде сейчас...";
+"Label: Weather Conditions" = "Погодные условия...";
 
 "Prefix: Curren Weather in Brief" = "Коротко";
 "Prefix: Feels Like" = "Наверное";
@@ -101,7 +101,7 @@
 /* Forecast View */
 
 "Label: Info" = "Секция в разработке выпуска версии 0.3.";
-"Label: Conditions" = "Условия";
+"Label: DayItem Weather Conditions" = "Погода";
 
 "rain" = "дождь";
 "snow" = "снег";

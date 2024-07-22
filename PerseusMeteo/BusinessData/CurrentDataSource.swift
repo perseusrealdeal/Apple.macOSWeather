@@ -80,7 +80,7 @@ public class CurrentDataSource: MeteoDataSource {
             let reader = self.reader as? CurrentDataSourceReader,
             let value = reader.weatherDescription
         else {
-            return MeteoFactsDefaults.weatherDescription
+            return MeteoFactsDefaults.forecastDaysItemWeatherDescription
         }
 
         return "Prefix: Curren Weather in Brief".localizedValue + ": \(value)"

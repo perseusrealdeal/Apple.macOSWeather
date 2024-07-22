@@ -29,8 +29,8 @@ public struct MeteoFactsDefaults {
         return AppGlobals.statusMenusButtonIconName
     }
 
-    public static var weatherDescription: String {
-        return "Label: About Current Weather".localizedValue
+    public static var forecastDaysItemWeatherDescription: String {
+        return "Label: DayItem Weather Conditions".localizedValue
     }
 
     public static var temperature: String {
@@ -74,7 +74,7 @@ public struct MeteoFactsDefaults {
     }
 
     public static var conditions: String {
-        return "Label: Conditions".localizedValue
+        return "Label: Weather Conditions".localizedValue
     }
 
     public static var weekday: String {

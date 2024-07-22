@@ -112,7 +112,7 @@ extension WeatherCode: CustomStringConvertible {
 
         switch self {
         case .defaultCode:
-            return "Label: Conditions".localizedValue
+            return "Label: Weather Conditions".localizedValue
         case .thunderstormWithLightRain:
             return "Code: thunderstormWithLightRain".localizedValue
         case .thunderstormWithRain:
