@@ -308,6 +308,23 @@ public class OpenWeatherCurrentParser: CurrentParserProtocol {
         return nil
     }
 
+    public func getCloudiness(from dictionary: [String: Any]) -> Int? {
+
+        if let clouds = dictionary["clouds"] as? [String: Any] {
+            if let all = clouds["all"] as? Int {
+
+                return all
+
+            } else {
+                log.message("[\(type(of: self))].\(#function) [all] wrong.", .error)
+            }
+        } else {
+            log.message("[\(type(of: self))].\(#function) [clouds] wrong.", .error)
+        }
+
+        return nil
+    }
+
     public func getVisibility(from dictionary: [String: Any]) -> Int? {
 
         if let visibility = dictionary["visibility"] as? Int {

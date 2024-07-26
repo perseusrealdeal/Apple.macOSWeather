@@ -180,10 +180,8 @@ class WeatherView: NSView {
         meteogroup.title8 = "Prefix: Humidity".localizedValue
         meteogroup.value8 = dataSource.humidity
 
-        // TODO: - Add cloudiness
-
-        // meteogroup.title9 = "Prefix: Cloudiness".localizedValue
-        // meteogroup.value9 = dataSource.cloudiness
+        meteogroup.title9 = "Prefix: Cloudiness".localizedValue
+        meteogroup.value9 = dataSource.cloudiness
 
         self.viewMeteoGroup.data = meteogroup
     }

@@ -171,10 +171,7 @@ class MeteoGroupView: NSView {
         self.title8.stringValue = data?.title8 ?? "Prefix: Humidity".localizedValue
         self.value8.stringValue = data?.value8 ?? MeteoFactsDefaults.humidity
 
-        // TODO: - Cloudiness
-
-        self.title9.stringValue = data?.title9 ?? "/- 9 -/"
-        // "Prefix: Cloudiness".localizedValue
-        self.value9.stringValue = data?.value9 ?? "/- 9 -/"
+        self.title9.stringValue = data?.title9 ?? "Prefix: Cloudiness".localizedValue
+        self.value9.stringValue = data?.value9 ?? MeteoFactsDefaults.cloudiness
     }
 }

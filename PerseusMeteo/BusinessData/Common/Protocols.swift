@@ -41,6 +41,7 @@ public protocol CurrentParserProtocol {
 
     func getPressure(from dictionary: [String: Any]) -> String?
     func getHumidity(from dictionary: [String: Any]) -> Int?
+    func getCloudiness(from dictionary: [String: Any]) -> Int?
     func getVisibility(from dictionary: [String: Any]) -> Int?
 
     func getSunrise(from dictionary: [String: Any]) -> Int?

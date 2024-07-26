@@ -138,6 +138,9 @@ class TranslationTests: XCTestCase {
         XCTAssertEqual("Prefix: Visibility".localizedExpectation,
                        "Prefix: Visibility".localizedValue)
 
+        XCTAssertEqual("Prefix: Cloudiness".localizedExpectation,
+                       "Prefix: Cloudiness".localizedValue)
+
         XCTAssertEqual("Unit: Meter".localizedExpectation,
                        "Unit: Meter".localizedValue)
 

@@ -240,6 +240,18 @@ public class CurrentDataSource: MeteoDataSource {
         return "\(value) %"
     }
 
+    public var cloudiness: String {
+
+        guard
+            let reader = self.reader as? CurrentDataSourceReader,
+            let value = reader.cloudiness
+        else {
+                return MeteoFactsDefaults.cloudiness
+        }
+
+        return "\(value) %"
+    }
+
     public var visibility: String {
 
         guard

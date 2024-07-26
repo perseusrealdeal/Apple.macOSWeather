@@ -112,6 +112,13 @@ public class CurrentDataSourceReader: MeteoDataSourceReader {
         return parser?.getHumidity(from: dict)
     }
 
+    public var cloudiness: Int? {
+
+        guard let dict = data else { return nil }
+
+        return parser?.getCloudiness(from: dict)
+    }
+
     public var visibility: Int? {
 
         guard let dict = data else { return nil }

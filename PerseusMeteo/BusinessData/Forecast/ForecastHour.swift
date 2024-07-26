@@ -138,10 +138,7 @@ public struct ForecastHour {
 
         meteogroup.title7 = "Label: Pressure".localizedValue
         meteogroup.title8 = "Prefix: Humidity".localizedValue
-
-        // TODO: - Add cloudiness title
-
-        // meteogroup.title9 = "" // "Prefix: Cloudiness".localizedValue
+        meteogroup.title9 = "Prefix: Cloudiness".localizedValue
 
         // Set values up
 
@@ -166,10 +163,7 @@ public struct ForecastHour {
 
         meteogroup.value7 = getForecastHourPressure(from: source)
         meteogroup.value8 = getForecastHourHumidity(from: source)
-
-        // TODO: - Add cloudiness value
-
-        // meteogroup.value9 = dataSource.cloudiness
+        meteogroup.value9 = getForecastHourCloudiness(from: source)
 
         return meteogroup
     }

@@ -67,6 +67,7 @@
 
 "Prefix: Humidity" = "Humidity";
 "Prefix: Visibility" = "Visibility";
+"Prefix: Cloudiness" = "Cloudiness";
 
 "Unit: Meter" = "m";
 "Unit: Kilometre" = "km";

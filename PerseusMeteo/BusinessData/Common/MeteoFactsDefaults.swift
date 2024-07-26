@@ -53,6 +53,10 @@ public struct MeteoFactsDefaults {
         return  "___ %"
     }
 
+    public static var cloudiness: String {
+        return  "___ %"
+    }
+
     public static var visibility: String {
         return  "_____ \(AppOptions.distanceOption.unitLocalized)"
     }

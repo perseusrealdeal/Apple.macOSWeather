@@ -64,6 +64,7 @@
 
 "Prefix: Humidity" = "Влага";
 "Prefix: Visibility" = "Обзор";
+"Prefix: Cloudiness" = "Облака";
 
 "Unit: Meter" = "м";
 "Unit: Kilometre" = "км";

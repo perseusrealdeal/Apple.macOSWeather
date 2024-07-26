@@ -484,6 +484,28 @@ public func getForecastHourHumidity(from source: [String: Any]) -> String {
     return "\(value) %"
 }
 
+public func getForecastHourCloudiness(from source: [String: Any]) -> String {
+
+    var value = -1
+
+    // Get value.
+    if let clouds = source["clouds"] as? [String: Any] {
+        if let all = clouds["all"] as? Int {
+
+            value = all
+
+        } else {
+            log.message("[\(#function) [all] wrong.", .error)
+        }
+    } else {
+        log.message("[\(#function) [clouds] wrong.", .error)
+    }
+
+    guard value != -1 else { return MeteoFactsDefaults.cloudiness }
+
+    return "\(value) %"
+}
+
 /*
 
  "rain": {
