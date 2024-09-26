@@ -62,6 +62,11 @@ struct AppGlobals {
     public let languageSwitcher: LanguageSwitcher
     public let dataDefender: PerseusDataDefender
 
+    // MARK: - Data parsers for UI
+
+    public let sourceCurrentWeather = CurrentDataSource()
+    public let sourceForecast = ForecastDataSource()
+
     init() {
 
         log.message("[AppGlobals].\(#function)")
@@ -72,6 +77,9 @@ struct AppGlobals {
 
         self.languageSwitcher = LanguageSwitcher.shared
         self.dataDefender = PerseusDataDefender.shared
+
+        self.sourceCurrentWeather.path = { AppGlobals.appDelegate?.weather ?? Data() }
+        self.sourceForecast.path = { AppGlobals.appDelegate?.forecast ?? Data() }
     }
 
     static func openDefaultBrowser(string link: String) {

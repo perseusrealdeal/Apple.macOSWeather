@@ -1,5 +1,5 @@
 //
-//  ForecastMeteoFactsDefaults.swift
+//  MeteoDataSourceReader.swift
 //  PerseusMeteo
 //
 //  Created by Mikhail Zhigulin in 7532.
@@ -15,13 +15,8 @@
 
 import Foundation
 
-extension ForecastMeteoFacts {
+// Base class for meteo data readers
 
-    public static var meteoDataProviderNameDefault: String {
-        return AppGlobals.meteoProviderName
-    }
-
-    public static var lastOneDefault: String {
-        return "Label: Made with Love".localizedValue
-    }
+public class MeteoDataSourceReader {
+    public var data: [String: Any]?
 }

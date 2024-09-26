@@ -17,14 +17,46 @@ import Foundation
 
 // MARK: - Protocols
 
-public protocol CurrentWeatherRefresherProtocol {
-    func refresh(object: CurrentMeteoFacts, _ source: [String: Any])
+public protocol CurrentDataSourceReaderProtocol {
+    var parser: CurrentParserProtocol? { get set }
 }
 
-public protocol ForecastRefresherProtocol {
-    func refresh(object: ForecastMeteoFacts, _ source: [String: Any])
+public protocol CurrentParserProtocol {
+
+    func getTimeZone(from dictionary: [String: Any]) -> Int?
+    func getLastOne(from dictionary: [String: Any]) -> Int?
+
+    func getWeatherDescription(from dictionary: [String: Any]) -> String?
+    func getWeatherIconName(from dictionary: [String: Any]) -> String?
+    func getWeatherConditions(from source: [String: Any]) -> WeatherConditions
+
+    func getTemperature(from dictionary: [String: Any]) -> String?
+    func getTemperatureFeelsLike(from dictionary: [String: Any]) -> String?
+    func getTemperatureMinimum(from dictionary: [String: Any]) -> String?
+    func getTemperatureMaximum(from dictionary: [String: Any]) -> String?
+
+    func getWindSpeed(from dictionary: [String: Any]) -> String?
+    func getWindGusts(from dictionary: [String: Any]) -> String?
+    func getWindDirection(from dictionary: [String: Any]) -> String?
+
+    func getPressure(from dictionary: [String: Any]) -> String?
+    func getHumidity(from dictionary: [String: Any]) -> Int?
+    func getCloudiness(from dictionary: [String: Any]) -> Int?
+    func getVisibility(from dictionary: [String: Any]) -> Int?
+
+    func getSunrise(from dictionary: [String: Any]) -> Int?
+    func getSunset(from dictionary: [String: Any]) -> Int?
+}
+
+public protocol ForecastDataSourceReaderProtocol {
+    var parser: ForecastParserProtocol? { get set }
+}
+
+public protocol ForecastParserProtocol {
+    func getTimeZone(from dictionary: [String: Any]) -> Int?
+    func getForecastDays(from dictionary: [String: Any]) -> [ForecastDay]?
 }
 
 public protocol MeteoProviderProtocol {
-    var providerMeteoData: MeteoProvider { get set }
+    var meteoProvider: MeteoProvider { get set }
 }

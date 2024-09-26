@@ -10,6 +10,8 @@
 	<string>Geo information—latitude and longitude—is required to fetch meteo facts.</string>
 	<key>Copyright</key>
 	<string>Copyright © 2023 - 2024 Mikhail Zhigulin of Novosibirsk. All rights reserved.</string>
+	<key>Default: N/A</key>
+	<string>N/A</string>
 	<key>/* Popover Screen */</key>
 	<string>--</string>
 	<key>Button: Call Weather</key>
@@ -58,8 +60,8 @@
 	<string>--</string>
 	<key>Label: Meteo Data Provider</key>
 	<string>Meteo Data by</string>
-	<key>Label: About Current Weather</key>
-	<string>About current weather...</string>
+	<key>Label: Weather Conditions</key>
+	<string>Weather Conditions</string>
 	<key>Prefix: Curren Weather in Brief</key>
 	<string>In brief</string>
 	<key>Prefix: Feels Like</key>
@@ -72,6 +74,8 @@
 	<string>Humidity</string>
 	<key>Prefix: Visibility</key>
 	<string>Visibility</string>
+	<key>Prefix: Cloudiness</key>
+	<string>Cloudiness</string>
 	<key>Unit: Meter</key>
 	<string>m</string>
 	<key>Unit: Kilometre</key>
@@ -114,6 +118,20 @@
 	<string></string>
 	<key>Prefix: Last One</key>
 	<string>Last One</string>
+	<key>/* Forecast View */</key>
+	<string>--</string>
+	<key>Label: DayItem Weather Conditions</key>
+	<string>Conditions</string>
+	<key>rain</key>
+	<string>rain</string>
+	<key>snow</key>
+	<string>snow</string>
+	<key>clear</key>
+	<string>clear</string>
+	<key>Label: Weekday short</key>
+	<string>Day</string>
+	<key>Label: Forecast Date</key>
+	<string>Date</string>
 	<key>/* Options Screen */</key>
 	<string>--</string>
 	<key>Title: Options Screen</key>
@@ -238,6 +256,22 @@
 	<string>Oct</string>
 	<key>Month: November</key>
 	<string>Nov</string>
+	<key>/* Days&apos; Names */</key>
+	<string>--</string>
+	<key>Day: Sun</key>
+	<string>Sun</string>
+	<key>Day: Mon</key>
+	<string>Mon</string>
+	<key>Day: Tue</key>
+	<string>Tue</string>
+	<key>Day: Wed</key>
+	<string>Wed</string>
+	<key>Day: Thu</key>
+	<string>Thu</string>
+	<key>Day: Fri</key>
+	<string>Fri</string>
+	<key>Day: Sat</key>
+	<string>Sat</string>
 	<key>/* About Screen */</key>
 	<string>--</string>
 	<key>Button: The App Source Code</key>
@@ -270,5 +304,135 @@
 	<string>License</string>
 	<key>Button: Terms &amp; Conditions</key>
 	<string>Terms &amp; Conditions</string>
+	<key>/* Weathert-conditions descriptions */</key>
+	<string>--</string>
+	<key>Main: clear sky</key>
+	<string>clear sky</string>
+	<key>Main: few clouds</key>
+	<string>few clouds</string>
+	<key>Main: scattered clouds</key>
+	<string>scattered clouds</string>
+	<key>Main: broken clouds</key>
+	<string>broken clouds</string>
+	<key>Main: shower rain</key>
+	<string>shower rain</string>
+	<key>Main: rain</key>
+	<string>rain</string>
+	<key>Main: thunderstorm</key>
+	<string>thunderstorm</string>
+	<key>Main: snow</key>
+	<string>snow</string>
+	<key>Main: mist</key>
+	<string>mist</string>
+	<key>Code: thunderstormWithLightRain</key>
+	<string>thunderstorm with light rain</string>
+	<key>Code: thunderstormWithRain</key>
+	<string>thunderstorm with rain</string>
+	<key>Code: thunderstormWithHeavyRain</key>
+	<string>thunderstorm with heavy rain</string>
+	<key>Code: lightThunderstorm</key>
+	<string>light thunderstorm</string>
+	<key>Code: thunderstorm</key>
+	<string>thunderstorm</string>
+	<key>Code: heavyThunderstorm</key>
+	<string>heavy thunderstorm</string>
+	<key>Code: raggedThunderstorm</key>
+	<string>ragged thunderstorm</string>
+	<key>Code: thunderstormWithLightDrizzle</key>
+	<string>thunderstorm with light drizzle</string>
+	<key>Code: thunderstormWithDrizzle</key>
+	<string>thunderstorm with drizzle</string>
+	<key>Code: thunderstormWithHeavyDrizzle</key>
+	<string>thunderstorm with heavy drizzle</string>
+	<key>Code: lightIntensityDrizzle</key>
+	<string>light intensity drizzle</string>
+	<key>Code: drizzle</key>
+	<string>drizzle</string>
+	<key>Code: heavyIntensityDrizzle</key>
+	<string>heavy intensity drizzle</string>
+	<key>Code: lightIntensityDrizzleRain</key>
+	<string>light intensity drizzle rain</string>
+	<key>Code: drizzleRain</key>
+	<string>drizzle rain</string>
+	<key>Code: heavyIntensityDrizzleRain</key>
+	<string>heavy intensity drizzle rain</string>
+	<key>Code: showerRainAndDrizzle</key>
+	<string>shower rain and drizzle</string>
+	<key>Code: heavyShowerRainAndDrizzle</key>
+	<string>heavy shower rain and drizzle</string>
+	<key>Code: showerDrizzle</key>
+	<string>shower drizzle</string>
+	<key>Code: lightRain</key>
+	<string>light rain</string>
+	<key>Code: moderateRain</key>
+	<string>moderate rain</string>
+	<key>Code: heavyIntensityRain</key>
+	<string>heavy intensity rain</string>
+	<key>Code: veryHeavyRain</key>
+	<string>very heavy rain</string>
+	<key>Code: extremeRain</key>
+	<string>extreme rain</string>
+	<key>Code: freezingRain</key>
+	<string>freezing rain</string>
+	<key>Code: lightIntensityShowerRain</key>
+	<string>light intensity shower rain</string>
+	<key>Code: showerRain</key>
+	<string>shower rain</string>
+	<key>Code: heavyIntensityShowerRain</key>
+	<string>heavy intensity shower rain</string>
+	<key>Code: raggedShowerRain</key>
+	<string>ragged shower rain</string>
+	<key>Code: lightSnow</key>
+	<string>light snow</string>
+	<key>Code: snow</key>
+	<string>snow</string>
+	<key>Code: heavySnow</key>
+	<string>heavy snow</string>
+	<key>Code: sleet</key>
+	<string>sleet</string>
+	<key>Code: lightShowerSleet</key>
+	<string>light shower sleet</string>
+	<key>Code: showerSleet</key>
+	<string>shower sleet</string>
+	<key>Code: lightRainAndSnow</key>
+	<string>light rain and snow</string>
+	<key>Code: rainAndSnow</key>
+	<string>rain and snow</string>
+	<key>Code: lightShowerSnow</key>
+	<string>light shower snow</string>
+	<key>Code: showerSnow</key>
+	<string>shower snow</string>
+	<key>Code: heavyShowerSnow</key>
+	<string>heavy shower snow</string>
+	<key>Code: mist</key>
+	<string>mist</string>
+	<key>Code: smoke</key>
+	<string>smoke</string>
+	<key>Code: haze</key>
+	<string>haze</string>
+	<key>Code: sandDustWhirls</key>
+	<string>sand dust whirls</string>
+	<key>Code: fog</key>
+	<string>fog</string>
+	<key>Code: sand</key>
+	<string>sand</string>
+	<key>Code: dust</key>
+	<string>dust</string>
+	<key>Code: volcanicAsh</key>
+	<string>volcanic ash</string>
+	<key>Code: squalls</key>
+	<string>squalls</string>
+	<key>Code: tornado</key>
+	<string>tornado</string>
+	<key>Code: clearSky</key>
+	<string>clear sky</string>
+	<key>Code: fewClouds_11_25</key>
+	<string>few clouds: 11-25%</string>
+	<key>Code: scatteredClouds_25_50</key>
+	<string>scattered clouds: 25-50%</string>
+	<key>Code: brokenClouds_51_84</key>
+	<string>broken clouds: 51-84%</string>
+	<key>Code: overcastClouds_85_100</key>
+	<string>overcast clouds: 85-100%</string>
 </dict>
 </plist>

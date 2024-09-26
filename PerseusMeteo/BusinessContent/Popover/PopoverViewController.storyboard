@@ -11,19 +11,67 @@
             <objects>
                 <viewController id="bU7-R8-ocO" customClass="PopoverViewController" customModule="Snowman" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="tOy-S4-hL0">
-                        <rect key="frame" x="0.0" y="0.0" width="355" height="370"/>
+                        <rect key="frame" x="0.0" y="0.0" width="355" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LDX-e9-rrj" userLabel="Greetings Stack">
+                                <rect key="frame" x="0.0" y="370" width="355" height="30"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3AG-Tj-6c2">
+                                        <rect key="frame" x="-6" y="-2" width="102" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="Ns9-hQ-yq0"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ULG-dk-9PQ">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="quitButtonTapped:" target="bU7-R8-ocO" id="kMD-E6-RsV"/>
+                                        </connections>
+                                    </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zc8-I8-0yO">
+                                        <rect key="frame" x="96" y="7" width="163" height="17"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="rlK-5p-gP0">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="viI-SM-TNh" userLabel="Block">
+                                        <rect key="frame" x="265" y="0.0" width="90" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="IkZ-Ew-4Kp"/>
+                                        </constraints>
+                                    </customView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="AlW-61-Z0j"/>
+                                    <constraint firstItem="3AG-Tj-6c2" firstAttribute="centerY" secondItem="LDX-e9-rrj" secondAttribute="centerY" id="ImM-Iq-tfO"/>
+                                    <constraint firstItem="3AG-Tj-6c2" firstAttribute="leading" secondItem="LDX-e9-rrj" secondAttribute="leading" id="LRt-hi-Y1T"/>
+                                    <constraint firstItem="zc8-I8-0yO" firstAttribute="centerY" secondItem="LDX-e9-rrj" secondAttribute="centerY" id="ttF-qJ-gDP"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yf8-y3-HSv" userLabel="Business Stack">
                                 <rect key="frame" x="0.0" y="30" width="355" height="340"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="KvG-58-2dT" customClass="LocationView" customModule="Snowman" customModuleProvider="target">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="KvG-58-2dT" userLabel="Location Section" customClass="LocationView" customModule="Snowman" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="250" width="355" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="Uvu-eJ-eoU"/>
                                         </constraints>
                                     </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="zay-Cg-HHE">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="zay-Cg-HHE" userLabel="Calling Section">
                                         <rect key="frame" x="0.0" y="220" width="355" height="30"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1oS-xB-Iag">
@@ -54,7 +102,7 @@
                                             <constraint firstAttribute="trailing" secondItem="II3-Ni-sjv" secondAttribute="trailing" constant="2" id="r0m-Ka-1Ua"/>
                                         </constraints>
                                     </customView>
-                                    <tabView focusRingType="none" type="rightTabsBezelBorder" initialItem="g1D-Zn-Myw" translatesAutoresizingMaskIntoConstraints="NO" id="CfE-8B-27I">
+                                    <tabView focusRingType="none" type="rightTabsBezelBorder" initialItem="g1D-Zn-Myw" translatesAutoresizingMaskIntoConstraints="NO" id="CfE-8B-27I" userLabel="Meteo Data Section">
                                         <rect key="frame" x="-7" y="-10" width="368" height="234"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="220" id="Q3H-IB-5Dq"/>
@@ -124,7 +172,7 @@
                                             <action selector="optionsButtonTapped:" target="bU7-R8-ocO" id="dub-X9-Bw2"/>
                                         </connections>
                                     </button>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="5qj-zM-4et" userLabel="Empty Block">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="5qj-zM-4et" userLabel="Block">
                                         <rect key="frame" x="190" y="0.0" width="70" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="hVA-pX-2La"/>
@@ -168,9 +216,12 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="ped-mA-ACD" firstAttribute="top" secondItem="yf8-y3-HSv" secondAttribute="bottom" id="0d4-wn-eaO"/>
-                            <constraint firstItem="yf8-y3-HSv" firstAttribute="top" secondItem="tOy-S4-hL0" secondAttribute="top" id="FeS-8q-AjY"/>
+                            <constraint firstItem="yf8-y3-HSv" firstAttribute="top" secondItem="LDX-e9-rrj" secondAttribute="bottom" id="FeS-8q-AjY"/>
+                            <constraint firstItem="LDX-e9-rrj" firstAttribute="top" secondItem="tOy-S4-hL0" secondAttribute="top" id="P3p-mV-fMh"/>
                             <constraint firstItem="yf8-y3-HSv" firstAttribute="width" secondItem="tOy-S4-hL0" secondAttribute="width" id="TCa-u3-wm4"/>
+                            <constraint firstItem="LDX-e9-rrj" firstAttribute="centerX" secondItem="tOy-S4-hL0" secondAttribute="centerX" id="Ua1-3d-hXG"/>
                             <constraint firstItem="yf8-y3-HSv" firstAttribute="centerX" secondItem="tOy-S4-hL0" secondAttribute="centerX" id="bwB-uN-HmZ"/>
+                            <constraint firstItem="LDX-e9-rrj" firstAttribute="width" secondItem="tOy-S4-hL0" secondAttribute="width" id="itz-Ya-3pg"/>
                             <constraint firstItem="ped-mA-ACD" firstAttribute="centerX" secondItem="tOy-S4-hL0" secondAttribute="centerX" id="oVf-RX-uR5"/>
                             <constraint firstItem="ped-mA-ACD" firstAttribute="width" secondItem="tOy-S4-hL0" secondAttribute="width" id="pDB-Pb-5TP"/>
                         </constraints>
@@ -180,6 +231,7 @@
                         <outlet property="buttonFetchMeteoFacts" destination="1oS-xB-Iag" id="f1j-sg-RGY"/>
                         <outlet property="buttonHideAppScreens" destination="Ub5-ci-hl1" id="jUj-ke-nTb"/>
                         <outlet property="buttonOptions" destination="lEc-RC-GkU" id="9WS-WU-GoL"/>
+                        <outlet property="buttonQuit" destination="3AG-Tj-6c2" id="Lh0-xY-ekv"/>
                         <outlet property="labelMadeWithLove" destination="II3-Ni-sjv" id="ohb-Gv-dHz"/>
                         <outlet property="tabCurrentWeather" destination="g1D-Zn-Myw" id="7uf-lK-bWC"/>
                         <outlet property="tabForecast" destination="XwN-hq-rQ0" id="rKh-up-612"/>

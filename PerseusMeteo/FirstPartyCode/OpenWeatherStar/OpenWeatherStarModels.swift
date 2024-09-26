@@ -12,6 +12,8 @@
 //
 //  See LICENSE for details. All rights reserved.
 //
+// swiftlint:disable file_length
+//
 
 import Foundation
 
@@ -53,6 +55,17 @@ public enum TemperatureOption: Int, CustomStringConvertible {
             return "Imperial"
         }
     }
+
+    public var unit: String {
+        switch self {
+        case .standard:
+            return  "K"
+        case .metric:
+            return  "°C"
+        case .imperial:
+            return  "°F"
+        }
+    }
 }
 
 // MARK: - WIND SPEED
@@ -88,6 +101,17 @@ public enum WindSpeedOption: Int, CustomStringConvertible {
             return "Imperial"
         }
     }
+
+    public var unitLocalized: String {
+        switch self {
+        case .ms:
+            return "Unit: m/s".localizedValue
+        case .kmh:
+            return "Unit: km/h".localizedValue
+        case .mph:
+            return "Unit: mph".localizedValue
+        }
+    }
 }
 
 // MARK: - PRESSURE
@@ -110,6 +134,17 @@ public enum PressureOption: Int, CustomStringConvertible {
             return "mmHg"
         case .mb:
             return "mb" // Millibars.
+        }
+    }
+
+    public var unitLocalized: String {
+        switch self {
+        case .hPa:
+            return "Unit: hPa".localizedValue
+        case .mmHg:
+            return "Unit: mmHg".localizedValue
+        case .mb:
+            return "Unit: mb".localizedValue
         }
     }
 }
@@ -136,6 +171,17 @@ public enum LengthOption: Int, CustomStringConvertible {
         }
 
         return unit
+    }
+
+    public var unitLocalized: String {
+        switch self {
+        case .meter:
+            return "Unit: Meter".localizedValue
+        case .kilometre:
+            return "Unit: Kilometre".localizedValue
+        case .mile:
+            return "Unit: Mile".localizedValue
+        }
     }
 }
 

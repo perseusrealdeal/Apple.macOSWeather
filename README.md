@@ -118,4 +118,4 @@ Keychain API applied in [PerseusDataDefender.swift](/PerseusMeteo/FirstPartyCode
 [StatusMenusButtonPresenter.swift](/PerseusMeteo/BusinessLogic/StatusMenusButtonPresenter.swift)
 
 ***Thanks Bill Waggoner*** for the SwiftCustomControl [sample](https://github.com/ctgreybeard/SwiftCustomControl).<br/>
-Ideas applied in LocationView.swift, [WeatherView.swift](/PerseusMeteo/BusinessContent/Popover/WeatherView.swift), and ForecastView.swift
+Constrainting custom control's content view approach has been applied in a such components like [WeatherView.swift](/PerseusMeteo/BusinessContent/Popover/WeatherView.swift)

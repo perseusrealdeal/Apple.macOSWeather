@@ -69,7 +69,7 @@ public class MeteoClientManager {
                 }
             }
 
-            self.currentWeatherHandler(meteoData ?? Data())
+            self.serviceCurrentOpenWeatherMapHandler(meteoData ?? Data())
         }
 
         forecast.onDataGiven = { response in
@@ -94,7 +94,7 @@ public class MeteoClientManager {
                 }
             }
 
-            self.forecastHandler(meteoData ?? Data())
+            self.serviceForecastOpenWeatherMapHandler(meteoData ?? Data())
         }
 
         isReadyToCall = true
@@ -208,7 +208,7 @@ public class MeteoClientManager {
 
     // MARK: - Event handlers
 
-    private func currentWeatherHandler(_ data: Data) {
+    private func serviceCurrentOpenWeatherMapHandler(_ data: Data) {
 
         log.message("[\(type(of: self))].\(#function)")
 
@@ -217,18 +217,23 @@ public class MeteoClientManager {
             return
         }
 
+        // TODO: - Make no matter what order of the two following instraction below
+
+        // Here, but for now it's matter >
+
+        AppGlobals.appDelegate?.weather = data
+        globals.sourceCurrentWeather.meteoProvider = .serviceOpenWeatherMap
+
         DispatchQueue.main.async {
 
-            AppGlobals.appDelegate?.weather = data
-
             presenter.screenPopover.stopAnimationProgressIndicator(.current)
-            presenter.screenPopover.reloadData()
+            presenter.screenPopover.reloadCurrentWeatherData()
 
             self.isReadyToCall = true
         }
     }
 
-    private func forecastHandler(_ data: Data) {
+    private func serviceForecastOpenWeatherMapHandler(_ data: Data) {
 
         log.message("[\(type(of: self))].\(#function)")
 
@@ -237,12 +242,15 @@ public class MeteoClientManager {
             return
         }
 
+        // And here, but for now it's matter >
+
+        AppGlobals.appDelegate?.forecast = data
+        globals.sourceForecast.meteoProvider = .serviceOpenWeatherMap
+
         DispatchQueue.main.async {
 
-            AppGlobals.appDelegate?.forecast = data
-
             presenter.screenPopover.stopAnimationProgressIndicator(.forecast)
-            presenter.screenPopover.reloadData()
+            presenter.screenPopover.reloadForecastData()
 
             self.isReadyToCallForecast = true
         }

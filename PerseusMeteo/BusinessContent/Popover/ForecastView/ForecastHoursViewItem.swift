@@ -17,23 +17,15 @@ import Cocoa
 
 class ForecastHoursViewItem: NSCollectionViewItem {
 
-    public class func makeItem(_ collection: NSCollectionView,
-                               _ index: IndexPath,
-                               _ data: ForecastHour) -> ForecastHoursViewItem {
+    // MARK: - Internals
 
-        let item = collection.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(
-            rawValue: "\(self)"), for: index) as? ForecastHoursViewItem
-
-        item?.data = data
-
-        return (item) ?? ForecastHoursViewItem()
-    }
+    let darkModeObserver = DarkModeObserver()
 
     override var isSelected: Bool {
         didSet {
             super.isSelected = isSelected
 
-            view.layer?.borderWidth = isSelected ? 5.0 : 0.0
+            view.layer?.borderWidth = isSelected ? 2.0 : 0.0
             makeup()
         }
     }
@@ -46,10 +38,18 @@ class ForecastHoursViewItem: NSCollectionViewItem {
         }
     }
 
-    let darkModeObserver = DarkModeObserver()
+    // MARK: - Outlets
+
+    @IBOutlet private(set) weak var time: NSTextField!
+
+    @IBOutlet private(set) weak var temperature: NSTextField!
+    @IBOutlet private(set) weak var incomingPrecipitation: NSTextField!
+
+    // MARK: - Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         configure()
 
         darkModeObserver.action = { _ in self.makeup() }
@@ -58,24 +58,36 @@ class ForecastHoursViewItem: NSCollectionViewItem {
         reload()
     }
 
-    func configure() {
+    private func configure() {
+
         view.layer = CALayer()
-        view.layer?.cornerRadius = 15.0
+        view.layer?.cornerRadius = 5.0
         view.layer?.masksToBounds = true
 
         view.wantsLayer = true
     }
 
-    func reload() {
+    private func makeup() {
+        /*
+         view.layer?.backgroundColor = isSelected ? NSColor.red.cgColor : NSColor.clear.cgColor
+         */
+    }
+
+    private func reload() {
 
         guard let hour = self.data else { return }
 
-        textField?.stringValue = hour.label
-        view.layer?.backgroundColor = NSColor.clear.cgColor
-    }
+        log.message("[\(type(of: self))].\(#function) hour \(hour.label)")
 
-    private func makeup() {
+        // textField?.stringValue = hour.label
+        // view.layer?.backgroundColor = NSColor.clear.cgColor
 
+        /*
         view.layer?.backgroundColor = isSelected ? NSColor.red.cgColor : NSColor.clear.cgColor
+         */
+
+        self.time?.stringValue = hour.time
+        self.temperature?.stringValue = hour.temperature
+        self.incomingPrecipitation?.stringValue = hour.precipitation
     }
 }

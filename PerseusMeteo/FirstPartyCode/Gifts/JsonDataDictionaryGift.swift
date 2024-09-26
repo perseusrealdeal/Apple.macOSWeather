@@ -11,23 +11,23 @@
 
 import Foundation
 
-public class JsonDataDictionary {
+public class DataDictionarySource {
 
     // MARK: - Internals
 
-    private var data: (() -> Data)?
+    private var json: (() -> Data)?
 
     // MARK: - Contract
 
     public var path: (() -> Data)? {
         didSet {
-            data = path
+            json = path
         }
     }
 
-    public var json: [String: Any]? {
+    public var data: [String: Any]? {
 
-        guard let source = data else { return nil }
+        guard let source = json else { return nil }
 
         let dataSource = source()
         let opts: JSONSerialization.ReadingOptions = [.mutableContainers]

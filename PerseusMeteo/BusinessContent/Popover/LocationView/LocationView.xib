@@ -8,7 +8,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LocationView" customModule="Snowman" customModuleProvider="target">
             <connections>
-                <outlet property="buttonQuit" destination="3pG-hH-VVk" id="WOv-ul-daX"/>
                 <outlet property="buttonRefresh" destination="dzE-ai-CbN" id="Vrg-ej-CLC"/>
                 <outlet property="labelGeoCoupleDataValue" destination="kTd-g8-roX" id="XGO-p8-V83"/>
                 <outlet property="labelLocationNameValue" destination="XdO-8w-GAc" id="jTk-YJ-qS7"/>
@@ -32,7 +31,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3WQ-1R-kmJ">
-                    <rect key="frame" x="163" y="66" width="43" height="17"/>
+                    <rect key="frame" x="73" y="68" width="43" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Status" id="oBr-sx-wHs">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -57,21 +56,8 @@
                         <action selector="refreshButtonTapped:" target="-2" id="SPt-d4-add"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3pG-hH-VVk">
-                    <rect key="frame" x="-6" y="57" width="102" height="32"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="90" id="ErE-ar-d8a"/>
-                    </constraints>
-                    <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qgc-gf-oLc">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="quitButtonTapped:" target="-2" id="KDI-D1-HoV"/>
-                    </connections>
-                </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6Bi-kF-QOm">
-                    <rect key="frame" x="90" y="66" width="75" height="17"/>
+                    <rect key="frame" x="0.0" y="68" width="75" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Permission:" id="nlB-9i-IAi">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -83,14 +69,12 @@
                 <constraint firstItem="XdO-8w-GAc" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="390-18-IL3"/>
                 <constraint firstAttribute="bottom" secondItem="dzE-ai-CbN" secondAttribute="bottom" constant="5" id="BHf-sC-VcN"/>
                 <constraint firstItem="3WQ-1R-kmJ" firstAttribute="leading" secondItem="6Bi-kF-QOm" secondAttribute="trailing" constant="2" id="Fgf-di-xCz"/>
-                <constraint firstItem="6Bi-kF-QOm" firstAttribute="centerY" secondItem="3pG-hH-VVk" secondAttribute="centerY" id="MIp-UN-7o0"/>
-                <constraint firstItem="3pG-hH-VVk" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="5" id="UjD-h9-yW5"/>
+                <constraint firstItem="6Bi-kF-QOm" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="2" id="PSp-oW-HYr"/>
+                <constraint firstItem="6Bi-kF-QOm" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="5" id="TO9-gI-Zt2"/>
                 <constraint firstItem="3WQ-1R-kmJ" firstAttribute="centerY" secondItem="6Bi-kF-QOm" secondAttribute="centerY" id="bb1-2U-0b9"/>
                 <constraint firstItem="kTd-g8-roX" firstAttribute="centerY" secondItem="dzE-ai-CbN" secondAttribute="centerY" id="eBF-5F-Teo"/>
                 <constraint firstItem="kTd-g8-roX" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="2" id="fKf-IW-hHl"/>
                 <constraint firstItem="XdO-8w-GAc" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="gjg-aw-MWt"/>
-                <constraint firstItem="6Bi-kF-QOm" firstAttribute="leading" secondItem="3pG-hH-VVk" secondAttribute="trailing" constant="2" id="pCL-P6-v7i"/>
-                <constraint firstItem="3pG-hH-VVk" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="qYm-0A-a4l"/>
                 <constraint firstAttribute="trailing" secondItem="dzE-ai-CbN" secondAttribute="trailing" id="yio-Ya-lDQ"/>
             </constraints>
             <point key="canvasLocation" x="43" y="-36"/>

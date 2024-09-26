@@ -10,6 +10,8 @@
 	<string>Гео сведения (широта и долгота) обязательны для получения метео данных.</string>
 	<key>Copyright</key>
 	<string>Охраняется авторским правом © 2023 - 2024 Михаил A. Жигулин из Новосибирска.</string>
+	<key>Default: N/A</key>
+	<string>нет</string>
 	<key>/* Popover Screen */</key>
 	<string>--</string>
 	<key>Button: Call Weather</key>
@@ -58,8 +60,8 @@
 	<string>--</string>
 	<key>Label: Meteo Data Provider</key>
 	<string>Метео сведения от</string>
-	<key>Label: About Current Weather</key>
-	<string>О погоде сейчас...</string>
+	<key>Label: Weather Conditions</key>
+	<string>Погодные условия...</string>
 	<key>Prefix: Curren Weather in Brief</key>
 	<string>Коротко</string>
 	<key>Prefix: Feels Like</key>
@@ -72,6 +74,8 @@
 	<string>Влага</string>
 	<key>Prefix: Visibility</key>
 	<string>Обзор</string>
+	<key>Prefix: Cloudiness</key>
+	<string>Облака</string>
 	<key>Unit: Meter</key>
 	<string>м</string>
 	<key>Unit: Kilometre</key>
@@ -114,6 +118,20 @@
 	<string> г.</string>
 	<key>Prefix: Last One</key>
 	<string>Расчет от</string>
+	<key>/* Forecast View */</key>
+	<string>--</string>
+	<key>Label: DayItem Weather Conditions</key>
+	<string>Погода</string>
+	<key>rain</key>
+	<string>дождь</string>
+	<key>snow</key>
+	<string>снег</string>
+	<key>clear</key>
+	<string>без осадков</string>
+	<key>Label: Weekday short</key>
+	<string>День</string>
+	<key>Label: Forecast Date</key>
+	<string>Дата</string>
 	<key>/* Options Screen */</key>
 	<string>--</string>
 	<key>Title: Options Screen</key>
@@ -238,6 +256,22 @@
 	<string>окт.</string>
 	<key>Month: November</key>
 	<string>нояб.</string>
+	<key>/* Days&apos; Names */</key>
+	<string>--</string>
+	<key>Day: Sun</key>
+	<string>Вс</string>
+	<key>Day: Mon</key>
+	<string>Пн</string>
+	<key>Day: Tue</key>
+	<string>Вт</string>
+	<key>Day: Wed</key>
+	<string>Ср</string>
+	<key>Day: Thu</key>
+	<string>Чт</string>
+	<key>Day: Fri</key>
+	<string>Пт</string>
+	<key>Day: Sat</key>
+	<string>Сб</string>
 	<key>/* About Screen */</key>
 	<string>--</string>
 	<key>Button: The App Source Code</key>
@@ -270,5 +304,135 @@
 	<string>Текст лицензии</string>
 	<key>Button: Terms &amp; Conditions</key>
 	<string>Соглашение</string>
+	<key>/* Weathert-conditions descriptions */</key>
+	<string>--</string>
+	<key>Main: clear sky</key>
+	<string>без осадков</string>
+	<key>Main: few clouds</key>
+	<string>малооблачно</string>
+	<key>Main: scattered clouds</key>
+	<string>облачно</string>
+	<key>Main: broken clouds</key>
+	<string>пасмурно</string>
+	<key>Main: shower rain</key>
+	<string>ливень</string>
+	<key>Main: rain</key>
+	<string>дождь</string>
+	<key>Main: thunderstorm</key>
+	<string>гроза</string>
+	<key>Main: snow</key>
+	<string>снег</string>
+	<key>Main: mist</key>
+	<string>туман</string>
+	<key>Code: thunderstormWithLightRain</key>
+	<string>гроза, дождливо</string>
+	<key>Code: thunderstormWithRain</key>
+	<string>гроза и дождь</string>
+	<key>Code: thunderstormWithHeavyRain</key>
+	<string>гроза и ливень</string>
+	<key>Code: lightThunderstorm</key>
+	<string>гроза</string>
+	<key>Code: thunderstorm</key>
+	<string>гроза</string>
+	<key>Code: heavyThunderstorm</key>
+	<string>гроза</string>
+	<key>Code: raggedThunderstorm</key>
+	<string>гроза</string>
+	<key>Code: thunderstormWithLightDrizzle</key>
+	<string>гроза, мелкий дождь</string>
+	<key>Code: thunderstormWithDrizzle</key>
+	<string>гроза, мелкий дождь</string>
+	<key>Code: thunderstormWithHeavyDrizzle</key>
+	<string>гроза, мелкий дождь</string>
+	<key>Code: lightIntensityDrizzle</key>
+	<string>моросит</string>
+	<key>Code: drizzle</key>
+	<string>моросит</string>
+	<key>Code: heavyIntensityDrizzle</key>
+	<string>моросит</string>
+	<key>Code: lightIntensityDrizzleRain</key>
+	<string>моросит</string>
+	<key>Code: drizzleRain</key>
+	<string>моросит</string>
+	<key>Code: heavyIntensityDrizzleRain</key>
+	<string>дождик</string>
+	<key>Code: showerRainAndDrizzle</key>
+	<string>дождь</string>
+	<key>Code: heavyShowerRainAndDrizzle</key>
+	<string>дождь</string>
+	<key>Code: showerDrizzle</key>
+	<string>дождик</string>
+	<key>Code: lightRain</key>
+	<string>дождик</string>
+	<key>Code: moderateRain</key>
+	<string>умеренный дождь</string>
+	<key>Code: heavyIntensityRain</key>
+	<string>ливень</string>
+	<key>Code: veryHeavyRain</key>
+	<string>ливень</string>
+	<key>Code: extremeRain</key>
+	<string>ливень</string>
+	<key>Code: freezingRain</key>
+	<string>холодный дождь</string>
+	<key>Code: lightIntensityShowerRain</key>
+	<string>ливень</string>
+	<key>Code: showerRain</key>
+	<string>ливень</string>
+	<key>Code: heavyIntensityShowerRain</key>
+	<string>ливень</string>
+	<key>Code: raggedShowerRain</key>
+	<string>ураганный ливень</string>
+	<key>Code: lightSnow</key>
+	<string>местами снег</string>
+	<key>Code: snow</key>
+	<string>снег</string>
+	<key>Code: heavySnow</key>
+	<string>снегопад</string>
+	<key>Code: sleet</key>
+	<string>гололедица</string>
+	<key>Code: lightShowerSleet</key>
+	<string>гололедица</string>
+	<key>Code: showerSleet</key>
+	<string>гололедица</string>
+	<key>Code: lightRainAndSnow</key>
+	<string>снег с дождем</string>
+	<key>Code: rainAndSnow</key>
+	<string>снег с дождем</string>
+	<key>Code: lightShowerSnow</key>
+	<string>снег с дождем</string>
+	<key>Code: showerSnow</key>
+	<string>мокрый снег</string>
+	<key>Code: heavyShowerSnow</key>
+	<string>сырой снег</string>
+	<key>Code: mist</key>
+	<string>туман</string>
+	<key>Code: smoke</key>
+	<string>задымление</string>
+	<key>Code: haze</key>
+	<string>мгла</string>
+	<key>Code: sandDustWhirls</key>
+	<string>песчанный вихрь</string>
+	<key>Code: fog</key>
+	<string>густой туман</string>
+	<key>Code: sand</key>
+	<string>песчанно</string>
+	<key>Code: dust</key>
+	<string>очень пыльно</string>
+	<key>Code: volcanicAsh</key>
+	<string>вулканическая пыль</string>
+	<key>Code: squalls</key>
+	<string>шквал ветра</string>
+	<key>Code: tornado</key>
+	<string>ураган</string>
+	<key>Code: clearSky</key>
+	<string>без осадков</string>
+	<key>Code: fewClouds_11_25</key>
+	<string>облачно: 11-25%</string>
+	<key>Code: scatteredClouds_25_50</key>
+	<string>облачно: 25-50%</string>
+	<key>Code: brokenClouds_51_84</key>
+	<string>пасмурно: 51-84%</string>
+	<key>Code: overcastClouds_85_100</key>
+	<string>пасмурно: 85-100%</string>
 </dict>
 </plist>

@@ -22,7 +22,7 @@ class WeatherView: NSView {
 
     // MARK: - View Data Source
 
-    public var dataSource = CurrentWeatherParser()
+    public let dataSource = globals.sourceCurrentWeather
     public var progressIndicator: Bool = false {
         didSet {
             if progressIndicator {
@@ -39,47 +39,23 @@ class WeatherView: NSView {
 
     @IBOutlet private(set) var viewContent: NSView!
 
+    @IBOutlet private(set) weak var viewMeteoGroup: MeteoGroupView!
+
     @IBOutlet private(set) weak var labelMeteoProviderTitle: NSTextField!
     @IBOutlet private(set) weak var labelMeteoProviderValue: NSTextField!
     @IBOutlet private(set) weak var indicator: NSProgressIndicator!
 
-    @IBOutlet private(set) weak var labelFeelsLike: NSTextField!
-    @IBOutlet private(set) weak var labelMiniMaxTemperature: NSTextField!
-
-    @IBOutlet private(set) weak var labelHumidity: NSTextField!
-    @IBOutlet private(set) weak var labelVisibility: NSTextField!
-
-    @IBOutlet private(set) weak var viewWeatherConditionIcon: NSImageView!
+    @IBOutlet private(set) weak var viewWeatherConditionsIcon: NSImageView!
     @IBOutlet private(set) weak var labelTemperatureValue: NSTextField!
-    @IBOutlet private(set) weak var labelWeatherConditionValue: NSTextField!
+    @IBOutlet private(set) weak var labelWeatherConditionsDescriptionValue: NSTextField!
 
-    @IBOutlet private(set) weak var labelWindSpeedTitle: NSTextField!
-    @IBOutlet private(set) weak var labelWindSpeedValue: NSTextField!
-    @IBOutlet private(set) weak var labelWindDirectionTitle: NSTextField!
-    @IBOutlet private(set) weak var labelWindDirectionValue: NSTextField!
-    @IBOutlet private(set) weak var labelWindGustsTitle: NSTextField!
-    @IBOutlet private(set) weak var labelWindGustsValue: NSTextField!
-
-    @IBOutlet private(set) weak var labelPressureTitle: NSTextField!
-    @IBOutlet private(set) weak var labelPressureValue: NSTextField!
     @IBOutlet private(set) weak var labelSunriseTitle: NSTextField!
     @IBOutlet private(set) weak var labelSunriseValue: NSTextField!
+
     @IBOutlet private(set) weak var labelSunsetTitle: NSTextField!
     @IBOutlet private(set) weak var labelSunsetValue: NSTextField!
 
     // MARK: - Initialization
-
-    override func viewWillDraw() {
-        super.viewWillDraw()
-
-        log.message("[\(type(of: self))].\(#function)")
-    }
-
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-
-        log.message("[\(type(of: self))].\(#function)")
-    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -142,51 +118,22 @@ class WeatherView: NSView {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        dataSource.refresh()
-
         // Meteo Data Provider.
 
         labelMeteoProviderTitle.stringValue = "Label: Meteo Data Provider".localizedValue
         labelMeteoProviderValue.stringValue = dataSource.meteoDataProviderName
 
-        // Weather Icon and Short desc.
-
-        viewWeatherConditionIcon.image = NSImage(named: dataSource.weatherIconName)
-        labelWeatherConditionValue.stringValue = dataSource.weatherDescription
-
-        // Temperature.
+        // Temperature, Weather Icon, and Short desc.
 
         labelTemperatureValue.stringValue = dataSource.temperature
 
-        let fl = "Prefix: Feels Like".localizedValue + ": \(dataSource.temperatureFeelsLike)"
-        labelFeelsLike.stringValue = fl
+        let wcs = dataSource.weatherConditions
 
-        let min = "Prefix: Min".localizedValue + ": \(dataSource.temperatureMinimum)"
-        let max = "Prefix: Max".localizedValue + ": \(dataSource.temperatureMaximum)"
-        labelMiniMaxTemperature.stringValue = min + " / " + max
+        // viewWeatherConditionIcon.image = NSImage(named: dataSource.weatherIconName)
+        // labelWeatherConditionValue.stringValue = dataSource.weatherDescription
 
-        // Humidity and visibility.
-
-        let humidity = "Prefix: Humidity".localizedValue + ": \(dataSource.humidity)"
-        labelHumidity.stringValue = humidity
-
-        let visibility = "Prefix: Visibility".localizedValue + ": \(dataSource.visibility)"
-        labelVisibility.stringValue = visibility
-
-        // Wind.
-
-        labelWindSpeedTitle.stringValue = "Label: Speed".localizedValue
-        labelWindDirectionTitle.stringValue = "Label: Direction".localizedValue
-        labelWindGustsTitle.stringValue = "Label: Gust".localizedValue
-
-        labelWindDirectionValue.stringValue = dataSource.windDirection
-        labelWindSpeedValue.stringValue = dataSource.windSpeed
-        labelWindGustsValue.stringValue = dataSource.windGusts
-
-        // Pressure.
-
-        labelPressureTitle.stringValue = "Label: Pressure".localizedValue
-        labelPressureValue.stringValue = dataSource.pressure
+        viewWeatherConditionsIcon.image = NSImage(named: wcs.icon)
+        labelWeatherConditionsDescriptionValue.stringValue = wcs.description
 
         // Sunrise and sunset.
 
@@ -195,6 +142,48 @@ class WeatherView: NSView {
 
         labelSunriseValue.stringValue = dataSource.sunrise
         labelSunsetValue.stringValue = dataSource.sunset
+
+        // Meteo group
+
+        var meteogroup = MeteoGroupData()
+
+        // Array 1
+
+        let titleMinMax = "Prefix: Min".localizedValue + ", " + "Prefix: Max".localizedValue
+        let valueMinMax = "\(dataSource.temperatureMinimum) : \(dataSource.temperatureMaximum)"
+
+        meteogroup.title1 = titleMinMax
+        meteogroup.value1 = valueMinMax
+
+        meteogroup.title2 = "Prefix: Feels Like".localizedValue
+        meteogroup.value2 = dataSource.temperatureFeelsLike
+
+        meteogroup.title3 = "Prefix: Visibility".localizedValue
+        meteogroup.value3 = dataSource.visibility
+
+        // Array 2
+
+        meteogroup.title4 = "Label: Speed".localizedValue
+        meteogroup.value4 = dataSource.windSpeed
+
+        meteogroup.title5 = "Label: Direction".localizedValue
+        meteogroup.value5 = dataSource.windDirection
+
+        meteogroup.title6 = "Label: Gust".localizedValue
+        meteogroup.value6 = dataSource.windGusts
+
+        // Array 3
+
+        meteogroup.title7 = "Label: Pressure".localizedValue
+        meteogroup.value7 = dataSource.pressure
+
+        meteogroup.title8 = "Prefix: Humidity".localizedValue
+        meteogroup.value8 = dataSource.humidity
+
+        meteogroup.title9 = "Prefix: Cloudiness".localizedValue
+        meteogroup.value9 = dataSource.cloudiness
+
+        self.viewMeteoGroup.data = meteogroup
     }
 }
 

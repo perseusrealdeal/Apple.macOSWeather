@@ -20,17 +20,12 @@ import Cocoa
 @IBDesignable
 class ForecastView: NSView {
 
-    // MARK: - Internals
-
-    private let collectionForecastDaysID =
-        NSUserInterfaceItemIdentifier(rawValue: "ForecastDays")
-
-    private let collectionForecastHoursID =
-        NSUserInterfaceItemIdentifier(rawValue: "ForecastHours")
+    private let daysID = NSUserInterfaceItemIdentifier(rawValue: "ForecastDays")
+    private let hoursID = NSUserInterfaceItemIdentifier(rawValue: "ForecastHours")
 
     // MARK: - View Data Source
 
-    public var dataSource = ForecastParser()
+    public let dataSource = globals.sourceForecast
     public var progressIndicator: Bool = false {
         didSet {
             if progressIndicator {
@@ -52,10 +47,11 @@ class ForecastView: NSView {
 
     @IBOutlet private(set) weak var indicator: NSProgressIndicator!
 
-    @IBOutlet weak var viewForecastDays: NSCollectionView!
-    @IBOutlet weak var viewForecastHours: NSCollectionView!
+    @IBOutlet private(set) weak var viewForecastDays: NSCollectionView!
+    @IBOutlet private(set) weak var viewForecastHours: NSCollectionView!
 
-    @IBOutlet private(set) weak var viewForecastDetails: ForecastDetailsView!
+    @IBOutlet private(set) weak var labelWeatherDescription: NSTextField!
+    @IBOutlet private(set) weak var viewMeteoGroup: MeteoGroupView!
 
     // MARK: - Initialization
 
@@ -80,8 +76,8 @@ class ForecastView: NSView {
 
         progressIndicator = false
 
-        self.viewForecastDays.identifier = collectionForecastDaysID
-        self.viewForecastHours.identifier = collectionForecastHoursID
+        self.viewForecastDays.identifier = daysID
+        self.viewForecastHours.identifier = hoursID
 
         self.viewForecastDays.dataSource = self
         self.viewForecastHours.dataSource = self
@@ -96,6 +92,11 @@ class ForecastView: NSView {
         self.viewForecastHours.backgroundColors = [NSColor.clear]
 
         wantsLayer = true
+
+        // self.selectTheFirstForecastDay()
+        // self.selectTheFirstForecastHour()
+
+        viewMeteoGroup.applyCompactFonts()
     }
 
     required public init?(coder: NSCoder) {
@@ -147,14 +148,16 @@ class ForecastView: NSView {
 
     // MARK: - Contract
 
-    public func reloadData() {
+    public func reloadData(saveSelection: Bool = false) {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        dataSource.refresh()
+        // dataSource.refresh()
 
-        reloadDaysCollection()
-        reloadHoursCollection()
+        reloadDaysCollection(selectionSaved: saveSelection)
+        reloadHoursCollection(selectionSaved: saveSelection)
+
+        viewMeteoGroup.reload()
 
         // Meteo Data Provider.
 
@@ -162,26 +165,73 @@ class ForecastView: NSView {
         labelMeteoProviderValue.stringValue = dataSource.meteoDataProviderName
     }
 
+    public func selectTheFirstForecastDay() {
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        let indexPath = IndexPath(item: 0, section: 0)
+        let indexes: Set<IndexPath> = [indexPath]
+
+        viewForecastDays.selectItems(at: indexes, scrollPosition: .top)
+    }
+
+    public func selectTheFirstForecastHour() {
+
+        log.message("[\(type(of: self))].\(#function)")
+
+        let indexPath = IndexPath(item: 0, section: 0)
+        let indexes: Set<IndexPath> = [indexPath]
+
+        viewForecastHours.selectItems(at: indexes, scrollPosition: .left)
+        let daySelected = viewForecastDays.selectionIndexPaths
+
+        if !dataSource.forecastDays.isEmpty {
+            log.message("[\(type(of: self))].\(#function) forecastDays not empty")
+
+            if !dataSource.forecastDays[0].hours.isEmpty {
+                log.message("[\(type(of: self))].\(#function) hours not empty")
+
+                if let daySelectedIndex = daySelected.first {
+                    let index = daySelectedIndex.item
+                    let item = dataSource.forecastDays[index].hours[0]
+
+                    viewMeteoGroup.data = item.prepareMeteoGroupData()
+                    labelWeatherDescription.stringValue = item.weatherConditions.description
+                } else {
+                    let item = dataSource.forecastDays[0].hours[0]
+
+                    viewMeteoGroup.data = item.prepareMeteoGroupData()
+                    labelWeatherDescription.stringValue = item.weatherConditions.description
+                }
+            }
+        }
+    }
+
     // MARK: - Realization
 
-    private func reloadDaysCollection() {
+    private func reloadDaysCollection(selectionSaved: Bool) {
 
         log.message("[\(type(of: self))].\(#function)")
 
         let paths = viewForecastDays.selectionIndexPaths
 
         viewForecastDays.reloadData()
-        viewForecastDays.selectItems(at: paths, scrollPosition: .nearestHorizontalEdge)
+
+        if selectionSaved {
+            viewForecastDays.selectItems(at: paths, scrollPosition: .nearestHorizontalEdge)
+        }
     }
 
-    private func reloadHoursCollection() {
+    private func reloadHoursCollection(selectionSaved: Bool) {
 
         log.message("[\(type(of: self))].\(#function)")
+
+        labelWeatherDescription.stringValue = MeteoFactsDefaults.conditions
 
         guard viewForecastDays.selectionIndexPaths.first != nil else {
 
             viewForecastHours.reloadData()
-            viewForecastDetails.data = nil
+            viewMeteoGroup.data = nil
 
             return
         }
@@ -189,15 +239,41 @@ class ForecastView: NSView {
         let paths = viewForecastHours.selectionIndexPaths
 
         viewForecastHours.reloadData()
-        viewForecastHours.selectItems(at: paths, scrollPosition: .nearestHorizontalEdge)
 
-        viewForecastDetails.reload()
+        if selectionSaved {
+            viewForecastHours.selectItems(at: paths, scrollPosition: .nearestVerticalEdge)
+        }
+
+        // Reload selected item
+
+        let indexDay = viewForecastDays.selectionIndexPaths.first
+        let indexHour = paths.first
+
+        if !dataSource.forecastDays.isEmpty && indexDay != nil {
+            log.message("[\(type(of: self))].\(#function) forecastDays not empty")
+
+            let dayItem = indexDay!.item
+
+            if !dataSource.forecastDays[dayItem].hours.isEmpty && indexHour != nil {
+                log.message("[\(type(of: self))].\(#function) hours not empty")
+
+                let hourItem = indexHour!.item
+                let item = dataSource.forecastDays[dayItem].hours[hourItem]
+
+                viewMeteoGroup.data = item.prepareMeteoGroupData()
+                labelWeatherDescription.stringValue = item.weatherConditions.description
+            }
+        }
+
+        // viewMeteoGroup.reload()
     }
 }
 
-// MARK: - NSCollectionViewDataSource, creating collection items
+// MARK: - NSCollectionViewDataSource, CREATING
 
 extension ForecastView: NSCollectionViewDataSource {
+
+    // MARK: - Count of Items
 
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection
         section: Int) -> Int {
@@ -206,13 +282,13 @@ extension ForecastView: NSCollectionViewDataSource {
 
         // Amount of items in the Forecast Days collection.
 
-        if collectionView.identifier == collectionForecastDaysID {
+        if collectionView.identifier == daysID {
             return dataSource.forecastDays.count
         }
 
         // Amount of items in the Forecast Hours collection of the day selected.
 
-        if collectionView.identifier == collectionForecastHoursID,
+        if collectionView.identifier == hoursID,
             dataSource.forecastDays.isEmpty == false {
 
             if
@@ -228,50 +304,67 @@ extension ForecastView: NSCollectionViewDataSource {
         return 0
     }
 
+    // MARK: - Create a new Item
+
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt
         indexPath: IndexPath) -> NSCollectionViewItem {
 
-        // New Forecast Day.
+        // Create a new Forecast Day item
 
-        if collectionView.identifier == collectionForecastDaysID {
+        if collectionView.identifier == daysID {
 
-            // Find the day.
+            // The day data.
 
-            let data = dataSource.forecastDays[(indexPath as NSIndexPath).item]
+            let index = (indexPath as NSIndexPath).item
+            var data = dataSource.forecastDays[index]
 
-            // Create a view of the day.
+            log.message("day \(index) : \(dataSource.forecastDays.count)", .info)
 
-            let viewDay = ForecastDaysViewItem.makeItem(collectionView, indexPath, data)
+            data.label = "\(index)"
 
-            log.message("[\(type(of: self))].\(#function)")
+            // The view for the day.
 
-            return viewDay
+            let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(
+                rawValue: ForecastDaysViewItem.description()), for: indexPath)
+                as? ForecastDaysViewItem
+
+            item?.data = data
+
+            return (item) ?? ForecastDaysViewItem()
         }
 
-        // New Forecast Hour.
+        // Create a new Forecast Hour item
 
-        if collectionView.identifier == collectionForecastHoursID,
+        if collectionView.identifier == hoursID,
             dataSource.forecastDays.isEmpty == false {
 
             if
                 let selectedIndexPath = viewForecastDays.selectionIndexPaths.first,
                 (selectedIndexPath as NSIndexPath).item != -1 {
 
-                // Find the day the hour for.
+                // The day data.
 
                 let day = dataSource.forecastDays[(selectedIndexPath as NSIndexPath).item]
 
-                // Find the hour of the day.
+                // The hour of the day data.
 
-                let hour = day.hours[(indexPath as NSIndexPath).item]
+                let index = (indexPath as NSIndexPath).item
+                var data = day.hours[index]
 
-                // Create a new view of the hour.
+                log.message("hour \(index) : \(dataSource.forecastDays.count)", .info)
 
-                let viewHour = ForecastHoursViewItem.makeItem(collectionView, indexPath, hour)
+                data.label = "\(index)"
 
-                log.message("[\(type(of: self))].\(#function)")
+                // The new view for the hour of the day.
 
-                return viewHour
+                let item = collectionView.makeItem(withIdentifier:
+                    NSUserInterfaceItemIdentifier(
+                    rawValue: ForecastHoursViewItem.description()), for: indexPath)
+                    as? ForecastHoursViewItem
+
+                item?.data = data
+
+                return (item) ?? ForecastHoursViewItem()
             }
         }
 
@@ -279,7 +372,7 @@ extension ForecastView: NSCollectionViewDataSource {
     }
 }
 
-// MARK: - NSCollectionViewDelegate
+// MARK: - NSCollectionViewDelegate, SELECTING
 
 extension ForecastView: NSCollectionViewDelegate {
 
@@ -288,12 +381,14 @@ extension ForecastView: NSCollectionViewDelegate {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        if collectionView.identifier == collectionForecastDaysID {
+        if collectionView.identifier == daysID {
+            viewMeteoGroup.data = nil
             viewForecastHours.reloadData()
-            viewForecastDetails.data = nil
+
+            self.selectTheFirstForecastHour()
         }
 
-        if collectionView.identifier == collectionForecastHoursID {
+        if collectionView.identifier == hoursID {
 
             var hourDetails: ForecastHour?
 
@@ -308,7 +403,9 @@ extension ForecastView: NSCollectionViewDelegate {
                 hourDetails = day.hours[(hourIndexPaths as NSIndexPath).item]
             }
 
-            viewForecastDetails.data = hourDetails
+            labelWeatherDescription.stringValue =
+                hourDetails?.weatherConditions.description ?? MeteoFactsDefaults.conditions
+            viewMeteoGroup.data = hourDetails?.prepareMeteoGroupData()
         }
     }
 }
@@ -331,6 +428,6 @@ extension ForecastView {
 
         log.message("[\(type(of: self))].\(#function)")
 
-        reloadData()
+        reloadData(saveSelection: true)
     }
 }
