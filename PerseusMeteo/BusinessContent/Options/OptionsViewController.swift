@@ -16,6 +16,7 @@
 //
 
 import Cocoa
+import PerseusDarkMode
 
 class OptionsViewController: NSViewController, NSTextFieldDelegate {
 

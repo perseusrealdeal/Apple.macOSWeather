@@ -16,6 +16,7 @@
 //
 
 import Foundation
+import OpenWeatherFreeClient
 
 public class MeteoClientManager {
 

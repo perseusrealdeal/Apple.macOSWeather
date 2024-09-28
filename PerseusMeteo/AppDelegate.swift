@@ -14,6 +14,8 @@
 //
 
 import Cocoa
+import PerseusDarkMode
+import PerseusGeoLocationKit
 
 class AppDelegate: NSObject, NSApplicationDelegate {
 

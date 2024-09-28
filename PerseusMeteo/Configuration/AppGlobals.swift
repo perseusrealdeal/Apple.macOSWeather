@@ -14,6 +14,7 @@
 //
 
 import Cocoa
+import PerseusGeoLocationKit
 
 struct AppGlobals {
 

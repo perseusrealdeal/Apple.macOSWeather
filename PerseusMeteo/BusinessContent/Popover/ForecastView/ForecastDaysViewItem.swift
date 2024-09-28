@@ -14,6 +14,7 @@
 //
 
 import Cocoa
+import PerseusDarkMode
 
 class ForecastDaysViewItem: NSCollectionViewItem {
 

@@ -14,6 +14,7 @@
 //
 
 import Cocoa
+import PerseusDarkMode
 
 public class OptionsWindowController: NSWindowController, NSWindowDelegate {
 

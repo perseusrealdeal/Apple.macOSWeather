@@ -12,12 +12,13 @@
 //
 //  See LICENSE for details. All rights reserved.
 //
-// swiftlint:disable file_length type_body_length function_body_length
+// swiftlint:disable file_length
 //
 
 import XCTest
 @testable import Snowman
 
+// swiftlint:disable:next type_body_length
 class TranslationTests: XCTestCase {
 
     // func test_zero() { XCTFail("Tests not yet implemented in \(type(of: self)).") }
@@ -438,6 +439,7 @@ class TranslationTests: XCTestCase {
 
     // MARK: - Weather-conditions descriptions
 
+// swiftlint:disable:next function_body_length
     func test_translation_weather_conditions_descriptions() {
 
         // assert

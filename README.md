@@ -2,27 +2,44 @@
 
 > Home-made weather macOS app that runs in the Status Menus (top-right).
 
-[![Actions Status](https://github.com/perseusrealdeal/Apple.macOSWeather/actions/workflows/main.yml/badge.svg)](https://github.com/perseusrealdeal/Apple.macOSWeather/actions)
+[![Actions Status](https://github.com/perseusrealdeal/macOS.Weather/actions/workflows/main.yml/badge.svg)](https://github.com/perseusrealdeal/macOS.Weather/actions)
+[![Style](https://github.com/perseusrealdeal/macOS.Weather/actions/workflows/swiftlint.yml/badge.svg)](https://github.com/perseusrealdeal/macOS.Weather/actions/workflows/swiftlint.yml)
 [![Version](https://img.shields.io/badge/Version-0.3-green.svg)](/CHANGELOG.md)
-[![Platform macOS](https://img.shields.io/badge/Platform-macOS%2010.11+-orange.svg)](https://en.wikipedia.org/wiki/MacOS_version_history)
-[![Xcode 10.1](https://img.shields.io/badge/Xcode-10.1+-red.svg)](https://en.wikipedia.org/wiki/Xcode)
-[![Swift 4.2](https://img.shields.io/badge/Swift-4.2-orange.svg)](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html)
+[![Platform macOS](https://img.shields.io/badge/Platform-macOS%2010.13+-orange.svg)](https://en.wikipedia.org/wiki/MacOS_version_history)
+[![Xcode 14.2](https://img.shields.io/badge/Xcode-14.2+-red.svg)](https://en.wikipedia.org/wiki/Xcode)
+[![Swift 5](https://img.shields.io/badge/Swift-5-orange.svg)](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html)
 [![SDK UIKit](https://img.shields.io/badge/SDK-UIKit%20-blueviolet.svg)](https://developer.apple.com/documentation/uikit)
-[![License](http://img.shields.io/:The_Clear_BSD_License-blue.svg)](/LICENSE)
-
-> The final usage tests: macOS 10.13.6 and macOS 13.6.4.
+[![License](http://img.shields.io/:License-Clear_BSD-blue.svg)](/LICENSE)
 
 ## Dependencies
+
+> Swift Package Manager.
 
 [![PerseusDarkMode](http://img.shields.io/:PerseusDarkMode-1.1.5-green.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/tree/1.1.5)
 [![PerseusUISystemKit](http://img.shields.io/:PerseusUISystemKit-1.1.4-green.svg)](https://github.com/perseusrealdeal/PerseusUISystemKit/tree/1.1.4)
 [![OpenWeatherFreeClient](http://img.shields.io/:OpenWeatherFreeClient-0.1.1-green.svg)](https://github.com/perseusrealdeal/OpenWeatherFreeClient/tree/0.1.1)
+[![PerseusGeoLocationKit](http://img.shields.io/:PerseusGeoLocationKit-0.1.0-green.svg)](https://github.com/perseusrealdeal/PerseusGeoLocationKit/releases/tag/0.1.0)
 
 # In brief > Idea to use, the Why
 
-> [CHANGELOG](/CHANGELOG.md) for details. The Why of this app cannot, and need not, be put into words.
+> The Why of this app cannot, and need not, be put into words.
 
 <img src="https://github.com/perseusrealdeal/macOS.Weather/assets/50202963/5be1a549-79a9-4da3-9b13-7220c49c9481" width="800" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;"/>
+
+## Approbation Matrix
+
+> [A3 Environment](https://docs.google.com/document/d/1K2jOeIknKRRpTEEIPKhxO2H_1eBTof5uTXxyOm5g6nQ/edit?usp=sharing). [CHANGELOG](/CHANGELOG.md) for details.
+
+| macOS       | Version  | Result  | Details |
+| ----------- | -------- | :-----: | ------- |
+| High Sierra | 10.13.6  | ??      | - |
+| Mojave      | 10.14.6  | ??      | - |
+| Catalina    | 10.15.7  | ??      | - |
+| Big Sur     | 11.7.10  | ??      | - |
+| Monterey    | 12.7.6   | ??      | - |
+| Ventura     | 13.6.9   | ??      | - |
+| Sonoma      | 14.6.1   | ??      | - |
+| Sequoia     | 15.nn.nn | ??      | - |
 
 # Installation
 
@@ -31,10 +48,8 @@ To install the app use the appropriate build-system.
 
 # Build system requirements
 
-- [macOS 10.13.6+](https://apps.apple.com/us/app/macos-high-sierra/id1246284741?ls=1)
-- [Xcode 10.1+](https://stackoverflow.com/questions/10335747/how-to-download-xcode-dmg-or-xip-file)
-- Swift 4.2+
-- macOS: 10.11+, AppKit SDK
+- [macOS Monterey 12.7.6+](https://apps.apple.com/by/app/macos-monterey/id1576738294) / [Xcode 14.2+](https://developer.apple.com/services-account/download?path=/Developer_Tools/Xcode_14.2/Xcode_14.2.xip)
+- AppKit SDK, macOS 10.13+, Swift 5
 
 # Software requirements
 
@@ -47,6 +62,7 @@ To install the app use the appropriate build-system.
 - [Perseus UI System Kit](https://github.com/perseusrealdeal/PerseusUISystemKit.git) / [1.1.4](https://github.com/perseusrealdeal/perseusuisystemkit/releases/tag/1.1.4)
 - [Dark Mode switching functions](https://gist.github.com/perseusrealdeal/11b1bab47f13134832b859f49d9af706)
 - [OpenWeather Free Client](https://github.com/perseusrealdeal/OpenWeatherFreeClient.git) / [0.1.1](https://github.com/perseusrealdeal/OpenWeatherFreeClient/releases/tag/0.1.1)
+- [PerseusGeoLocationKit](https://github.com/perseusrealdeal/PerseusGeoLocationKit.git) / [0.1.0](https://github.com/perseusrealdeal/PerseusGeoLocationKit/releases/tag/0.1.0)
 - [PerseusCompassDirection](https://gist.github.com/perseusrealdeal/3b053b2390d704f561ec52c6477b5cf2)
 - [PerseusTimeFormat](https://gist.github.com/perseusrealdeal/7aa89d78d9b1c220cc06682be8908a97)
 - [PerseusLogger](https://gist.github.com/perseusrealdeal/df456a9825fcface44eca738056eb6d5)
@@ -61,31 +77,33 @@ To install the app use the appropriate build-system.
 
 # Third-party software
 
-- [SwiftLint](https://github.com/realm/SwiftLint) / [0.31.0: Busy Laundromat](https://github.com/realm/SwiftLint/releases/tag/0.31.0) for macOS High Sierra
+- Style [SwiftLint](https://github.com/realm/SwiftLint)
+- Action [mxcl/xcodebuild@v3.3](https://github.com/mxcl/xcodebuild/releases/tag/v3.3.0)
+- Action [cirruslabs/swiftlint-action@v1](https://github.com/cirruslabs/swiftlint-action/releases/tag/v1.0.0)
 
 # Points taken into account
 
 - Explicit start point placed in [main.swift](/PerseusMeteo/main.swift)
-- Explicit app delegate with test bundle
+- Explicit app delegate [TestingAppDelegate.swift](/SnowmanTests/TestingAppDelegate.swift) with test bundle
 - Explicit app globals placed in [AppGlobals.swift](/PerseusMeteo/Configuration/AppGlobals.swift)
 - Explicit app appearance placed in [AppAppearance.swift](/PerseusMeteo/Configuration/AppAppearance.swift)
-- Localization test schemes for EN and RU as well
-- SwiftLint shell script as a build phase
+- [Test plan](/PerseusTests/TestPlanStarted.xctestplan) configured for EN and RU as well
+- SwiftLint shell script as a build phase (preinstallation required)
 - Software requirements
 
 # The Clear BSD License
 
-Copyright © 7531 - 7532 Mikhail Zhigulin of Novosibirsk <br/>
-Copyright © 7531 - 7532 PerseusRealDeal
+Copyright © 7531 - 7533 Mikhail Zhigulin of Novosibirsk <br/>
+Copyright © 7531 - 7533 PerseusRealDeal
 
 - The year starts from the creation of the world in the Star temple according to a Slavic calendar.
-- September, the 1st of Slavic year.
+- September, the 1st of Slavic year. It means that Sep 1 2024 is the begining of 7533.
 
 [LICENSE](/LICENSE) for details.
 
 # Author
 
-> Mikhail Zhigulin of Novosibirsk
+> Mikhail A. Zhigulin of Novosibirsk
 
 # Credits
 

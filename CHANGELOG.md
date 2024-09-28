@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Version in format MAJOR.MINOR where MINOR includes PATCH that means any patch increments MINOR.
 - Dates in this file meets Gregorian calendar. Date in format YYYY-MM-DD.
 
-## [0.3] - [Unreleased]
+## [0.3] - [Unreleased], Forecast
 
 ### Fixed
 
@@ -15,8 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Expectation > Translation.
+- Xcode Project Version from 10 to 14.
 
-## [0.2] - 2024-02-01
+## [0.2] - 2024-02-01, Current Weather
 
 ### Added
 
@@ -43,7 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - The project for running as a Status Menus app (#3).
 
-## [0.1] - 2023-04-05
+## [0.1] - 2023-04-05, Developer Beginning Release
 
 ### Added
 

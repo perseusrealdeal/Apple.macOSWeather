@@ -183,13 +183,17 @@ public struct ForecastDay {
         var precipitation = [String]()
 
         hours.forEach {
-            if $0.source["snow"] as? [String: Any] != nil {
+
+            let snow = $0.source["snow"] as? [String: Any]
+            let rain = $0.source["rain"] as? [String: Any]
+
+            if snow != nil {
                 if !precipitation.contains("snow") {
                     precipitation.append("snow".localizedValue)
                 }
             }
 
-            if $0.source["rain"] as? [String: Any] != nil {
+            if rain != nil {
                 if !precipitation.contains("rain") {
                     precipitation.append("rain".localizedValue)
                 }

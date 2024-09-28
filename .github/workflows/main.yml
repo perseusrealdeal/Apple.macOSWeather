@@ -1,3 +1,4 @@
+# .github/workflows/main.yml
 name: Build & Tests
 
 on:
@@ -5,72 +6,43 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-#  schedule:
-#    - cron: '30 5 * * 5'
 
 jobs:
-
   build:
-    runs-on: macos-latest
+    name: Build
+    runs-on: macos-14
     steps:
-    - name: Checkout the code
-      uses: actions/checkout@v2
-    - name: Show xcodebuild version
-      run: xcodebuild -version
-    - name: Show xcode embedded SDKs
-      run: xcodebuild -showsdks
-    - name: Show buildable schemes
-      run: xcodebuild -list -project ./PerseusMeteo.xcodeproj
-    - uses: mxcl/xcodebuild@v1.9.2
-      with:
-        platform: macOS
-        scheme: 'PerseusMeteo'
-        action: build
-        working-directory: ./
-        verbosity: xcpretty
-        upload-logs: always
-        configuration: Release
-
-  test_EN:
-    runs-on: macos-latest
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build
+        uses: mxcl/xcodebuild@v3.3
+        with:
+          xcode: 15.4
+          platform: macOS
+          platform-version: 10.13
+          workspace: PerseusMeteo.xcodeproj/project.xcworkspace
+          scheme: PerseusMeteo
+          trust-plugins: true
+          action: build # default = `test`
+          code-coverage: true # default = `false`
+          warnings-as-errors: false # default = `false`
+          configuration: release # no default, ie. `xcodebuild` decides itself
+          
+  unit-tests:
+    name: Tests
+    runs-on: macos-14
     steps:
-    - name: Checkout the code
-      uses: actions/checkout@v2
-    - name: Show xcodebuild version
-      run: xcodebuild -version
-    - name: Show xcode embedded SDKs
-      run: xcodebuild -showsdks
-    - name: Show buildable schemes
-      run: xcodebuild -list -project ./PerseusMeteo.xcodeproj
-    - uses: mxcl/xcodebuild@v1.9.2
-      with:
-        platform: macOS
-        scheme: 'PerseusMeteo'
-        action: test
-        code-coverage: true
-        working-directory: ./
-        verbosity: xcpretty
-        upload-logs: always
-        configuration: Release
-
-  test_RU:
-    runs-on: macos-latest
-    steps:
-    - name: Checkout the code
-      uses: actions/checkout@v2
-    - name: Show xcodebuild version
-      run: xcodebuild -version
-    - name: Show xcode embedded SDKs
-      run: xcodebuild -showsdks
-    - name: Show buildable schemes
-      run: xcodebuild -list -project ./PerseusMeteo.xcodeproj
-    - uses: mxcl/xcodebuild@v1.9.2
-      with:
-        platform: macOS
-        scheme: 'PerseusMeteoRU'
-        action: test
-        code-coverage: true
-        working-directory: ./
-        verbosity: xcpretty
-        upload-logs: always
-        configuration: Release
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: SwiftLint
+        run: brew link --overwrite swiftlint || brew install swiftlint
+      - name: XCTests
+        uses: mxcl/xcodebuild@v3.3
+        with:
+          xcode: 15.4
+          platform: macOS
+          platform-version: 10.13
+          workspace: PerseusMeteo.xcodeproj/project.xcworkspace
+          scheme: PerseusMeteo
+          trust-plugins: true
+          configuration: release

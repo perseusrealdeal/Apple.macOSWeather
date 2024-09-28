@@ -15,9 +15,27 @@
 
 import Cocoa
 
+import class PerseusDarkMode.PerseusLogger
+import class PerseusUISystemKit.PerseusLogger
+import class PerseusGeoLocationKit.PerseusLogger
+import class OpenWeatherFreeClient.PerseusLogger
+
+typealias PerseusDarkModeLogger = PerseusDarkMode.PerseusLogger
+typealias PerseusUISystemKitLogger = PerseusUISystemKit.PerseusLogger
+typealias PerseusGeoLocationKitLogger = PerseusGeoLocationKit.PerseusLogger
+typealias OpenWeatherFreeClientLogger = OpenWeatherFreeClient.PerseusLogger
+
 // MARK: - Logger
 
 log.level = .info
+log.turned = .on
+
+// MARK: - External Loggers
+
+PerseusDarkModeLogger.turned = .on
+PerseusUISystemKitLogger.turned = .on
+PerseusGeoLocationKitLogger.turned = .on
+OpenWeatherFreeClientLogger.turned = .on
 
 // MARK: - Construct the app's top elements
 

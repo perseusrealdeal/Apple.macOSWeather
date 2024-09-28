@@ -55,7 +55,7 @@ extension String {
         }
 
         guard
-            let value = result?[self]
+            let value = result[self]
         else {
             testlog.message("No value by the key: \(self).", .error)
             return nil

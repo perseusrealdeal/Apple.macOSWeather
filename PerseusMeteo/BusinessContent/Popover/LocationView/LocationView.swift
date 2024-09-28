@@ -16,6 +16,7 @@
 //
 
 import Cocoa
+import PerseusGeoLocationKit
 
 @IBDesignable
 class LocationView: NSView {

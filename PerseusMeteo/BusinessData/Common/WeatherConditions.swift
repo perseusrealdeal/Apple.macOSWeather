@@ -27,23 +27,23 @@ public struct WeatherConditions: CustomStringConvertible {
 
     public var main: String {
         switch self.icon {
-        case "01d", "01n" :
+        case "01d", "01n":
             return "Main: clear sky".localizedValue
-        case "02d", "02n" :
+        case "02d", "02n":
             return "Main: few clouds".localizedValue
-        case "03d", "03n" :
+        case "03d", "03n":
             return "Main: scattered clouds".localizedValue
-        case "04d", "04n" :
+        case "04d", "04n":
             return "Main: broken clouds".localizedValue
-        case "09d", "09n" :
+        case "09d", "09n":
             return "Main: shower rain".localizedValue
-        case "10d", "10n" :
+        case "10d", "10n":
             return "Main: rain".localizedValue
-        case "11d", "11n" :
+        case "11d", "11n":
             return "Main: thunderstorm".localizedValue
-        case "13d", "13n" :
+        case "13d", "13n":
             return "Main: snow".localizedValue
-        case "50d", "50n" :
+        case "50d", "50n":
             return "Main: mist".localizedValue
         default:
             return MeteoFactsDefaults.conditions
