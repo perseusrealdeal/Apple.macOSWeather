@@ -14,6 +14,7 @@
 //
 
 import AppKit
+import ConsolePerseusLogger
 
 public class StatusMenusButtonPresenter {
 

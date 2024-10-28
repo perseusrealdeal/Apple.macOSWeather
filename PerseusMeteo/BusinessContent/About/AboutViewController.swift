@@ -16,6 +16,7 @@
 //
 
 import Cocoa
+import ConsolePerseusLogger
 
 class AboutViewController: NSViewController {
 

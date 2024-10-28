@@ -16,6 +16,7 @@
 //
 
 import Foundation
+import ConsolePerseusLogger
 
 /* OpenWeatherMap JSON forecast list items sample
 

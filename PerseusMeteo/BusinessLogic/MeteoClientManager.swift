@@ -16,7 +16,9 @@
 //
 
 import Foundation
+
 import OpenWeatherFreeClient
+import ConsolePerseusLogger
 
 public class MeteoClientManager {
 

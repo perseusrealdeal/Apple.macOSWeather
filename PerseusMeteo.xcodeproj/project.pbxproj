@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E1A2D4C2CB267BD009F13AD /* ConsolePerseusLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 2E1A2D4B2CB267BD009F13AD /* ConsolePerseusLogger */; };
 		2E54FDE62CA67D7F003EABDE /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2E54FDE52CA67D7F003EABDE /* swiftlint.yml */; };
 		2EE43EAE2CA6C7C2009EAD13 /* PerseusUISystemKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2EE43EAD2CA6C7C2009EAD13 /* PerseusUISystemKit */; };
 		2EE43EB12CA6CA04009EAD13 /* PerseusGeoLocationKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2EE43EB02CA6CA04009EAD13 /* PerseusGeoLocationKit */; };
@@ -47,7 +48,6 @@
 		4B5F7D442BB6984D00121946 /* MeteoGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F7D432BB6984D00121946 /* MeteoGroupView.swift */; };
 		4B5F7D462BB6986B00121946 /* MeteoGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5F7D452BB6986B00121946 /* MeteoGroupView.xib */; };
 		4B5F7D482BBBDAE800121946 /* MeteoGroupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F7D472BBBDAE800121946 /* MeteoGroupData.swift */; };
-		4B62FA7629DC1A6400DF6B85 /* PerseusLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62FA7529DC1A6400DF6B85 /* PerseusLogger.swift */; };
 		4B684C712B446A560063E359 /* JsonDataDictionaryGift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B684C702B446A560063E359 /* JsonDataDictionaryGift.swift */; };
 		4B6F98622927D95500ADB03A /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4B6F98612927D95500ADB03A /* .swiftlint.yml */; };
 		4B6F98662927DF1400ADB03A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4B6F98682927DF1400ADB03A /* InfoPlist.strings */; };
@@ -154,7 +154,6 @@
 		4B5F7D432BB6984D00121946 /* MeteoGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoGroupView.swift; sourceTree = "<group>"; };
 		4B5F7D452BB6986B00121946 /* MeteoGroupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeteoGroupView.xib; sourceTree = "<group>"; };
 		4B5F7D472BBBDAE800121946 /* MeteoGroupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoGroupData.swift; sourceTree = "<group>"; };
-		4B62FA7529DC1A6400DF6B85 /* PerseusLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerseusLogger.swift; sourceTree = "<group>"; };
 		4B684C702B446A560063E359 /* JsonDataDictionaryGift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataDictionaryGift.swift; sourceTree = "<group>"; };
 		4B6F98612927D95500ADB03A /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		4B6F98672927DF1400ADB03A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -216,6 +215,7 @@
 			files = (
 				2EE43EB12CA6CA04009EAD13 /* PerseusGeoLocationKit in Frameworks */,
 				2EE43EB42CA6CD29009EAD13 /* OpenWeatherFreeClient in Frameworks */,
+				2E1A2D4C2CB267BD009F13AD /* ConsolePerseusLogger in Frameworks */,
 				2EE43EAE2CA6C7C2009EAD13 /* PerseusUISystemKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,7 +323,6 @@
 			children = (
 				4B76913B2B5011DD007F09D9 /* PerseusCompassDirection.swift */,
 				4B7690D32B4CA82A007F09D9 /* PerseusTimeFormat.swift */,
-				4B62FA7529DC1A6400DF6B85 /* PerseusLogger.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -583,6 +582,7 @@
 				2EE43EAD2CA6C7C2009EAD13 /* PerseusUISystemKit */,
 				2EE43EB02CA6CA04009EAD13 /* PerseusGeoLocationKit */,
 				2EE43EB32CA6CD29009EAD13 /* OpenWeatherFreeClient */,
+				2E1A2D4B2CB267BD009F13AD /* ConsolePerseusLogger */,
 			);
 			productName = XcodeTemplateProject;
 			productReference = 4B1483E12912892C0013B76E /* Snowman.app */;
@@ -644,6 +644,7 @@
 				2EE43EAC2CA6C7C2009EAD13 /* XCRemoteSwiftPackageReference "PerseusUISystemKit" */,
 				2EE43EAF2CA6CA04009EAD13 /* XCRemoteSwiftPackageReference "PerseusGeoLocationKit" */,
 				2EE43EB22CA6CD29009EAD13 /* XCRemoteSwiftPackageReference "OpenWeatherFreeClient" */,
+				2E1A2D4A2CB267BD009F13AD /* XCRemoteSwiftPackageReference "ConsolePerseusLogger" */,
 			);
 			productRefGroup = 4B1483E22912892C0013B76E /* Products */;
 			projectDirPath = "";
@@ -743,7 +744,6 @@
 				4BBE90672912931A008F734D /* main.swift in Sources */,
 				4BFA5FDC2989A16400AC09F5 /* OptionsWindowController.swift in Sources */,
 				4BB204632B70F2FE007E0308 /* OpenWeatherForecastParser.swift in Sources */,
-				4B62FA7629DC1A6400DF6B85 /* PerseusLogger.swift in Sources */,
 				4B5D62362C418E700064EFB8 /* WeatherCode.swift in Sources */,
 				4B3384682B547609004682DF /* JsonDataPrettyPrintedGift.swift in Sources */,
 				4B1CA6A32B549358003F3EBF /* MeteoClientManager.swift in Sources */,
@@ -1074,6 +1074,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2E1A2D4A2CB267BD009F13AD /* XCRemoteSwiftPackageReference "ConsolePerseusLogger" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/perseusrealdeal/ConsolePerseusLogger";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		2EE43EAC2CA6C7C2009EAD13 /* XCRemoteSwiftPackageReference "PerseusUISystemKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/perseusrealdeal/PerseusUISystemKit.git";
@@ -1086,8 +1094,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/perseusrealdeal/PerseusGeoLocationKit";
 			requirement = {
-				kind = exactVersion;
-				version = 0.1.0;
+				branch = "support/update-logger";
+				kind = branch;
 			};
 		};
 		2EE43EB22CA6CD29009EAD13 /* XCRemoteSwiftPackageReference "OpenWeatherFreeClient" */ = {
@@ -1101,6 +1109,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2E1A2D4B2CB267BD009F13AD /* ConsolePerseusLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E1A2D4A2CB267BD009F13AD /* XCRemoteSwiftPackageReference "ConsolePerseusLogger" */;
+			productName = ConsolePerseusLogger;
+		};
 		2EE43EAD2CA6C7C2009EAD13 /* PerseusUISystemKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2EE43EAC2CA6C7C2009EAD13 /* XCRemoteSwiftPackageReference "PerseusUISystemKit" */;

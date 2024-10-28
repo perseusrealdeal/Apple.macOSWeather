@@ -14,7 +14,9 @@
 //
 
 import Cocoa
+
 import PerseusGeoLocationKit
+import ConsolePerseusLogger
 
 struct AppGlobals {
 

@@ -14,7 +14,9 @@
 //
 
 import Cocoa
+
 import PerseusDarkMode
+import ConsolePerseusLogger
 
 public class OptionsWindowController: NSWindowController, NSWindowDelegate {
 

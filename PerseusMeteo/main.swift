@@ -15,32 +15,35 @@
 
 import Cocoa
 
+import ConsolePerseusLogger
+import PerseusGeoLocationKit
+
 import class PerseusDarkMode.PerseusLogger
 import class PerseusUISystemKit.PerseusLogger
-import class PerseusGeoLocationKit.PerseusLogger
+// import class PerseusGeoLocationKit.PerseusLogger
 import class OpenWeatherFreeClient.PerseusLogger
 
 typealias PerseusDarkModeLogger = PerseusDarkMode.PerseusLogger
 typealias PerseusUISystemKitLogger = PerseusUISystemKit.PerseusLogger
-typealias PerseusGeoLocationKitLogger = PerseusGeoLocationKit.PerseusLogger
+// typealias PerseusGeoLocationKitLogger = PerseusGeoLocationKit.PerseusLogger
 typealias OpenWeatherFreeClientLogger = OpenWeatherFreeClient.PerseusLogger
 
 // MARK: - Logger
 
-log.level = .info
-log.turned = .on
+// Default.
 
 // MARK: - External Loggers
 
-PerseusDarkModeLogger.turned = .on
-PerseusUISystemKitLogger.turned = .on
-PerseusGeoLocationKitLogger.turned = .on
-OpenWeatherFreeClientLogger.turned = .on
+/*
+PerseusDarkModeLogger.turned = .off
+PerseusUISystemKitLogger.turned = .off
+PerseusGeoLocationKitLogger.turned = .off
+OpenWeatherFreeClientLogger.turned = .off
+*/
 
 // MARK: - Construct the app's top elements
 
 log.message("The app's start point...", .info)
-log.message("", .info)
 
 let app = NSApplication.shared
 

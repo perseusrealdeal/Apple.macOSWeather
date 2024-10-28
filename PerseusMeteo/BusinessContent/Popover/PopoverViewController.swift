@@ -22,7 +22,9 @@
 //
 
 import Cocoa
+
 import PerseusDarkMode
+import ConsolePerseusLogger
 
 public class PopoverViewController: NSViewController, NSTabViewDelegate {
 

@@ -16,7 +16,9 @@
 //
 
 import Foundation
+
 import PerseusDarkMode
+import ConsolePerseusLogger
 
 // MARK: - Keys
 

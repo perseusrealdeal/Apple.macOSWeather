@@ -16,6 +16,7 @@
 //
 
 import Cocoa
+import ConsolePerseusLogger
 
 @IBDesignable
 class WeatherView: NSView {

@@ -14,6 +14,7 @@
 //
 
 import Cocoa
+import ConsolePerseusLogger
 
 @IBDesignable
 class MeteoGroupView: NSView {

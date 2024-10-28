@@ -14,8 +14,11 @@
 //
 
 import Cocoa
+
 import PerseusDarkMode
 import PerseusGeoLocationKit
+
+import ConsolePerseusLogger
 
 class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -52,10 +55,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
 
-        log.message("", .info)
         log.message("Launching with business matter purpose...", .info)
-        log.message("", .info)
-
         log.message("[\(type(of: self))].\(#function)")
 
         AppearanceService.makeUp()

@@ -42,6 +42,7 @@
 */
 
 import Foundation
+import ConsolePerseusLogger
 
 public class OpenWeatherForecastParser: ForecastParserProtocol {
 
