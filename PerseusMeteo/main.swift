@@ -16,16 +16,13 @@
 import Cocoa
 
 import ConsolePerseusLogger
-import PerseusGeoLocationKit
 
 import class PerseusDarkMode.PerseusLogger
-import class PerseusUISystemKit.PerseusLogger
-// import class PerseusGeoLocationKit.PerseusLogger
+import class PerseusGeoLocationKit.PerseusLogger
 import class OpenWeatherFreeClient.PerseusLogger
 
 typealias PerseusDarkModeLogger = PerseusDarkMode.PerseusLogger
-typealias PerseusUISystemKitLogger = PerseusUISystemKit.PerseusLogger
-// typealias PerseusGeoLocationKitLogger = PerseusGeoLocationKit.PerseusLogger
+typealias PerseusGeoLocationKitLogger = PerseusGeoLocationKit.PerseusLogger
 typealias OpenWeatherFreeClientLogger = OpenWeatherFreeClient.PerseusLogger
 
 // MARK: - Logger
@@ -36,7 +33,6 @@ typealias OpenWeatherFreeClientLogger = OpenWeatherFreeClient.PerseusLogger
 
 /*
 PerseusDarkModeLogger.turned = .off
-PerseusUISystemKitLogger.turned = .off
 PerseusGeoLocationKitLogger.turned = .off
 OpenWeatherFreeClientLogger.turned = .off
 */
